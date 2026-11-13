@@ -1,0 +1,92 @@
+{
+  "question_id": "AUTH-CTI",
+  "case_id": "AUTH-CTI",
+  "scenario_id": "purplesharp-ad",
+  "branch": "graphrag",
+  "query": "Đối chiếu cụm đăng nhập thất bại nghi vấn password spraying trong PurpleSharp với CTI report của Microsoft về CovertNetwork-1658: mẫu phân bố lần thử giống và khác ở đâu? Tách nhận định từ telemetry với bối cảnh CTI; không gán threat actor cho host.",
+  "outcome": "accepted_draft",
+  "gate_decision": "proceed",
+  "eligibility_decision": "proceed",
+  "context_utf8_bytes": 160530,
+  "messages_utf8_bytes": 169935,
+  "llm_http_attempts": 1,
+  "fallback_used": false,
+  "human_review_required": true,
+  "prepared_utc": "2026-11-12T14:44:45.652744+00:00",
+  "provider_usage": {
+    "prompt_tokens": 55640,
+    "completion_tokens": 1908,
+    "total_tokens": 57548,
+    "prompt_tokens_details": {
+      "cached_tokens": 9472
+    },
+    "prompt_cache_hit_tokens": 9472,
+    "prompt_cache_miss_tokens": 46168
+  },
+  "provider_reported_cost": null,
+  "retrieval_context_seconds": 0.17038070000126027,
+  "policy_gate_decision": "proceed",
+  "abstention_stage": null,
+  "context_sha256": "bfebbf56d955a3f2867ef580ab24a56d7f684c901cf19d24ad2e6a404dc755ec",
+  "messages_sha256": "2fb70ab5d024bbaa405bb90a6134e073701bceb7059241ac45304b00a4d84ea9",
+  "retrieval_sha256": "511125a71e859a25e3b84ecdac730e3ea105c66332fc8f454f65aa09924ea9f7",
+  "retrieval_hit_ids": [
+    "retrieval-chunk--91ef444192d109b423f4b0402f098672ea5143a1c14c7d15566c0872ec1016f8",
+    "retrieval-chunk--a1539083345b7e8c6a7e834bcf1617247b42f8c60aeda08385afa9e47025ceb8",
+    "retrieval-chunk--55fd82e45a343b8e932202f57fbf060278048047dd8c925ec7821b7196db06fc",
+    "retrieval-chunk--c353b3ac493dd0b9d3e9bf5f1a6924ffa4d5a6990d9e27cdcac31478f9ed5892",
+    "retrieval-chunk--0bbca650694671ec179ef9b97d45cc40969a30d7bc97752d23217b208beaf348"
+  ],
+  "returned_graph_nodes": 26,
+  "returned_graph_edges": 46,
+  "available_reference_count": 198,
+  "validation_status": "passed",
+  "abstention_reason_codes": [],
+  "preparation_seconds": 0.4003517999990436,
+  "generation_validation_seconds": 69.84915820000242,
+  "provider_http_seconds": 10.194350400000985,
+  "generation_started_utc": "2026-11-12T14:48:37.073554+00:00",
+  "generation_finished_utc": "2026-11-12T14:48:47.266913+00:00",
+  "finish_reason": "stop",
+  "http_status": 200,
+  "config_run_id": "deepseek-final-nothinking-20261112T143858Z",
+  "attempt_diagnostics": [
+    {
+      "ordinal": 4,
+      "question_id": "AUTH-CTI",
+      "branch": "graphrag",
+      "pair_attempt": 1,
+      "reserved_utc": "2026-11-12T14:48:37.042757+00:00",
+      "actual_http_attempts": 1,
+      "finished_utc": "2026-11-12T14:48:47.266913+00:00",
+      "actual_payload": {
+        "model": "deepseek-flash",
+        "temperature": 0.0,
+        "max_tokens": 16384,
+        "thinking": {
+          "type": "disabled"
+        },
+        "stream": false,
+        "messages_sha256": "2fb70ab5d024bbaa405bb90a6134e073701bceb7059241ac45304b00a4d84ea9",
+        "serialized_http_payload_bytes": 172393,
+        "endpoint": "https://api.deepseek.com/chat/completions"
+      },
+      "http_started_utc": "2026-11-12T14:48:37.073554+00:00",
+      "http_status": 200,
+      "usage": {
+        "prompt_tokens": 55640,
+        "completion_tokens": 1908,
+        "total_tokens": 57548,
+        "prompt_tokens_details": {
+          "cached_tokens": 9472
+        },
+        "prompt_cache_hit_tokens": 9472,
+        "prompt_cache_miss_tokens": 46168
+      },
+      "cost": null,
+      "finish_reason": "stop",
+      "http_seconds": 10.194350400000985,
+      "http_finished_utc": "2026-11-12T14:48:47.266913+00:00"
+    }
+  ]
+}

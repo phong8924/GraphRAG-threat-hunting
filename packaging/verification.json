@@ -1,0 +1,19 @@
+{
+  "source_copy_hashes": "passed",
+  "historical_pins_code_frontend_consumers_data_results_integrity": "passed",
+  "saved_startup_without_key": "passed",
+  "live_startup_without_generation": "passed",
+  "saved_actual_HTTP_three_scenarios": "passed",
+  "served_frontend_assets_hash_verified": 12,
+  "saved_hunt_generation_status": 409,
+  "focused_test_command": "python -B -m pytest -p no:cacheprovider tests/test_llm_client.py tests/test_llm_guardrail.py tests/test_source_evidence_contract.py -q",
+  "focused_tests_passed": 98,
+  "full_suite_run": false,
+  "LLM_calls": 0,
+  "provider_authentication_not_tested": true,
+  "embedding_prepare_check": "pinned revision and all required file SHA-256 passed; cache not copied",
+  "fresh_dependency_install_performed": false,
+  "project_module_paths": "destination only",
+  "external_model_manifest": "packaging/embedding_download.json",
+  "browser_visual_check_performed": false
+}

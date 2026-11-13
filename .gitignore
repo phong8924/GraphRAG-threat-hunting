@@ -1,0 +1,26 @@
+# Local credentials and environments
+.env
+.env.*
+!.env.example
+.venv/
+node_modules/
+**/node_modules/
+__pycache__/
+**/__pycache__/
+*.pyc
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+model_cache/
+.cache/
+*.zip
+*.log
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store
+# Keep curated data, pinned frontend/dist and the final study in Git.
+# New Live sessions / repeat studies remain local unless deliberately reviewed.
+/outputs/demo/current-interactive-*/
+/outputs/experiments/deepseek-paired-*/

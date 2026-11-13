@@ -1,0 +1,50 @@
+{
+  "schema_version": "threat-hunting-report/v1",
+  "verdict": "INSUFFICIENT_EVIDENCE",
+  "direct_answer": "Telemetry cục bộ (PurpleSharp) ghi nhận 14 failure observation (7 sự kiện 4625 trên WORKSTATION5 và 7 sự kiện 4776 trên MORDORDC, là hai góc nhìn của cùng các lần thử, không phải thêm attempt) nhắm vào 7 tài khoản khác nhau, dồn trong khoảng dấu thời gian canonical 2020-10-22T08:29:55.210Z–08:29:55.382Z (evidence auth-failure-observations). CTI Microsoft mô tả CovertNetwork-1658 gửi 'rất ít' lần đăng nhập cho nhiều tài khoản, khoảng 80% trường hợp chỉ một lần/tài khoản/ngày (cti-38d3fef31de89137b186). Điểm giống: cả hai đều là mẫu phân tán trên nhiều tài khoản với số lần thử ít trên mỗi tài khoản. Điểm khác: telemetry cục bộ không có chiều 'mỗi ngày' — toàn bộ cluster nằm trong một cửa sổ dưới 1 giây, không thể so sánh với phân bố một lần/tài khoản/ngày của CTI; context này chưa đủ để kết luận về toàn bộ dataset hoặc gán threat actor cho host.",
+  "executive_summary": "Hai nguồn chỉ so sánh được ở mức 'nhiều tài khoản, ít lần thử mỗi tài khoản'. Không so sánh được nhịp 'mỗi ngày' vì telemetry cục bộ chỉ có một cụm trong khoảng dấu thời gian canonical dưới 1 giây. CTI là bối cảnh bên ngoài, không chứng minh compromise hay attribution cho host.",
+  "technical_analysis": "Telemetry cục bộ (evidence auth-failure-observations, status observed): 7 sự kiện 4625 trên WORKSTATION5.theshire.local (jsonl:line:788, 790, 792, 794, 796, 798, 803) với target_user lần lượt lrodriguez, pgustavo, sysmonsvc, sbeavers, mscott, pbeesly, nxlogsvc; và 7 sự kiện 4776 trên MORDORDC.theshire.local (jsonl:line:1020, 1046, 1048, 1051, 1072, 1074, 1077) với cùng tập tài khoản. Đây là hai góc nhìn endpoint/DC của cùng các lần thử, không phải 14 attempt độc lập. Khoảng dấu thời gian canonical của các observations được chọn: 2020-10-22T08:29:55.210Z đến 2020-10-22T08:29:55.382Z (4625: 0.012 giây; 4776: 0.025 giây); raw EventTime '2020-10-22 04:29:53' và @timestamp khác nhau được giữ nguyên, không hiệu chỉnh timezone; đây không phải thời lượng tấn công thực tế hay đồng bộ đồng hồ giữa các nguồn. Mỗi tài khoản chỉ có một lần thử trong cửa sổ này; không có dữ liệu lịch sử để đánh giá lặp lại theo ngày.\n\nCTI (cti-38d3fef31de89137b186, evidence_layer cti_context, publisher Microsoft Threat Intelligence, URL https://www.microsoft.com/en-us/security/blog/2024/10/31/chinese-threat-actor-storm-0940-uses-credentials-from-password-spray-attacks-from-a-covert-network/, section 'Password spray activity from CovertNetwork-1658 infrastructure'): publisher_excerpt nêu CovertNetwork-1658 gửi 'a very small number of sign-in attempts to many accounts' và 'in about 80 percent of cases ... only one sign-in attempt per account per day'. Đây là mô tả chiến dịch do publisher báo cáo, không phải telemetry cục bộ.\n\nSo sánh: (1) Giống — phân bố trên nhiều tài khoản với số lần thử ít trên mỗi tài khoản: telemetry cục bộ có 7 tài khoản, mỗi tài khoản một lần trong cửa sổ; CTI mô tả nhiều tài khoản, rất ít lần thử mỗi tài khoản. (2) Khác — chiều thời gian: CTI mô tả nhịp 'mỗi ngày' (80% một lần/tài khoản/ngày); telemetry cục bộ chỉ có một cụm dưới 1 giây, không có dữ liệu nhiều ngày để so sánh nhịp này. (3) Không so sánh được — quy mô tổ chức, số tài khoản mục tiêu, tỷ lệ phần trăm, hạ tầng nguồn (CovertNetwork-1658) không có trong telemetry cục bộ. Không gán threat actor cho host: CTI campaign activity không quy gán actor cho dataset này (limitation /summary/limitations/5).",
+  "attack_chain": [],
+  "mitre_mappings": [
+    {
+      "technique_id": "T1110.003",
+      "technique_name": "Password Spraying",
+      "confidence": "supported_by_observed_behavior",
+      "rationale": "Observed concentrated failures across distinct accounts support suspected spraying; does not prove same password or compromise.",
+      "evidence_support": "supported_by_observed_behavior",
+      "assessment_status": "candidate",
+      "review_status": "needs_review"
+    }
+  ],
+  "sigma_matches": [],
+  "containment_recommendations": [],
+  "unverified_claims": [
+    "Không chứng minh cùng một mật khẩu được thử cho nhiều tài khoản; password sameness không được ghi log.",
+    "Không chứng minh password spraying thành công hoặc compromise tài khoản; không có historical baseline cho đăng nhập thành công bất thường.",
+    "Không chứng minh cracking thành công hoặc khôi phục mật khẩu.",
+    "CTI campaign activity không quy gán threat actor cho dataset này; không gán CovertNetwork-1658/Storm-0940 cho host.",
+    "Không so sánh được nhịp 'một lần/tài khoản/ngày' của CTI với telemetry cục bộ vì context chỉ có một cụm dưới 1 giây; context/slice này chưa đủ để kết luận về toàn bộ dataset.",
+    "Khoảng dấu thời gian canonical không phải thời lượng tấn công thực tế; raw EventTime và @timestamp khác nhau, không hiệu chỉnh timezone và không chứng minh đồng bộ đồng hồ giữa các nguồn."
+  ],
+  "evidence_refs": [
+    "auth-failure-observations",
+    "jsonl:line:788",
+    "jsonl:line:790",
+    "jsonl:line:792",
+    "jsonl:line:794",
+    "jsonl:line:796",
+    "jsonl:line:798",
+    "jsonl:line:803",
+    "jsonl:line:1020",
+    "jsonl:line:1046",
+    "jsonl:line:1048",
+    "jsonl:line:1051",
+    "jsonl:line:1072",
+    "jsonl:line:1074",
+    "jsonl:line:1077",
+    "cti-38d3fef31de89137b186",
+    "text:chars:6059:6452",
+    "/summary/limitations/5",
+    "assessment-T1110-003"
+  ]
+}

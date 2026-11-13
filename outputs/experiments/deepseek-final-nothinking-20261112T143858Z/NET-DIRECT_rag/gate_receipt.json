@@ -1,0 +1,33 @@
+{
+  "schema_version": "current-paired-input-receipt/v1",
+  "artifact": "gate",
+  "content_sha256": "73b7bd8996eca2632a9dd58c846bca0157397041ef35f0e0d79e020ac25bf4f3",
+  "content_utf8_bytes": 13107,
+  "scenario_id": "regsvr32-c2",
+  "source_bindings": {
+    "gt_path": {
+      "path": "outputs/integrated/20261102_cti_portable_v7/consumers/regsvr32-c2/scenario_ground_truth.json",
+      "sha256": "ca034cbd2c158f6d4f97651da8556d1cba36e38a7d957a4fb8eafab27d2aa09c"
+    },
+    "corpus_path": {
+      "path": "outputs/integrated/20261102_cti_portable_v7/consumers/regsvr32-c2/retrieval_corpus.json",
+      "sha256": "9ac6b1dbf6d2d6f792182f2257702ead87997063ad9fd69ec3d2ed1a240b73f8"
+    },
+    "graph_path": {
+      "path": "outputs/integrated/20261102_cti_portable_v7/consumers/regsvr32-c2/knowledge_graph.json",
+      "sha256": "465237c489e92f599436b65ab8f1699978d5fbab832e56379191283a7fee3575"
+    },
+    "index_path": {
+      "path": "outputs/integrated/20261102_cti_portable_v7/consumers/regsvr32-c2/vector_index_e5.json",
+      "sha256": "6c3931e077938d22f7037066abc1e6cdc5bcf05fa3d73baa3f3de9e0d3a34d90"
+    }
+  },
+  "persistence": "Exact runtime value stays in RAM; source objects remain in unchanged pinned consumers. No duplicate raw payload persisted.",
+  "decision_metadata": {
+    "decision": "abstain",
+    "reason_codes": [
+      "actor_endpoint_event_provider_fields_not_returned"
+    ],
+    "abstention_stage": "evidence_answerability"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "question_id": "AUTH-DIRECT",
+  "case_id": "AUTH-DIRECT",
+  "scenario_id": "purplesharp-ad",
+  "branch": "graphrag",
+  "query": "Trong PurpleSharp, các sự kiện đăng nhập thất bại 4625 nhắm những tài khoản nào, nguồn workstation nào và Status/SubStatus nào? Dẫn nguồn log; không tự điền IP còn thiếu.",
+  "outcome": "abstain",
+  "gate_decision": "proceed",
+  "eligibility_decision": "abstain",
+  "context_utf8_bytes": 264043,
+  "messages_utf8_bytes": 278904,
+  "llm_http_attempts": 0,
+  "fallback_used": false,
+  "human_review_required": true,
+  "prepared_utc": "2026-11-12T14:44:44.083906+00:00",
+  "provider_usage": null,
+  "provider_reported_cost": null,
+  "retrieval_context_seconds": 0.1833184999995865,
+  "policy_gate_decision": "proceed",
+  "abstention_stage": "context_budget",
+  "context_sha256": "aa655f3a344b8386b336ff762bbbb26c76ec1ecb97bd807a754a064ec8d07481",
+  "messages_sha256": "684838623c6af4ee94b9679e3c734a781ab891bc505b70d4b6a7c99ebe9ddba3",
+  "retrieval_sha256": "47c6dd0db96710675685463123cfa3f705a72e04ca3d0a646ec8fd538393ba02",
+  "retrieval_hit_ids": [
+    "retrieval-chunk--0bbca650694671ec179ef9b97d45cc40969a30d7bc97752d23217b208beaf348",
+    "retrieval-chunk--91ef444192d109b423f4b0402f098672ea5143a1c14c7d15566c0872ec1016f8",
+    "retrieval-chunk--efa3dd505c4002dc1fe2633a80626ac8959f43d5d82956c6e309fa6beae6c6fa",
+    "retrieval-chunk--2be064393d6f687a0a837ecae9bc7c3ed41a0dc7dc585b09aeabb2301bad7f94",
+    "retrieval-chunk--9c756e73c3caa6809f36b5ffb4299896d62f0b69ff1fa739f0146130e59c1f2d"
+  ],
+  "returned_graph_nodes": 25,
+  "returned_graph_edges": 46,
+  "available_reference_count": 261,
+  "validation_status": "not_run",
+  "budget_exceeded": true,
+  "abstention_reason_codes": [
+    "context_utf8_budget_exceeded"
+  ],
+  "preparation_seconds": 0.5212763999988965
+}

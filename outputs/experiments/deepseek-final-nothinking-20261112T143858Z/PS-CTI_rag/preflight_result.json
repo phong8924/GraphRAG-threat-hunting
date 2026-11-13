@@ -1,0 +1,39 @@
+{
+  "question_id": "PS-CTI",
+  "case_id": "PS-CTI",
+  "scenario_id": "mshta-powershell",
+  "branch": "rag",
+  "query": "Vì sao chuỗi mshta.exe sinh powershell.exe trong telemetry đáng điều tra khi đối chiếu CTI report Red Canary? Dẫn riêng parent/child và command evidence với đoạn CTI về process lineage; không suy download hoặc C2.",
+  "outcome": "abstain",
+  "gate_decision": "abstain",
+  "eligibility_decision": "abstain",
+  "context_utf8_bytes": 29877,
+  "messages_utf8_bytes": 43686,
+  "llm_http_attempts": 0,
+  "fallback_used": false,
+  "human_review_required": true,
+  "prepared_utc": "2026-11-12T14:44:47.522063+00:00",
+  "provider_usage": null,
+  "provider_reported_cost": null,
+  "retrieval_context_seconds": 0.05626829999891925,
+  "policy_gate_decision": "abstain",
+  "abstention_stage": "evidence_answerability",
+  "context_sha256": "aded8628a8ea46c4d815fdad7a15299f7cf50eec6e3a8da8afaefe3e7fd94f69",
+  "messages_sha256": "b8b5de2e7749b700ecf852b7617710dfa68efdcedb3ddac485c6010e63ae4c46",
+  "retrieval_sha256": "7b64e91e26e5a0bfbc334af8aec66b437f3eb49cfab1bf710d0026b1f832b411",
+  "retrieval_hit_ids": [
+    "retrieval-chunk--40ca3e3ee4ee1fc4ed2e3485441998bd1cb52589f44bd8972f8a5122644ec824",
+    "retrieval-chunk--f7d783fb779096d42f4fe2ad0a76bcb7b97ea8b8a1998feea4d1b739381d5dbf",
+    "retrieval-chunk--86dd89fe0cfd03c1505a8534ce63dfb9f72221fe32c23d7a0341a66fa98d48ad",
+    "retrieval-chunk--f36fc26dc2a1ab7790f9bb95ceb5b2ceaaea94a7867c978b680fa532040a0b88",
+    "retrieval-chunk--c8a720c3000f779ab36ac8207e7cf21c14d3687ca16157c534c95be7e5ce99ae"
+  ],
+  "returned_graph_nodes": 0,
+  "returned_graph_edges": 0,
+  "available_reference_count": 20,
+  "validation_status": "not_run",
+  "abstention_reason_codes": [
+    "two_process_relationships_missing"
+  ],
+  "preparation_seconds": 0.17736169999989215
+}

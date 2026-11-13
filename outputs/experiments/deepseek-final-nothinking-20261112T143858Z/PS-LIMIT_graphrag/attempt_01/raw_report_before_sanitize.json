@@ -1,0 +1,23 @@
+{
+  "schema_version": "threat-hunting-report/v1",
+  "verdict": "INSUFFICIENT_EVIDENCE",
+  "direct_answer": "Không. Context chỉ ghi nhận việc powershell.exe được tạo với command line \"-noexit -command Get-Service sysmon\" (jsonl:line:30, jsonl:line:398); không có telemetry chứng minh cmdlet Get-Service đã hoàn tất thành công, không có output, và không có trạng thái dịch vụ Sysmon. Nguồn nêu rõ process-creation telemetry không thiết lập successful cmdlet completion, output, hoặc Sysmon service state (/summary/limitations/4).",
+  "executive_summary": "Command line quan sát được cho thấy PowerShell được khởi chạy bởi mshta.exe với tham số Get-Service sysmon, nhưng đây chỉ là launch argument. Completion, output và service state chưa được xác minh trong slice này.",
+  "technical_analysis": "Quan sát được: mshta.exe (PID 10980) tạo powershell.exe (PID 9572) trên WORKSTATION5, command line \"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\" -noexit -command Get-Service sysmon (jsonl:line:30, jsonl:line:398). Đây là process creation binding, không phải bằng chứng cmdlet đã thực thi xong hay trả về output. Nguồn giới hạn nêu: \"Process-creation telemetry does not establish successful cmdlet completion, output, or the Sysmon service state.\" (/summary/limitations/4). Ngoài ra hai quan sát Sysmon có timestamp_conflict review issues (/summary/limitations/1), và UtcTime lệch khoảng bốn giờ với TimeCreated, timezone chưa rõ (/scenario metadata scope_limitations). Không có log output PowerShell, không có trạng thái service, không có exit code trong context.",
+  "attack_chain": [],
+  "mitre_mappings": [],
+  "sigma_matches": [],
+  "containment_recommendations": [],
+  "unverified_claims": [
+    "Get-Service sysmon hoàn tất thành công: chưa xác minh; process creation không chứng minh cmdlet completion.",
+    "Output của Get-Service sysmon: không có trong context; chưa xác minh.",
+    "Trạng thái dịch vụ Sysmon đang chạy: chưa xác minh; không có telemetry service state.",
+    "Hai quan sát Sysmon có timestamp_conflict review issues và UtcTime lệch khoảng bốn giờ với timezone chưa rõ; không suy diễn đồng bộ đồng hồ."
+  ],
+  "evidence_refs": [
+    "jsonl:line:30",
+    "jsonl:line:398",
+    "/summary/limitations/4",
+    "/summary/limitations/1"
+  ]
+}

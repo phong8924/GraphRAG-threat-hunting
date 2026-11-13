@@ -1,0 +1,1109 @@
+{
+  "request": {
+    "query": "Bốn quan sát Security 4688 và Sysmon 1 trong core cmd.exe → mshta.exe → powershell.exe tương ứng bao nhiêu process creations? Giải thích parent/child correlation và vì sao conhost.exe ở ngoài core.",
+    "scenario_id": "mshta-powershell",
+    "branch": "rag"
+  },
+  "outcome": "accepted_draft",
+  "result": {
+    "question_id": "PS-CORRELATE",
+    "case_id": "PS-CORRELATE",
+    "scenario_id": "mshta-powershell",
+    "branch": "rag",
+    "query": "Bốn quan sát Security 4688 và Sysmon 1 trong core cmd.exe → mshta.exe → powershell.exe tương ứng bao nhiêu process creations? Giải thích parent/child correlation và vì sao conhost.exe ở ngoài core.",
+    "outcome": "accepted_draft",
+    "gate_decision": "proceed",
+    "eligibility_decision": "proceed",
+    "context_utf8_bytes": 21485,
+    "messages_utf8_bytes": 35703,
+    "llm_http_attempts": 1,
+    "fallback_used": false,
+    "human_review_required": true,
+    "prepared_utc": "2026-11-12T14:44:47.372249+00:00",
+    "provider_usage": {
+      "prompt_tokens": 9801,
+      "completion_tokens": 1469,
+      "total_tokens": 11270,
+      "prompt_tokens_details": {
+        "cached_tokens": 5120
+      },
+      "prompt_cache_hit_tokens": 5120,
+      "prompt_cache_miss_tokens": 4681
+    },
+    "provider_reported_cost": null,
+    "retrieval_context_seconds": 0.045886800002335804,
+    "policy_gate_decision": "proceed",
+    "abstention_stage": null,
+    "context_sha256": "9f32037724660b2cbb5a52546beacdffa9672cfb12764a7020388641f597cf0f",
+    "messages_sha256": "6b85a69d48cb08035a65d8073c238fefeecb7f5eccfce80af2f9f62f7f859410",
+    "retrieval_sha256": "0d27891f5a6a65d4ce058f3332595023b4ff0d04df00f2e02a16f922ee003ac2",
+    "retrieval_hit_ids": [
+      "retrieval-chunk--86dd89fe0cfd03c1505a8534ce63dfb9f72221fe32c23d7a0341a66fa98d48ad",
+      "retrieval-chunk--f36fc26dc2a1ab7790f9bb95ceb5b2ceaaea94a7867c978b680fa532040a0b88",
+      "retrieval-chunk--536a732c5d918e1b90e281ed5d438f06f8b161d70c9d4e64699eee77dfd2a30b",
+      "retrieval-chunk--6c81131b41dbfbf7554df2341edc55b3ffeb9da99282a8cde4492bd3a1107365",
+      "retrieval-chunk--ef21f2bc7758f90ce3097c824ea9cfcf382e6fbefcaf03a8cc2c2f2cfa34534f"
+    ],
+    "returned_graph_nodes": 0,
+    "returned_graph_edges": 0,
+    "available_reference_count": 18,
+    "validation_status": "passed",
+    "abstention_reason_codes": [],
+    "preparation_seconds": 0.14139690000229166,
+    "generation_validation_seconds": 66.97836389999793,
+    "provider_http_seconds": 7.254724200000055,
+    "generation_started_utc": "2026-11-12T14:52:02.094884+00:00",
+    "generation_finished_utc": "2026-11-12T14:52:09.346061+00:00",
+    "finish_reason": "stop",
+    "http_status": 200,
+    "config_run_id": "deepseek-final-nothinking-20261112T143858Z",
+    "attempt_diagnostics": [
+      {
+        "ordinal": 7,
+        "question_id": "PS-CORRELATE",
+        "branch": "rag",
+        "pair_attempt": 1,
+        "reserved_utc": "2026-11-12T14:52:02.067105+00:00",
+        "actual_http_attempts": 1,
+        "finished_utc": "2026-11-12T14:52:09.346061+00:00",
+        "actual_payload": {
+          "model": "deepseek-flash",
+          "temperature": 0.0,
+          "max_tokens": 16384,
+          "thinking": {
+            "type": "disabled"
+          },
+          "stream": false,
+          "messages_sha256": "6b85a69d48cb08035a65d8073c238fefeecb7f5eccfce80af2f9f62f7f859410",
+          "serialized_http_payload_bytes": 37923,
+          "endpoint": "https://api.deepseek.com/chat/completions"
+        },
+        "http_started_utc": "2026-11-12T14:52:02.094884+00:00",
+        "http_status": 200,
+        "usage": {
+          "prompt_tokens": 9801,
+          "completion_tokens": 1469,
+          "total_tokens": 11270,
+          "prompt_tokens_details": {
+            "cached_tokens": 5120
+          },
+          "prompt_cache_hit_tokens": 5120,
+          "prompt_cache_miss_tokens": 4681
+        },
+        "cost": null,
+        "finish_reason": "stop",
+        "http_seconds": 7.254724200000055,
+        "http_finished_utc": "2026-11-12T14:52:09.346061+00:00"
+      }
+    ]
+  },
+  "scope": {
+    "schema_version": "query-scope-decision/v1",
+    "decision": "proceed",
+    "reason_codes": [],
+    "matched_intents": [
+      "process",
+      "telemetry"
+    ],
+    "matched_source_anchors": [
+      "cmd",
+      "cmd.exe",
+      "mshta",
+      "mshta.exe",
+      "powershell",
+      "powershell.exe"
+    ],
+    "interpretation": "request_scope_only_not_evidence_support",
+    "security_conclusion_made": false
+  },
+  "gate": {
+    "schema_version": "source-evidence-gate-decision/v2",
+    "contract": "source-evidence-contract/v2",
+    "decision": "proceed",
+    "abstention_stage": null,
+    "reason_codes": [],
+    "stage_results": {
+      "topical_relevance": {
+        "status": "passed",
+        "reason_codes": [],
+        "signals": {
+          "joint_lexical_vector_hit_count": 5,
+          "lexical_hit_count": 5,
+          "matched_query_token_count": 7,
+          "query_token_count": 29,
+          "query_token_coverage": 0.24137931,
+          "retrieval_hit_count": 5,
+          "returned_top_bm25_score": 10.45660931,
+          "returned_top_cosine_score": 0.87560306,
+          "returned_top_rrf_score": 0.032018442623,
+          "vector_hit_count": 5
+        }
+      },
+      "evidence_answerability": {
+        "schema_version": "source-evidence-contract/v2",
+        "requirements": {
+          "authentication": false,
+          "cti": false,
+          "correlation": true,
+          "limits": false
+        },
+        "checks": [
+          {
+            "requirement": "process_chain",
+            "status": "supported",
+            "witnesses": [
+              {
+                "origin": {
+                  "kind": "chunk",
+                  "item_id": "retrieval-chunk--f36fc26dc2a1ab7790f9bb95ceb5b2ceaaea94a7867c978b680fa532040a0b88",
+                  "context_pointer": "/retrieval/hits/1/chunk"
+                },
+                "source": {
+                  "artifact_type": "scenario_ground_truth",
+                  "object_type": "evidence",
+                  "object_id": "evidence-b31714b888d1489a380c",
+                  "json_pointer": "/evidence/1"
+                },
+                "source_references": [
+                  {
+                    "raw_record_ref": "jsonl:line:30",
+                    "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:398",
+                    "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json"
+                  }
+                ],
+                "field": "properties",
+                "context_pointer": "/retrieval/hits/1/chunk/metadata",
+                "value": {
+                  "event_id": "4688",
+                  "provider": "Microsoft-Windows-Security-Auditing",
+                  "process_name": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+                  "parent_process_name": "C:\\Windows\\System32\\mshta.exe",
+                  "host": "WORKSTATION5"
+                }
+              },
+              {
+                "origin": {
+                  "kind": "chunk",
+                  "item_id": "retrieval-chunk--f36fc26dc2a1ab7790f9bb95ceb5b2ceaaea94a7867c978b680fa532040a0b88",
+                  "context_pointer": "/retrieval/hits/1/chunk"
+                },
+                "source": {
+                  "artifact_type": "scenario_ground_truth",
+                  "object_type": "evidence",
+                  "object_id": "evidence-b31714b888d1489a380c",
+                  "json_pointer": "/evidence/1"
+                },
+                "source_references": [
+                  {
+                    "raw_record_ref": "jsonl:line:30",
+                    "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:398",
+                    "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json"
+                  }
+                ],
+                "field": "properties",
+                "context_pointer": "/retrieval/hits/1/chunk/metadata",
+                "value": {
+                  "event_id": "1",
+                  "provider": "Microsoft-Windows-Sysmon",
+                  "process_name": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+                  "parent_process_name": "C:\\Windows\\System32\\mshta.exe",
+                  "host": "WORKSTATION5"
+                }
+              },
+              {
+                "origin": {
+                  "kind": "chunk",
+                  "item_id": "retrieval-chunk--536a732c5d918e1b90e281ed5d438f06f8b161d70c9d4e64699eee77dfd2a30b",
+                  "context_pointer": "/retrieval/hits/2/chunk"
+                },
+                "source": {
+                  "artifact_type": "scenario_ground_truth",
+                  "object_type": "evidence",
+                  "object_id": "evidence-b07a5ff4763e629715e6",
+                  "json_pointer": "/evidence/0"
+                },
+                "source_references": [
+                  {
+                    "raw_record_ref": "jsonl:line:275",
+                    "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:4",
+                    "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json"
+                  }
+                ],
+                "field": "properties",
+                "context_pointer": "/retrieval/hits/2/chunk/metadata",
+                "value": {
+                  "event_id": "1",
+                  "provider": "Microsoft-Windows-Sysmon",
+                  "process_name": "C:\\Windows\\System32\\mshta.exe",
+                  "parent_process_name": "C:\\Windows\\System32\\cmd.exe",
+                  "host": "WORKSTATION5"
+                }
+              },
+              {
+                "origin": {
+                  "kind": "chunk",
+                  "item_id": "retrieval-chunk--536a732c5d918e1b90e281ed5d438f06f8b161d70c9d4e64699eee77dfd2a30b",
+                  "context_pointer": "/retrieval/hits/2/chunk"
+                },
+                "source": {
+                  "artifact_type": "scenario_ground_truth",
+                  "object_type": "evidence",
+                  "object_id": "evidence-b07a5ff4763e629715e6",
+                  "json_pointer": "/evidence/0"
+                },
+                "source_references": [
+                  {
+                    "raw_record_ref": "jsonl:line:275",
+                    "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:4",
+                    "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json"
+                  }
+                ],
+                "field": "properties",
+                "context_pointer": "/retrieval/hits/2/chunk/metadata",
+                "value": {
+                  "event_id": "4688",
+                  "provider": "Microsoft-Windows-Security-Auditing",
+                  "process_name": "C:\\Windows\\System32\\mshta.exe",
+                  "parent_process_name": "C:\\Windows\\System32\\cmd.exe",
+                  "host": "WORKSTATION5"
+                }
+              }
+            ],
+            "reason_code": "source_witness_present"
+          },
+          {
+            "requirement": "core_boundary",
+            "status": "supported",
+            "witnesses": [
+              {
+                "origin": {
+                  "kind": "chunk",
+                  "item_id": "retrieval-chunk--86dd89fe0cfd03c1505a8534ce63dfb9f72221fe32c23d7a0341a66fa98d48ad",
+                  "context_pointer": "/retrieval/hits/0/chunk"
+                },
+                "source": {
+                  "artifact_type": "scenario_ground_truth",
+                  "object_type": "scenario",
+                  "object_id": null,
+                  "json_pointer": "/scenario"
+                },
+                "source_references": [
+                  {
+                    "raw_record_ref": "jsonl:line:275",
+                    "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:30",
+                    "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:398",
+                    "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:4",
+                    "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json"
+                  }
+                ],
+                "field": "properties",
+                "context_pointer": "/retrieval/hits/0/chunk/metadata",
+                "value": "The file also contains conhost creation, event-log clearing and temporary-file deletion telemetry outside this two-group core. These must not be described as globally absent or automatically classified as a destructive payload."
+              }
+            ],
+            "reason_code": "source_witness_present"
+          },
+          {
+            "requirement": "bound_retrieved_source",
+            "status": "supported",
+            "witnesses": [
+              {
+                "origin": {
+                  "kind": "chunk",
+                  "item_id": "retrieval-chunk--86dd89fe0cfd03c1505a8534ce63dfb9f72221fe32c23d7a0341a66fa98d48ad",
+                  "context_pointer": "/retrieval/hits/0/chunk"
+                },
+                "source": {
+                  "artifact_type": "scenario_ground_truth",
+                  "object_type": "scenario",
+                  "object_id": null,
+                  "json_pointer": "/scenario"
+                },
+                "source_references": [
+                  {
+                    "raw_record_ref": "jsonl:line:275",
+                    "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:30",
+                    "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:398",
+                    "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:4",
+                    "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json"
+                  }
+                ],
+                "field": "source",
+                "context_pointer": "/retrieval/hits/0/chunk/source",
+                "value": {
+                  "artifact_type": "scenario_ground_truth",
+                  "object_type": "scenario",
+                  "object_id": null,
+                  "json_pointer": "/scenario"
+                }
+              },
+              {
+                "origin": {
+                  "kind": "chunk",
+                  "item_id": "retrieval-chunk--f36fc26dc2a1ab7790f9bb95ceb5b2ceaaea94a7867c978b680fa532040a0b88",
+                  "context_pointer": "/retrieval/hits/1/chunk"
+                },
+                "source": {
+                  "artifact_type": "scenario_ground_truth",
+                  "object_type": "evidence",
+                  "object_id": "evidence-b31714b888d1489a380c",
+                  "json_pointer": "/evidence/1"
+                },
+                "source_references": [
+                  {
+                    "raw_record_ref": "jsonl:line:30",
+                    "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:398",
+                    "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json"
+                  }
+                ],
+                "field": "source",
+                "context_pointer": "/retrieval/hits/1/chunk/source",
+                "value": {
+                  "artifact_type": "scenario_ground_truth",
+                  "object_type": "evidence",
+                  "object_id": "evidence-b31714b888d1489a380c",
+                  "json_pointer": "/evidence/1"
+                }
+              },
+              {
+                "origin": {
+                  "kind": "chunk",
+                  "item_id": "retrieval-chunk--536a732c5d918e1b90e281ed5d438f06f8b161d70c9d4e64699eee77dfd2a30b",
+                  "context_pointer": "/retrieval/hits/2/chunk"
+                },
+                "source": {
+                  "artifact_type": "scenario_ground_truth",
+                  "object_type": "evidence",
+                  "object_id": "evidence-b07a5ff4763e629715e6",
+                  "json_pointer": "/evidence/0"
+                },
+                "source_references": [
+                  {
+                    "raw_record_ref": "jsonl:line:275",
+                    "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:4",
+                    "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json"
+                  }
+                ],
+                "field": "source",
+                "context_pointer": "/retrieval/hits/2/chunk/source",
+                "value": {
+                  "artifact_type": "scenario_ground_truth",
+                  "object_type": "evidence",
+                  "object_id": "evidence-b07a5ff4763e629715e6",
+                  "json_pointer": "/evidence/0"
+                }
+              },
+              {
+                "origin": {
+                  "kind": "chunk",
+                  "item_id": "retrieval-chunk--6c81131b41dbfbf7554df2341edc55b3ffeb9da99282a8cde4492bd3a1107365",
+                  "context_pointer": "/retrieval/hits/3/chunk"
+                },
+                "source": {
+                  "artifact_type": "scenario_ground_truth",
+                  "object_type": "relationship",
+                  "object_id": "relationship-9e41d0cc407e7878b2d8",
+                  "json_pointer": "/relationships/1"
+                },
+                "source_references": [
+                  {
+                    "raw_record_ref": "jsonl:line:275",
+                    "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:4",
+                    "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json"
+                  }
+                ],
+                "field": "source",
+                "context_pointer": "/retrieval/hits/3/chunk/source",
+                "value": {
+                  "artifact_type": "scenario_ground_truth",
+                  "object_type": "relationship",
+                  "object_id": "relationship-9e41d0cc407e7878b2d8",
+                  "json_pointer": "/relationships/1"
+                }
+              },
+              {
+                "origin": {
+                  "kind": "chunk",
+                  "item_id": "retrieval-chunk--ef21f2bc7758f90ce3097c824ea9cfcf382e6fbefcaf03a8cc2c2f2cfa34534f",
+                  "context_pointer": "/retrieval/hits/4/chunk"
+                },
+                "source": {
+                  "artifact_type": "scenario_ground_truth",
+                  "object_type": "relationship",
+                  "object_id": "relationship-1641029b76ea1ac3df6e",
+                  "json_pointer": "/relationships/0"
+                },
+                "source_references": [
+                  {
+                    "raw_record_ref": "jsonl:line:30",
+                    "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:398",
+                    "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json"
+                  }
+                ],
+                "field": "source",
+                "context_pointer": "/retrieval/hits/4/chunk/source",
+                "value": {
+                  "artifact_type": "scenario_ground_truth",
+                  "object_type": "relationship",
+                  "object_id": "relationship-1641029b76ea1ac3df6e",
+                  "json_pointer": "/relationships/0"
+                }
+              }
+            ],
+            "reason_code": "source_witness_present"
+          }
+        ],
+        "status": "supported",
+        "reason_codes": []
+      }
+    },
+    "legacy_policy_id": "two-stage-prod-aae2e49de84bd18a",
+    "human_review_required": true,
+    "interpretation": "Research context eligibility, not claim truth or human approval."
+  },
+  "eligibility": {
+    "policy_decision": "proceed",
+    "decision": "proceed",
+    "context_utf8_bytes": 21485,
+    "messages_utf8_bytes": 35703,
+    "budget_exceeded": false,
+    "stage": null
+  },
+  "validation": {
+    "raw_report_before_sanitize": {
+      "schema_version": "threat-hunting-report/v1",
+      "verdict": "INSUFFICIENT_EVIDENCE",
+      "direct_answer": "Bốn quan sát (2 Security 4688 + 2 Sysmon 1) tương ứng 2 process creations: cmd.exe → mshta.exe và mshta.exe → powershell.exe. Mỗi creation được ghi nhận bởi hai provider (4688 và Sysmon 1) trên cùng host WORKSTATION5. conhost.exe nằm ngoài core vì context chỉ giới hạn core ở hai nhóm quan sát này; conhost creation được ghi nhận trong file nhưng nằm ngoài phạm vi hai nhóm core và không phải một phần của chuỗi cmd.exe → mshta.exe → powershell.exe.",
+      "executive_summary": "Hai process creations được quan sát: cmd.exe tạo mshta.exe (evidence-b07a5ff4763e629715e6) và mshta.exe tạo powershell.exe (evidence-b31714b888d1489a380c). Mỗi creation có hai bản ghi (Security 4688 và Sysmon 1), tổng cộng bốn quan sát. conhost.exe không thuộc core vì scope của scenario chỉ bao gồm hai nhóm behavior/evidence đã review; conhost creation nằm ngoài phạm vi đó.",
+      "technical_analysis": "Process creation bindings: (1) cmd.exe (parent) → mshta.exe (child) được ghi nhận bởi Sysmon 1 tại jsonl:line:275 (timestamp 2020-10-22T02:57:59.857000Z) và Security 4688 tại jsonl:line:4 (timestamp 2020-10-22T02:57:59.856000Z); relationship-9e41d0cc407e7878b2d8 xác nhận process_spawn. (2) mshta.exe (parent) → powershell.exe (child) được ghi nhận bởi Security 4688 tại jsonl:line:30 (timestamp 2020-10-22T02:58:00.462000Z) và Sysmon 1 tại jsonl:line:398 (timestamp 2020-10-22T02:58:00.489000Z); relationship-1641029b76ea1ac3df6e xác nhận process_spawn. Như vậy bốn quan sát ánh xạ thành hai process creations, không phải bốn. Parent/child correlation dựa trên parent_process_id/process_id trong từng observation: mshta.exe PID 10980 (Sysmon) / 0x2ae4 (4688) có parent cmd.exe PID 5888 (Sysmon) / 0x1700 (4688); powershell.exe PID 9572 (Sysmon) / 0x2564 (4688) có parent mshta.exe PID 10980 (Sysmon) / 0x2ae4 (4688). Command line của mshta.exe chứa chuỗi vbscript:Execute(...Run \"powershell ...\") nhưng đây là launch argument; việc powershell.exe được tạo là do observation riêng (jsonl:line:30 và jsonl:line:398), không phải suy từ command text. conhost.exe nằm ngoài core vì scope_limitations của scenario nêu rõ file chứa conhost creation, event-log clearing và temporary-file deletion ngoài hai nhóm core; các telemetry này không được mô tả là vắng mặt toàn cục và không tự động bị phân loại là payload phá hoại. Context không cung cấp observation conhost.exe cụ thể, nên không thể phân tích parent/child của nó. Timestamp canonical theo TimeCreated; Sysmon UtcTime lệch khoảng bốn giờ và timezone chưa được giải quyết.",
+      "attack_chain": [
+        {
+          "step_number": 1,
+          "source_entity": "cmd.exe (process-7c96a17eb66f2831da61)",
+          "action": "process_spawn",
+          "target_entity": "mshta.exe (process-9c691740bde5d3dbdc4e)",
+          "evidence_ref": "evidence-b07a5ff4763e629715e6",
+          "timestamp": "2020-10-22T02:57:59.856000Z"
+        },
+        {
+          "step_number": 2,
+          "source_entity": "mshta.exe (process-9c691740bde5d3dbdc4e)",
+          "action": "process_spawn",
+          "target_entity": "powershell.exe (process-9f7ceeecb4cd61358ab7)",
+          "evidence_ref": "evidence-b31714b888d1489a380c",
+          "timestamp": "2020-10-22T02:58:00.462000Z"
+        }
+      ],
+      "mitre_mappings": [],
+      "sigma_matches": [],
+      "containment_recommendations": [],
+      "unverified_claims": [
+        "Process creation records chỉ chứng minh launch command; không chứng minh cmdlet Get-Service sysmon hoàn tất, output, hay trạng thái dịch vụ Sysmon.",
+        "conhost.exe không được phân tích parent/child trong context này vì không có observation conhost cụ thể; chỉ biết nó nằm ngoài hai nhóm core theo scope_limitations.",
+        "Không có tuyên bố vắng mặt toàn cục cho conhost, event-log clearing hay temporary-file deletion vì full-dataset negative scan chưa được thực hiện.",
+        "Sysmon UtcTime lệch khoảng bốn giờ so với TimeCreated và timezone chưa được giải quyết; không có hiệu chỉnh thời gian nào được áp dụng."
+      ],
+      "evidence_refs": [
+        "evidence-b07a5ff4763e629715e6",
+        "evidence-b31714b888d1489a380c",
+        "relationship-9e41d0cc407e7878b2d8",
+        "relationship-1641029b76ea1ac3df6e",
+        "jsonl:line:275",
+        "jsonl:line:4",
+        "jsonl:line:30",
+        "jsonl:line:398"
+      ]
+    },
+    "sanitized_report": {
+      "schema_version": "threat-hunting-report/v1",
+      "verdict": "INSUFFICIENT_EVIDENCE",
+      "direct_answer": "Bốn quan sát (2 Security 4688 + 2 Sysmon 1) tương ứng 2 process creations: cmd.exe → mshta.exe và mshta.exe → powershell.exe. Mỗi creation được ghi nhận bởi hai provider (4688 và Sysmon 1) trên cùng host WORKSTATION5. conhost.exe nằm ngoài core vì context chỉ giới hạn core ở hai nhóm quan sát này; conhost creation được ghi nhận trong file nhưng nằm ngoài phạm vi hai nhóm core và không phải một phần của chuỗi cmd.exe → mshta.exe → powershell.exe.",
+      "executive_summary": "Hai process creations được quan sát: cmd.exe tạo mshta.exe (evidence-b07a5ff4763e629715e6) và mshta.exe tạo powershell.exe (evidence-b31714b888d1489a380c). Mỗi creation có hai bản ghi (Security 4688 và Sysmon 1), tổng cộng bốn quan sát. conhost.exe không thuộc core vì scope của scenario chỉ bao gồm hai nhóm behavior/evidence đã review; conhost creation nằm ngoài phạm vi đó.",
+      "technical_analysis": "Process creation bindings: (1) cmd.exe (parent) → mshta.exe (child) được ghi nhận bởi Sysmon 1 tại jsonl:line:275 (timestamp 2020-10-22T02:57:59.857000Z) và Security 4688 tại jsonl:line:4 (timestamp 2020-10-22T02:57:59.856000Z); relationship-9e41d0cc407e7878b2d8 xác nhận process_spawn. (2) mshta.exe (parent) → powershell.exe (child) được ghi nhận bởi Security 4688 tại jsonl:line:30 (timestamp 2020-10-22T02:58:00.462000Z) và Sysmon 1 tại jsonl:line:398 (timestamp 2020-10-22T02:58:00.489000Z); relationship-1641029b76ea1ac3df6e xác nhận process_spawn. Như vậy bốn quan sát ánh xạ thành hai process creations, không phải bốn. Parent/child correlation dựa trên parent_process_id/process_id trong từng observation: mshta.exe PID 10980 (Sysmon) / 0x2ae4 (4688) có parent cmd.exe PID 5888 (Sysmon) / 0x1700 (4688); powershell.exe PID 9572 (Sysmon) / 0x2564 (4688) có parent mshta.exe PID 10980 (Sysmon) / 0x2ae4 (4688). Command line của mshta.exe chứa chuỗi vbscript:Execute(...Run \"powershell ...\") nhưng đây là launch argument; việc powershell.exe được tạo là do observation riêng (jsonl:line:30 và jsonl:line:398), không phải suy từ command text. conhost.exe nằm ngoài core vì scope_limitations của scenario nêu rõ file chứa conhost creation, event-log clearing và temporary-file deletion ngoài hai nhóm core; các telemetry này không được mô tả là vắng mặt toàn cục và không tự động bị phân loại là payload phá hoại. Context không cung cấp observation conhost.exe cụ thể, nên không thể phân tích parent/child của nó. Timestamp canonical theo TimeCreated; Sysmon UtcTime lệch khoảng bốn giờ và timezone chưa được giải quyết.",
+      "attack_chain": [
+        {
+          "step_number": 1,
+          "source_entity": "cmd.exe (process-7c96a17eb66f2831da61)",
+          "action": "process_spawn",
+          "target_entity": "mshta.exe (process-9c691740bde5d3dbdc4e)",
+          "evidence_ref": "evidence-b07a5ff4763e629715e6",
+          "timestamp": "2020-10-22T02:57:59.856000Z"
+        },
+        {
+          "step_number": 2,
+          "source_entity": "mshta.exe (process-9c691740bde5d3dbdc4e)",
+          "action": "process_spawn",
+          "target_entity": "powershell.exe (process-9f7ceeecb4cd61358ab7)",
+          "evidence_ref": "evidence-b31714b888d1489a380c",
+          "timestamp": "2020-10-22T02:58:00.462000Z"
+        }
+      ],
+      "mitre_mappings": [],
+      "sigma_matches": [],
+      "containment_recommendations": [],
+      "unverified_claims": [
+        "Process creation records chỉ chứng minh launch command; không chứng minh cmdlet Get-Service sysmon hoàn tất, output, hay trạng thái dịch vụ Sysmon.",
+        "conhost.exe không được phân tích parent/child trong context này vì không có observation conhost cụ thể; chỉ biết nó nằm ngoài hai nhóm core theo scope_limitations.",
+        "Không có tuyên bố vắng mặt toàn cục cho conhost, event-log clearing hay temporary-file deletion vì full-dataset negative scan chưa được thực hiện.",
+        "Sysmon UtcTime lệch khoảng bốn giờ so với TimeCreated và timezone chưa được giải quyết; không có hiệu chỉnh thời gian nào được áp dụng."
+      ],
+      "evidence_refs": [
+        "evidence-b07a5ff4763e629715e6",
+        "evidence-b31714b888d1489a380c",
+        "relationship-9e41d0cc407e7878b2d8",
+        "relationship-1641029b76ea1ac3df6e",
+        "jsonl:line:275",
+        "jsonl:line:4",
+        "jsonl:line:30",
+        "jsonl:line:398"
+      ]
+    },
+    "status": "passed",
+    "scope": "structured claims + bounded process citation, duration, request-topic and authentication Status/SubStatus binding checks; remaining prose/comparison correctness unverified",
+    "issues": [],
+    "reference_checks": [
+      {
+        "reference": "evidence-b07a5ff4763e629715e6",
+        "status": "supports_structured_claim"
+      },
+      {
+        "reference": "evidence-b31714b888d1489a380c",
+        "status": "supports_structured_claim"
+      },
+      {
+        "reference": "relationship-9e41d0cc407e7878b2d8",
+        "status": "exists_unverified"
+      },
+      {
+        "reference": "relationship-1641029b76ea1ac3df6e",
+        "status": "exists_unverified"
+      },
+      {
+        "reference": "jsonl:line:275",
+        "status": "exists_unverified"
+      },
+      {
+        "reference": "jsonl:line:4",
+        "status": "exists_unverified"
+      },
+      {
+        "reference": "jsonl:line:30",
+        "status": "exists_unverified"
+      },
+      {
+        "reference": "jsonl:line:398",
+        "status": "exists_unverified"
+      }
+    ],
+    "unverified_fields": [
+      "verdict",
+      "direct_answer",
+      "executive_summary",
+      "technical_analysis",
+      "containment_recommendations",
+      "sigma_matches"
+    ],
+    "human_review_required": true,
+    "narrative_binding_audit": {
+      "scope": "explicit positive executable-parent/creation-verb/executable-child clauses with inline references only",
+      "checks": [
+        {
+          "field": "executive_summary",
+          "references": [
+            "evidence-b31714b888d1489a380c",
+            "evidence-b07a5ff4763e629715e6"
+          ],
+          "status": "supported"
+        },
+        {
+          "field": "executive_summary",
+          "references": [
+            "evidence-b31714b888d1489a380c",
+            "evidence-b07a5ff4763e629715e6"
+          ],
+          "status": "supported"
+        }
+      ],
+      "issues": [],
+      "remaining_prose": "unverified; human review required"
+    },
+    "clock_and_scope_audit": {
+      "scope": "explicit numeric authentication-duration expressions and asserted HTTP/C2/exfiltration topics only; negated boundary caveats are permitted",
+      "checks": [],
+      "issues": [],
+      "comparison_semantics": "requires offline rubric review, not automatically verified",
+      "remaining_prose": "unverified; AI/human semantic review remains necessary"
+    },
+    "auth_field_binding_audit": {
+      "scope": "no supplied authentication observations; not applicable",
+      "events_in_context": [],
+      "checks": [],
+      "issues": []
+    }
+  },
+  "report": {
+    "schema_version": "threat-hunting-report/v1",
+    "verdict": "INSUFFICIENT_EVIDENCE",
+    "direct_answer": "Bốn quan sát (2 Security 4688 + 2 Sysmon 1) tương ứng 2 process creations: cmd.exe → mshta.exe và mshta.exe → powershell.exe. Mỗi creation được ghi nhận bởi hai provider (4688 và Sysmon 1) trên cùng host WORKSTATION5. conhost.exe nằm ngoài core vì context chỉ giới hạn core ở hai nhóm quan sát này; conhost creation được ghi nhận trong file nhưng nằm ngoài phạm vi hai nhóm core và không phải một phần của chuỗi cmd.exe → mshta.exe → powershell.exe.",
+    "executive_summary": "Hai process creations được quan sát: cmd.exe tạo mshta.exe (evidence-b07a5ff4763e629715e6) và mshta.exe tạo powershell.exe (evidence-b31714b888d1489a380c). Mỗi creation có hai bản ghi (Security 4688 và Sysmon 1), tổng cộng bốn quan sát. conhost.exe không thuộc core vì scope của scenario chỉ bao gồm hai nhóm behavior/evidence đã review; conhost creation nằm ngoài phạm vi đó.",
+    "technical_analysis": "Process creation bindings: (1) cmd.exe (parent) → mshta.exe (child) được ghi nhận bởi Sysmon 1 tại jsonl:line:275 (timestamp 2020-10-22T02:57:59.857000Z) và Security 4688 tại jsonl:line:4 (timestamp 2020-10-22T02:57:59.856000Z); relationship-9e41d0cc407e7878b2d8 xác nhận process_spawn. (2) mshta.exe (parent) → powershell.exe (child) được ghi nhận bởi Security 4688 tại jsonl:line:30 (timestamp 2020-10-22T02:58:00.462000Z) và Sysmon 1 tại jsonl:line:398 (timestamp 2020-10-22T02:58:00.489000Z); relationship-1641029b76ea1ac3df6e xác nhận process_spawn. Như vậy bốn quan sát ánh xạ thành hai process creations, không phải bốn. Parent/child correlation dựa trên parent_process_id/process_id trong từng observation: mshta.exe PID 10980 (Sysmon) / 0x2ae4 (4688) có parent cmd.exe PID 5888 (Sysmon) / 0x1700 (4688); powershell.exe PID 9572 (Sysmon) / 0x2564 (4688) có parent mshta.exe PID 10980 (Sysmon) / 0x2ae4 (4688). Command line của mshta.exe chứa chuỗi vbscript:Execute(...Run \"powershell ...\") nhưng đây là launch argument; việc powershell.exe được tạo là do observation riêng (jsonl:line:30 và jsonl:line:398), không phải suy từ command text. conhost.exe nằm ngoài core vì scope_limitations của scenario nêu rõ file chứa conhost creation, event-log clearing và temporary-file deletion ngoài hai nhóm core; các telemetry này không được mô tả là vắng mặt toàn cục và không tự động bị phân loại là payload phá hoại. Context không cung cấp observation conhost.exe cụ thể, nên không thể phân tích parent/child của nó. Timestamp canonical theo TimeCreated; Sysmon UtcTime lệch khoảng bốn giờ và timezone chưa được giải quyết.",
+    "attack_chain": [
+      {
+        "step_number": 1,
+        "source_entity": "cmd.exe (process-7c96a17eb66f2831da61)",
+        "action": "process_spawn",
+        "target_entity": "mshta.exe (process-9c691740bde5d3dbdc4e)",
+        "evidence_ref": "evidence-b07a5ff4763e629715e6",
+        "timestamp": "2020-10-22T02:57:59.856000Z"
+      },
+      {
+        "step_number": 2,
+        "source_entity": "mshta.exe (process-9c691740bde5d3dbdc4e)",
+        "action": "process_spawn",
+        "target_entity": "powershell.exe (process-9f7ceeecb4cd61358ab7)",
+        "evidence_ref": "evidence-b31714b888d1489a380c",
+        "timestamp": "2020-10-22T02:58:00.462000Z"
+      }
+    ],
+    "mitre_mappings": [],
+    "sigma_matches": [],
+    "containment_recommendations": [],
+    "unverified_claims": [
+      "Process creation records chỉ chứng minh launch command; không chứng minh cmdlet Get-Service sysmon hoàn tất, output, hay trạng thái dịch vụ Sysmon.",
+      "conhost.exe không được phân tích parent/child trong context này vì không có observation conhost cụ thể; chỉ biết nó nằm ngoài hai nhóm core theo scope_limitations.",
+      "Không có tuyên bố vắng mặt toàn cục cho conhost, event-log clearing hay temporary-file deletion vì full-dataset negative scan chưa được thực hiện.",
+      "Sysmon UtcTime lệch khoảng bốn giờ so với TimeCreated và timezone chưa được giải quyết; không có hiệu chỉnh thời gian nào được áp dụng."
+    ],
+    "evidence_refs": [
+      "evidence-b07a5ff4763e629715e6",
+      "evidence-b31714b888d1489a380c",
+      "relationship-9e41d0cc407e7878b2d8",
+      "relationship-1641029b76ea1ac3df6e",
+      "jsonl:line:275",
+      "jsonl:line:4",
+      "jsonl:line:30",
+      "jsonl:line:398"
+    ]
+  },
+  "diagnostic": null,
+  "context": {
+    "source_ground_truth": {
+      "path": "outputs/integrated/20261112_live_v1/consumers/mshta-powershell/scenario_ground_truth.json",
+      "schema_version": "scenario-ground-truth/v3",
+      "sha256": "7492ac551d3ca6b3d0f9d752f864b951722e5dd1c0037ebeb95aac149195f4c3",
+      "scenario_id": "mshta-powershell"
+    },
+    "persistence": "Exact context reconstructible from pinned sources and receipt hashes"
+  },
+  "messages": null,
+  "evidence_contract": null,
+  "configuration": {
+    "model": {
+      "provider": "generic_openai",
+      "model_name": "deepseek-flash",
+      "base_url": "https://api.deepseek.com",
+      "temperature": 0.0,
+      "max_tokens": 16384,
+      "timeout_seconds": 180.0,
+      "maximum_http_attempts_per_generation": 1,
+      "automatic_retry": false,
+      "validator_policy": {
+        "policy_id": "source-meaning-validator/v3.2",
+        "network_lookbehind": 120,
+        "network_lookahead": 80,
+        "lookbehind_bounds": [
+          1,
+          400
+        ],
+        "lookahead_bounds": [
+          1,
+          400
+        ],
+        "negation_scope": "clause-local",
+        "clause_split": "sentence|contrast|subject-comma|independent-and-va",
+        "negation_binding": "topic-specific evidential/use predicate; unrelated negators do not govern the topic",
+        "authentication_binding": "supplied event/provider/field/value/reference; no dataset value whitelist",
+        "unverified_scope": "all prose outside the finite EN/VI predicate and Status/SubStatus grammar",
+        "checks": [
+          "numeric_duration_expression",
+          "unrequested_network_topic",
+          "auth_status_event_binding",
+          "auth_status_views_merged"
+        ],
+        "source_contract": "source-meaning/v2/v3"
+      },
+      "thinking": {
+        "type": "disabled"
+      }
+    },
+    "profile_id": "deepseek-final-nothinking-20261112T143858Z",
+    "artifacts": {
+      "mshta-powershell": {
+        "gt_path": {
+          "path": "outputs/integrated/20261112_live_v1/consumers/mshta-powershell/scenario_ground_truth.json",
+          "sha256": "7492ac551d3ca6b3d0f9d752f864b951722e5dd1c0037ebeb95aac149195f4c3"
+        },
+        "corpus_path": {
+          "path": "outputs/integrated/20261112_live_v1/consumers/mshta-powershell/retrieval_corpus.json",
+          "sha256": "081a4cb129fa20fe9818e90979c6a323680989f508f1e64f006fe8dfed951692"
+        },
+        "graph_path": {
+          "path": "outputs/integrated/20261112_live_v1/consumers/mshta-powershell/knowledge_graph.json",
+          "sha256": "af1bc7c773b1df500aa0f88875c2a12f496e469cb3490c55e2e7071f91555280"
+        },
+        "index_path": {
+          "path": "outputs/integrated/20261112_live_v1/consumers/mshta-powershell/vector_index_e5.json",
+          "sha256": "e27f495ffe80e21018a5f4064347ede9ea262f79ac673cd7b23fee1aa5a4953d"
+        }
+      },
+      "purplesharp-ad": {
+        "gt_path": {
+          "path": "outputs/integrated/20261102_cti_portable_v7/consumers/purplesharp-ad/scenario_ground_truth.json",
+          "sha256": "9ddd403d2778a5416f3e394b997c5fb1b65e2ec1cb50926960023d0f782e2997"
+        },
+        "corpus_path": {
+          "path": "outputs/integrated/20261102_cti_portable_v7/consumers/purplesharp-ad/retrieval_corpus.json",
+          "sha256": "89285b6e0cab18fe9272c49b762105339db697959d462ae2838e38d5a44bd1ea"
+        },
+        "graph_path": {
+          "path": "outputs/integrated/20261102_cti_portable_v7/consumers/purplesharp-ad/knowledge_graph.json",
+          "sha256": "8885e4fe312d5037a5aab4b15a6801bf19f29d57c2f22ab5dfae1d776e8e1658"
+        },
+        "index_path": {
+          "path": "outputs/integrated/20261102_cti_portable_v7/consumers/purplesharp-ad/vector_index_e5.json",
+          "sha256": "307f7e7e27c992c8788c3f8f04e78e63f332620a202c80cb54e6d3afae64d5ff"
+        }
+      },
+      "regsvr32-c2": {
+        "gt_path": {
+          "path": "outputs/integrated/20261102_cti_portable_v7/consumers/regsvr32-c2/scenario_ground_truth.json",
+          "sha256": "ca034cbd2c158f6d4f97651da8556d1cba36e38a7d957a4fb8eafab27d2aa09c"
+        },
+        "corpus_path": {
+          "path": "outputs/integrated/20261102_cti_portable_v7/consumers/regsvr32-c2/retrieval_corpus.json",
+          "sha256": "9ac6b1dbf6d2d6f792182f2257702ead87997063ad9fd69ec3d2ed1a240b73f8"
+        },
+        "graph_path": {
+          "path": "outputs/integrated/20261102_cti_portable_v7/consumers/regsvr32-c2/knowledge_graph.json",
+          "sha256": "465237c489e92f599436b65ab8f1699978d5fbab832e56379191283a7fee3575"
+        },
+        "index_path": {
+          "path": "outputs/integrated/20261102_cti_portable_v7/consumers/regsvr32-c2/vector_index_e5.json",
+          "sha256": "6c3931e077938d22f7037066abc1e6cdc5bcf05fa3d73baa3f3de9e0d3a34d90"
+        }
+      }
+    },
+    "source_configuration": {
+      "schema_version": "experimental-comparison-config/v2",
+      "profile_id": "interactive-deepseek-nothinking-20261112-v10",
+      "benchmark": "benchmarks/integrated/scenarios_12_v1.json",
+      "runtime_artifacts": "configs/runtime_artifacts_live_v2.json",
+      "gate_policy": "configs/gate/two_stage_production_policy.json",
+      "gate_contract": "source-evidence-contract/v2",
+      "generation_contract": "source-meaning/v3",
+      "validator_policy_id": "source-meaning-validator/v3.2",
+      "maximum_llm_requests": 6,
+      "retrieval": {
+        "top_k": 5,
+        "candidate_k": 20
+      },
+      "graph_expansion": {
+        "direction": "both",
+        "max_depth": 2,
+        "max_nodes": 100,
+        "max_edges": 200
+      },
+      "maximum_context_utf8_bytes": 262144,
+      "maximum_messages_utf8_bytes": 294912,
+      "branches": [
+        "rag",
+        "graphrag"
+      ],
+      "scope_source": "corpus_only_same_for_both_branches",
+      "runtime_mode": "interactive_per_question",
+      "release_capability": "interactive_per_question",
+      "persistence_contract": "interactive-evidence-receipt/v1",
+      "review_status": "draft_reviewable_pending_human_review",
+      "interpretation": "Current-source DeepSeek non-thinking generation, 16384 output tokens; unchanged source gate and validator v3.2. Paired experiment execution has its own durable protocol and ledger.",
+      "release_limitation": "Interactive draft requiring human review; not a benchmark or semantic acceptance. No retry/fallback."
+    },
+    "source_manifest_sha256": "1923ecb28ef6479440dd59e7d457ee6a62299fdae8084fe1185376693379dd90",
+    "llm_http_attempts": 1,
+    "maximum_llm_requests": null
+  },
+  "provenance": {
+    "mode": "paired_current_source_experiment",
+    "run_id": "deepseek-final-nothinking-20261112T143858Z",
+    "directory": "outputs/experiments/deepseek-final-nothinking-20261112T143858Z/PS-CORRELATE_rag",
+    "benchmark_result": true
+  },
+  "human_review_required": true,
+  "generation_evidence": {
+    "created_utc": "2026-11-12T14:52:09.346061+00:00",
+    "model_output_sha256": "735e7eaa37b7045d84d4fe6ce066f21b44ddf3fd75f119a8780c03d6e2395b68",
+    "new_llm_response": true,
+    "benchmark_result": true
+  },
+  "source_receipts": {
+    "context": {
+      "schema_version": "current-paired-input-receipt/v1",
+      "artifact": "context",
+      "content_sha256": "9f32037724660b2cbb5a52546beacdffa9672cfb12764a7020388641f597cf0f",
+      "content_utf8_bytes": 21485,
+      "scenario_id": "mshta-powershell",
+      "source_bindings": {
+        "gt_path": {
+          "path": "outputs/integrated/20261112_live_v1/consumers/mshta-powershell/scenario_ground_truth.json",
+          "sha256": "7492ac551d3ca6b3d0f9d752f864b951722e5dd1c0037ebeb95aac149195f4c3"
+        },
+        "corpus_path": {
+          "path": "outputs/integrated/20261112_live_v1/consumers/mshta-powershell/retrieval_corpus.json",
+          "sha256": "081a4cb129fa20fe9818e90979c6a323680989f508f1e64f006fe8dfed951692"
+        },
+        "graph_path": {
+          "path": "outputs/integrated/20261112_live_v1/consumers/mshta-powershell/knowledge_graph.json",
+          "sha256": "af1bc7c773b1df500aa0f88875c2a12f496e469cb3490c55e2e7071f91555280"
+        },
+        "index_path": {
+          "path": "outputs/integrated/20261112_live_v1/consumers/mshta-powershell/vector_index_e5.json",
+          "sha256": "e27f495ffe80e21018a5f4064347ede9ea262f79ac673cd7b23fee1aa5a4953d"
+        }
+      },
+      "persistence": "Exact runtime value stays in RAM; source objects remain in unchanged pinned consumers. No duplicate raw payload persisted."
+    },
+    "messages": {
+      "schema_version": "current-paired-input-receipt/v1",
+      "artifact": "messages",
+      "content_sha256": "579fceb1fe5a755cabba03e8487e15c7c928177039818ccfc64ce760f3dea6e6",
+      "content_utf8_bytes": 35716,
+      "scenario_id": "mshta-powershell",
+      "source_bindings": {
+        "gt_path": {
+          "path": "outputs/integrated/20261112_live_v1/consumers/mshta-powershell/scenario_ground_truth.json",
+          "sha256": "7492ac551d3ca6b3d0f9d752f864b951722e5dd1c0037ebeb95aac149195f4c3"
+        },
+        "corpus_path": {
+          "path": "outputs/integrated/20261112_live_v1/consumers/mshta-powershell/retrieval_corpus.json",
+          "sha256": "081a4cb129fa20fe9818e90979c6a323680989f508f1e64f006fe8dfed951692"
+        },
+        "graph_path": {
+          "path": "outputs/integrated/20261112_live_v1/consumers/mshta-powershell/knowledge_graph.json",
+          "sha256": "af1bc7c773b1df500aa0f88875c2a12f496e469cb3490c55e2e7071f91555280"
+        },
+        "index_path": {
+          "path": "outputs/integrated/20261112_live_v1/consumers/mshta-powershell/vector_index_e5.json",
+          "sha256": "e27f495ffe80e21018a5f4064347ede9ea262f79ac673cd7b23fee1aa5a4953d"
+        }
+      },
+      "persistence": "Exact runtime value stays in RAM; source objects remain in unchanged pinned consumers. No duplicate raw payload persisted."
+    },
+    "evidence_contract": {
+      "schema_version": "current-paired-input-receipt/v1",
+      "artifact": "evidence_contract",
+      "content_sha256": "b0c2698e859d508029e24f22d2416b933f3ecf6aecbbd3c8df3837ee3b4c2ec6",
+      "content_utf8_bytes": 14879,
+      "scenario_id": "mshta-powershell",
+      "source_bindings": {
+        "gt_path": {
+          "path": "outputs/integrated/20261112_live_v1/consumers/mshta-powershell/scenario_ground_truth.json",
+          "sha256": "7492ac551d3ca6b3d0f9d752f864b951722e5dd1c0037ebeb95aac149195f4c3"
+        },
+        "corpus_path": {
+          "path": "outputs/integrated/20261112_live_v1/consumers/mshta-powershell/retrieval_corpus.json",
+          "sha256": "081a4cb129fa20fe9818e90979c6a323680989f508f1e64f006fe8dfed951692"
+        },
+        "graph_path": {
+          "path": "outputs/integrated/20261112_live_v1/consumers/mshta-powershell/knowledge_graph.json",
+          "sha256": "af1bc7c773b1df500aa0f88875c2a12f496e469cb3490c55e2e7071f91555280"
+        },
+        "index_path": {
+          "path": "outputs/integrated/20261112_live_v1/consumers/mshta-powershell/vector_index_e5.json",
+          "sha256": "e27f495ffe80e21018a5f4064347ede9ea262f79ac673cd7b23fee1aa5a4953d"
+        }
+      },
+      "persistence": "Exact runtime value stays in RAM; source objects remain in unchanged pinned consumers. No duplicate raw payload persisted.",
+      "evidence": [
+        {
+          "origin": {
+            "kind": "chunk",
+            "item_id": "retrieval-chunk--86dd89fe0cfd03c1505a8534ce63dfb9f72221fe32c23d7a0341a66fa98d48ad",
+            "context_pointer": "/retrieval/hits/0/chunk"
+          },
+          "consumer": "corpus_path",
+          "json_pointer": "/chunks/0",
+          "object_sha256": "3d89bfdd18ec2dff1be1383d9ea30fe50699d87db8a74a251e0e101e55d9b449",
+          "source": {
+            "artifact_type": "scenario_ground_truth",
+            "object_type": "scenario",
+            "object_id": null,
+            "json_pointer": "/scenario"
+          },
+          "source_references": [
+            {
+              "raw_record_ref": "jsonl:line:275",
+              "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json"
+            },
+            {
+              "raw_record_ref": "jsonl:line:30",
+              "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json"
+            },
+            {
+              "raw_record_ref": "jsonl:line:398",
+              "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json"
+            },
+            {
+              "raw_record_ref": "jsonl:line:4",
+              "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json"
+            }
+          ]
+        },
+        {
+          "origin": {
+            "kind": "chunk",
+            "item_id": "retrieval-chunk--f36fc26dc2a1ab7790f9bb95ceb5b2ceaaea94a7867c978b680fa532040a0b88",
+            "context_pointer": "/retrieval/hits/1/chunk"
+          },
+          "consumer": "corpus_path",
+          "json_pointer": "/chunks/13",
+          "object_sha256": "f69858fbeb59d35d3ea6e25dc88403b3a0bd02feb64459b8f66ffb362bce705b",
+          "source": {
+            "artifact_type": "scenario_ground_truth",
+            "object_type": "evidence",
+            "object_id": "evidence-b31714b888d1489a380c",
+            "json_pointer": "/evidence/1"
+          },
+          "source_references": [
+            {
+              "raw_record_ref": "jsonl:line:30",
+              "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json"
+            },
+            {
+              "raw_record_ref": "jsonl:line:398",
+              "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json"
+            }
+          ]
+        },
+        {
+          "origin": {
+            "kind": "chunk",
+            "item_id": "retrieval-chunk--536a732c5d918e1b90e281ed5d438f06f8b161d70c9d4e64699eee77dfd2a30b",
+            "context_pointer": "/retrieval/hits/2/chunk"
+          },
+          "consumer": "corpus_path",
+          "json_pointer": "/chunks/12",
+          "object_sha256": "ecf262f01f880c180eca6ff6f737cfb98b94aaeefc80a6d3e3186432e390538c",
+          "source": {
+            "artifact_type": "scenario_ground_truth",
+            "object_type": "evidence",
+            "object_id": "evidence-b07a5ff4763e629715e6",
+            "json_pointer": "/evidence/0"
+          },
+          "source_references": [
+            {
+              "raw_record_ref": "jsonl:line:275",
+              "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json"
+            },
+            {
+              "raw_record_ref": "jsonl:line:4",
+              "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json"
+            }
+          ]
+        },
+        {
+          "origin": {
+            "kind": "chunk",
+            "item_id": "retrieval-chunk--6c81131b41dbfbf7554df2341edc55b3ffeb9da99282a8cde4492bd3a1107365",
+            "context_pointer": "/retrieval/hits/3/chunk"
+          },
+          "consumer": "corpus_path",
+          "json_pointer": "/chunks/11",
+          "object_sha256": "e5bb0933a01028cb43b7c1475bf7dbf610cb960944d5011852071d6af9e156c4",
+          "source": {
+            "artifact_type": "scenario_ground_truth",
+            "object_type": "relationship",
+            "object_id": "relationship-9e41d0cc407e7878b2d8",
+            "json_pointer": "/relationships/1"
+          },
+          "source_references": [
+            {
+              "raw_record_ref": "jsonl:line:275",
+              "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json"
+            },
+            {
+              "raw_record_ref": "jsonl:line:4",
+              "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json"
+            }
+          ]
+        },
+        {
+          "origin": {
+            "kind": "chunk",
+            "item_id": "retrieval-chunk--ef21f2bc7758f90ce3097c824ea9cfcf382e6fbefcaf03a8cc2c2f2cfa34534f",
+            "context_pointer": "/retrieval/hits/4/chunk"
+          },
+          "consumer": "corpus_path",
+          "json_pointer": "/chunks/10",
+          "object_sha256": "a684eeb31ffefd93dcdab31c4907d47e5ca45a188e1cc7aeef3ff644b628b361",
+          "source": {
+            "artifact_type": "scenario_ground_truth",
+            "object_type": "relationship",
+            "object_id": "relationship-1641029b76ea1ac3df6e",
+            "json_pointer": "/relationships/0"
+          },
+          "source_references": [
+            {
+              "raw_record_ref": "jsonl:line:30",
+              "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json"
+            },
+            {
+              "raw_record_ref": "jsonl:line:398",
+              "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

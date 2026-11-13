@@ -1,0 +1,101 @@
+{
+  "question_id": "NET-CORRELATE",
+  "case_id": "NET-CORRELATE",
+  "scenario_id": "regsvr32-c2",
+  "branch": "graphrag",
+  "query": "Tương quan parent/child powershell.exe → regsvr32.exe → powershell.exe với các network connections: process nào đi cổng 8444, process nào đi cổng 80 và bao nhiêu observations? Giải thích host/GUID, dedup creation và giới hạn PID reuse.",
+  "outcome": "validation_failed",
+  "gate_decision": "proceed",
+  "eligibility_decision": "proceed",
+  "context_utf8_bytes": 138217,
+  "messages_utf8_bytes": 143088,
+  "llm_http_attempts": 1,
+  "fallback_used": false,
+  "human_review_required": true,
+  "prepared_utc": "2026-11-12T14:44:48.821157+00:00",
+  "provider_usage": {
+    "prompt_tokens": 55663,
+    "completion_tokens": 2592,
+    "total_tokens": 58255,
+    "prompt_tokens_details": {
+      "cached_tokens": 2048
+    },
+    "prompt_cache_hit_tokens": 2048,
+    "prompt_cache_miss_tokens": 53615
+  },
+  "provider_reported_cost": null,
+  "retrieval_context_seconds": 0.1076296999999613,
+  "policy_gate_decision": "proceed",
+  "abstention_stage": null,
+  "context_sha256": "1871066c728b25dec72c9324d8785e5850960ff69832853cadbf03332addcb3b",
+  "messages_sha256": "312b88a284a398088297efec150e4ba1ae70098f36094b936f3cbd22184bca3f",
+  "retrieval_sha256": "6e0a995e224a4523fbfb18de50eb242cd83e2b906f1b205b976a21d2613175f0",
+  "retrieval_hit_ids": [
+    "retrieval-chunk--e6df48c9930387d43b1f91e9812baf382c04ffc98bb0e43aeee50b701cdcdf43",
+    "retrieval-chunk--6477dd1897ae50c72c716cf6a42509c23e969434ef7e5563af680664d57ab026",
+    "retrieval-chunk--a62bce534cb5dd176af7568eb96793f63ac9b5c388720aff8a5024915c19f408",
+    "retrieval-chunk--9e080227c8b57a09213f234d85481395b430e57fe72a5d0bc729195aa3e3e2b5",
+    "retrieval-chunk--a699abb0583bf1f57fcee13f7c90794cbc3c7e71651323df7c4df66dd35c988e"
+  ],
+  "returned_graph_nodes": 22,
+  "returned_graph_edges": 31,
+  "available_reference_count": 155,
+  "validation_status": "validation_failed",
+  "abstention_reason_codes": [],
+  "preparation_seconds": 0.26664720000189845,
+  "generation_validation_seconds": 71.42476180000085,
+  "provider_http_seconds": 11.685977000001003,
+  "generation_started_utc": "2026-11-12T14:56:28.484398+00:00",
+  "generation_finished_utc": "2026-11-12T14:56:40.166941+00:00",
+  "finish_reason": "stop",
+  "http_status": 200,
+  "config_run_id": "deepseek-final-nothinking-20261112T143858Z",
+  "attempt_diagnostics": [
+    {
+      "ordinal": 11,
+      "question_id": "NET-CORRELATE",
+      "branch": "graphrag",
+      "pair_attempt": 1,
+      "reserved_utc": "2026-11-12T14:56:28.443458+00:00",
+      "actual_http_attempts": 1,
+      "finished_utc": "2026-11-12T14:56:40.166941+00:00",
+      "actual_payload": {
+        "model": "deepseek-flash",
+        "temperature": 0.0,
+        "max_tokens": 16384,
+        "thinking": {
+          "type": "disabled"
+        },
+        "stream": false,
+        "messages_sha256": "312b88a284a398088297efec150e4ba1ae70098f36094b936f3cbd22184bca3f",
+        "serialized_http_payload_bytes": 145459,
+        "endpoint": "https://api.deepseek.com/chat/completions"
+      },
+      "http_started_utc": "2026-11-12T14:56:28.484398+00:00",
+      "http_status": 200,
+      "usage": {
+        "prompt_tokens": 55663,
+        "completion_tokens": 2592,
+        "total_tokens": 58255,
+        "prompt_tokens_details": {
+          "cached_tokens": 2048
+        },
+        "prompt_cache_hit_tokens": 2048,
+        "prompt_cache_miss_tokens": 53615
+      },
+      "cost": null,
+      "finish_reason": "stop",
+      "http_seconds": 11.685977000001003,
+      "http_finished_utc": "2026-11-12T14:56:40.166941+00:00"
+    }
+  ],
+  "response_path": "outputs/experiments/deepseek-final-nothinking-20261112T143858Z/NET-CORRELATE_graphrag/response.json",
+  "citations_path": "outputs/experiments/deepseek-final-nothinking-20261112T143858Z/NET-CORRELATE_graphrag/citations_resolved.json",
+  "source_config": "configs/interactive/dashboard_live_v10.json",
+  "source_manifest": "configs/interactive/runtime_manifest_live_v9.json",
+  "source_references_path": "outputs/experiments/deepseek-final-nothinking-20261112T143858Z/NET-CORRELATE_graphrag/evidence_contract_receipt.json",
+  "gate_receipt_path": "outputs/experiments/deepseek-final-nothinking-20261112T143858Z/NET-CORRELATE_graphrag/gate_receipt.json",
+  "eligibility_receipt_path": "outputs/experiments/deepseek-final-nothinking-20261112T143858Z/NET-CORRELATE_graphrag/eligibility_receipt.json",
+  "validation_path": "outputs/experiments/deepseek-final-nothinking-20261112T143858Z/NET-CORRELATE_graphrag/attempt_01/validation.json",
+  "provider_response_path": "outputs/experiments/deepseek-final-nothinking-20261112T143858Z/NET-CORRELATE_graphrag/attempt_01/provider_response.json"
+}

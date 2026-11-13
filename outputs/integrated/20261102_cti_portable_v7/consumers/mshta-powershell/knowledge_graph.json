@@ -1,0 +1,2019 @@
+{
+  "schema_version": "knowledge-graph/v1",
+  "graph_id": "knowledge-graph--b5ca6496b666066768bae40f938033b67ff1521d3c3995354b16f38fc184988f",
+  "scenario_id": "mshta-powershell",
+  "source_ground_truth": {
+    "path": "outputs/integrated/20261102_cti_portable_v7/consumers/mshta-powershell/scenario_ground_truth.json",
+    "schema_version": "scenario-ground-truth/v3",
+    "sha256": "9e16178060773f599a1f06c6ba492ad12b8f633ea6fd02f1d68cf48df68b3521",
+    "scenario_id": "mshta-powershell"
+  },
+  "nodes": [
+    {
+      "node_id": "graph-node--1aa6bfc23e51b30670578cd0b06cc1caade2e05bcdffa3ec9eaf7ce8038c8cc6",
+      "node_type": "limitation",
+      "label": "Process-creation telemetry does not establish successful cmdlet completion, output, or the Sysmon service state.",
+      "status": "reviewable",
+      "source": {
+        "object_type": "limitation",
+        "object_id": null,
+        "json_pointer": "/summary/limitations/4"
+      },
+      "attributes": {},
+      "evidence_ids": [],
+      "source_references": [],
+      "dimensions": [
+        "provenance"
+      ]
+    },
+    {
+      "node_id": "graph-node--1dc506d0ebaba36a9b30744ff79cd6a42595cd7f2a95247ce8783735a0d898eb",
+      "node_type": "entity",
+      "label": "mshta.exe",
+      "status": "observed",
+      "source": {
+        "object_type": "entity",
+        "object_id": "process-9c691740bde5d3dbdc4e",
+        "json_pointer": "/entities/1"
+      },
+      "attributes": {
+        "attributes": {
+          "host": "WORKSTATION5",
+          "process_guid": "{39e4a257-2d77-5f91-6b13-000000000700}",
+          "process_id": "10980",
+          "process_name": "mshta.exe"
+        },
+        "entity_type": "process",
+        "name": "mshta.exe"
+      },
+      "evidence_ids": [
+        "evidence-b07a5ff4763e629715e6",
+        "evidence-b31714b888d1489a380c"
+      ],
+      "source_references": [],
+      "dimensions": [
+        "entity",
+        "provenance"
+      ]
+    },
+    {
+      "node_id": "graph-node--20d644848d2ad2423f8b8b2c687bc68437fbba3297d473e4757483e5c72c0540",
+      "node_type": "fact",
+      "label": "spawned_process",
+      "status": "observed",
+      "source": {
+        "object_type": "fact",
+        "object_id": "fact-cmd-spawns-mshta",
+        "json_pointer": "/facts/0"
+      },
+      "attributes": {
+        "attributes": {
+          "relationship_id": "relationship-9e41d0cc407e7878b2d8",
+          "source_observations": [
+            {
+              "original_fields": {
+                "@timestamp": "2020-10-22T02:57:59.857Z",
+                "Channel": "Microsoft-Windows-Sysmon/Operational",
+                "CommandLine": "mshta  vbscript:Execute(\"CreateObject(\"\"Wscript.Shell\"\").Run \"\"powershell -noexit -command Get-Service sysmon\"\":close\")",
+                "EventID": 1,
+                "Hostname": "WORKSTATION5",
+                "Image": "C:\\Windows\\System32\\mshta.exe",
+                "OriginalFileName": "MSHTA.EXE",
+                "ParentCommandLine": "\"C:\\windows\\system32\\cmd.exe\" ",
+                "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+                "ParentProcessGuid": "{39e4a257-2d59-5f91-6813-000000000700}",
+                "ParentProcessId": "5888",
+                "ProcessGuid": "{39e4a257-2d77-5f91-6b13-000000000700}",
+                "ProcessId": "10980",
+                "SourceName": "Microsoft-Windows-Sysmon",
+                "TimeCreated": "2020-10-22T02:57:59.857Z",
+                "User": "WORKSTATION5\\wardog",
+                "UtcTime": "2020-10-22 06:57:59.855"
+              },
+              "raw_record_ref": "jsonl:line:275",
+              "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json"
+            },
+            {
+              "original_fields": {
+                "@timestamp": "2020-10-22T02:57:59.856Z",
+                "Channel": "Security",
+                "CommandLine": "mshta  vbscript:Execute(\"CreateObject(\"\"Wscript.Shell\"\").Run \"\"powershell -noexit -command Get-Service sysmon\"\":close\")",
+                "EventID": 4688,
+                "Hostname": "WORKSTATION5",
+                "NewProcessId": "0x2ae4",
+                "NewProcessName": "C:\\Windows\\System32\\mshta.exe",
+                "ParentProcessName": "C:\\Windows\\System32\\cmd.exe",
+                "ProcessId": "0x1700",
+                "SourceName": "Microsoft-Windows-Security-Auditing",
+                "SubjectDomainName": "WORKSTATION5",
+                "SubjectUserName": "wardog",
+                "TimeCreated": "2020-10-22T02:57:59.856Z"
+              },
+              "raw_record_ref": "jsonl:line:4",
+              "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json"
+            }
+          ]
+        },
+        "object": "process-9c691740bde5d3dbdc4e",
+        "predicate": "spawned_process",
+        "subject": "process-7c96a17eb66f2831da61"
+      },
+      "evidence_ids": [
+        "evidence-b07a5ff4763e629715e6"
+      ],
+      "source_references": [
+        {
+          "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json",
+          "raw_record_ref": "jsonl:line:275"
+        },
+        {
+          "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json",
+          "raw_record_ref": "jsonl:line:4"
+        }
+      ],
+      "dimensions": [
+        "evidence",
+        "provenance"
+      ]
+    },
+    {
+      "node_id": "graph-node--30ba58cb71e8f07942f0fd56bc47478be54949325edd9c09f4c7cfe8366cf8b1",
+      "node_type": "mitre_assessment",
+      "label": "T1140 - Deobfuscate/Decode Files or Information",
+      "status": "candidate",
+      "source": {
+        "object_type": "mitre_assessment",
+        "object_id": "mitre-assessment--e78c269b283e5bca17c136194d9a2a18bd8c1cf0fe37726dd2c02717ea74d63f",
+        "json_pointer": "/mitre_assessments/1"
+      },
+      "attributes": {
+        "evidence_support": "not_assessed",
+        "external_id": "T1140",
+        "name": "Deobfuscate/Decode Files or Information",
+        "origin": "sigma_tag",
+        "rationale": "The resolver only resolved a Sigma tag. The two reviewed evidence groups are insufficient to assess T1140, and the required full negative scan and broader evaluation have not been performed. This milestone therefore does not make a not_observed_in_reviewed_scope determination.",
+        "review_status": "needs_review",
+        "stix_id": "attack-pattern--3ccef7ae-cb5e-48f6-8302-897105fbf55c",
+        "supporting_sigma_rule_ids": [
+          "cc7abbd0-762b-41e3-8a26-57ad50d2eea3"
+        ]
+      },
+      "evidence_ids": [],
+      "source_references": [],
+      "dimensions": [
+        "evidence",
+        "mitre_technique",
+        "provenance"
+      ]
+    },
+    {
+      "node_id": "graph-node--35b8bcd535dd4ccf222294889c5fa36ef7e5e2969809b6991e27d501bab1269b",
+      "node_type": "limitation",
+      "label": "This ground truth scope covers only the two reviewed behavior and evidence groups.",
+      "status": "reviewable",
+      "source": {
+        "object_type": "limitation",
+        "object_id": null,
+        "json_pointer": "/summary/limitations/0"
+      },
+      "attributes": {},
+      "evidence_ids": [],
+      "source_references": [],
+      "dimensions": [
+        "provenance"
+      ]
+    },
+    {
+      "node_id": "graph-node--3736166582cccae6c95856ca78ffa08e8c263dd14c5638333d4a1dd3288090a5",
+      "node_type": "cti_report",
+      "label": "Mshta | Red Canary Threat Detection Report",
+      "status": "candidate",
+      "source": {
+        "object_type": "entity",
+        "object_id": "cti-21d321ee1fcec0c40565",
+        "json_pointer": "/entities/6"
+      },
+      "attributes": {
+        "entity_type": "cti_report",
+        "name": "Mshta | Red Canary Threat Detection Report",
+        "attributes": {
+          "evidence_layer": "cti_context",
+          "source_type": "cti_report",
+          "source_id": "redcanary-mshta",
+          "text": "Red Canary recommends collecting parent-child process relationships, with grandparent relationships where possible, as useful visibility for detecting adversary use of MSHTA.",
+          "title": "Mshta | Red Canary Threat Detection Report",
+          "publisher": "Red Canary",
+          "url": "https://redcanary.com/threat-detection-report/techniques/mshta/",
+          "publication_date": "2021-03-18T16:58:29+00:00",
+          "accessed_at": "2026-10-30T09:07:42.344843+00:00",
+          "snapshot_sha256": "fd1854324c1b9d65926b700f2c12c0b010b42eed49624f7129a533a34f9e778b",
+          "citation": {
+            "source_id": "redcanary-mshta",
+            "url": "https://redcanary.com/threat-detection-report/techniques/mshta/",
+            "section": "Visibility / Process and command-line monitoring",
+            "snapshot_path": "../../../../offline/requirements_gap_20261030_v1/cti_sources/redcanary-mshta.html",
+            "snapshot_sha256": "fd1854324c1b9d65926b700f2c12c0b010b42eed49624f7129a533a34f9e778b",
+            "text_path": "redcanary-mshta.txt",
+            "text_sha256": "291be254c4da5dfd87032c42df0a587d36ca8f93371416fbae40d44819f93691",
+            "char_start": 10991,
+            "char_end": 11372,
+            "line": 384,
+            "anchor": "Monitoring process execution along with command-line parameters offers defenders visibility into many behaviors associated with malicious abuse of Mshta. Similarly, process lineage is also helpful for detecting adversary use of Mshta. At a minimum, collect parent-child process relationships, and, if possible, consider collecting information about “grandparent” relationships too.",
+            "offset_unit": "Unicode code points in extracted UTF-8 text; end exclusive"
+          },
+          "source_references": [
+            {
+              "source_file": "redcanary-mshta",
+              "raw_record_ref": "text:chars:10991:11372"
+            }
+          ],
+          "scope": "External publisher context. Paraphrase is analyst wording, not a verbatim quote; only publisher_excerpt is verbatim. Does not establish local telemetry or compromise.",
+          "corpus_path": "outputs/integrated/20261102_cti_portable_v7/cti/mshta-powershell/cti_corpus.json",
+          "corpus_sha256": "6bc354c86de8f292287faa58a274640d6e59edb89475199af584744e1392d380",
+          "content_origin": "publisher_paraphrase",
+          "publisher_excerpt": "Monitoring process execution along with command-line parameters offers defenders visibility into many behaviors associated with malicious abuse of Mshta. Similarly, process lineage is also helpful for detecting adversary use of Mshta. At a minimum, collect parent-child process relationships, and, if possible, consider collecting information about “grandparent” relationships too.",
+          "publisher_paraphrase": "Red Canary recommends collecting parent-child process relationships, with grandparent relationships where possible, as useful visibility for detecting adversary use of MSHTA.",
+          "attribution": "Red Canary",
+          "citation_role": "publisher_source",
+          "source_publisher": "Red Canary"
+        }
+      },
+      "evidence_ids": [],
+      "source_references": [
+        {
+          "source_file": "redcanary-mshta",
+          "raw_record_ref": "text:chars:10991:11372"
+        }
+      ],
+      "dimensions": [
+        "entity",
+        "provenance"
+      ]
+    },
+    {
+      "node_id": "graph-node--37d3788ad9015061dfbe8af173ea3244306e9c65c103464f48d861cd51c26135",
+      "node_type": "limitation",
+      "label": "A full-dataset negative scan has not been performed, so absence claims cannot be made across the full scope.",
+      "status": "reviewable",
+      "source": {
+        "object_type": "limitation",
+        "object_id": null,
+        "json_pointer": "/summary/limitations/2"
+      },
+      "attributes": {},
+      "evidence_ids": [],
+      "source_references": [],
+      "dimensions": [
+        "provenance"
+      ]
+    },
+    {
+      "node_id": "graph-node--47257c3660c6cd968cd01f05142a5d97757d6bde4630b48abba691f18512d8e5",
+      "node_type": "mitre_assessment",
+      "label": "T1059.007 - JavaScript",
+      "status": "candidate",
+      "source": {
+        "object_type": "mitre_assessment",
+        "object_id": "mitre-assessment--4627bedc17126e48369fd005997f3873c17edecfbb34d9a111c6c1f26a1d61c9",
+        "json_pointer": "/mitre_assessments/0"
+      },
+      "attributes": {
+        "evidence_support": "not_supported_by_observed_command",
+        "external_id": "T1059.007",
+        "name": "JavaScript",
+        "origin": "sigma_tag",
+        "rationale": "The reviewed command line uses vbscript:Execute, and JavaScript is not observed in that command. The Sigma tag is retained for provenance but is not treated as supported by the current evidence.",
+        "review_status": "needs_review",
+        "stix_id": "attack-pattern--0f4a0c76-ab2d-4cb0-85d3-3f0efb8cba0d",
+        "supporting_sigma_rule_ids": [
+          "cc7abbd0-762b-41e3-8a26-57ad50d2eea3"
+        ]
+      },
+      "evidence_ids": [
+        "evidence-b07a5ff4763e629715e6"
+      ],
+      "source_references": [],
+      "dimensions": [
+        "evidence",
+        "mitre_technique",
+        "provenance"
+      ]
+    },
+    {
+      "node_id": "graph-node--566b93b65d87f146ff0f676dbc6cf6226bbb70c61a4c8a6bd5d7831a95cef434",
+      "node_type": "entity",
+      "label": "powershell.exe",
+      "status": "observed",
+      "source": {
+        "object_type": "entity",
+        "object_id": "process-9f7ceeecb4cd61358ab7",
+        "json_pointer": "/entities/2"
+      },
+      "attributes": {
+        "attributes": {
+          "host": "WORKSTATION5",
+          "process_guid": "{39e4a257-2d78-5f91-6c13-000000000700}",
+          "process_id": "9572",
+          "process_name": "powershell.exe"
+        },
+        "entity_type": "process",
+        "name": "powershell.exe"
+      },
+      "evidence_ids": [
+        "evidence-b31714b888d1489a380c"
+      ],
+      "source_references": [],
+      "dimensions": [
+        "entity",
+        "provenance"
+      ]
+    },
+    {
+      "node_id": "graph-node--5de7c6b37416d9b4a9e1d38dbca3b6e637c610654f3aeeb7bf9cd7a2edeaa121",
+      "node_type": "fact",
+      "label": "spawned_process",
+      "status": "observed",
+      "source": {
+        "object_type": "fact",
+        "object_id": "fact-mshta-spawns-powershell",
+        "json_pointer": "/facts/1"
+      },
+      "attributes": {
+        "attributes": {
+          "relationship_id": "relationship-1641029b76ea1ac3df6e",
+          "source_observations": [
+            {
+              "original_fields": {
+                "@timestamp": "2020-10-22T02:58:00.462Z",
+                "Channel": "Security",
+                "CommandLine": "\"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\" -noexit -command Get-Service sysmon",
+                "EventID": 4688,
+                "Hostname": "WORKSTATION5",
+                "NewProcessId": "0x2564",
+                "NewProcessName": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+                "ParentProcessName": "C:\\Windows\\System32\\mshta.exe",
+                "ProcessId": "0x2ae4",
+                "SourceName": "Microsoft-Windows-Security-Auditing",
+                "SubjectDomainName": "WORKSTATION5",
+                "SubjectUserName": "wardog",
+                "TimeCreated": "2020-10-22T02:58:00.462Z"
+              },
+              "raw_record_ref": "jsonl:line:30",
+              "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json"
+            },
+            {
+              "original_fields": {
+                "@timestamp": "2020-10-22T02:58:00.489Z",
+                "Channel": "Microsoft-Windows-Sysmon/Operational",
+                "CommandLine": "\"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\" -noexit -command Get-Service sysmon",
+                "EventID": 1,
+                "Hostname": "WORKSTATION5",
+                "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+                "OriginalFileName": "PowerShell.EXE",
+                "ParentCommandLine": "mshta  vbscript:Execute(\"CreateObject(\"\"Wscript.Shell\"\").Run \"\"powershell -noexit -command Get-Service sysmon\"\":close\")",
+                "ParentImage": "C:\\Windows\\System32\\mshta.exe",
+                "ParentProcessGuid": "{39e4a257-2d77-5f91-6b13-000000000700}",
+                "ParentProcessId": "10980",
+                "ProcessGuid": "{39e4a257-2d78-5f91-6c13-000000000700}",
+                "ProcessId": "9572",
+                "SourceName": "Microsoft-Windows-Sysmon",
+                "TimeCreated": "2020-10-22T02:58:00.489Z",
+                "User": "WORKSTATION5\\wardog",
+                "UtcTime": "2020-10-22 06:58:00.462"
+              },
+              "raw_record_ref": "jsonl:line:398",
+              "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json"
+            }
+          ]
+        },
+        "object": "process-9f7ceeecb4cd61358ab7",
+        "predicate": "spawned_process",
+        "subject": "process-9c691740bde5d3dbdc4e"
+      },
+      "evidence_ids": [
+        "evidence-b31714b888d1489a380c"
+      ],
+      "source_references": [
+        {
+          "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json",
+          "raw_record_ref": "jsonl:line:30"
+        },
+        {
+          "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json",
+          "raw_record_ref": "jsonl:line:398"
+        }
+      ],
+      "dimensions": [
+        "evidence",
+        "provenance"
+      ]
+    },
+    {
+      "node_id": "graph-node--731463ebe4ba5265641ebc144761d3d0ad3d99741bdb315615fc05c306d3e1e7",
+      "node_type": "evidence",
+      "label": "cmd.exe spawned mshta.exe",
+      "status": "observed",
+      "source": {
+        "object_type": "evidence",
+        "object_id": "evidence-b07a5ff4763e629715e6",
+        "json_pointer": "/evidence/0"
+      },
+      "attributes": {
+        "evidence_type": "process_creation",
+        "observations": [
+          {
+            "event_id": "1",
+            "provider": "Microsoft-Windows-Sysmon",
+            "raw_record_ref": "jsonl:line:275",
+            "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json",
+            "timestamp": "2020-10-22T02:57:59.857000Z"
+          },
+          {
+            "event_id": "4688",
+            "provider": "Microsoft-Windows-Security-Auditing",
+            "raw_record_ref": "jsonl:line:4",
+            "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json",
+            "timestamp": "2020-10-22T02:57:59.856000Z"
+          }
+        ],
+        "summary": "cmd.exe spawned mshta.exe",
+        "source_observations": [
+          {
+            "original_fields": {
+              "@timestamp": "2020-10-22T02:57:59.857Z",
+              "Channel": "Microsoft-Windows-Sysmon/Operational",
+              "CommandLine": "mshta  vbscript:Execute(\"CreateObject(\"\"Wscript.Shell\"\").Run \"\"powershell -noexit -command Get-Service sysmon\"\":close\")",
+              "EventID": 1,
+              "Hostname": "WORKSTATION5",
+              "Image": "C:\\Windows\\System32\\mshta.exe",
+              "OriginalFileName": "MSHTA.EXE",
+              "ParentCommandLine": "\"C:\\windows\\system32\\cmd.exe\" ",
+              "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+              "ParentProcessGuid": "{39e4a257-2d59-5f91-6813-000000000700}",
+              "ParentProcessId": "5888",
+              "ProcessGuid": "{39e4a257-2d77-5f91-6b13-000000000700}",
+              "ProcessId": "10980",
+              "SourceName": "Microsoft-Windows-Sysmon",
+              "TimeCreated": "2020-10-22T02:57:59.857Z",
+              "User": "WORKSTATION5\\wardog",
+              "UtcTime": "2020-10-22 06:57:59.855"
+            },
+            "raw_record_ref": "jsonl:line:275",
+            "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json"
+          },
+          {
+            "original_fields": {
+              "@timestamp": "2020-10-22T02:57:59.856Z",
+              "Channel": "Security",
+              "CommandLine": "mshta  vbscript:Execute(\"CreateObject(\"\"Wscript.Shell\"\").Run \"\"powershell -noexit -command Get-Service sysmon\"\":close\")",
+              "EventID": 4688,
+              "Hostname": "WORKSTATION5",
+              "NewProcessId": "0x2ae4",
+              "NewProcessName": "C:\\Windows\\System32\\mshta.exe",
+              "ParentProcessName": "C:\\Windows\\System32\\cmd.exe",
+              "ProcessId": "0x1700",
+              "SourceName": "Microsoft-Windows-Security-Auditing",
+              "SubjectDomainName": "WORKSTATION5",
+              "SubjectUserName": "wardog",
+              "TimeCreated": "2020-10-22T02:57:59.856Z"
+            },
+            "raw_record_ref": "jsonl:line:4",
+            "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json"
+          }
+        ]
+      },
+      "evidence_ids": [
+        "evidence-b07a5ff4763e629715e6"
+      ],
+      "source_references": [
+        {
+          "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json",
+          "raw_record_ref": "jsonl:line:275"
+        },
+        {
+          "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json",
+          "raw_record_ref": "jsonl:line:4"
+        }
+      ],
+      "dimensions": [
+        "evidence",
+        "provenance"
+      ]
+    },
+    {
+      "node_id": "graph-node--7ef5d011ec4c811c5e0799826fe6cafa7f92d11c954f80b9c600d85b9d9037c2",
+      "node_type": "limitation",
+      "label": "Publisher excerpts, publisher paraphrases and project analyst comparisons have separate origins. Analyst interpretation is not a publisher quote or local observed evidence.",
+      "status": "reviewable",
+      "source": {
+        "object_type": "limitation",
+        "object_id": null,
+        "json_pointer": "/summary/limitations/8"
+      },
+      "attributes": {},
+      "evidence_ids": [],
+      "source_references": [],
+      "dimensions": [
+        "provenance"
+      ]
+    },
+    {
+      "node_id": "graph-node--91b291a99077d07095ec61429f19b2b3e8393c160219f073f956412382ccfd15",
+      "node_type": "limitation",
+      "label": "CTI facts are publisher-reported external context. They do not establish local host compromise, campaign attribution, HTTP completion or confirmed C2.",
+      "status": "reviewable",
+      "source": {
+        "object_type": "limitation",
+        "object_id": null,
+        "json_pointer": "/summary/limitations/7"
+      },
+      "attributes": {},
+      "evidence_ids": [],
+      "source_references": [],
+      "dimensions": [
+        "provenance"
+      ]
+    },
+    {
+      "node_id": "graph-node--987d34cc38fa8a42104b62d681da414687181e1a6f7dcaee82e2f882b1b3595c",
+      "node_type": "mitre_assessment",
+      "label": "T1218.005 - Mshta",
+      "status": "candidate",
+      "source": {
+        "object_type": "mitre_assessment",
+        "object_id": "mitre-assessment--09f12e591ccdc088e57b01d09c528efead966e0f723ae9a0be6596b78a9c78f1",
+        "json_pointer": "/mitre_assessments/2"
+      },
+      "attributes": {
+        "evidence_support": "supported_by_observed_behavior",
+        "external_id": "T1218.005",
+        "name": "Mshta",
+        "origin": "sigma_tag",
+        "rationale": "mshta.exe is directly observed in the first evidence group, and its launch of PowerShell is directly observed in the second. This supports the candidate technique at the evidence level only and does not finalize the assessment.",
+        "review_status": "needs_review",
+        "stix_id": "attack-pattern--840a987a-99bd-4a80-a5c9-0cb2baa6cade",
+        "supporting_sigma_rule_ids": [
+          "03cc0c25-389f-4bf8-b48d-11878079f1ca",
+          "cc7abbd0-762b-41e3-8a26-57ad50d2eea3"
+        ]
+      },
+      "evidence_ids": [
+        "evidence-b07a5ff4763e629715e6",
+        "evidence-b31714b888d1489a380c"
+      ],
+      "source_references": [],
+      "dimensions": [
+        "evidence",
+        "mitre_technique",
+        "provenance"
+      ]
+    },
+    {
+      "node_id": "graph-node--99d1b2ec3d158fad4c946c90ed5d834e51d0f2360720f81e41e72ae788e24bb2",
+      "node_type": "evidence",
+      "label": "mshta.exe spawned powershell.exe",
+      "status": "observed",
+      "source": {
+        "object_type": "evidence",
+        "object_id": "evidence-b31714b888d1489a380c",
+        "json_pointer": "/evidence/1"
+      },
+      "attributes": {
+        "evidence_type": "process_creation",
+        "observations": [
+          {
+            "event_id": "4688",
+            "provider": "Microsoft-Windows-Security-Auditing",
+            "raw_record_ref": "jsonl:line:30",
+            "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json",
+            "timestamp": "2020-10-22T02:58:00.462000Z"
+          },
+          {
+            "event_id": "1",
+            "provider": "Microsoft-Windows-Sysmon",
+            "raw_record_ref": "jsonl:line:398",
+            "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json",
+            "timestamp": "2020-10-22T02:58:00.489000Z"
+          }
+        ],
+        "summary": "mshta.exe spawned powershell.exe",
+        "source_observations": [
+          {
+            "original_fields": {
+              "@timestamp": "2020-10-22T02:58:00.462Z",
+              "Channel": "Security",
+              "CommandLine": "\"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\" -noexit -command Get-Service sysmon",
+              "EventID": 4688,
+              "Hostname": "WORKSTATION5",
+              "NewProcessId": "0x2564",
+              "NewProcessName": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+              "ParentProcessName": "C:\\Windows\\System32\\mshta.exe",
+              "ProcessId": "0x2ae4",
+              "SourceName": "Microsoft-Windows-Security-Auditing",
+              "SubjectDomainName": "WORKSTATION5",
+              "SubjectUserName": "wardog",
+              "TimeCreated": "2020-10-22T02:58:00.462Z"
+            },
+            "raw_record_ref": "jsonl:line:30",
+            "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json"
+          },
+          {
+            "original_fields": {
+              "@timestamp": "2020-10-22T02:58:00.489Z",
+              "Channel": "Microsoft-Windows-Sysmon/Operational",
+              "CommandLine": "\"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\" -noexit -command Get-Service sysmon",
+              "EventID": 1,
+              "Hostname": "WORKSTATION5",
+              "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+              "OriginalFileName": "PowerShell.EXE",
+              "ParentCommandLine": "mshta  vbscript:Execute(\"CreateObject(\"\"Wscript.Shell\"\").Run \"\"powershell -noexit -command Get-Service sysmon\"\":close\")",
+              "ParentImage": "C:\\Windows\\System32\\mshta.exe",
+              "ParentProcessGuid": "{39e4a257-2d77-5f91-6b13-000000000700}",
+              "ParentProcessId": "10980",
+              "ProcessGuid": "{39e4a257-2d78-5f91-6c13-000000000700}",
+              "ProcessId": "9572",
+              "SourceName": "Microsoft-Windows-Sysmon",
+              "TimeCreated": "2020-10-22T02:58:00.489Z",
+              "User": "WORKSTATION5\\wardog",
+              "UtcTime": "2020-10-22 06:58:00.462"
+            },
+            "raw_record_ref": "jsonl:line:398",
+            "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json"
+          }
+        ]
+      },
+      "evidence_ids": [
+        "evidence-b31714b888d1489a380c"
+      ],
+      "source_references": [
+        {
+          "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json",
+          "raw_record_ref": "jsonl:line:30"
+        },
+        {
+          "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json",
+          "raw_record_ref": "jsonl:line:398"
+        }
+      ],
+      "dimensions": [
+        "evidence",
+        "provenance"
+      ]
+    },
+    {
+      "node_id": "graph-node--a0ff80eb0a2f3303f843f004ae81f44a3b6818229cdfc7006b245754cd3dfc76",
+      "node_type": "cti_report",
+      "label": "Mshta | Red Canary Threat Detection Report",
+      "status": "candidate",
+      "source": {
+        "object_type": "entity",
+        "object_id": "cti-8fe610b370b6b4165690",
+        "json_pointer": "/entities/5"
+      },
+      "attributes": {
+        "entity_type": "cti_report",
+        "name": "Mshta | Red Canary Threat Detection Report",
+        "attributes": {
+          "evidence_layer": "cti_context",
+          "source_type": "analyst_comparison",
+          "source_id": "redcanary-mshta",
+          "text": "Use this external detection lead to investigate process lineage; assess the local command and telemetry independently. The lead does not prove local download, C2 or compromise.",
+          "title": "Mshta | Red Canary Threat Detection Report",
+          "publisher": "Project analyst",
+          "url": "https://redcanary.com/threat-detection-report/techniques/mshta/",
+          "publication_date": "2021-03-18T16:58:29+00:00",
+          "accessed_at": "2026-10-30T09:07:42.344843+00:00",
+          "snapshot_sha256": "fd1854324c1b9d65926b700f2c12c0b010b42eed49624f7129a533a34f9e778b",
+          "citation": {
+            "source_id": "redcanary-mshta",
+            "url": "https://redcanary.com/threat-detection-report/techniques/mshta/",
+            "section": "Detection opportunities / MSHTA spawning from suspect processes",
+            "snapshot_path": "../../../../offline/requirements_gap_20261030_v1/cti_sources/redcanary-mshta.html",
+            "snapshot_sha256": "fd1854324c1b9d65926b700f2c12c0b010b42eed49624f7129a533a34f9e778b",
+            "text_path": "redcanary-mshta.txt",
+            "text_sha256": "291be254c4da5dfd87032c42df0a587d36ca8f93371416fbae40d44819f93691",
+            "char_start": 12031,
+            "char_end": 12170,
+            "line": 391,
+            "anchor": "mshta.exe spawning powershell.exe or cmd.exe can be a good indicator of malice. The following pseudo-detector offers a good starting point:",
+            "offset_unit": "Unicode code points in extracted UTF-8 text; end exclusive"
+          },
+          "source_references": [
+            {
+              "source_file": "redcanary-mshta",
+              "raw_record_ref": "text:chars:12031:12170"
+            }
+          ],
+          "scope": "Project analyst interpretation, not publisher text, not observed host telemetry; cannot establish local actor attribution, compromise or C2.",
+          "corpus_path": "outputs/integrated/20261102_cti_portable_v7/cti/mshta-powershell/cti_corpus.json",
+          "corpus_sha256": "6bc354c86de8f292287faa58a274640d6e59edb89475199af584744e1392d380",
+          "content_origin": "project_analyst_comparison",
+          "analyst_comparison": "Use this external detection lead to investigate process lineage; assess the local command and telemetry independently. The lead does not prove local download, C2 or compromise.",
+          "attribution": "Project analyst",
+          "citation_role": "background_only_not_publisher_attribution",
+          "source_publisher": "Red Canary"
+        }
+      },
+      "evidence_ids": [],
+      "source_references": [
+        {
+          "source_file": "redcanary-mshta",
+          "raw_record_ref": "text:chars:12031:12170"
+        }
+      ],
+      "dimensions": [
+        "entity",
+        "provenance"
+      ]
+    },
+    {
+      "node_id": "graph-node--a28f915e10fb34eee617f4291a3bbc1e85914a485dd26cf5b9efc08cc3ecc624",
+      "node_type": "entity",
+      "label": "cmd.exe",
+      "status": "observed",
+      "source": {
+        "object_type": "entity",
+        "object_id": "process-7c96a17eb66f2831da61",
+        "json_pointer": "/entities/0"
+      },
+      "attributes": {
+        "attributes": {
+          "host": "WORKSTATION5",
+          "process_guid": "{39e4a257-2d59-5f91-6813-000000000700}",
+          "process_id": "5888",
+          "process_name": "cmd.exe"
+        },
+        "entity_type": "process",
+        "name": "cmd.exe"
+      },
+      "evidence_ids": [
+        "evidence-b07a5ff4763e629715e6"
+      ],
+      "source_references": [],
+      "dimensions": [
+        "entity",
+        "provenance"
+      ]
+    },
+    {
+      "node_id": "graph-node--a3b78588d0cd717a97448e380b478d5129f381d028c3e88ad15c5dfb94ed799c",
+      "node_type": "limitation",
+      "label": "The file also contains conhost creation, event-log clearing and temporary-file deletion telemetry outside this two-group core. These must not be described as globally absent or automatically classified as a destructive payload.",
+      "status": "reviewable",
+      "source": {
+        "object_type": "limitation",
+        "object_id": null,
+        "json_pointer": "/summary/limitations/6"
+      },
+      "attributes": {},
+      "evidence_ids": [],
+      "source_references": [],
+      "dimensions": [
+        "provenance"
+      ]
+    },
+    {
+      "node_id": "graph-node--abe6d8dbef7a602ae786498aa6a87b4320ca85a643595ae4253e860931c89416",
+      "node_type": "limitation",
+      "label": "Canonical timestamps follow TimeCreated; Sysmon UtcTime differs by about four hours and its timezone is unresolved.",
+      "status": "reviewable",
+      "source": {
+        "object_type": "limitation",
+        "object_id": null,
+        "json_pointer": "/summary/limitations/5"
+      },
+      "attributes": {},
+      "evidence_ids": [],
+      "source_references": [],
+      "dimensions": [
+        "provenance"
+      ]
+    },
+    {
+      "node_id": "graph-node--b6b5fd7d652f15faac02130975cec5e99b0ce38ea6d078c359b6912ca9732945",
+      "node_type": "sigma_finding",
+      "label": "Suspicious MSHTA Child Process",
+      "status": "candidate",
+      "source": {
+        "object_type": "sigma_finding",
+        "object_id": "sigma-finding--88654ed2fa69e533969b800d5a29dc0a7d7ad59987f300f4f554de638b9a4f7a",
+        "json_pointer": "/sigma_findings/0"
+      },
+      "attributes": {
+        "behavior_match_ids": [
+          "sigma-behavior-match-700c4a1a1fbe62aeb900"
+        ],
+        "caveats": [
+          "known_unmapped_field: OriginalFileName"
+        ],
+        "observation_match_ids": [
+          "sigma-observation-match-6245df513098047dcef2",
+          "sigma-observation-match-868f2ef62739c4c74573"
+        ],
+        "rule_id": "03cc0c25-389f-4bf8-b48d-11878079f1ca",
+        "rule_sha256": "8a32fc6f6030da48f4e22446d7446ffb85b7801158ec204e4659a657ecc44380",
+        "rule_title": "Suspicious MSHTA Child Process"
+      },
+      "evidence_ids": [
+        "evidence-b31714b888d1489a380c"
+      ],
+      "source_references": [
+        {
+          "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json",
+          "raw_record_ref": "jsonl:line:30"
+        },
+        {
+          "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json",
+          "raw_record_ref": "jsonl:line:398"
+        }
+      ],
+      "dimensions": [
+        "evidence",
+        "provenance",
+        "sigma_rule"
+      ]
+    },
+    {
+      "node_id": "graph-node--b855832d1040b46f8cdafb6f42a04312028f5051809558ff08dd935c896b884e",
+      "node_type": "entity",
+      "label": "3.3.2 Kịch bản thực thi PowerShell nghi vấn",
+      "status": "candidate",
+      "source": {
+        "object_type": "entity",
+        "object_id": "knowledge-topic-mshta-powershell",
+        "json_pointer": "/entities/3"
+      },
+      "attributes": {
+        "entity_type": "behavior_concept",
+        "name": "3.3.2 Kịch bản thực thi PowerShell nghi vấn",
+        "attributes": {
+          "evidence_layer": "cti_context",
+          "source_type": "project_behavior_concept"
+        }
+      },
+      "evidence_ids": [],
+      "source_references": [],
+      "dimensions": [
+        "entity",
+        "provenance"
+      ]
+    },
+    {
+      "node_id": "graph-node--c8d04057d4ec10a5975da22b178334fc2f4f56d9a9e890242cd774a4b92b8352",
+      "node_type": "limitation",
+      "label": "The two Sysmon observations carry upstream timestamp_conflict review issues.",
+      "status": "reviewable",
+      "source": {
+        "object_type": "limitation",
+        "object_id": null,
+        "json_pointer": "/summary/limitations/1"
+      },
+      "attributes": {},
+      "evidence_ids": [],
+      "source_references": [],
+      "dimensions": [
+        "provenance"
+      ]
+    },
+    {
+      "node_id": "graph-node--cb24e86485f5ea4bf3096cae0b0d09790076d8355b6309ecfc02f6a7107edd35",
+      "node_type": "scenario",
+      "label": "3.3.2 Kịch bản thực thi PowerShell nghi vấn",
+      "status": "reviewable",
+      "source": {
+        "object_type": "scenario",
+        "object_id": null,
+        "json_pointer": "/scenario"
+      },
+      "attributes": {
+        "analysis_status": "draft_reviewable",
+        "description": "Reviewable MSHTA-PowerShell scenario in which cmd.exe launches mshta.exe and mshta.exe launches powershell.exe with -noexit -command Get-Service sysmon. Process creation records establish the launch command, not successful cmdlet completion or a finalized attack determination.",
+        "time_window": {
+          "end": "2020-10-22T02:58:00.489000Z",
+          "start": "2020-10-22T02:57:59.856000Z"
+        }
+      },
+      "evidence_ids": [],
+      "source_references": [],
+      "dimensions": [
+        "provenance"
+      ]
+    },
+    {
+      "node_id": "graph-node--cfe937b1c0ad152c49a19f0edaeb42cbca9c8da42682d806a63e31c8a4ed5f36",
+      "node_type": "limitation",
+      "label": "MITRE assessments remain candidates and require human review.",
+      "status": "reviewable",
+      "source": {
+        "object_type": "limitation",
+        "object_id": null,
+        "json_pointer": "/summary/limitations/3"
+      },
+      "attributes": {},
+      "evidence_ids": [],
+      "source_references": [],
+      "dimensions": [
+        "provenance"
+      ]
+    },
+    {
+      "node_id": "graph-node--d7330a275051874c35277c981d2d9d18b5614074c95d0429a4e6bc3686f0ce9d",
+      "node_type": "cti_report",
+      "label": "Mshta | Red Canary Threat Detection Report",
+      "status": "candidate",
+      "source": {
+        "object_type": "entity",
+        "object_id": "cti-adbd396e18c270cd67a6",
+        "json_pointer": "/entities/4"
+      },
+      "attributes": {
+        "entity_type": "cti_report",
+        "name": "Mshta | Red Canary Threat Detection Report",
+        "attributes": {
+          "evidence_layer": "cti_context",
+          "source_type": "cti_report",
+          "source_id": "redcanary-mshta",
+          "text": "Red Canary identifies mshta.exe spawning powershell.exe or cmd.exe as a potential indicator of malice and a starting point for detection.",
+          "title": "Mshta | Red Canary Threat Detection Report",
+          "publisher": "Red Canary",
+          "url": "https://redcanary.com/threat-detection-report/techniques/mshta/",
+          "publication_date": "2021-03-18T16:58:29+00:00",
+          "accessed_at": "2026-10-30T09:07:42.344843+00:00",
+          "snapshot_sha256": "fd1854324c1b9d65926b700f2c12c0b010b42eed49624f7129a533a34f9e778b",
+          "citation": {
+            "source_id": "redcanary-mshta",
+            "url": "https://redcanary.com/threat-detection-report/techniques/mshta/",
+            "section": "Detection opportunities / MSHTA spawning from suspect processes",
+            "snapshot_path": "../../../../offline/requirements_gap_20261030_v1/cti_sources/redcanary-mshta.html",
+            "snapshot_sha256": "fd1854324c1b9d65926b700f2c12c0b010b42eed49624f7129a533a34f9e778b",
+            "text_path": "redcanary-mshta.txt",
+            "text_sha256": "291be254c4da5dfd87032c42df0a587d36ca8f93371416fbae40d44819f93691",
+            "char_start": 12031,
+            "char_end": 12170,
+            "line": 391,
+            "anchor": "mshta.exe spawning powershell.exe or cmd.exe can be a good indicator of malice. The following pseudo-detector offers a good starting point:",
+            "offset_unit": "Unicode code points in extracted UTF-8 text; end exclusive"
+          },
+          "source_references": [
+            {
+              "source_file": "redcanary-mshta",
+              "raw_record_ref": "text:chars:12031:12170"
+            }
+          ],
+          "scope": "External publisher context. Paraphrase is analyst wording, not a verbatim quote; only publisher_excerpt is verbatim. Does not establish local telemetry or compromise.",
+          "corpus_path": "outputs/integrated/20261102_cti_portable_v7/cti/mshta-powershell/cti_corpus.json",
+          "corpus_sha256": "6bc354c86de8f292287faa58a274640d6e59edb89475199af584744e1392d380",
+          "content_origin": "publisher_paraphrase",
+          "publisher_excerpt": "mshta.exe spawning powershell.exe or cmd.exe can be a good indicator of malice. The following pseudo-detector offers a good starting point:",
+          "publisher_paraphrase": "Red Canary identifies mshta.exe spawning powershell.exe or cmd.exe as a potential indicator of malice and a starting point for detection.",
+          "attribution": "Red Canary",
+          "citation_role": "publisher_source",
+          "source_publisher": "Red Canary"
+        }
+      },
+      "evidence_ids": [],
+      "source_references": [
+        {
+          "source_file": "redcanary-mshta",
+          "raw_record_ref": "text:chars:12031:12170"
+        }
+      ],
+      "dimensions": [
+        "entity",
+        "provenance"
+      ]
+    },
+    {
+      "node_id": "graph-node--d9675b016298cdd2ad404df4acd7e46d6b58c8a946fe5bf6ae8a9e66300df5ed",
+      "node_type": "sigma_finding",
+      "label": "MSHTA Execution with Suspicious File Extensions",
+      "status": "candidate",
+      "source": {
+        "object_type": "sigma_finding",
+        "object_id": "sigma-finding--631416bc85bd054493d7b849979dcedf81d938825832c4cb699f09700b2f09e5",
+        "json_pointer": "/sigma_findings/1"
+      },
+      "attributes": {
+        "behavior_match_ids": [
+          "sigma-behavior-match-5a1390bbe64d27403b77"
+        ],
+        "caveats": [
+          "known_unmapped_field: OriginalFileName"
+        ],
+        "observation_match_ids": [
+          "sigma-observation-match-1e220a1f400a4618fee0",
+          "sigma-observation-match-47f7c1ba395dc32b9350"
+        ],
+        "rule_id": "cc7abbd0-762b-41e3-8a26-57ad50d2eea3",
+        "rule_sha256": "67d76c24526db9dadbacb2086115a62b5f6364a39a0d8197de96d6fb738b9774",
+        "rule_title": "MSHTA Execution with Suspicious File Extensions"
+      },
+      "evidence_ids": [
+        "evidence-b07a5ff4763e629715e6"
+      ],
+      "source_references": [
+        {
+          "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json",
+          "raw_record_ref": "jsonl:line:275"
+        },
+        {
+          "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json",
+          "raw_record_ref": "jsonl:line:4"
+        }
+      ],
+      "dimensions": [
+        "evidence",
+        "provenance",
+        "sigma_rule"
+      ]
+    },
+    {
+      "node_id": "graph-node--fe4f14b84215f8d1542a7d4e3f0926d6953ce964ef7c3cf9e77c9688da5ee8a8",
+      "node_type": "cti_report",
+      "label": "Mshta | Red Canary Threat Detection Report",
+      "status": "candidate",
+      "source": {
+        "object_type": "entity",
+        "object_id": "cti-424f49d5e6ec3315cb80",
+        "json_pointer": "/entities/7"
+      },
+      "attributes": {
+        "entity_type": "cti_report",
+        "name": "Mshta | Red Canary Threat Detection Report",
+        "attributes": {
+          "evidence_layer": "cti_context",
+          "source_type": "analyst_comparison",
+          "source_id": "redcanary-mshta",
+          "text": "Process-creation visibility is distinct from successful command completion, output and service state in a local investigation.",
+          "title": "Mshta | Red Canary Threat Detection Report",
+          "publisher": "Project analyst",
+          "url": "https://redcanary.com/threat-detection-report/techniques/mshta/",
+          "publication_date": "2021-03-18T16:58:29+00:00",
+          "accessed_at": "2026-10-30T09:07:42.344843+00:00",
+          "snapshot_sha256": "fd1854324c1b9d65926b700f2c12c0b010b42eed49624f7129a533a34f9e778b",
+          "citation": {
+            "source_id": "redcanary-mshta",
+            "url": "https://redcanary.com/threat-detection-report/techniques/mshta/",
+            "section": "Visibility / Process and command-line monitoring",
+            "snapshot_path": "../../../../offline/requirements_gap_20261030_v1/cti_sources/redcanary-mshta.html",
+            "snapshot_sha256": "fd1854324c1b9d65926b700f2c12c0b010b42eed49624f7129a533a34f9e778b",
+            "text_path": "redcanary-mshta.txt",
+            "text_sha256": "291be254c4da5dfd87032c42df0a587d36ca8f93371416fbae40d44819f93691",
+            "char_start": 10991,
+            "char_end": 11372,
+            "line": 384,
+            "anchor": "Monitoring process execution along with command-line parameters offers defenders visibility into many behaviors associated with malicious abuse of Mshta. Similarly, process lineage is also helpful for detecting adversary use of Mshta. At a minimum, collect parent-child process relationships, and, if possible, consider collecting information about “grandparent” relationships too.",
+            "offset_unit": "Unicode code points in extracted UTF-8 text; end exclusive"
+          },
+          "source_references": [
+            {
+              "source_file": "redcanary-mshta",
+              "raw_record_ref": "text:chars:10991:11372"
+            }
+          ],
+          "scope": "Project analyst interpretation, not publisher text, not observed host telemetry; cannot establish local actor attribution, compromise or C2.",
+          "corpus_path": "outputs/integrated/20261102_cti_portable_v7/cti/mshta-powershell/cti_corpus.json",
+          "corpus_sha256": "6bc354c86de8f292287faa58a274640d6e59edb89475199af584744e1392d380",
+          "content_origin": "project_analyst_comparison",
+          "analyst_comparison": "Process-creation visibility is distinct from successful command completion, output and service state in a local investigation.",
+          "attribution": "Project analyst",
+          "citation_role": "background_only_not_publisher_attribution",
+          "source_publisher": "Red Canary"
+        }
+      },
+      "evidence_ids": [],
+      "source_references": [
+        {
+          "source_file": "redcanary-mshta",
+          "raw_record_ref": "text:chars:10991:11372"
+        }
+      ],
+      "dimensions": [
+        "entity",
+        "provenance"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "edge_id": "graph-edge--00df6aba77340b2bdb884907f2b9499441d59ff53884f767e9d8bee21ede4b71",
+      "edge_type": "supports",
+      "source_node_id": "graph-node--99d1b2ec3d158fad4c946c90ed5d834e51d0f2360720f81e41e72ae788e24bb2",
+      "target_node_id": "graph-node--987d34cc38fa8a42104b62d681da414687181e1a6f7dcaee82e2f882b1b3595c",
+      "directed": true,
+      "status": "candidate",
+      "source": {
+        "object_type": "mitre_assessment",
+        "object_id": "mitre-assessment--09f12e591ccdc088e57b01d09c528efead966e0f723ae9a0be6596b78a9c78f1",
+        "json_pointer": "/mitre_assessments/2/supporting_evidence_ids/1"
+      },
+      "supporting_node_ids": [],
+      "evidence_ids": [
+        "evidence-b31714b888d1489a380c"
+      ],
+      "source_references": [],
+      "attributes": {},
+      "dimensions": [
+        "evidence",
+        "mitre_technique",
+        "provenance"
+      ]
+    },
+    {
+      "edge_id": "graph-edge--0b125347a6bdb87da2e4aca96006b59677db2153bcba116bbad2b50e49cabf87",
+      "edge_type": "supports_assessment",
+      "source_node_id": "graph-node--b6b5fd7d652f15faac02130975cec5e99b0ce38ea6d078c359b6912ca9732945",
+      "target_node_id": "graph-node--987d34cc38fa8a42104b62d681da414687181e1a6f7dcaee82e2f882b1b3595c",
+      "directed": true,
+      "status": "candidate",
+      "source": {
+        "object_type": "mitre_assessment",
+        "object_id": "mitre-assessment--09f12e591ccdc088e57b01d09c528efead966e0f723ae9a0be6596b78a9c78f1",
+        "json_pointer": "/mitre_assessments/2/supporting_sigma_rule_ids/0"
+      },
+      "supporting_node_ids": [
+        "graph-node--731463ebe4ba5265641ebc144761d3d0ad3d99741bdb315615fc05c306d3e1e7",
+        "graph-node--99d1b2ec3d158fad4c946c90ed5d834e51d0f2360720f81e41e72ae788e24bb2"
+      ],
+      "evidence_ids": [
+        "evidence-b07a5ff4763e629715e6",
+        "evidence-b31714b888d1489a380c"
+      ],
+      "source_references": [],
+      "attributes": {},
+      "dimensions": [
+        "evidence",
+        "mitre_technique",
+        "provenance"
+      ]
+    },
+    {
+      "edge_id": "graph-edge--18a6a24e4fb1be2b1893f47845f08c35b8e1cec2b525724ce2848b400417ae7c",
+      "edge_type": "supports_assessment",
+      "source_node_id": "graph-node--d9675b016298cdd2ad404df4acd7e46d6b58c8a946fe5bf6ae8a9e66300df5ed",
+      "target_node_id": "graph-node--47257c3660c6cd968cd01f05142a5d97757d6bde4630b48abba691f18512d8e5",
+      "directed": true,
+      "status": "candidate",
+      "source": {
+        "object_type": "mitre_assessment",
+        "object_id": "mitre-assessment--4627bedc17126e48369fd005997f3873c17edecfbb34d9a111c6c1f26a1d61c9",
+        "json_pointer": "/mitre_assessments/0/supporting_sigma_rule_ids/0"
+      },
+      "supporting_node_ids": [
+        "graph-node--731463ebe4ba5265641ebc144761d3d0ad3d99741bdb315615fc05c306d3e1e7"
+      ],
+      "evidence_ids": [
+        "evidence-b07a5ff4763e629715e6"
+      ],
+      "source_references": [],
+      "attributes": {},
+      "dimensions": [
+        "evidence",
+        "mitre_technique",
+        "provenance"
+      ]
+    },
+    {
+      "edge_id": "graph-edge--1b3d938f7b486a1698989a7b10e2c8f3e0f24cebf1444122d49d229cdc996863",
+      "edge_type": "provides_technical_context_for",
+      "source_node_id": "graph-node--d7330a275051874c35277c981d2d9d18b5614074c95d0429a4e6bc3686f0ce9d",
+      "target_node_id": "graph-node--b855832d1040b46f8cdafb6f42a04312028f5051809558ff08dd935c896b884e",
+      "directed": true,
+      "status": "candidate",
+      "source": {
+        "object_type": "relationship",
+        "object_id": "context-cti-adbd396e18c270cd67a6",
+        "json_pointer": "/relationships/2"
+      },
+      "supporting_node_ids": [],
+      "evidence_ids": [],
+      "source_references": [],
+      "attributes": {
+        "evidence_layer": "cti_context",
+        "source_type": "cti_report",
+        "source_id": "redcanary-mshta",
+        "text": "Red Canary identifies mshta.exe spawning powershell.exe or cmd.exe as a potential indicator of malice and a starting point for detection.",
+        "title": "Mshta | Red Canary Threat Detection Report",
+        "publisher": "Red Canary",
+        "url": "https://redcanary.com/threat-detection-report/techniques/mshta/",
+        "publication_date": "2021-03-18T16:58:29+00:00",
+        "accessed_at": "2026-10-30T09:07:42.344843+00:00",
+        "snapshot_sha256": "fd1854324c1b9d65926b700f2c12c0b010b42eed49624f7129a533a34f9e778b",
+        "citation": {
+          "source_id": "redcanary-mshta",
+          "url": "https://redcanary.com/threat-detection-report/techniques/mshta/",
+          "section": "Detection opportunities / MSHTA spawning from suspect processes",
+          "snapshot_path": "../../../../offline/requirements_gap_20261030_v1/cti_sources/redcanary-mshta.html",
+          "snapshot_sha256": "fd1854324c1b9d65926b700f2c12c0b010b42eed49624f7129a533a34f9e778b",
+          "text_path": "redcanary-mshta.txt",
+          "text_sha256": "291be254c4da5dfd87032c42df0a587d36ca8f93371416fbae40d44819f93691",
+          "char_start": 12031,
+          "char_end": 12170,
+          "line": 391,
+          "anchor": "mshta.exe spawning powershell.exe or cmd.exe can be a good indicator of malice. The following pseudo-detector offers a good starting point:",
+          "offset_unit": "Unicode code points in extracted UTF-8 text; end exclusive"
+        },
+        "source_references": [
+          {
+            "source_file": "redcanary-mshta",
+            "raw_record_ref": "text:chars:12031:12170"
+          }
+        ],
+        "scope": "External publisher context. Paraphrase is analyst wording, not a verbatim quote; only publisher_excerpt is verbatim. Does not establish local telemetry or compromise.",
+        "corpus_path": "outputs/integrated/20261102_cti_portable_v7/cti/mshta-powershell/cti_corpus.json",
+        "corpus_sha256": "6bc354c86de8f292287faa58a274640d6e59edb89475199af584744e1392d380",
+        "content_origin": "publisher_paraphrase",
+        "publisher_excerpt": "mshta.exe spawning powershell.exe or cmd.exe can be a good indicator of malice. The following pseudo-detector offers a good starting point:",
+        "publisher_paraphrase": "Red Canary identifies mshta.exe spawning powershell.exe or cmd.exe as a potential indicator of malice and a starting point for detection.",
+        "attribution": "Red Canary",
+        "citation_role": "publisher_source",
+        "source_publisher": "Red Canary"
+      },
+      "dimensions": [
+        "evidence",
+        "provenance"
+      ]
+    },
+    {
+      "edge_id": "graph-edge--1da9302d51008d5d6f3605a20ecf968e69cfa1b13d43b02022ecdf98a838662a",
+      "edge_type": "supports",
+      "source_node_id": "graph-node--731463ebe4ba5265641ebc144761d3d0ad3d99741bdb315615fc05c306d3e1e7",
+      "target_node_id": "graph-node--d9675b016298cdd2ad404df4acd7e46d6b58c8a946fe5bf6ae8a9e66300df5ed",
+      "directed": true,
+      "status": "candidate",
+      "source": {
+        "object_type": "sigma_finding",
+        "object_id": "sigma-finding--631416bc85bd054493d7b849979dcedf81d938825832c4cb699f09700b2f09e5",
+        "json_pointer": "/sigma_findings/1/evidence_ids/0"
+      },
+      "supporting_node_ids": [],
+      "evidence_ids": [
+        "evidence-b07a5ff4763e629715e6"
+      ],
+      "source_references": [
+        {
+          "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json",
+          "raw_record_ref": "jsonl:line:275"
+        },
+        {
+          "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json",
+          "raw_record_ref": "jsonl:line:4"
+        }
+      ],
+      "attributes": {},
+      "dimensions": [
+        "evidence",
+        "provenance",
+        "sigma_rule"
+      ]
+    },
+    {
+      "edge_id": "graph-edge--20d4d689ea4a6af0b490da6d0ac54852269f30ac175c9fedb9f49fc2fca9dd72",
+      "edge_type": "fact_object",
+      "source_node_id": "graph-node--20d644848d2ad2423f8b8b2c687bc68437fbba3297d473e4757483e5c72c0540",
+      "target_node_id": "graph-node--1dc506d0ebaba36a9b30744ff79cd6a42595cd7f2a95247ce8783735a0d898eb",
+      "directed": true,
+      "status": "observed",
+      "source": {
+        "object_type": "fact",
+        "object_id": "fact-cmd-spawns-mshta",
+        "json_pointer": "/facts/0/object"
+      },
+      "supporting_node_ids": [
+        "graph-node--731463ebe4ba5265641ebc144761d3d0ad3d99741bdb315615fc05c306d3e1e7"
+      ],
+      "evidence_ids": [
+        "evidence-b07a5ff4763e629715e6"
+      ],
+      "source_references": [
+        {
+          "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json",
+          "raw_record_ref": "jsonl:line:275"
+        },
+        {
+          "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json",
+          "raw_record_ref": "jsonl:line:4"
+        }
+      ],
+      "attributes": {
+        "source_object_id": "fact-cmd-spawns-mshta",
+        "field_location": "returned fact node attributes"
+      },
+      "dimensions": [
+        "evidence",
+        "provenance"
+      ]
+    },
+    {
+      "edge_id": "graph-edge--24f07b764940dc9c32b8dead8411b2be38dfd1fa27fb2274123effdc0bdd1043",
+      "edge_type": "process_spawn",
+      "source_node_id": "graph-node--a28f915e10fb34eee617f4291a3bbc1e85914a485dd26cf5b9efc08cc3ecc624",
+      "target_node_id": "graph-node--1dc506d0ebaba36a9b30744ff79cd6a42595cd7f2a95247ce8783735a0d898eb",
+      "directed": true,
+      "status": "observed",
+      "source": {
+        "object_type": "relationship",
+        "object_id": "relationship-9e41d0cc407e7878b2d8",
+        "json_pointer": "/relationships/1"
+      },
+      "supporting_node_ids": [
+        "graph-node--731463ebe4ba5265641ebc144761d3d0ad3d99741bdb315615fc05c306d3e1e7"
+      ],
+      "evidence_ids": [
+        "evidence-b07a5ff4763e629715e6"
+      ],
+      "source_references": [
+        {
+          "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json",
+          "raw_record_ref": "jsonl:line:275"
+        },
+        {
+          "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json",
+          "raw_record_ref": "jsonl:line:4"
+        }
+      ],
+      "attributes": {},
+      "dimensions": [
+        "evidence",
+        "provenance"
+      ]
+    },
+    {
+      "edge_id": "graph-edge--2912d9e4bda08c3e922165f5422dbcb594b09ce77111a8c2921d12cf5e099ca4",
+      "edge_type": "supports",
+      "source_node_id": "graph-node--99d1b2ec3d158fad4c946c90ed5d834e51d0f2360720f81e41e72ae788e24bb2",
+      "target_node_id": "graph-node--566b93b65d87f146ff0f676dbc6cf6226bbb70c61a4c8a6bd5d7831a95cef434",
+      "directed": true,
+      "status": "observed",
+      "source": {
+        "object_type": "entity",
+        "object_id": "process-9f7ceeecb4cd61358ab7",
+        "json_pointer": "/entities/2/evidence_ids/0"
+      },
+      "supporting_node_ids": [],
+      "evidence_ids": [
+        "evidence-b31714b888d1489a380c"
+      ],
+      "source_references": [],
+      "attributes": {},
+      "dimensions": [
+        "entity",
+        "provenance"
+      ]
+    },
+    {
+      "edge_id": "graph-edge--2ee8c774f70b94dd36477cac2631964eedafd85a1b9a3e4dda51c429696aab42",
+      "edge_type": "supports",
+      "source_node_id": "graph-node--99d1b2ec3d158fad4c946c90ed5d834e51d0f2360720f81e41e72ae788e24bb2",
+      "target_node_id": "graph-node--b6b5fd7d652f15faac02130975cec5e99b0ce38ea6d078c359b6912ca9732945",
+      "directed": true,
+      "status": "candidate",
+      "source": {
+        "object_type": "sigma_finding",
+        "object_id": "sigma-finding--88654ed2fa69e533969b800d5a29dc0a7d7ad59987f300f4f554de638b9a4f7a",
+        "json_pointer": "/sigma_findings/0/evidence_ids/0"
+      },
+      "supporting_node_ids": [],
+      "evidence_ids": [
+        "evidence-b31714b888d1489a380c"
+      ],
+      "source_references": [
+        {
+          "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json",
+          "raw_record_ref": "jsonl:line:30"
+        },
+        {
+          "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json",
+          "raw_record_ref": "jsonl:line:398"
+        }
+      ],
+      "attributes": {},
+      "dimensions": [
+        "evidence",
+        "provenance",
+        "sigma_rule"
+      ]
+    },
+    {
+      "edge_id": "graph-edge--63c9daa6762a57d40d0bf4b42ac37647b0b38cfbcaed386914ceab3c7497292d",
+      "edge_type": "fact_object",
+      "source_node_id": "graph-node--5de7c6b37416d9b4a9e1d38dbca3b6e637c610654f3aeeb7bf9cd7a2edeaa121",
+      "target_node_id": "graph-node--566b93b65d87f146ff0f676dbc6cf6226bbb70c61a4c8a6bd5d7831a95cef434",
+      "directed": true,
+      "status": "observed",
+      "source": {
+        "object_type": "fact",
+        "object_id": "fact-mshta-spawns-powershell",
+        "json_pointer": "/facts/1/object"
+      },
+      "supporting_node_ids": [
+        "graph-node--99d1b2ec3d158fad4c946c90ed5d834e51d0f2360720f81e41e72ae788e24bb2"
+      ],
+      "evidence_ids": [
+        "evidence-b31714b888d1489a380c"
+      ],
+      "source_references": [
+        {
+          "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json",
+          "raw_record_ref": "jsonl:line:30"
+        },
+        {
+          "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json",
+          "raw_record_ref": "jsonl:line:398"
+        }
+      ],
+      "attributes": {
+        "source_object_id": "fact-mshta-spawns-powershell",
+        "field_location": "returned fact node attributes"
+      },
+      "dimensions": [
+        "evidence",
+        "provenance"
+      ]
+    },
+    {
+      "edge_id": "graph-edge--7b7e21292c36912814faed54be0b1832bc0f02a3aa2bcf5a9ecb4ad827bb2078",
+      "edge_type": "supports_assessment",
+      "source_node_id": "graph-node--d9675b016298cdd2ad404df4acd7e46d6b58c8a946fe5bf6ae8a9e66300df5ed",
+      "target_node_id": "graph-node--30ba58cb71e8f07942f0fd56bc47478be54949325edd9c09f4c7cfe8366cf8b1",
+      "directed": true,
+      "status": "candidate",
+      "source": {
+        "object_type": "mitre_assessment",
+        "object_id": "mitre-assessment--e78c269b283e5bca17c136194d9a2a18bd8c1cf0fe37726dd2c02717ea74d63f",
+        "json_pointer": "/mitre_assessments/1/supporting_sigma_rule_ids/0"
+      },
+      "supporting_node_ids": [],
+      "evidence_ids": [],
+      "source_references": [],
+      "attributes": {},
+      "dimensions": [
+        "evidence",
+        "mitre_technique",
+        "provenance"
+      ]
+    },
+    {
+      "edge_id": "graph-edge--7fe2927d7848b86c334d56f24c87409e01cfaa13818cabbbb8ee93d0e79b6f8d",
+      "edge_type": "fact_subject",
+      "source_node_id": "graph-node--1dc506d0ebaba36a9b30744ff79cd6a42595cd7f2a95247ce8783735a0d898eb",
+      "target_node_id": "graph-node--5de7c6b37416d9b4a9e1d38dbca3b6e637c610654f3aeeb7bf9cd7a2edeaa121",
+      "directed": true,
+      "status": "observed",
+      "source": {
+        "object_type": "fact",
+        "object_id": "fact-mshta-spawns-powershell",
+        "json_pointer": "/facts/1/subject"
+      },
+      "supporting_node_ids": [
+        "graph-node--99d1b2ec3d158fad4c946c90ed5d834e51d0f2360720f81e41e72ae788e24bb2"
+      ],
+      "evidence_ids": [
+        "evidence-b31714b888d1489a380c"
+      ],
+      "source_references": [
+        {
+          "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json",
+          "raw_record_ref": "jsonl:line:30"
+        },
+        {
+          "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json",
+          "raw_record_ref": "jsonl:line:398"
+        }
+      ],
+      "attributes": {
+        "source_object_id": "fact-mshta-spawns-powershell",
+        "field_location": "returned fact node attributes"
+      },
+      "dimensions": [
+        "evidence",
+        "provenance"
+      ]
+    },
+    {
+      "edge_id": "graph-edge--87c15acdb40db63c6eebec3c35e83dd5d43daeab59f2661342ebca9c37c8d9e5",
+      "edge_type": "supports",
+      "source_node_id": "graph-node--731463ebe4ba5265641ebc144761d3d0ad3d99741bdb315615fc05c306d3e1e7",
+      "target_node_id": "graph-node--987d34cc38fa8a42104b62d681da414687181e1a6f7dcaee82e2f882b1b3595c",
+      "directed": true,
+      "status": "candidate",
+      "source": {
+        "object_type": "mitre_assessment",
+        "object_id": "mitre-assessment--09f12e591ccdc088e57b01d09c528efead966e0f723ae9a0be6596b78a9c78f1",
+        "json_pointer": "/mitre_assessments/2/supporting_evidence_ids/0"
+      },
+      "supporting_node_ids": [],
+      "evidence_ids": [
+        "evidence-b07a5ff4763e629715e6"
+      ],
+      "source_references": [],
+      "attributes": {},
+      "dimensions": [
+        "evidence",
+        "mitre_technique",
+        "provenance"
+      ]
+    },
+    {
+      "edge_id": "graph-edge--91b234c69539eddde9ef8d7e7a9ef46ca9987cf3644d2e5b7b634ffab3b8ce37",
+      "edge_type": "provides_technical_context_for",
+      "source_node_id": "graph-node--3736166582cccae6c95856ca78ffa08e8c263dd14c5638333d4a1dd3288090a5",
+      "target_node_id": "graph-node--b855832d1040b46f8cdafb6f42a04312028f5051809558ff08dd935c896b884e",
+      "directed": true,
+      "status": "candidate",
+      "source": {
+        "object_type": "relationship",
+        "object_id": "context-cti-21d321ee1fcec0c40565",
+        "json_pointer": "/relationships/4"
+      },
+      "supporting_node_ids": [],
+      "evidence_ids": [],
+      "source_references": [],
+      "attributes": {
+        "evidence_layer": "cti_context",
+        "source_type": "cti_report",
+        "source_id": "redcanary-mshta",
+        "text": "Red Canary recommends collecting parent-child process relationships, with grandparent relationships where possible, as useful visibility for detecting adversary use of MSHTA.",
+        "title": "Mshta | Red Canary Threat Detection Report",
+        "publisher": "Red Canary",
+        "url": "https://redcanary.com/threat-detection-report/techniques/mshta/",
+        "publication_date": "2021-03-18T16:58:29+00:00",
+        "accessed_at": "2026-10-30T09:07:42.344843+00:00",
+        "snapshot_sha256": "fd1854324c1b9d65926b700f2c12c0b010b42eed49624f7129a533a34f9e778b",
+        "citation": {
+          "source_id": "redcanary-mshta",
+          "url": "https://redcanary.com/threat-detection-report/techniques/mshta/",
+          "section": "Visibility / Process and command-line monitoring",
+          "snapshot_path": "../../../../offline/requirements_gap_20261030_v1/cti_sources/redcanary-mshta.html",
+          "snapshot_sha256": "fd1854324c1b9d65926b700f2c12c0b010b42eed49624f7129a533a34f9e778b",
+          "text_path": "redcanary-mshta.txt",
+          "text_sha256": "291be254c4da5dfd87032c42df0a587d36ca8f93371416fbae40d44819f93691",
+          "char_start": 10991,
+          "char_end": 11372,
+          "line": 384,
+          "anchor": "Monitoring process execution along with command-line parameters offers defenders visibility into many behaviors associated with malicious abuse of Mshta. Similarly, process lineage is also helpful for detecting adversary use of Mshta. At a minimum, collect parent-child process relationships, and, if possible, consider collecting information about “grandparent” relationships too.",
+          "offset_unit": "Unicode code points in extracted UTF-8 text; end exclusive"
+        },
+        "source_references": [
+          {
+            "source_file": "redcanary-mshta",
+            "raw_record_ref": "text:chars:10991:11372"
+          }
+        ],
+        "scope": "External publisher context. Paraphrase is analyst wording, not a verbatim quote; only publisher_excerpt is verbatim. Does not establish local telemetry or compromise.",
+        "corpus_path": "outputs/integrated/20261102_cti_portable_v7/cti/mshta-powershell/cti_corpus.json",
+        "corpus_sha256": "6bc354c86de8f292287faa58a274640d6e59edb89475199af584744e1392d380",
+        "content_origin": "publisher_paraphrase",
+        "publisher_excerpt": "Monitoring process execution along with command-line parameters offers defenders visibility into many behaviors associated with malicious abuse of Mshta. Similarly, process lineage is also helpful for detecting adversary use of Mshta. At a minimum, collect parent-child process relationships, and, if possible, consider collecting information about “grandparent” relationships too.",
+        "publisher_paraphrase": "Red Canary recommends collecting parent-child process relationships, with grandparent relationships where possible, as useful visibility for detecting adversary use of MSHTA.",
+        "attribution": "Red Canary",
+        "citation_role": "publisher_source",
+        "source_publisher": "Red Canary"
+      },
+      "dimensions": [
+        "evidence",
+        "provenance"
+      ]
+    },
+    {
+      "edge_id": "graph-edge--92411043b1d3e18d0cd66c78e614905caacd9e6f2be7a3d98c561d9f21889999",
+      "edge_type": "process_spawn",
+      "source_node_id": "graph-node--1dc506d0ebaba36a9b30744ff79cd6a42595cd7f2a95247ce8783735a0d898eb",
+      "target_node_id": "graph-node--566b93b65d87f146ff0f676dbc6cf6226bbb70c61a4c8a6bd5d7831a95cef434",
+      "directed": true,
+      "status": "observed",
+      "source": {
+        "object_type": "relationship",
+        "object_id": "relationship-1641029b76ea1ac3df6e",
+        "json_pointer": "/relationships/0"
+      },
+      "supporting_node_ids": [
+        "graph-node--99d1b2ec3d158fad4c946c90ed5d834e51d0f2360720f81e41e72ae788e24bb2"
+      ],
+      "evidence_ids": [
+        "evidence-b31714b888d1489a380c"
+      ],
+      "source_references": [
+        {
+          "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json",
+          "raw_record_ref": "jsonl:line:30"
+        },
+        {
+          "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json",
+          "raw_record_ref": "jsonl:line:398"
+        }
+      ],
+      "attributes": {},
+      "dimensions": [
+        "evidence",
+        "provenance"
+      ]
+    },
+    {
+      "edge_id": "graph-edge--9febe14ac8d5f69a3de83f88988d919ddfb57b6f0cb4988e80449b7de0a2e08f",
+      "edge_type": "supports",
+      "source_node_id": "graph-node--99d1b2ec3d158fad4c946c90ed5d834e51d0f2360720f81e41e72ae788e24bb2",
+      "target_node_id": "graph-node--5de7c6b37416d9b4a9e1d38dbca3b6e637c610654f3aeeb7bf9cd7a2edeaa121",
+      "directed": true,
+      "status": "observed",
+      "source": {
+        "object_type": "fact",
+        "object_id": "fact-mshta-spawns-powershell",
+        "json_pointer": "/facts/1/evidence_ids/0"
+      },
+      "supporting_node_ids": [],
+      "evidence_ids": [
+        "evidence-b31714b888d1489a380c"
+      ],
+      "source_references": [
+        {
+          "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json",
+          "raw_record_ref": "jsonl:line:30"
+        },
+        {
+          "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json",
+          "raw_record_ref": "jsonl:line:398"
+        }
+      ],
+      "attributes": {},
+      "dimensions": [
+        "evidence",
+        "provenance"
+      ]
+    },
+    {
+      "edge_id": "graph-edge--ac372d5b9b13f7fe721285bef862a006b11db6a54e7766726233c84834a441c5",
+      "edge_type": "supports",
+      "source_node_id": "graph-node--731463ebe4ba5265641ebc144761d3d0ad3d99741bdb315615fc05c306d3e1e7",
+      "target_node_id": "graph-node--20d644848d2ad2423f8b8b2c687bc68437fbba3297d473e4757483e5c72c0540",
+      "directed": true,
+      "status": "observed",
+      "source": {
+        "object_type": "fact",
+        "object_id": "fact-cmd-spawns-mshta",
+        "json_pointer": "/facts/0/evidence_ids/0"
+      },
+      "supporting_node_ids": [],
+      "evidence_ids": [
+        "evidence-b07a5ff4763e629715e6"
+      ],
+      "source_references": [
+        {
+          "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json",
+          "raw_record_ref": "jsonl:line:275"
+        },
+        {
+          "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json",
+          "raw_record_ref": "jsonl:line:4"
+        }
+      ],
+      "attributes": {},
+      "dimensions": [
+        "evidence",
+        "provenance"
+      ]
+    },
+    {
+      "edge_id": "graph-edge--aee92285873432a631ce5ab22a1be69e0385a5f3eb2a5bb96c74eeabe791fa5b",
+      "edge_type": "provides_technical_context_for",
+      "source_node_id": "graph-node--a0ff80eb0a2f3303f843f004ae81f44a3b6818229cdfc7006b245754cd3dfc76",
+      "target_node_id": "graph-node--b855832d1040b46f8cdafb6f42a04312028f5051809558ff08dd935c896b884e",
+      "directed": true,
+      "status": "candidate",
+      "source": {
+        "object_type": "relationship",
+        "object_id": "context-cti-8fe610b370b6b4165690",
+        "json_pointer": "/relationships/3"
+      },
+      "supporting_node_ids": [],
+      "evidence_ids": [],
+      "source_references": [],
+      "attributes": {
+        "evidence_layer": "cti_context",
+        "source_type": "analyst_comparison",
+        "source_id": "redcanary-mshta",
+        "text": "Use this external detection lead to investigate process lineage; assess the local command and telemetry independently. The lead does not prove local download, C2 or compromise.",
+        "title": "Mshta | Red Canary Threat Detection Report",
+        "publisher": "Project analyst",
+        "url": "https://redcanary.com/threat-detection-report/techniques/mshta/",
+        "publication_date": "2021-03-18T16:58:29+00:00",
+        "accessed_at": "2026-10-30T09:07:42.344843+00:00",
+        "snapshot_sha256": "fd1854324c1b9d65926b700f2c12c0b010b42eed49624f7129a533a34f9e778b",
+        "citation": {
+          "source_id": "redcanary-mshta",
+          "url": "https://redcanary.com/threat-detection-report/techniques/mshta/",
+          "section": "Detection opportunities / MSHTA spawning from suspect processes",
+          "snapshot_path": "../../../../offline/requirements_gap_20261030_v1/cti_sources/redcanary-mshta.html",
+          "snapshot_sha256": "fd1854324c1b9d65926b700f2c12c0b010b42eed49624f7129a533a34f9e778b",
+          "text_path": "redcanary-mshta.txt",
+          "text_sha256": "291be254c4da5dfd87032c42df0a587d36ca8f93371416fbae40d44819f93691",
+          "char_start": 12031,
+          "char_end": 12170,
+          "line": 391,
+          "anchor": "mshta.exe spawning powershell.exe or cmd.exe can be a good indicator of malice. The following pseudo-detector offers a good starting point:",
+          "offset_unit": "Unicode code points in extracted UTF-8 text; end exclusive"
+        },
+        "source_references": [
+          {
+            "source_file": "redcanary-mshta",
+            "raw_record_ref": "text:chars:12031:12170"
+          }
+        ],
+        "scope": "Project analyst interpretation, not publisher text, not observed host telemetry; cannot establish local actor attribution, compromise or C2.",
+        "corpus_path": "outputs/integrated/20261102_cti_portable_v7/cti/mshta-powershell/cti_corpus.json",
+        "corpus_sha256": "6bc354c86de8f292287faa58a274640d6e59edb89475199af584744e1392d380",
+        "content_origin": "project_analyst_comparison",
+        "analyst_comparison": "Use this external detection lead to investigate process lineage; assess the local command and telemetry independently. The lead does not prove local download, C2 or compromise.",
+        "attribution": "Project analyst",
+        "citation_role": "background_only_not_publisher_attribution",
+        "source_publisher": "Red Canary"
+      },
+      "dimensions": [
+        "evidence",
+        "provenance"
+      ]
+    },
+    {
+      "edge_id": "graph-edge--bbdba3c869f4e3e1b04351d7590ea39cd0eb21df1c3306978a8fd2c6bb6d71eb",
+      "edge_type": "technical_context_for",
+      "source_node_id": "graph-node--b855832d1040b46f8cdafb6f42a04312028f5051809558ff08dd935c896b884e",
+      "target_node_id": "graph-node--1dc506d0ebaba36a9b30744ff79cd6a42595cd7f2a95247ce8783735a0d898eb",
+      "directed": true,
+      "status": "candidate",
+      "source": {
+        "object_type": "relationship",
+        "object_id": "context-topic-knowledge-topic-mshta-powershell",
+        "json_pointer": "/relationships/6"
+      },
+      "supporting_node_ids": [],
+      "evidence_ids": [],
+      "source_references": [],
+      "attributes": {
+        "evidence_layer": "cti_context",
+        "semantics": "External technical context only; no local behavior support or compromise assertion."
+      },
+      "dimensions": [
+        "evidence",
+        "provenance"
+      ]
+    },
+    {
+      "edge_id": "graph-edge--c5d86ca4c8ed183a3f87c24f0138b5881befea73c925f4b66891db193109d021",
+      "edge_type": "provides_technical_context_for",
+      "source_node_id": "graph-node--fe4f14b84215f8d1542a7d4e3f0926d6953ce964ef7c3cf9e77c9688da5ee8a8",
+      "target_node_id": "graph-node--b855832d1040b46f8cdafb6f42a04312028f5051809558ff08dd935c896b884e",
+      "directed": true,
+      "status": "candidate",
+      "source": {
+        "object_type": "relationship",
+        "object_id": "context-cti-424f49d5e6ec3315cb80",
+        "json_pointer": "/relationships/5"
+      },
+      "supporting_node_ids": [],
+      "evidence_ids": [],
+      "source_references": [],
+      "attributes": {
+        "evidence_layer": "cti_context",
+        "source_type": "analyst_comparison",
+        "source_id": "redcanary-mshta",
+        "text": "Process-creation visibility is distinct from successful command completion, output and service state in a local investigation.",
+        "title": "Mshta | Red Canary Threat Detection Report",
+        "publisher": "Project analyst",
+        "url": "https://redcanary.com/threat-detection-report/techniques/mshta/",
+        "publication_date": "2021-03-18T16:58:29+00:00",
+        "accessed_at": "2026-10-30T09:07:42.344843+00:00",
+        "snapshot_sha256": "fd1854324c1b9d65926b700f2c12c0b010b42eed49624f7129a533a34f9e778b",
+        "citation": {
+          "source_id": "redcanary-mshta",
+          "url": "https://redcanary.com/threat-detection-report/techniques/mshta/",
+          "section": "Visibility / Process and command-line monitoring",
+          "snapshot_path": "../../../../offline/requirements_gap_20261030_v1/cti_sources/redcanary-mshta.html",
+          "snapshot_sha256": "fd1854324c1b9d65926b700f2c12c0b010b42eed49624f7129a533a34f9e778b",
+          "text_path": "redcanary-mshta.txt",
+          "text_sha256": "291be254c4da5dfd87032c42df0a587d36ca8f93371416fbae40d44819f93691",
+          "char_start": 10991,
+          "char_end": 11372,
+          "line": 384,
+          "anchor": "Monitoring process execution along with command-line parameters offers defenders visibility into many behaviors associated with malicious abuse of Mshta. Similarly, process lineage is also helpful for detecting adversary use of Mshta. At a minimum, collect parent-child process relationships, and, if possible, consider collecting information about “grandparent” relationships too.",
+          "offset_unit": "Unicode code points in extracted UTF-8 text; end exclusive"
+        },
+        "source_references": [
+          {
+            "source_file": "redcanary-mshta",
+            "raw_record_ref": "text:chars:10991:11372"
+          }
+        ],
+        "scope": "Project analyst interpretation, not publisher text, not observed host telemetry; cannot establish local actor attribution, compromise or C2.",
+        "corpus_path": "outputs/integrated/20261102_cti_portable_v7/cti/mshta-powershell/cti_corpus.json",
+        "corpus_sha256": "6bc354c86de8f292287faa58a274640d6e59edb89475199af584744e1392d380",
+        "content_origin": "project_analyst_comparison",
+        "analyst_comparison": "Process-creation visibility is distinct from successful command completion, output and service state in a local investigation.",
+        "attribution": "Project analyst",
+        "citation_role": "background_only_not_publisher_attribution",
+        "source_publisher": "Red Canary"
+      },
+      "dimensions": [
+        "evidence",
+        "provenance"
+      ]
+    },
+    {
+      "edge_id": "graph-edge--d1dde64489d59062d83dc1e5ab50ac4743b5fb2dcb0f577e8c31cbf4923be864",
+      "edge_type": "fact_subject",
+      "source_node_id": "graph-node--a28f915e10fb34eee617f4291a3bbc1e85914a485dd26cf5b9efc08cc3ecc624",
+      "target_node_id": "graph-node--20d644848d2ad2423f8b8b2c687bc68437fbba3297d473e4757483e5c72c0540",
+      "directed": true,
+      "status": "observed",
+      "source": {
+        "object_type": "fact",
+        "object_id": "fact-cmd-spawns-mshta",
+        "json_pointer": "/facts/0/subject"
+      },
+      "supporting_node_ids": [
+        "graph-node--731463ebe4ba5265641ebc144761d3d0ad3d99741bdb315615fc05c306d3e1e7"
+      ],
+      "evidence_ids": [
+        "evidence-b07a5ff4763e629715e6"
+      ],
+      "source_references": [
+        {
+          "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json",
+          "raw_record_ref": "jsonl:line:275"
+        },
+        {
+          "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json",
+          "raw_record_ref": "jsonl:line:4"
+        }
+      ],
+      "attributes": {
+        "source_object_id": "fact-cmd-spawns-mshta",
+        "field_location": "returned fact node attributes"
+      },
+      "dimensions": [
+        "evidence",
+        "provenance"
+      ]
+    },
+    {
+      "edge_id": "graph-edge--d767ef9e7ca600c4d793761e897e3f27d114557cf4f21d6802f53172f402443a",
+      "edge_type": "supports",
+      "source_node_id": "graph-node--731463ebe4ba5265641ebc144761d3d0ad3d99741bdb315615fc05c306d3e1e7",
+      "target_node_id": "graph-node--47257c3660c6cd968cd01f05142a5d97757d6bde4630b48abba691f18512d8e5",
+      "directed": true,
+      "status": "candidate",
+      "source": {
+        "object_type": "mitre_assessment",
+        "object_id": "mitre-assessment--4627bedc17126e48369fd005997f3873c17edecfbb34d9a111c6c1f26a1d61c9",
+        "json_pointer": "/mitre_assessments/0/supporting_evidence_ids/0"
+      },
+      "supporting_node_ids": [],
+      "evidence_ids": [
+        "evidence-b07a5ff4763e629715e6"
+      ],
+      "source_references": [],
+      "attributes": {},
+      "dimensions": [
+        "evidence",
+        "mitre_technique",
+        "provenance"
+      ]
+    },
+    {
+      "edge_id": "graph-edge--e2ffb65fdb66b270f410e5791757fa43dd9d906e9cc36c06cdfc6f0407a9e2a2",
+      "edge_type": "supports",
+      "source_node_id": "graph-node--99d1b2ec3d158fad4c946c90ed5d834e51d0f2360720f81e41e72ae788e24bb2",
+      "target_node_id": "graph-node--1dc506d0ebaba36a9b30744ff79cd6a42595cd7f2a95247ce8783735a0d898eb",
+      "directed": true,
+      "status": "observed",
+      "source": {
+        "object_type": "entity",
+        "object_id": "process-9c691740bde5d3dbdc4e",
+        "json_pointer": "/entities/1/evidence_ids/1"
+      },
+      "supporting_node_ids": [],
+      "evidence_ids": [
+        "evidence-b31714b888d1489a380c"
+      ],
+      "source_references": [],
+      "attributes": {},
+      "dimensions": [
+        "entity",
+        "provenance"
+      ]
+    },
+    {
+      "edge_id": "graph-edge--e55ecad85901e323e1914ba186368f8bf84d347e3acbed00e6ac8c1a7f203887",
+      "edge_type": "supports",
+      "source_node_id": "graph-node--731463ebe4ba5265641ebc144761d3d0ad3d99741bdb315615fc05c306d3e1e7",
+      "target_node_id": "graph-node--1dc506d0ebaba36a9b30744ff79cd6a42595cd7f2a95247ce8783735a0d898eb",
+      "directed": true,
+      "status": "observed",
+      "source": {
+        "object_type": "entity",
+        "object_id": "process-9c691740bde5d3dbdc4e",
+        "json_pointer": "/entities/1/evidence_ids/0"
+      },
+      "supporting_node_ids": [],
+      "evidence_ids": [
+        "evidence-b07a5ff4763e629715e6"
+      ],
+      "source_references": [],
+      "attributes": {},
+      "dimensions": [
+        "entity",
+        "provenance"
+      ]
+    },
+    {
+      "edge_id": "graph-edge--f9973802ed1c63a6a47c821241da5a14f808bc079cb52270e6f0dcba4a84e8af",
+      "edge_type": "supports_assessment",
+      "source_node_id": "graph-node--d9675b016298cdd2ad404df4acd7e46d6b58c8a946fe5bf6ae8a9e66300df5ed",
+      "target_node_id": "graph-node--987d34cc38fa8a42104b62d681da414687181e1a6f7dcaee82e2f882b1b3595c",
+      "directed": true,
+      "status": "candidate",
+      "source": {
+        "object_type": "mitre_assessment",
+        "object_id": "mitre-assessment--09f12e591ccdc088e57b01d09c528efead966e0f723ae9a0be6596b78a9c78f1",
+        "json_pointer": "/mitre_assessments/2/supporting_sigma_rule_ids/1"
+      },
+      "supporting_node_ids": [
+        "graph-node--731463ebe4ba5265641ebc144761d3d0ad3d99741bdb315615fc05c306d3e1e7",
+        "graph-node--99d1b2ec3d158fad4c946c90ed5d834e51d0f2360720f81e41e72ae788e24bb2"
+      ],
+      "evidence_ids": [
+        "evidence-b07a5ff4763e629715e6",
+        "evidence-b31714b888d1489a380c"
+      ],
+      "source_references": [],
+      "attributes": {},
+      "dimensions": [
+        "evidence",
+        "mitre_technique",
+        "provenance"
+      ]
+    },
+    {
+      "edge_id": "graph-edge--fdfaed6737e273179e8c8b9c130dee91ea468f0afad5ee42341fb4a00d229637",
+      "edge_type": "supports",
+      "source_node_id": "graph-node--731463ebe4ba5265641ebc144761d3d0ad3d99741bdb315615fc05c306d3e1e7",
+      "target_node_id": "graph-node--a28f915e10fb34eee617f4291a3bbc1e85914a485dd26cf5b9efc08cc3ecc624",
+      "directed": true,
+      "status": "observed",
+      "source": {
+        "object_type": "entity",
+        "object_id": "process-7c96a17eb66f2831da61",
+        "json_pointer": "/entities/0/evidence_ids/0"
+      },
+      "supporting_node_ids": [],
+      "evidence_ids": [
+        "evidence-b07a5ff4763e629715e6"
+      ],
+      "source_references": [],
+      "attributes": {},
+      "dimensions": [
+        "entity",
+        "provenance"
+      ]
+    }
+  ],
+  "queryable_dimensions": [
+    "command_line",
+    "entity",
+    "evidence",
+    "mitre_technique",
+    "process",
+    "process_spawn",
+    "provenance",
+    "sigma_rule"
+  ],
+  "review": {
+    "status": "pending_human_review",
+    "reviewer": null,
+    "reviewed_at": null
+  },
+  "warnings": [],
+  "metadata": {
+    "node_count": 27,
+    "edge_count": 26,
+    "node_type_counts": {
+      "cti_report": 4,
+      "entity": 4,
+      "evidence": 2,
+      "fact": 2,
+      "limitation": 9,
+      "mitre_assessment": 3,
+      "scenario": 1,
+      "sigma_finding": 2
+    },
+    "edge_type_counts": {
+      "fact_object": 2,
+      "fact_subject": 2,
+      "process_spawn": 2,
+      "provides_technical_context_for": 4,
+      "supports": 11,
+      "supports_assessment": 4,
+      "technical_context_for": 1
+    },
+    "mapping_version": "ground-truth-to-knowledge-graph/v1"
+  }
+}

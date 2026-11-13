@@ -1,0 +1,28 @@
+{
+  "id": "3ccb36b6-13c4-4c1c-b32a-bc463e74c546",
+  "object": "chat.completion",
+  "created": 1794495666,
+  "model": "deepseek-flash",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "{\n  \"schema_version\": \"threat-hunting-report/v1\",\n  \"verdict\": \"INSUFFICIENT_EVIDENCE\",\n  \"direct_answer\": \"Không. Các bản ghi kết nối Sysmon Event ID 3 của regsvr32.exe và PowerShell chỉ chứng minh các kết nối mạng gắn với tiến trình (endpoint/port), không chứng minh HTTP exchange đã hoàn tất, không xác nhận máy chủ C2, và không có số byte exfiltration. Nguồn ghi rõ: 'Connections and command URL do not establish HTTP completion, response content, confirmed C2 purpose, exfiltration or bytes transferred.'\",\n  \"executive_summary\": \"Telemetry trong context chỉ có các quan sát kết nối mạng của Sysmon (Event ID 3) gắn với regsvr32.exe (port 8444) và powershell.exe (port 80) trên WORKSTATION5.mordor.local. Các quan sát này không đủ để kết luận về hoàn tất HTTP, xác nhận C2 hay khối lượng dữ liệu exfiltration.\",\n  \"technical_analysis\": \"Các kết nối được ghi nhận: regsvr32.exe PID 9384 kết nối tới 10.10.10.5:8444 lúc 2020-07-22T03:27:55.955Z (jsonl:line:1001); powershell.exe PID 9076 có nhiều kết nối tới 10.10.10.5:80 trong khoảng 2020-07-22T03:27:57.014Z đến 2020-07-22T03:28:28.429Z (jsonl:line:1189, 1192, 1213, 1284, 1323, 1363, 1401, 1437, 2154). Đây là các bản ghi network_connection với trạng thái observed, nhưng summary của evidence nêu rõ: 'Observed process-bound Sysmon connections; not HTTP completion, transferred content, confirmed C2 or exfiltration bytes.' (evidence connections-process-1a7b3c442952cc5a và connections-process-1356a3e1f91322ca). Giới hạn của scenario cũng khẳng định: 'Connections and command URL do not establish HTTP completion, response content, confirmed C2 purpose, exfiltration or bytes transferred.' (json_pointer /summary/limitations/0). Do đó, không có trường dữ liệu nào trong context cung cấp thông tin về hoàn tất HTTP, xác nhận C2, hay số byte exfiltration.\",\n  \"attack_chain\": [],\n  \"mitre_mappings\": [],\n  \"sigma_matches\": [],\n  \"containment_recommendations\": [],\n  \"unverified_claims\": [\n    \"HTTP exchange hoàn tất chưa được chứng minh; chỉ có kết nối mạng được quan sát.\",\n    \"Máy chủ C2 chưa được xác nhận; các endpoint chỉ là đích kết nối, không chứng minh mục đích C2.\",\n    \"Không có dữ liệu về số byte exfiltration hoặc nội dung truyền.\",\n    \"Không có bằng chứng về việc scriptlet hoặc cmdlet đã thực thi hoàn tất hay output.\"\n  ],\n  \"evidence_refs\": [\n    \"connections-process-1a7b3c442952cc5a\",\n    \"connections-process-1356a3e1f91322ca\",\n    \"jsonl:line:1001\",\n    \"jsonl:line:1189\",\n    \"jsonl:line:1192\",\n    \"jsonl:line:1213\",\n    \"jsonl:line:1284\",\n    \"jsonl:line:1323\",\n    \"jsonl:line:1363\",\n    \"jsonl:line:1401\",\n    \"jsonl:line:1437\",\n    \"jsonl:line:2154\",\n    \"/summary/limitations/0\"\n  ]\n}"
+      },
+      "logprobs": null,
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 13977,
+    "completion_tokens": 939,
+    "total_tokens": 14916,
+    "prompt_tokens_details": {
+      "cached_tokens": 6912
+    },
+    "prompt_cache_hit_tokens": 6912,
+    "prompt_cache_miss_tokens": 7065
+  },
+  "system_fingerprint": "bc19ba97cbe016479903222bb1578db6"
+}

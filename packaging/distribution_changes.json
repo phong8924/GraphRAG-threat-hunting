@@ -1,0 +1,30 @@
+{
+  "source_project_modified": false,
+  "source_hashes_rechecked": 693,
+  "all_backend_source_byte_identical": true,
+  "all_historical_runtime_hashes_unchanged": true,
+  "context_rebuild_function_AST_identical": true,
+  "derived_entry_and_example_files": [
+    {
+      "path": ".env.example",
+      "copied_source_sha256": "a2ef9c55e8e9bebbc8f67cb7c5117b50f534e20be57aec8713c0c3d8b32ecf85",
+      "distribution_sha256": "800f95bc5f29bc4786d6e73c5751f75b558c552bad3a2f7363a91d4cb2ab2c70",
+      "reason": "Secret-free concise environment example"
+    },
+    {
+      "path": "START_RESULTS_DEEPSEEK.cmd",
+      "copied_source_sha256": "ef78e3abe56b3a3f099d47bb2c9adf58cf47a37a4bd59eb1c27ee47ff3f2423b",
+      "distribution_sha256": "5931bc175afa5a55d8c3ea34ea6d576ae8f784baa6caf3fcc15f350b87d26fd7",
+      "reason": "Key-free saved-view adapter entry point; same pinned frontend/core"
+    }
+  ],
+  "added_distribution_tools": [
+    "scripts/portable_saved_runtime.py",
+    "scripts/serve_saved_results.py",
+    "scripts/verify_portable.py",
+    "scripts/prepare_embedding.py",
+    "scripts/rerun_paired.py"
+  ],
+  "missing_historical_provenance": "packaging/missing_historical_provenance.json",
+  "no_source_algorithm_change": true
+}

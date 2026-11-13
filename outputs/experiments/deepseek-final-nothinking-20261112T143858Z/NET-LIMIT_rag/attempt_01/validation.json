@@ -1,0 +1,151 @@
+{
+  "raw_report_before_sanitize": {
+    "schema_version": "threat-hunting-report/v1",
+    "verdict": "INSUFFICIENT_EVIDENCE",
+    "direct_answer": "Không. Các bản ghi kết nối Sysmon Event ID 3 của regsvr32.exe và PowerShell chỉ chứng minh các kết nối mạng gắn với tiến trình (endpoint/port), không chứng minh HTTP exchange đã hoàn tất, không xác nhận máy chủ C2, và không có số byte exfiltration. Nguồn ghi rõ: 'Connections and command URL do not establish HTTP completion, response content, confirmed C2 purpose, exfiltration or bytes transferred.'",
+    "executive_summary": "Telemetry trong context chỉ có các quan sát kết nối mạng của Sysmon (Event ID 3) gắn với regsvr32.exe (port 8444) và powershell.exe (port 80) trên WORKSTATION5.mordor.local. Các quan sát này không đủ để kết luận về hoàn tất HTTP, xác nhận C2 hay khối lượng dữ liệu exfiltration.",
+    "technical_analysis": "Các kết nối được ghi nhận: regsvr32.exe PID 9384 kết nối tới 10.10.10.5:8444 lúc 2020-07-22T03:27:55.955Z (jsonl:line:1001); powershell.exe PID 9076 có nhiều kết nối tới 10.10.10.5:80 trong khoảng 2020-07-22T03:27:57.014Z đến 2020-07-22T03:28:28.429Z (jsonl:line:1189, 1192, 1213, 1284, 1323, 1363, 1401, 1437, 2154). Đây là các bản ghi network_connection với trạng thái observed, nhưng summary của evidence nêu rõ: 'Observed process-bound Sysmon connections; not HTTP completion, transferred content, confirmed C2 or exfiltration bytes.' (evidence connections-process-1a7b3c442952cc5a và connections-process-1356a3e1f91322ca). Giới hạn của scenario cũng khẳng định: 'Connections and command URL do not establish HTTP completion, response content, confirmed C2 purpose, exfiltration or bytes transferred.' (json_pointer /summary/limitations/0). Do đó, không có trường dữ liệu nào trong context cung cấp thông tin về hoàn tất HTTP, xác nhận C2, hay số byte exfiltration.",
+    "attack_chain": [],
+    "mitre_mappings": [],
+    "sigma_matches": [],
+    "containment_recommendations": [],
+    "unverified_claims": [
+      "HTTP exchange hoàn tất chưa được chứng minh; chỉ có kết nối mạng được quan sát.",
+      "Máy chủ C2 chưa được xác nhận; các endpoint chỉ là đích kết nối, không chứng minh mục đích C2.",
+      "Không có dữ liệu về số byte exfiltration hoặc nội dung truyền.",
+      "Không có bằng chứng về việc scriptlet hoặc cmdlet đã thực thi hoàn tất hay output."
+    ],
+    "evidence_refs": [
+      "connections-process-1a7b3c442952cc5a",
+      "connections-process-1356a3e1f91322ca",
+      "jsonl:line:1001",
+      "jsonl:line:1189",
+      "jsonl:line:1192",
+      "jsonl:line:1213",
+      "jsonl:line:1284",
+      "jsonl:line:1323",
+      "jsonl:line:1363",
+      "jsonl:line:1401",
+      "jsonl:line:1437",
+      "jsonl:line:2154",
+      "/summary/limitations/0"
+    ]
+  },
+  "sanitized_report": {
+    "schema_version": "threat-hunting-report/v1",
+    "verdict": "INSUFFICIENT_EVIDENCE",
+    "direct_answer": "Không. Các bản ghi kết nối Sysmon Event ID 3 của regsvr32.exe và PowerShell chỉ chứng minh các kết nối mạng gắn với tiến trình (endpoint/port), không chứng minh HTTP exchange đã hoàn tất, không xác nhận máy chủ C2, và không có số byte exfiltration. Nguồn ghi rõ: 'Connections and command URL do not establish HTTP completion, response content, confirmed C2 purpose, exfiltration or bytes transferred.'",
+    "executive_summary": "Telemetry trong context chỉ có các quan sát kết nối mạng của Sysmon (Event ID 3) gắn với regsvr32.exe (port 8444) và powershell.exe (port 80) trên WORKSTATION5.mordor.local. Các quan sát này không đủ để kết luận về hoàn tất HTTP, xác nhận C2 hay khối lượng dữ liệu exfiltration.",
+    "technical_analysis": "Các kết nối được ghi nhận: regsvr32.exe PID 9384 kết nối tới 10.10.10.5:8444 lúc 2020-07-22T03:27:55.955Z (jsonl:line:1001); powershell.exe PID 9076 có nhiều kết nối tới 10.10.10.5:80 trong khoảng 2020-07-22T03:27:57.014Z đến 2020-07-22T03:28:28.429Z (jsonl:line:1189, 1192, 1213, 1284, 1323, 1363, 1401, 1437, 2154). Đây là các bản ghi network_connection với trạng thái observed, nhưng summary của evidence nêu rõ: 'Observed process-bound Sysmon connections; not HTTP completion, transferred content, confirmed C2 or exfiltration bytes.' (evidence connections-process-1a7b3c442952cc5a và connections-process-1356a3e1f91322ca). Giới hạn của scenario cũng khẳng định: 'Connections and command URL do not establish HTTP completion, response content, confirmed C2 purpose, exfiltration or bytes transferred.' (json_pointer /summary/limitations/0). Do đó, không có trường dữ liệu nào trong context cung cấp thông tin về hoàn tất HTTP, xác nhận C2, hay số byte exfiltration.",
+    "attack_chain": [],
+    "mitre_mappings": [],
+    "sigma_matches": [],
+    "containment_recommendations": [],
+    "unverified_claims": [
+      "HTTP exchange hoàn tất chưa được chứng minh; chỉ có kết nối mạng được quan sát.",
+      "Máy chủ C2 chưa được xác nhận; các endpoint chỉ là đích kết nối, không chứng minh mục đích C2.",
+      "Không có dữ liệu về số byte exfiltration hoặc nội dung truyền.",
+      "Không có bằng chứng về việc scriptlet hoặc cmdlet đã thực thi hoàn tất hay output."
+    ],
+    "evidence_refs": [
+      "connections-process-1a7b3c442952cc5a",
+      "connections-process-1356a3e1f91322ca",
+      "jsonl:line:1001",
+      "jsonl:line:1189",
+      "jsonl:line:1192",
+      "jsonl:line:1213",
+      "jsonl:line:1284",
+      "jsonl:line:1323",
+      "jsonl:line:1363",
+      "jsonl:line:1401",
+      "jsonl:line:1437",
+      "jsonl:line:2154",
+      "/summary/limitations/0"
+    ]
+  },
+  "status": "passed",
+  "scope": "structured claims + bounded process citation, duration, request-topic and authentication Status/SubStatus binding checks; remaining prose/comparison correctness unverified",
+  "issues": [],
+  "reference_checks": [
+    {
+      "reference": "connections-process-1a7b3c442952cc5a",
+      "status": "exists_unverified"
+    },
+    {
+      "reference": "connections-process-1356a3e1f91322ca",
+      "status": "exists_unverified"
+    },
+    {
+      "reference": "jsonl:line:1001",
+      "status": "exists_unverified"
+    },
+    {
+      "reference": "jsonl:line:1189",
+      "status": "exists_unverified"
+    },
+    {
+      "reference": "jsonl:line:1192",
+      "status": "exists_unverified"
+    },
+    {
+      "reference": "jsonl:line:1213",
+      "status": "exists_unverified"
+    },
+    {
+      "reference": "jsonl:line:1284",
+      "status": "exists_unverified"
+    },
+    {
+      "reference": "jsonl:line:1323",
+      "status": "exists_unverified"
+    },
+    {
+      "reference": "jsonl:line:1363",
+      "status": "exists_unverified"
+    },
+    {
+      "reference": "jsonl:line:1401",
+      "status": "exists_unverified"
+    },
+    {
+      "reference": "jsonl:line:1437",
+      "status": "exists_unverified"
+    },
+    {
+      "reference": "jsonl:line:2154",
+      "status": "exists_unverified"
+    },
+    {
+      "reference": "/summary/limitations/0",
+      "status": "exists_unverified"
+    }
+  ],
+  "unverified_fields": [
+    "verdict",
+    "direct_answer",
+    "executive_summary",
+    "technical_analysis",
+    "containment_recommendations",
+    "sigma_matches"
+  ],
+  "human_review_required": true,
+  "narrative_binding_audit": {
+    "scope": "explicit positive executable-parent/creation-verb/executable-child clauses with inline references only",
+    "checks": [],
+    "issues": [],
+    "remaining_prose": "unverified; human review required"
+  },
+  "clock_and_scope_audit": {
+    "scope": "explicit numeric authentication-duration expressions and asserted HTTP/C2/exfiltration topics only; negated boundary caveats are permitted",
+    "checks": [],
+    "issues": [],
+    "comparison_semantics": "requires offline rubric review, not automatically verified",
+    "remaining_prose": "unverified; AI/human semantic review remains necessary"
+  },
+  "auth_field_binding_audit": {
+    "scope": "no supplied authentication observations; not applicable",
+    "events_in_context": [],
+    "checks": [],
+    "issues": []
+  }
+}

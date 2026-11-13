@@ -1,0 +1,26 @@
+{
+  "schema_version": "current-paired-input-receipt/v1",
+  "artifact": "signals",
+  "content_sha256": "59d4eec920e4bced2f3143c090d225932adff98024566579ac087f4acecd842c",
+  "content_utf8_bytes": 2322,
+  "scenario_id": "mshta-powershell",
+  "source_bindings": {
+    "gt_path": {
+      "path": "outputs/integrated/20261112_live_v1/consumers/mshta-powershell/scenario_ground_truth.json",
+      "sha256": "7492ac551d3ca6b3d0f9d752f864b951722e5dd1c0037ebeb95aac149195f4c3"
+    },
+    "corpus_path": {
+      "path": "outputs/integrated/20261112_live_v1/consumers/mshta-powershell/retrieval_corpus.json",
+      "sha256": "081a4cb129fa20fe9818e90979c6a323680989f508f1e64f006fe8dfed951692"
+    },
+    "graph_path": {
+      "path": "outputs/integrated/20261112_live_v1/consumers/mshta-powershell/knowledge_graph.json",
+      "sha256": "af1bc7c773b1df500aa0f88875c2a12f496e469cb3490c55e2e7071f91555280"
+    },
+    "index_path": {
+      "path": "outputs/integrated/20261112_live_v1/consumers/mshta-powershell/vector_index_e5.json",
+      "sha256": "e27f495ffe80e21018a5f4064347ede9ea262f79ac673cd7b23fee1aa5a4953d"
+    }
+  },
+  "persistence": "Exact runtime value stays in RAM; source objects remain in unchanged pinned consumers. No duplicate raw payload persisted."
+}

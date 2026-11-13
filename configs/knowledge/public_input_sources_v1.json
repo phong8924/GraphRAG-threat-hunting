@@ -1,0 +1,62 @@
+{
+  "schema_version": "public-input-recovery/v1",
+  "expected_inventory": "packaging/inputs.json",
+  "sources": [
+    {
+      "filename": "win_security_susp_rc4_kerberos.yml",
+      "url": "https://raw.githubusercontent.com/SigmaHQ/sigma/d7c9da10c170a6988d68ebdf2c9f7bd8782b7c55/rules/windows/builtin/security/win_security_susp_rc4_kerberos.yml",
+      "kind": "file"
+    },
+    {
+      "filename": "proc_creation_win_mshta_susp_child_processes.yml",
+      "url": "https://raw.githubusercontent.com/SigmaHQ/sigma/34c5d66c22bbe41fe701cb6341d78ce324e6b24a/rules/windows/process_creation/proc_creation_win_mshta_susp_child_processes.yml",
+      "kind": "file"
+    },
+    {
+      "filename": "proc_creation_win_mshta_susp_execution.yml",
+      "url": "https://raw.githubusercontent.com/SigmaHQ/sigma/34c5d66c22bbe41fe701cb6341d78ce324e6b24a/rules/windows/process_creation/proc_creation_win_mshta_susp_execution.yml",
+      "kind": "file"
+    },
+    {
+      "filename": "proc_creation_win_regsvr32_http_ip_pattern.yml",
+      "url": "https://raw.githubusercontent.com/SigmaHQ/sigma/d7c9da10c170a6988d68ebdf2c9f7bd8782b7c55/rules/windows/process_creation/proc_creation_win_regsvr32_http_ip_pattern.yml",
+      "kind": "file"
+    },
+    {
+      "filename": "proc_creation_win_regsvr32_susp_child_process.yml",
+      "url": "https://raw.githubusercontent.com/SigmaHQ/sigma/d7c9da10c170a6988d68ebdf2c9f7bd8782b7c55/rules/windows/process_creation/proc_creation_win_regsvr32_susp_child_process.yml",
+      "kind": "file"
+    },
+    {
+      "filename": "proc_creation_win_regsvr32_susp_parent.yml",
+      "url": "https://raw.githubusercontent.com/SigmaHQ/sigma/d7c9da10c170a6988d68ebdf2c9f7bd8782b7c55/rules/windows/process_creation/proc_creation_win_regsvr32_susp_parent.yml",
+      "kind": "file"
+    },
+    {
+      "filename": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json",
+      "url": "https://raw.githubusercontent.com/OTRF/Security-Datasets/d9d40ef123d2c87d5d3df28c96bcab4f0faccc87/datasets/atomic/windows/defense_evasion/host/cmd_mshta_vbscript_execute_psh.zip",
+      "kind": "zip_member",
+      "member": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json",
+      "archive_sha256": "f5f700bc986bbe73edcc209754b28a3e0ad38c56877f7fc5ed6fd04bc036d9f4"
+    },
+    {
+      "filename": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+      "url": "https://raw.githubusercontent.com/OTRF/Security-Datasets/d9d40ef123d2c87d5d3df28c96bcab4f0faccc87/datasets/atomic/windows/defense_evasion/host/empire_launcher_sct_regsvr32.zip",
+      "kind": "zip_member",
+      "member": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+      "archive_sha256": "abeb5c52c75286386e5eb999d7423d738a624191f4a95fb62694b471a10b2dab"
+    },
+    {
+      "filename": "purplesharp_ad_playbook_I_2020-10-22042947.json",
+      "url": "https://raw.githubusercontent.com/OTRF/Security-Datasets/d9d40ef123d2c87d5d3df28c96bcab4f0faccc87/datasets/atomic/windows/lateral_movement/host/purplesharp_ad_playbook_I.zip",
+      "kind": "zip_member",
+      "member": "purplesharp_ad_playbook_I_2020-10-22042947.json",
+      "archive_sha256": "2a2d80e7b8d8ee6821a1754118f3ab908b4bac84cf4ed3d018e281f631bd2870"
+    },
+    {
+      "filename": "enterprise-attack.json",
+      "url": "https://raw.githubusercontent.com/mitre-attack/attack-stix-data/6c3719993d0401de199203ecc3f369544d9e091c/enterprise-attack/enterprise-attack-19.1.json",
+      "kind": "file"
+    }
+  ]
+}

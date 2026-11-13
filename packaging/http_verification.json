@@ -1,0 +1,29 @@
+{
+  "saved_views": [
+    {
+      "case_id": "PS-DIRECT",
+      "branch": "graphrag",
+      "saved_report_validation_equal_original": true,
+      "source_response_sha256": "5efeb1c88ee121351cd65053368abc7f836068a8ba85248cbc252ad077eaa1fd"
+    },
+    {
+      "case_id": "AUTH-CTI",
+      "branch": "graphrag",
+      "saved_report_validation_equal_original": true,
+      "source_response_sha256": "7f272710b5f35323e74f21dc5eedc0ac1fc4a0835ac77f6f7824cd1038c503b0"
+    },
+    {
+      "case_id": "NET-DIRECT",
+      "branch": "graphrag",
+      "saved_report_validation_equal_original": true,
+      "source_response_sha256": "2d3724a3d5bfc8b846f03e8d4ac8e52f037fb7f70a9640ef755831b165d89975"
+    }
+  ],
+  "served_build_assets_hash_verified": 12,
+  "saved_viewer_hunt_status": 409,
+  "LLM_calls": 0,
+  "tested_port": 8044,
+  "default_launcher_port": 8034,
+  "API_key_required_for_saved_view": false,
+  "browser_visual_check_performed": false
+}

@@ -1,0 +1,28 @@
+{
+  "id": "a48259ba-8052-4cd5-b0d8-dbb9e4aadad2",
+  "object": "chat.completion",
+  "created": 1794495122,
+  "model": "deepseek-flash",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "{\n  \"schema_version\": \"threat-hunting-report/v1\",\n  \"verdict\": \"INSUFFICIENT_EVIDENCE\",\n  \"direct_answer\": \"Bốn quan sát (2 Security 4688 + 2 Sysmon 1) tương ứng 2 process creations: cmd.exe → mshta.exe và mshta.exe → powershell.exe. Mỗi creation được ghi nhận bởi hai provider (4688 và Sysmon 1) trên cùng host WORKSTATION5. conhost.exe nằm ngoài core vì context chỉ giới hạn core ở hai nhóm quan sát này; conhost creation được ghi nhận trong file nhưng nằm ngoài phạm vi hai nhóm core và không phải một phần của chuỗi cmd.exe → mshta.exe → powershell.exe.\",\n  \"executive_summary\": \"Hai process creations được quan sát: cmd.exe tạo mshta.exe (evidence-b07a5ff4763e629715e6) và mshta.exe tạo powershell.exe (evidence-b31714b888d1489a380c). Mỗi creation có hai bản ghi (Security 4688 và Sysmon 1), tổng cộng bốn quan sát. conhost.exe không thuộc core vì scope của scenario chỉ bao gồm hai nhóm behavior/evidence đã review; conhost creation nằm ngoài phạm vi đó.\",\n  \"technical_analysis\": \"Process creation bindings: (1) cmd.exe (parent) → mshta.exe (child) được ghi nhận bởi Sysmon 1 tại jsonl:line:275 (timestamp 2020-10-22T02:57:59.857000Z) và Security 4688 tại jsonl:line:4 (timestamp 2020-10-22T02:57:59.856000Z); relationship-9e41d0cc407e7878b2d8 xác nhận process_spawn. (2) mshta.exe (parent) → powershell.exe (child) được ghi nhận bởi Security 4688 tại jsonl:line:30 (timestamp 2020-10-22T02:58:00.462000Z) và Sysmon 1 tại jsonl:line:398 (timestamp 2020-10-22T02:58:00.489000Z); relationship-1641029b76ea1ac3df6e xác nhận process_spawn. Như vậy bốn quan sát ánh xạ thành hai process creations, không phải bốn. Parent/child correlation dựa trên parent_process_id/process_id trong từng observation: mshta.exe PID 10980 (Sysmon) / 0x2ae4 (4688) có parent cmd.exe PID 5888 (Sysmon) / 0x1700 (4688); powershell.exe PID 9572 (Sysmon) / 0x2564 (4688) có parent mshta.exe PID 10980 (Sysmon) / 0x2ae4 (4688). Command line của mshta.exe chứa chuỗi vbscript:Execute(...Run \\\"powershell ...\\\") nhưng đây là launch argument; việc powershell.exe được tạo là do observation riêng (jsonl:line:30 và jsonl:line:398), không phải suy từ command text. conhost.exe nằm ngoài core vì scope_limitations của scenario nêu rõ file chứa conhost creation, event-log clearing và temporary-file deletion ngoài hai nhóm core; các telemetry này không được mô tả là vắng mặt toàn cục và không tự động bị phân loại là payload phá hoại. Context không cung cấp observation conhost.exe cụ thể, nên không thể phân tích parent/child của nó. Timestamp canonical theo TimeCreated; Sysmon UtcTime lệch khoảng bốn giờ và timezone chưa được giải quyết.\",\n  \"attack_chain\": [\n    {\n      \"step_number\": 1,\n      \"source_entity\": \"cmd.exe (process-7c96a17eb66f2831da61)\",\n      \"action\": \"process_spawn\",\n      \"target_entity\": \"mshta.exe (process-9c691740bde5d3dbdc4e)\",\n      \"evidence_ref\": \"evidence-b07a5ff4763e629715e6\",\n      \"timestamp\": \"2020-10-22T02:57:59.856000Z\"\n    },\n    {\n      \"step_number\": 2,\n      \"source_entity\": \"mshta.exe (process-9c691740bde5d3dbdc4e)\",\n      \"action\": \"process_spawn\",\n      \"target_entity\": \"powershell.exe (process-9f7ceeecb4cd61358ab7)\",\n      \"evidence_ref\": \"evidence-b31714b888d1489a380c\",\n      \"timestamp\": \"2020-10-22T02:58:00.462000Z\"\n    }\n  ],\n  \"mitre_mappings\": [],\n  \"sigma_matches\": [],\n  \"containment_recommendations\": [],\n  \"unverified_claims\": [\n    \"Process creation records chỉ chứng minh launch command; không chứng minh cmdlet Get-Service sysmon hoàn tất, output, hay trạng thái dịch vụ Sysmon.\",\n    \"conhost.exe không được phân tích parent/child trong context này vì không có observation conhost cụ thể; chỉ biết nó nằm ngoài hai nhóm core theo scope_limitations.\",\n    \"Không có tuyên bố vắng mặt toàn cục cho conhost, event-log clearing hay temporary-file deletion vì full-dataset negative scan chưa được thực hiện.\",\n    \"Sysmon UtcTime lệch khoảng bốn giờ so với TimeCreated và timezone chưa được giải quyết; không có hiệu chỉnh thời gian nào được áp dụng.\"\n  ],\n  \"evidence_refs\": [\n    \"evidence-b07a5ff4763e629715e6\",\n    \"evidence-b31714b888d1489a380c\",\n    \"relationship-9e41d0cc407e7878b2d8\",\n    \"relationship-1641029b76ea1ac3df6e\",\n    \"jsonl:line:275\",\n    \"jsonl:line:4\",\n    \"jsonl:line:30\",\n    \"jsonl:line:398\"\n  ]\n}"
+      },
+      "logprobs": null,
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 9801,
+    "completion_tokens": 1469,
+    "total_tokens": 11270,
+    "prompt_tokens_details": {
+      "cached_tokens": 5120
+    },
+    "prompt_cache_hit_tokens": 5120,
+    "prompt_cache_miss_tokens": 4681
+  },
+  "system_fingerprint": "bc19ba97cbe016479903222bb1578db6"
+}

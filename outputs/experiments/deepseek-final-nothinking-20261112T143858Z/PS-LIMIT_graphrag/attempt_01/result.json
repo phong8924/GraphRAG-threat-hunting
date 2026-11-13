@@ -1,0 +1,92 @@
+{
+  "question_id": "PS-LIMIT",
+  "case_id": "PS-LIMIT",
+  "scenario_id": "mshta-powershell",
+  "branch": "graphrag",
+  "query": "PowerShell Get-Service sysmon có hoàn tất thành công và output chứng minh Sysmon đang chạy không? Phân biệt command line quan sát được với completion, output và service state chưa xác minh.",
+  "outcome": "accepted_draft",
+  "gate_decision": "proceed",
+  "eligibility_decision": "proceed",
+  "context_utf8_bytes": 61597,
+  "messages_utf8_bytes": 65579,
+  "llm_http_attempts": 1,
+  "fallback_used": false,
+  "human_review_required": true,
+  "prepared_utc": "2026-11-12T14:44:47.960015+00:00",
+  "provider_usage": {
+    "prompt_tokens": 20758,
+    "completion_tokens": 698,
+    "total_tokens": 21456,
+    "prompt_tokens_details": {
+      "cached_tokens": 2048
+    },
+    "prompt_cache_hit_tokens": 2048,
+    "prompt_cache_miss_tokens": 18710
+  },
+  "provider_reported_cost": null,
+  "retrieval_context_seconds": 0.06617299999925308,
+  "policy_gate_decision": "proceed",
+  "abstention_stage": null,
+  "context_sha256": "173e2140ba33b51fe3f0fd1ab12c4bda19daa1f7c1c4b0add1346bb0d7869637",
+  "messages_sha256": "c2fdf2876887e20f62c13e8af81b9a2e788210daaafef4a4b670de9103e8bbcd",
+  "retrieval_sha256": "2546d4c1eee909b855c4e1f5a719b44d63a2d28da5285a3b4cfe59e9e0b8a13c",
+  "retrieval_hit_ids": [
+    "retrieval-chunk--86dd89fe0cfd03c1505a8534ce63dfb9f72221fe32c23d7a0341a66fa98d48ad",
+    "retrieval-chunk--df3b8e31f96555994c35b133bba1cc21a226769503fd0a214bef7d3c16d7a1f3",
+    "retrieval-chunk--82de3946302e7f785eef02295ff593ae743fe8820b352255edd7688fde42479c",
+    "retrieval-chunk--3422a1d86fc13212f395af0f4089875227b0780e91899c42c13023f3a6ff55d8",
+    "retrieval-chunk--8a73d544afa5a8a974c12b905a13224e95e58a8dc73c3a6141ca02c3e2b731e8"
+  ],
+  "returned_graph_nodes": 15,
+  "returned_graph_edges": 15,
+  "available_reference_count": 81,
+  "validation_status": "passed",
+  "abstention_reason_codes": [],
+  "preparation_seconds": 0.19584150000082445,
+  "generation_validation_seconds": 64.53249370000049,
+  "provider_http_seconds": 4.557577800002036,
+  "generation_started_utc": "2026-11-12T14:54:17.890690+00:00",
+  "generation_finished_utc": "2026-11-12T14:54:22.447699+00:00",
+  "finish_reason": "stop",
+  "http_status": 200,
+  "config_run_id": "deepseek-final-nothinking-20261112T143858Z",
+  "attempt_diagnostics": [
+    {
+      "ordinal": 9,
+      "question_id": "PS-LIMIT",
+      "branch": "graphrag",
+      "pair_attempt": 1,
+      "reserved_utc": "2026-11-12T14:54:17.855854+00:00",
+      "actual_http_attempts": 1,
+      "finished_utc": "2026-11-12T14:54:22.447699+00:00",
+      "actual_payload": {
+        "model": "deepseek-flash",
+        "temperature": 0.0,
+        "max_tokens": 16384,
+        "thinking": {
+          "type": "disabled"
+        },
+        "stream": false,
+        "messages_sha256": "c2fdf2876887e20f62c13e8af81b9a2e788210daaafef4a4b670de9103e8bbcd",
+        "serialized_http_payload_bytes": 67850,
+        "endpoint": "https://api.deepseek.com/chat/completions"
+      },
+      "http_started_utc": "2026-11-12T14:54:17.890690+00:00",
+      "http_status": 200,
+      "usage": {
+        "prompt_tokens": 20758,
+        "completion_tokens": 698,
+        "total_tokens": 21456,
+        "prompt_tokens_details": {
+          "cached_tokens": 2048
+        },
+        "prompt_cache_hit_tokens": 2048,
+        "prompt_cache_miss_tokens": 18710
+      },
+      "cost": null,
+      "finish_reason": "stop",
+      "http_seconds": 4.557577800002036,
+      "http_finished_utc": "2026-11-12T14:54:22.447699+00:00"
+    }
+  ]
+}

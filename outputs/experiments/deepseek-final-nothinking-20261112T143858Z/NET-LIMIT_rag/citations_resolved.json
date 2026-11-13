@@ -1,0 +1,324 @@
+{
+  "schema_version": "saved-report-citations/v1",
+  "question_id": "NET-LIMIT",
+  "scenario_id": "regsvr32-c2",
+  "branch": "rag",
+  "config_run_id": "deepseek-final-nothinking-20261112T143858Z",
+  "outcome": "accepted_draft",
+  "report_field": "evidence_refs",
+  "evidence_refs": [
+    "connections-process-1a7b3c442952cc5a",
+    "connections-process-1356a3e1f91322ca",
+    "jsonl:line:1001",
+    "jsonl:line:1189",
+    "jsonl:line:1192",
+    "jsonl:line:1213",
+    "jsonl:line:1284",
+    "jsonl:line:1323",
+    "jsonl:line:1363",
+    "jsonl:line:1401",
+    "jsonl:line:1437",
+    "jsonl:line:2154",
+    "/summary/limitations/0"
+  ],
+  "reference_checks": [
+    {
+      "reference": "connections-process-1a7b3c442952cc5a",
+      "status": "exists_unverified"
+    },
+    {
+      "reference": "connections-process-1356a3e1f91322ca",
+      "status": "exists_unverified"
+    },
+    {
+      "reference": "jsonl:line:1001",
+      "status": "exists_unverified"
+    },
+    {
+      "reference": "jsonl:line:1189",
+      "status": "exists_unverified"
+    },
+    {
+      "reference": "jsonl:line:1192",
+      "status": "exists_unverified"
+    },
+    {
+      "reference": "jsonl:line:1213",
+      "status": "exists_unverified"
+    },
+    {
+      "reference": "jsonl:line:1284",
+      "status": "exists_unverified"
+    },
+    {
+      "reference": "jsonl:line:1323",
+      "status": "exists_unverified"
+    },
+    {
+      "reference": "jsonl:line:1363",
+      "status": "exists_unverified"
+    },
+    {
+      "reference": "jsonl:line:1401",
+      "status": "exists_unverified"
+    },
+    {
+      "reference": "jsonl:line:1437",
+      "status": "exists_unverified"
+    },
+    {
+      "reference": "jsonl:line:2154",
+      "status": "exists_unverified"
+    },
+    {
+      "reference": "/summary/limitations/0",
+      "status": "exists_unverified"
+    }
+  ],
+  "source_evidence_receipt": {
+    "schema_version": "current-paired-input-receipt/v1",
+    "artifact": "evidence_contract",
+    "content_sha256": "d5eb746bc73053dc334da6b8ec87c30f8b17ce93ad08f46fb1bf9c45421ec9f3",
+    "content_utf8_bytes": 25103,
+    "scenario_id": "regsvr32-c2",
+    "source_bindings": {
+      "gt_path": {
+        "path": "outputs/integrated/20261102_cti_portable_v7/consumers/regsvr32-c2/scenario_ground_truth.json",
+        "sha256": "ca034cbd2c158f6d4f97651da8556d1cba36e38a7d957a4fb8eafab27d2aa09c"
+      },
+      "corpus_path": {
+        "path": "outputs/integrated/20261102_cti_portable_v7/consumers/regsvr32-c2/retrieval_corpus.json",
+        "sha256": "9ac6b1dbf6d2d6f792182f2257702ead87997063ad9fd69ec3d2ed1a240b73f8"
+      },
+      "graph_path": {
+        "path": "outputs/integrated/20261102_cti_portable_v7/consumers/regsvr32-c2/knowledge_graph.json",
+        "sha256": "465237c489e92f599436b65ab8f1699978d5fbab832e56379191283a7fee3575"
+      },
+      "index_path": {
+        "path": "outputs/integrated/20261102_cti_portable_v7/consumers/regsvr32-c2/vector_index_e5.json",
+        "sha256": "6c3931e077938d22f7037066abc1e6cdc5bcf05fa3d73baa3f3de9e0d3a34d90"
+      }
+    },
+    "persistence": "Exact runtime value stays in RAM; source objects remain in unchanged pinned consumers. No duplicate raw payload persisted.",
+    "evidence": [
+      {
+        "origin": {
+          "kind": "chunk",
+          "item_id": "retrieval-chunk--9e080227c8b57a09213f234d85481395b430e57fe72a5d0bc729195aa3e3e2b5",
+          "context_pointer": "/retrieval/hits/0/chunk"
+        },
+        "consumer": "corpus_path",
+        "json_pointer": "/chunks/0",
+        "object_sha256": "cccafa19736d47ebea0115b2b1a0fd3bc5399bdd4453bf43640bee837f515daf",
+        "source": {
+          "artifact_type": "scenario_ground_truth",
+          "object_type": "scenario",
+          "object_id": null,
+          "json_pointer": "/scenario"
+        },
+        "source_references": [
+          {
+            "raw_record_ref": "jsonl:line:1001",
+            "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json"
+          },
+          {
+            "raw_record_ref": "jsonl:line:1189",
+            "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json"
+          },
+          {
+            "raw_record_ref": "jsonl:line:1192",
+            "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json"
+          },
+          {
+            "raw_record_ref": "jsonl:line:1213",
+            "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json"
+          },
+          {
+            "raw_record_ref": "jsonl:line:1284",
+            "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json"
+          },
+          {
+            "raw_record_ref": "jsonl:line:1323",
+            "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json"
+          },
+          {
+            "raw_record_ref": "jsonl:line:1363",
+            "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json"
+          },
+          {
+            "raw_record_ref": "jsonl:line:1401",
+            "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json"
+          },
+          {
+            "raw_record_ref": "jsonl:line:1437",
+            "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json"
+          },
+          {
+            "raw_record_ref": "jsonl:line:2154",
+            "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json"
+          },
+          {
+            "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+            "raw_record_ref": "jsonl:line:219"
+          },
+          {
+            "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+            "raw_record_ref": "jsonl:line:224"
+          },
+          {
+            "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+            "raw_record_ref": "jsonl:line:240"
+          },
+          {
+            "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+            "raw_record_ref": "jsonl:line:283"
+          },
+          {
+            "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+            "raw_record_ref": "jsonl:line:296"
+          },
+          {
+            "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+            "raw_record_ref": "jsonl:line:97"
+          }
+        ]
+      },
+      {
+        "origin": {
+          "kind": "chunk",
+          "item_id": "retrieval-chunk--fc9751da5e578aeb723a0e51005451bc1af92f5b21fb53faf91d01a8fa1a21dd",
+          "context_pointer": "/retrieval/hits/1/chunk"
+        },
+        "consumer": "corpus_path",
+        "json_pointer": "/chunks/23",
+        "object_sha256": "bae7dc18088bafbae29589640a296e9c8b856d6c8446fd7992626c205c37d332",
+        "source": {
+          "artifact_type": "scenario_ground_truth",
+          "object_type": "evidence",
+          "object_id": "connections-process-1a7b3c442952cc5a",
+          "json_pointer": "/evidence/4"
+        },
+        "source_references": [
+          {
+            "raw_record_ref": "jsonl:line:1189",
+            "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json"
+          },
+          {
+            "raw_record_ref": "jsonl:line:1192",
+            "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json"
+          },
+          {
+            "raw_record_ref": "jsonl:line:1213",
+            "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json"
+          },
+          {
+            "raw_record_ref": "jsonl:line:1284",
+            "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json"
+          },
+          {
+            "raw_record_ref": "jsonl:line:1323",
+            "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json"
+          },
+          {
+            "raw_record_ref": "jsonl:line:1363",
+            "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json"
+          },
+          {
+            "raw_record_ref": "jsonl:line:1401",
+            "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json"
+          },
+          {
+            "raw_record_ref": "jsonl:line:1437",
+            "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json"
+          },
+          {
+            "raw_record_ref": "jsonl:line:2154",
+            "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json"
+          }
+        ]
+      },
+      {
+        "origin": {
+          "kind": "chunk",
+          "item_id": "retrieval-chunk--ee1f9ffb36de08f121c0a3ce69a9a45e6d77f4e63661acdddf74fec1971565c1",
+          "context_pointer": "/retrieval/hits/2/chunk"
+        },
+        "consumer": "corpus_path",
+        "json_pointer": "/chunks/31",
+        "object_sha256": "e7dc2e412dabe2224e54c9f36c6964d710c378a4f3900e06ffbc350e2bf4cc53",
+        "source": {
+          "artifact_type": "scenario_ground_truth",
+          "object_type": "limitation",
+          "object_id": null,
+          "json_pointer": "/summary/limitations/0"
+        },
+        "source_references": []
+      },
+      {
+        "origin": {
+          "kind": "chunk",
+          "item_id": "retrieval-chunk--7b6e3b9a2a13513d85f7fd8dabad4ec67dc423dc64ff1e6d43d68b21a0ff801c",
+          "context_pointer": "/retrieval/hits/3/chunk"
+        },
+        "consumer": "corpus_path",
+        "json_pointer": "/chunks/30",
+        "object_sha256": "03d0f3abe833e9758d0d0c29420241679b332dfaa9c0914a9c967491c6be6843",
+        "source": {
+          "artifact_type": "scenario_ground_truth",
+          "object_type": "mitre_assessment",
+          "object_id": "assessment-T1218-010",
+          "json_pointer": "/mitre_assessments/0"
+        },
+        "source_references": [
+          {
+            "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+            "raw_record_ref": "jsonl:line:219"
+          },
+          {
+            "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+            "raw_record_ref": "jsonl:line:224"
+          },
+          {
+            "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+            "raw_record_ref": "jsonl:line:240"
+          },
+          {
+            "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+            "raw_record_ref": "jsonl:line:283"
+          },
+          {
+            "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+            "raw_record_ref": "jsonl:line:296"
+          },
+          {
+            "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+            "raw_record_ref": "jsonl:line:97"
+          }
+        ]
+      },
+      {
+        "origin": {
+          "kind": "chunk",
+          "item_id": "retrieval-chunk--fdd2d38f06b8c894e8d17906e1faca53f3a44b5828d7adca71cafda9f29135a3",
+          "context_pointer": "/retrieval/hits/4/chunk"
+        },
+        "consumer": "corpus_path",
+        "json_pointer": "/chunks/22",
+        "object_sha256": "c44f557552ed6373ec261772344e438e86ca7cdc704b61556c008ee391215473",
+        "source": {
+          "artifact_type": "scenario_ground_truth",
+          "object_type": "evidence",
+          "object_id": "connections-process-1356a3e1f91322ca",
+          "json_pointer": "/evidence/3"
+        },
+        "source_references": [
+          {
+            "raw_record_ref": "jsonl:line:1001",
+            "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json"
+          }
+        ]
+      }
+    ]
+  },
+  "binding": "Exact references from the real report; validation checks preserved. No invented citation or human semantic approval."
+}

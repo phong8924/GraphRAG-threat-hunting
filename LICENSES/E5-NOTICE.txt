@@ -1,0 +1,2 @@
+Public model intfloat/multilingual-e5-small, pinned revision 614241f622f53c4eeff9890bdc4f31cfecc418b3. Model card declares license: mit. Weights are not redistributed here. Model card: https://huggingface.co/intfloat/multilingual-e5-small/blob/614241f622f53c4eeff9890bdc4f31cfecc418b3/README.md
+Exact download file hashes: packaging/embedding_download.json

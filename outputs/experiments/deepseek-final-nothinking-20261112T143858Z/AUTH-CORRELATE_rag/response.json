@@ -1,0 +1,2713 @@
+{
+  "request": {
+    "query": "Tương quan 4625 với 4776 trong PurpleSharp: có bao nhiêu lần thử và tài khoản khác nhau trong cụm nghi vấn password spraying, trong khoảng thời gian nào? Giải thích khử trùng và giới hạn của phép ghép.",
+    "scenario_id": "purplesharp-ad",
+    "branch": "rag"
+  },
+  "outcome": "accepted_draft",
+  "result": {
+    "question_id": "AUTH-CORRELATE",
+    "case_id": "AUTH-CORRELATE",
+    "scenario_id": "purplesharp-ad",
+    "branch": "rag",
+    "query": "Tương quan 4625 với 4776 trong PurpleSharp: có bao nhiêu lần thử và tài khoản khác nhau trong cụm nghi vấn password spraying, trong khoảng thời gian nào? Giải thích khử trùng và giới hạn của phép ghép.",
+    "outcome": "accepted_draft",
+    "gate_decision": "proceed",
+    "eligibility_decision": "proceed",
+    "context_utf8_bytes": 48086,
+    "messages_utf8_bytes": 66040,
+    "llm_http_attempts": 1,
+    "fallback_used": false,
+    "human_review_required": true,
+    "prepared_utc": "2026-11-12T14:44:45.174696+00:00",
+    "provider_usage": {
+      "prompt_tokens": 20542,
+      "completion_tokens": 1369,
+      "total_tokens": 21911,
+      "prompt_tokens_details": {
+        "cached_tokens": 2048
+      },
+      "prompt_cache_hit_tokens": 2048,
+      "prompt_cache_miss_tokens": 18494
+    },
+    "provider_reported_cost": null,
+    "retrieval_context_seconds": 0.08560369999759132,
+    "policy_gate_decision": "proceed",
+    "abstention_stage": null,
+    "context_sha256": "03dbc284ef82c53b32e2790489f2c46b265e81e7f7f02609101828a300a67be9",
+    "messages_sha256": "22eaf8cb037c8c4db40887f07772b0dbddbe0de6bb5cb42b45865faf5f4c3b45",
+    "retrieval_sha256": "6c392845165098144ebb32d00318c1476154edf914553bea8d4c768a3c106423",
+    "retrieval_hit_ids": [
+      "retrieval-chunk--0bbca650694671ec179ef9b97d45cc40969a30d7bc97752d23217b208beaf348",
+      "retrieval-chunk--91ef444192d109b423f4b0402f098672ea5143a1c14c7d15566c0872ec1016f8",
+      "retrieval-chunk--55fd82e45a343b8e932202f57fbf060278048047dd8c925ec7821b7196db06fc",
+      "retrieval-chunk--eb2b6e6508b7b978eaa1436483c42fd13d146a05454bd73c8bb6c6b51af49afd",
+      "retrieval-chunk--8f302f092ff819f01804a1f314eed537c47bfe109e7c9e495e29e828bfa98f88"
+    ],
+    "returned_graph_nodes": 0,
+    "returned_graph_edges": 0,
+    "available_reference_count": 28,
+    "validation_status": "passed",
+    "abstention_reason_codes": [],
+    "preparation_seconds": 0.24480099999709637,
+    "generation_validation_seconds": 66.75682250000318,
+    "provider_http_seconds": 7.086797700001625,
+    "generation_started_utc": "2026-11-12T14:46:19.880881+00:00",
+    "generation_finished_utc": "2026-11-12T14:46:26.963709+00:00",
+    "finish_reason": "stop",
+    "http_status": 200,
+    "config_run_id": "deepseek-final-nothinking-20261112T143858Z",
+    "attempt_diagnostics": [
+      {
+        "ordinal": 2,
+        "question_id": "AUTH-CORRELATE",
+        "branch": "rag",
+        "pair_attempt": 1,
+        "reserved_utc": "2026-11-12T14:46:19.853031+00:00",
+        "actual_http_attempts": 1,
+        "finished_utc": "2026-11-12T14:46:26.963709+00:00",
+        "actual_payload": {
+          "model": "deepseek-flash",
+          "temperature": 0.0,
+          "max_tokens": 16384,
+          "thinking": {
+            "type": "disabled"
+          },
+          "stream": false,
+          "messages_sha256": "22eaf8cb037c8c4db40887f07772b0dbddbe0de6bb5cb42b45865faf5f4c3b45",
+          "serialized_http_payload_bytes": 68363,
+          "endpoint": "https://api.deepseek.com/chat/completions"
+        },
+        "http_started_utc": "2026-11-12T14:46:19.880881+00:00",
+        "http_status": 200,
+        "usage": {
+          "prompt_tokens": 20542,
+          "completion_tokens": 1369,
+          "total_tokens": 21911,
+          "prompt_tokens_details": {
+            "cached_tokens": 2048
+          },
+          "prompt_cache_hit_tokens": 2048,
+          "prompt_cache_miss_tokens": 18494
+        },
+        "cost": null,
+        "finish_reason": "stop",
+        "http_seconds": 7.086797700001625,
+        "http_finished_utc": "2026-11-12T14:46:26.963709+00:00"
+      }
+    ]
+  },
+  "scope": {
+    "schema_version": "query-scope-decision/v1",
+    "decision": "proceed",
+    "reason_codes": [],
+    "matched_intents": [
+      "authentication",
+      "limits"
+    ],
+    "matched_source_anchors": [
+      "purplesharp"
+    ],
+    "interpretation": "request_scope_only_not_evidence_support",
+    "security_conclusion_made": false
+  },
+  "gate": {
+    "schema_version": "source-evidence-gate-decision/v2",
+    "contract": "source-evidence-contract/v2",
+    "decision": "proceed",
+    "abstention_stage": null,
+    "reason_codes": [],
+    "stage_results": {
+      "topical_relevance": {
+        "status": "passed",
+        "reason_codes": [],
+        "signals": {
+          "joint_lexical_vector_hit_count": 5,
+          "lexical_hit_count": 5,
+          "matched_query_token_count": 6,
+          "query_token_count": 35,
+          "query_token_coverage": 0.17142857,
+          "retrieval_hit_count": 5,
+          "returned_top_bm25_score": 13.61281201,
+          "returned_top_cosine_score": 0.8505196,
+          "returned_top_rrf_score": 0.032522474881,
+          "vector_hit_count": 5
+        }
+      },
+      "evidence_answerability": {
+        "schema_version": "source-evidence-contract/v2",
+        "requirements": {
+          "authentication": true,
+          "cti": false,
+          "correlation": true,
+          "limits": false
+        },
+        "checks": [
+          {
+            "requirement": "authentication_fields",
+            "status": "supported",
+            "witnesses": [
+              {
+                "origin": {
+                  "kind": "chunk",
+                  "item_id": "retrieval-chunk--0bbca650694671ec179ef9b97d45cc40969a30d7bc97752d23217b208beaf348",
+                  "context_pointer": "/retrieval/hits/0/chunk"
+                },
+                "source": {
+                  "artifact_type": "scenario_ground_truth",
+                  "object_type": "evidence",
+                  "object_id": "auth-failure-observations",
+                  "json_pointer": "/evidence/0"
+                },
+                "source_references": [
+                  {
+                    "raw_record_ref": "jsonl:line:1020",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1046",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1048",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1051",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1072",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1074",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1077",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:788",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:790",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:792",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:794",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:796",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:798",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:803",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  }
+                ],
+                "field": "/source_observations/0/original_fields",
+                "context_pointer": "/retrieval/hits/0/chunk/metadata/source_observations/0/original_fields",
+                "value": {
+                  "@timestamp": "2020-10-22T08:29:55.357Z",
+                  "EventID": 4776,
+                  "EventTime": "2020-10-22 04:29:53",
+                  "Hostname": "MORDORDC.theshire.local",
+                  "SourceName": "Microsoft-Windows-Security-Auditing",
+                  "Status": "0xc000006a",
+                  "TargetUserName": "lrodriguez",
+                  "Workstation": "WORKSTATION5"
+                }
+              },
+              {
+                "origin": {
+                  "kind": "chunk",
+                  "item_id": "retrieval-chunk--0bbca650694671ec179ef9b97d45cc40969a30d7bc97752d23217b208beaf348",
+                  "context_pointer": "/retrieval/hits/0/chunk"
+                },
+                "source": {
+                  "artifact_type": "scenario_ground_truth",
+                  "object_type": "evidence",
+                  "object_id": "auth-failure-observations",
+                  "json_pointer": "/evidence/0"
+                },
+                "source_references": [
+                  {
+                    "raw_record_ref": "jsonl:line:1020",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1046",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1048",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1051",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1072",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1074",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1077",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:788",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:790",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:792",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:794",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:796",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:798",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:803",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  }
+                ],
+                "field": "/source_observations/1/original_fields",
+                "context_pointer": "/retrieval/hits/0/chunk/metadata/source_observations/1/original_fields",
+                "value": {
+                  "@timestamp": "2020-10-22T08:29:55.368Z",
+                  "EventID": 4776,
+                  "EventTime": "2020-10-22 04:29:53",
+                  "Hostname": "MORDORDC.theshire.local",
+                  "SourceName": "Microsoft-Windows-Security-Auditing",
+                  "Status": "0xc000006a",
+                  "TargetUserName": "pgustavo",
+                  "Workstation": "WORKSTATION5"
+                }
+              },
+              {
+                "origin": {
+                  "kind": "chunk",
+                  "item_id": "retrieval-chunk--0bbca650694671ec179ef9b97d45cc40969a30d7bc97752d23217b208beaf348",
+                  "context_pointer": "/retrieval/hits/0/chunk"
+                },
+                "source": {
+                  "artifact_type": "scenario_ground_truth",
+                  "object_type": "evidence",
+                  "object_id": "auth-failure-observations",
+                  "json_pointer": "/evidence/0"
+                },
+                "source_references": [
+                  {
+                    "raw_record_ref": "jsonl:line:1020",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1046",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1048",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1051",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1072",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1074",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1077",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:788",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:790",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:792",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:794",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:796",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:798",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:803",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  }
+                ],
+                "field": "/source_observations/2/original_fields",
+                "context_pointer": "/retrieval/hits/0/chunk/metadata/source_observations/2/original_fields",
+                "value": {
+                  "@timestamp": "2020-10-22T08:29:55.370Z",
+                  "EventID": 4776,
+                  "EventTime": "2020-10-22 04:29:53",
+                  "Hostname": "MORDORDC.theshire.local",
+                  "SourceName": "Microsoft-Windows-Security-Auditing",
+                  "Status": "0xc000006a",
+                  "TargetUserName": "sysmonsvc",
+                  "Workstation": "WORKSTATION5"
+                }
+              },
+              {
+                "origin": {
+                  "kind": "chunk",
+                  "item_id": "retrieval-chunk--0bbca650694671ec179ef9b97d45cc40969a30d7bc97752d23217b208beaf348",
+                  "context_pointer": "/retrieval/hits/0/chunk"
+                },
+                "source": {
+                  "artifact_type": "scenario_ground_truth",
+                  "object_type": "evidence",
+                  "object_id": "auth-failure-observations",
+                  "json_pointer": "/evidence/0"
+                },
+                "source_references": [
+                  {
+                    "raw_record_ref": "jsonl:line:1020",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1046",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1048",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1051",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1072",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1074",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1077",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:788",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:790",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:792",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:794",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:796",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:798",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:803",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  }
+                ],
+                "field": "/source_observations/3/original_fields",
+                "context_pointer": "/retrieval/hits/0/chunk/metadata/source_observations/3/original_fields",
+                "value": {
+                  "@timestamp": "2020-10-22T08:29:55.371Z",
+                  "EventID": 4776,
+                  "EventTime": "2020-10-22 04:29:53",
+                  "Hostname": "MORDORDC.theshire.local",
+                  "SourceName": "Microsoft-Windows-Security-Auditing",
+                  "Status": "0xc000006a",
+                  "TargetUserName": "sbeavers",
+                  "Workstation": "WORKSTATION5"
+                }
+              },
+              {
+                "origin": {
+                  "kind": "chunk",
+                  "item_id": "retrieval-chunk--0bbca650694671ec179ef9b97d45cc40969a30d7bc97752d23217b208beaf348",
+                  "context_pointer": "/retrieval/hits/0/chunk"
+                },
+                "source": {
+                  "artifact_type": "scenario_ground_truth",
+                  "object_type": "evidence",
+                  "object_id": "auth-failure-observations",
+                  "json_pointer": "/evidence/0"
+                },
+                "source_references": [
+                  {
+                    "raw_record_ref": "jsonl:line:1020",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1046",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1048",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1051",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1072",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1074",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1077",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:788",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:790",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:792",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:794",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:796",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:798",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:803",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  }
+                ],
+                "field": "/source_observations/4/original_fields",
+                "context_pointer": "/retrieval/hits/0/chunk/metadata/source_observations/4/original_fields",
+                "value": {
+                  "@timestamp": "2020-10-22T08:29:55.381Z",
+                  "EventID": 4776,
+                  "EventTime": "2020-10-22 04:29:53",
+                  "Hostname": "MORDORDC.theshire.local",
+                  "SourceName": "Microsoft-Windows-Security-Auditing",
+                  "Status": "0xc000006a",
+                  "TargetUserName": "mscott",
+                  "Workstation": "WORKSTATION5"
+                }
+              },
+              {
+                "origin": {
+                  "kind": "chunk",
+                  "item_id": "retrieval-chunk--0bbca650694671ec179ef9b97d45cc40969a30d7bc97752d23217b208beaf348",
+                  "context_pointer": "/retrieval/hits/0/chunk"
+                },
+                "source": {
+                  "artifact_type": "scenario_ground_truth",
+                  "object_type": "evidence",
+                  "object_id": "auth-failure-observations",
+                  "json_pointer": "/evidence/0"
+                },
+                "source_references": [
+                  {
+                    "raw_record_ref": "jsonl:line:1020",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1046",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1048",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1051",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1072",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1074",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1077",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:788",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:790",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:792",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:794",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:796",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:798",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:803",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  }
+                ],
+                "field": "/source_observations/5/original_fields",
+                "context_pointer": "/retrieval/hits/0/chunk/metadata/source_observations/5/original_fields",
+                "value": {
+                  "@timestamp": "2020-10-22T08:29:55.381Z",
+                  "EventID": 4776,
+                  "EventTime": "2020-10-22 04:29:53",
+                  "Hostname": "MORDORDC.theshire.local",
+                  "SourceName": "Microsoft-Windows-Security-Auditing",
+                  "Status": "0xc000006a",
+                  "TargetUserName": "pbeesly",
+                  "Workstation": "WORKSTATION5"
+                }
+              },
+              {
+                "origin": {
+                  "kind": "chunk",
+                  "item_id": "retrieval-chunk--0bbca650694671ec179ef9b97d45cc40969a30d7bc97752d23217b208beaf348",
+                  "context_pointer": "/retrieval/hits/0/chunk"
+                },
+                "source": {
+                  "artifact_type": "scenario_ground_truth",
+                  "object_type": "evidence",
+                  "object_id": "auth-failure-observations",
+                  "json_pointer": "/evidence/0"
+                },
+                "source_references": [
+                  {
+                    "raw_record_ref": "jsonl:line:1020",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1046",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1048",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1051",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1072",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1074",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1077",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:788",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:790",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:792",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:794",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:796",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:798",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:803",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  }
+                ],
+                "field": "/source_observations/6/original_fields",
+                "context_pointer": "/retrieval/hits/0/chunk/metadata/source_observations/6/original_fields",
+                "value": {
+                  "@timestamp": "2020-10-22T08:29:55.382Z",
+                  "EventID": 4776,
+                  "EventTime": "2020-10-22 04:29:53",
+                  "Hostname": "MORDORDC.theshire.local",
+                  "SourceName": "Microsoft-Windows-Security-Auditing",
+                  "Status": "0xc000006a",
+                  "TargetUserName": "nxlogsvc",
+                  "Workstation": "WORKSTATION5"
+                }
+              },
+              {
+                "origin": {
+                  "kind": "chunk",
+                  "item_id": "retrieval-chunk--0bbca650694671ec179ef9b97d45cc40969a30d7bc97752d23217b208beaf348",
+                  "context_pointer": "/retrieval/hits/0/chunk"
+                },
+                "source": {
+                  "artifact_type": "scenario_ground_truth",
+                  "object_type": "evidence",
+                  "object_id": "auth-failure-observations",
+                  "json_pointer": "/evidence/0"
+                },
+                "source_references": [
+                  {
+                    "raw_record_ref": "jsonl:line:1020",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1046",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1048",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1051",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1072",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1074",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1077",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:788",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:790",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:792",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:794",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:796",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:798",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:803",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  }
+                ],
+                "field": "/source_observations/7/original_fields",
+                "context_pointer": "/retrieval/hits/0/chunk/metadata/source_observations/7/original_fields",
+                "value": {
+                  "@timestamp": "2020-10-22T08:29:55.210Z",
+                  "EventID": 4625,
+                  "EventTime": "2020-10-22 04:29:53",
+                  "Hostname": "WORKSTATION5.theshire.local",
+                  "LogonType": "2",
+                  "SourceName": "Microsoft-Windows-Security-Auditing",
+                  "Status": "0xc000006d",
+                  "SubStatus": "0xc000006a",
+                  "TargetDomainName": "theshire.local",
+                  "TargetUserName": "lrodriguez",
+                  "WorkstationName": "WORKSTATION5"
+                }
+              },
+              {
+                "origin": {
+                  "kind": "chunk",
+                  "item_id": "retrieval-chunk--0bbca650694671ec179ef9b97d45cc40969a30d7bc97752d23217b208beaf348",
+                  "context_pointer": "/retrieval/hits/0/chunk"
+                },
+                "source": {
+                  "artifact_type": "scenario_ground_truth",
+                  "object_type": "evidence",
+                  "object_id": "auth-failure-observations",
+                  "json_pointer": "/evidence/0"
+                },
+                "source_references": [
+                  {
+                    "raw_record_ref": "jsonl:line:1020",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1046",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1048",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1051",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1072",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1074",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1077",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:788",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:790",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:792",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:794",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:796",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:798",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:803",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  }
+                ],
+                "field": "/source_observations/8/original_fields",
+                "context_pointer": "/retrieval/hits/0/chunk/metadata/source_observations/8/original_fields",
+                "value": {
+                  "@timestamp": "2020-10-22T08:29:55.211Z",
+                  "EventID": 4625,
+                  "EventTime": "2020-10-22 04:29:53",
+                  "Hostname": "WORKSTATION5.theshire.local",
+                  "LogonType": "2",
+                  "SourceName": "Microsoft-Windows-Security-Auditing",
+                  "Status": "0xc000006d",
+                  "SubStatus": "0xc000006a",
+                  "TargetDomainName": "theshire.local",
+                  "TargetUserName": "pgustavo",
+                  "WorkstationName": "WORKSTATION5"
+                }
+              },
+              {
+                "origin": {
+                  "kind": "chunk",
+                  "item_id": "retrieval-chunk--0bbca650694671ec179ef9b97d45cc40969a30d7bc97752d23217b208beaf348",
+                  "context_pointer": "/retrieval/hits/0/chunk"
+                },
+                "source": {
+                  "artifact_type": "scenario_ground_truth",
+                  "object_type": "evidence",
+                  "object_id": "auth-failure-observations",
+                  "json_pointer": "/evidence/0"
+                },
+                "source_references": [
+                  {
+                    "raw_record_ref": "jsonl:line:1020",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1046",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1048",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1051",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1072",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1074",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1077",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:788",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:790",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:792",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:794",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:796",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:798",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:803",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  }
+                ],
+                "field": "/source_observations/9/original_fields",
+                "context_pointer": "/retrieval/hits/0/chunk/metadata/source_observations/9/original_fields",
+                "value": {
+                  "@timestamp": "2020-10-22T08:29:55.214Z",
+                  "EventID": 4625,
+                  "EventTime": "2020-10-22 04:29:53",
+                  "Hostname": "WORKSTATION5.theshire.local",
+                  "LogonType": "2",
+                  "SourceName": "Microsoft-Windows-Security-Auditing",
+                  "Status": "0xc000006d",
+                  "SubStatus": "0xc000006a",
+                  "TargetDomainName": "theshire.local",
+                  "TargetUserName": "sysmonsvc",
+                  "WorkstationName": "WORKSTATION5"
+                }
+              },
+              {
+                "origin": {
+                  "kind": "chunk",
+                  "item_id": "retrieval-chunk--0bbca650694671ec179ef9b97d45cc40969a30d7bc97752d23217b208beaf348",
+                  "context_pointer": "/retrieval/hits/0/chunk"
+                },
+                "source": {
+                  "artifact_type": "scenario_ground_truth",
+                  "object_type": "evidence",
+                  "object_id": "auth-failure-observations",
+                  "json_pointer": "/evidence/0"
+                },
+                "source_references": [
+                  {
+                    "raw_record_ref": "jsonl:line:1020",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1046",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1048",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1051",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1072",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1074",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1077",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:788",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:790",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:792",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:794",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:796",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:798",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:803",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  }
+                ],
+                "field": "/source_observations/10/original_fields",
+                "context_pointer": "/retrieval/hits/0/chunk/metadata/source_observations/10/original_fields",
+                "value": {
+                  "@timestamp": "2020-10-22T08:29:55.215Z",
+                  "EventID": 4625,
+                  "EventTime": "2020-10-22 04:29:53",
+                  "Hostname": "WORKSTATION5.theshire.local",
+                  "LogonType": "2",
+                  "SourceName": "Microsoft-Windows-Security-Auditing",
+                  "Status": "0xc000006d",
+                  "SubStatus": "0xc000006a",
+                  "TargetDomainName": "theshire.local",
+                  "TargetUserName": "sbeavers",
+                  "WorkstationName": "WORKSTATION5"
+                }
+              },
+              {
+                "origin": {
+                  "kind": "chunk",
+                  "item_id": "retrieval-chunk--0bbca650694671ec179ef9b97d45cc40969a30d7bc97752d23217b208beaf348",
+                  "context_pointer": "/retrieval/hits/0/chunk"
+                },
+                "source": {
+                  "artifact_type": "scenario_ground_truth",
+                  "object_type": "evidence",
+                  "object_id": "auth-failure-observations",
+                  "json_pointer": "/evidence/0"
+                },
+                "source_references": [
+                  {
+                    "raw_record_ref": "jsonl:line:1020",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1046",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1048",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1051",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1072",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1074",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1077",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:788",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:790",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:792",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:794",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:796",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:798",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:803",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  }
+                ],
+                "field": "/source_observations/11/original_fields",
+                "context_pointer": "/retrieval/hits/0/chunk/metadata/source_observations/11/original_fields",
+                "value": {
+                  "@timestamp": "2020-10-22T08:29:55.217Z",
+                  "EventID": 4625,
+                  "EventTime": "2020-10-22 04:29:53",
+                  "Hostname": "WORKSTATION5.theshire.local",
+                  "LogonType": "2",
+                  "SourceName": "Microsoft-Windows-Security-Auditing",
+                  "Status": "0xc000006d",
+                  "SubStatus": "0xc000006a",
+                  "TargetDomainName": "theshire.local",
+                  "TargetUserName": "mscott",
+                  "WorkstationName": "WORKSTATION5"
+                }
+              },
+              {
+                "origin": {
+                  "kind": "chunk",
+                  "item_id": "retrieval-chunk--0bbca650694671ec179ef9b97d45cc40969a30d7bc97752d23217b208beaf348",
+                  "context_pointer": "/retrieval/hits/0/chunk"
+                },
+                "source": {
+                  "artifact_type": "scenario_ground_truth",
+                  "object_type": "evidence",
+                  "object_id": "auth-failure-observations",
+                  "json_pointer": "/evidence/0"
+                },
+                "source_references": [
+                  {
+                    "raw_record_ref": "jsonl:line:1020",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1046",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1048",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1051",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1072",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1074",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1077",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:788",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:790",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:792",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:794",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:796",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:798",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:803",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  }
+                ],
+                "field": "/source_observations/12/original_fields",
+                "context_pointer": "/retrieval/hits/0/chunk/metadata/source_observations/12/original_fields",
+                "value": {
+                  "@timestamp": "2020-10-22T08:29:55.219Z",
+                  "EventID": 4625,
+                  "EventTime": "2020-10-22 04:29:53",
+                  "Hostname": "WORKSTATION5.theshire.local",
+                  "LogonType": "2",
+                  "SourceName": "Microsoft-Windows-Security-Auditing",
+                  "Status": "0xc000006d",
+                  "SubStatus": "0xc000006a",
+                  "TargetDomainName": "theshire.local",
+                  "TargetUserName": "pbeesly",
+                  "WorkstationName": "WORKSTATION5"
+                }
+              },
+              {
+                "origin": {
+                  "kind": "chunk",
+                  "item_id": "retrieval-chunk--0bbca650694671ec179ef9b97d45cc40969a30d7bc97752d23217b208beaf348",
+                  "context_pointer": "/retrieval/hits/0/chunk"
+                },
+                "source": {
+                  "artifact_type": "scenario_ground_truth",
+                  "object_type": "evidence",
+                  "object_id": "auth-failure-observations",
+                  "json_pointer": "/evidence/0"
+                },
+                "source_references": [
+                  {
+                    "raw_record_ref": "jsonl:line:1020",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1046",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1048",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1051",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1072",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1074",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1077",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:788",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:790",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:792",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:794",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:796",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:798",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:803",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  }
+                ],
+                "field": "/source_observations/13/original_fields",
+                "context_pointer": "/retrieval/hits/0/chunk/metadata/source_observations/13/original_fields",
+                "value": {
+                  "@timestamp": "2020-10-22T08:29:55.222Z",
+                  "EventID": 4625,
+                  "EventTime": "2020-10-22 04:29:53",
+                  "Hostname": "WORKSTATION5.theshire.local",
+                  "LogonType": "2",
+                  "SourceName": "Microsoft-Windows-Security-Auditing",
+                  "Status": "0xc000006d",
+                  "SubStatus": "0xc000006a",
+                  "TargetDomainName": "theshire.local",
+                  "TargetUserName": "nxlogsvc",
+                  "WorkstationName": "WORKSTATION5"
+                }
+              }
+            ],
+            "reason_code": "source_witness_present"
+          },
+          {
+            "requirement": "deduplicated_authentication",
+            "status": "supported",
+            "witnesses": [
+              {
+                "origin": {
+                  "kind": "chunk",
+                  "item_id": "retrieval-chunk--8f302f092ff819f01804a1f314eed537c47bfe109e7c9e495e29e828bfa98f88",
+                  "context_pointer": "/retrieval/hits/4/chunk"
+                },
+                "source": {
+                  "artifact_type": "scenario_ground_truth",
+                  "object_type": "fact",
+                  "object_id": "auth-correlation-summary",
+                  "json_pointer": "/facts/8"
+                },
+                "source_references": [
+                  {
+                    "raw_record_ref": "jsonl:line:1020",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1046",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1048",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1051",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1072",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1074",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1077",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:788",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:790",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:792",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:794",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:796",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:798",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:803",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  }
+                ],
+                "field": "/source_object/attributes/authentication_correlation",
+                "context_pointer": "/retrieval/hits/4/chunk/metadata/source_object/attributes/authentication_correlation",
+                "value": {
+                  "ambiguous_observations": [],
+                  "countable_attempts": 7,
+                  "failure_observations": 14,
+                  "paired_attempts": 7,
+                  "tolerance_seconds": 1.0
+                }
+              }
+            ],
+            "reason_code": "source_witness_present"
+          },
+          {
+            "requirement": "bound_retrieved_source",
+            "status": "supported",
+            "witnesses": [
+              {
+                "origin": {
+                  "kind": "chunk",
+                  "item_id": "retrieval-chunk--0bbca650694671ec179ef9b97d45cc40969a30d7bc97752d23217b208beaf348",
+                  "context_pointer": "/retrieval/hits/0/chunk"
+                },
+                "source": {
+                  "artifact_type": "scenario_ground_truth",
+                  "object_type": "evidence",
+                  "object_id": "auth-failure-observations",
+                  "json_pointer": "/evidence/0"
+                },
+                "source_references": [
+                  {
+                    "raw_record_ref": "jsonl:line:1020",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1046",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1048",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1051",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1072",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1074",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1077",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:788",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:790",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:792",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:794",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:796",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:798",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:803",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  }
+                ],
+                "field": "source",
+                "context_pointer": "/retrieval/hits/0/chunk/source",
+                "value": {
+                  "artifact_type": "scenario_ground_truth",
+                  "object_type": "evidence",
+                  "object_id": "auth-failure-observations",
+                  "json_pointer": "/evidence/0"
+                }
+              },
+              {
+                "origin": {
+                  "kind": "chunk",
+                  "item_id": "retrieval-chunk--91ef444192d109b423f4b0402f098672ea5143a1c14c7d15566c0872ec1016f8",
+                  "context_pointer": "/retrieval/hits/1/chunk"
+                },
+                "source": {
+                  "artifact_type": "scenario_ground_truth",
+                  "object_type": "scenario",
+                  "object_id": null,
+                  "json_pointer": "/scenario"
+                },
+                "source_references": [
+                  {
+                    "raw_record_ref": "jsonl:line:1020",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1046",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1048",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1051",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1072",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1074",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1077",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:788",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:790",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:792",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:794",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:796",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:798",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:803",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  }
+                ],
+                "field": "source",
+                "context_pointer": "/retrieval/hits/1/chunk/source",
+                "value": {
+                  "artifact_type": "scenario_ground_truth",
+                  "object_type": "scenario",
+                  "object_id": null,
+                  "json_pointer": "/scenario"
+                }
+              },
+              {
+                "origin": {
+                  "kind": "chunk",
+                  "item_id": "retrieval-chunk--55fd82e45a343b8e932202f57fbf060278048047dd8c925ec7821b7196db06fc",
+                  "context_pointer": "/retrieval/hits/2/chunk"
+                },
+                "source": {
+                  "artifact_type": "scenario_ground_truth",
+                  "object_type": "mitre_assessment",
+                  "object_id": "assessment-T1110-003",
+                  "json_pointer": "/mitre_assessments/0"
+                },
+                "source_references": [
+                  {
+                    "raw_record_ref": "jsonl:line:1020",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1046",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1048",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1051",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1072",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1074",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1077",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:788",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:790",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:792",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:794",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:796",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:798",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:803",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  }
+                ],
+                "field": "source",
+                "context_pointer": "/retrieval/hits/2/chunk/source",
+                "value": {
+                  "artifact_type": "scenario_ground_truth",
+                  "object_type": "mitre_assessment",
+                  "object_id": "assessment-T1110-003",
+                  "json_pointer": "/mitre_assessments/0"
+                }
+              },
+              {
+                "origin": {
+                  "kind": "chunk",
+                  "item_id": "retrieval-chunk--eb2b6e6508b7b978eaa1436483c42fd13d146a05454bd73c8bb6c6b51af49afd",
+                  "context_pointer": "/retrieval/hits/3/chunk"
+                },
+                "source": {
+                  "artifact_type": "scenario_ground_truth",
+                  "object_type": "sigma_finding",
+                  "object_id": "sigma-spray-project",
+                  "json_pointer": "/sigma_findings/1"
+                },
+                "source_references": [
+                  {
+                    "raw_record_ref": "jsonl:line:1020",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1046",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1048",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1051",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1072",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1074",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1077",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:788",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:790",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:792",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:794",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:796",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:798",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:803",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  }
+                ],
+                "field": "source",
+                "context_pointer": "/retrieval/hits/3/chunk/source",
+                "value": {
+                  "artifact_type": "scenario_ground_truth",
+                  "object_type": "sigma_finding",
+                  "object_id": "sigma-spray-project",
+                  "json_pointer": "/sigma_findings/1"
+                }
+              },
+              {
+                "origin": {
+                  "kind": "chunk",
+                  "item_id": "retrieval-chunk--8f302f092ff819f01804a1f314eed537c47bfe109e7c9e495e29e828bfa98f88",
+                  "context_pointer": "/retrieval/hits/4/chunk"
+                },
+                "source": {
+                  "artifact_type": "scenario_ground_truth",
+                  "object_type": "fact",
+                  "object_id": "auth-correlation-summary",
+                  "json_pointer": "/facts/8"
+                },
+                "source_references": [
+                  {
+                    "raw_record_ref": "jsonl:line:1020",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1046",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1048",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1051",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1072",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1074",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:1077",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:788",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:790",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:792",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:794",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:796",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:798",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  },
+                  {
+                    "raw_record_ref": "jsonl:line:803",
+                    "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+                  }
+                ],
+                "field": "source",
+                "context_pointer": "/retrieval/hits/4/chunk/source",
+                "value": {
+                  "artifact_type": "scenario_ground_truth",
+                  "object_type": "fact",
+                  "object_id": "auth-correlation-summary",
+                  "json_pointer": "/facts/8"
+                }
+              }
+            ],
+            "reason_code": "source_witness_present"
+          }
+        ],
+        "status": "supported",
+        "reason_codes": []
+      }
+    },
+    "legacy_policy_id": "two-stage-prod-aae2e49de84bd18a",
+    "human_review_required": true,
+    "interpretation": "Research context eligibility, not claim truth or human approval."
+  },
+  "eligibility": {
+    "policy_decision": "proceed",
+    "decision": "proceed",
+    "context_utf8_bytes": 48086,
+    "messages_utf8_bytes": 66040,
+    "budget_exceeded": false,
+    "stage": null
+  },
+  "validation": {
+    "raw_report_before_sanitize": {
+      "schema_version": "threat-hunting-report/v1",
+      "verdict": "SUSPICIOUS",
+      "direct_answer": "Trong cụm nghi vấn password spraying, có 14 failure observations (7 sự kiện 4625 trên WORKSTATION5.theshire.local và 7 sự kiện 4776 trên MORDORDC.theshire.local) nhưng sau khử trùng chỉ còn 7 lần thử được ghép cặp (paired_attempts=7, countable_attempts=7), với 7 tài khoản khác nhau: lrodriguez, mscott, nxlogsvc, pbeesly, pgustavo, sbeavers, sysmonsvc. Khoảng dấu thời gian canonical của các observations/anchors được chọn là 2020-10-22T08:29:55.210000Z đến 2020-10-22T08:29:55.222000Z (4625) và 2020-10-22T08:29:55.357000Z đến 2020-10-22T08:29:55.382000Z (4776); đây không phải thời lượng thực tế của hoạt động tấn công.",
+      "executive_summary": "14 bản ghi lỗi xác thực là hai góc nhìn (endpoint 4625 và DC 4776) của cùng các lần thử, không phải 14 lần thử riêng biệt. Sau khử trùng có 7 lần thử được ghép cặp trên 7 tài khoản khác nhau, phù hợp với cụm nghi vấn password spraying ở mức candidate; không chứng minh mật khẩu giống nhau hay compromise.",
+      "technical_analysis": "Khử trùng: evidence auth-failure-observations ghi rõ '4625 endpoint and 4776 DC views, not additional attempts' và liệt kê 7 sự kiện 4625 (jsonl:line:788, 790, 792, 794, 796, 798, 803) cùng 7 sự kiện 4776 (jsonl:line:1020, 1046, 1048, 1051, 1072, 1074, 1077). Fact auth-correlation-summary (status inferred) cho authentication_correlation: failure_observations=14, paired_attempts=7, countable_attempts=7, tolerance_seconds=1.0, ambiguous_observations rỗng; spraying_candidates có distinct_accounts gồm 7 tài khoản và 7 attempt_ids, start=2020-10-22T08:29:55.210000Z, end=2020-10-22T08:29:55.222000Z, duration_seconds=0.012, window_seconds=60, min_distinct_accounts=5, status=candidate. Giới hạn của phép ghép: đây là ghép theo view (4625 trên WORKSTATION5 với 4776 trên MORDORDC) trong dung sai 1.0 giây, là suy luận (inferred), không có attempt ID dùng chung và không chứng minh đồng bộ đồng hồ giữa hai nguồn; các trường raw EventTime (2020-10-22 04:29:53) và @timestamp khác nhau được giữ nguyên, không hiệu chỉnh múi giờ. Khoảng 08:29:55.210000Z–08:29:55.222000Z và 08:29:55.357000Z–08:29:55.382000Z chỉ là khoảng dấu thời gian canonical của các observations được chọn, không phải thời lượng tấn công. Không chứng minh mật khẩu giống nhau, không chứng minh brute force lặp lại trên một tài khoản, không xác nhận compromise.",
+      "attack_chain": [],
+      "mitre_mappings": [
+        {
+          "technique_id": "T1110.003",
+          "technique_name": "Password Spraying",
+          "confidence": "supported_by_observed_behavior",
+          "rationale": "Observed concentrated failures across distinct accounts support suspected spraying; does not prove same password or compromise.",
+          "evidence_support": "supported_by_observed_behavior",
+          "assessment_status": "candidate",
+          "review_status": "needs_review"
+        }
+      ],
+      "sigma_matches": [
+        "8146a24e-c271-4d34-a679-6a361f71ccab"
+      ],
+      "containment_recommendations": [],
+      "unverified_claims": [
+        "Password sameness across the 7 accounts is unobserved; spraying with a single password is not established.",
+        "No successful compromise or recovered password is established; same-name success after failure does not prove account compromise.",
+        "The 4625/4776 pairing is an inferred correlation within 1.0 second tolerance; no shared attempt ID or proven cross-source clock synchronization exists.",
+        "The canonical timestamp spans are not the real attack/activity duration.",
+        "The Sigma finding is a project-derived correlation after view deduplication, not an external SigmaHQ rule match."
+      ],
+      "evidence_refs": [
+        "auth-failure-observations",
+        "auth-correlation-summary",
+        "assessment-T1110-003",
+        "sigma-spray-project",
+        "jsonl:line:788",
+        "jsonl:line:790",
+        "jsonl:line:792",
+        "jsonl:line:794",
+        "jsonl:line:796",
+        "jsonl:line:798",
+        "jsonl:line:803",
+        "jsonl:line:1020",
+        "jsonl:line:1046",
+        "jsonl:line:1048",
+        "jsonl:line:1051",
+        "jsonl:line:1072",
+        "jsonl:line:1074",
+        "jsonl:line:1077"
+      ]
+    },
+    "sanitized_report": {
+      "schema_version": "threat-hunting-report/v1",
+      "verdict": "SUSPICIOUS",
+      "direct_answer": "Trong cụm nghi vấn password spraying, có 14 failure observations (7 sự kiện 4625 trên WORKSTATION5.theshire.local và 7 sự kiện 4776 trên MORDORDC.theshire.local) nhưng sau khử trùng chỉ còn 7 lần thử được ghép cặp (paired_attempts=7, countable_attempts=7), với 7 tài khoản khác nhau: lrodriguez, mscott, nxlogsvc, pbeesly, pgustavo, sbeavers, sysmonsvc. Khoảng dấu thời gian canonical của các observations/anchors được chọn là 2020-10-22T08:29:55.210000Z đến 2020-10-22T08:29:55.222000Z (4625) và 2020-10-22T08:29:55.357000Z đến 2020-10-22T08:29:55.382000Z (4776); đây không phải thời lượng thực tế của hoạt động tấn công.",
+      "executive_summary": "14 bản ghi lỗi xác thực là hai góc nhìn (endpoint 4625 và DC 4776) của cùng các lần thử, không phải 14 lần thử riêng biệt. Sau khử trùng có 7 lần thử được ghép cặp trên 7 tài khoản khác nhau, phù hợp với cụm nghi vấn password spraying ở mức candidate; không chứng minh mật khẩu giống nhau hay compromise.",
+      "technical_analysis": "Khử trùng: evidence auth-failure-observations ghi rõ '4625 endpoint and 4776 DC views, not additional attempts' và liệt kê 7 sự kiện 4625 (jsonl:line:788, 790, 792, 794, 796, 798, 803) cùng 7 sự kiện 4776 (jsonl:line:1020, 1046, 1048, 1051, 1072, 1074, 1077). Fact auth-correlation-summary (status inferred) cho authentication_correlation: failure_observations=14, paired_attempts=7, countable_attempts=7, tolerance_seconds=1.0, ambiguous_observations rỗng; spraying_candidates có distinct_accounts gồm 7 tài khoản và 7 attempt_ids, start=2020-10-22T08:29:55.210000Z, end=2020-10-22T08:29:55.222000Z, duration_seconds=0.012, window_seconds=60, min_distinct_accounts=5, status=candidate. Giới hạn của phép ghép: đây là ghép theo view (4625 trên WORKSTATION5 với 4776 trên MORDORDC) trong dung sai 1.0 giây, là suy luận (inferred), không có attempt ID dùng chung và không chứng minh đồng bộ đồng hồ giữa hai nguồn; các trường raw EventTime (2020-10-22 04:29:53) và @timestamp khác nhau được giữ nguyên, không hiệu chỉnh múi giờ. Khoảng 08:29:55.210000Z–08:29:55.222000Z và 08:29:55.357000Z–08:29:55.382000Z chỉ là khoảng dấu thời gian canonical của các observations được chọn, không phải thời lượng tấn công. Không chứng minh mật khẩu giống nhau, không chứng minh brute force lặp lại trên một tài khoản, không xác nhận compromise.",
+      "attack_chain": [],
+      "mitre_mappings": [
+        {
+          "technique_id": "T1110.003",
+          "technique_name": "Password Spraying",
+          "confidence": "supported_by_observed_behavior",
+          "rationale": "Observed concentrated failures across distinct accounts support suspected spraying; does not prove same password or compromise.",
+          "evidence_support": "supported_by_observed_behavior",
+          "assessment_status": "candidate",
+          "review_status": "needs_review"
+        }
+      ],
+      "sigma_matches": [
+        "8146a24e-c271-4d34-a679-6a361f71ccab"
+      ],
+      "containment_recommendations": [],
+      "unverified_claims": [
+        "Password sameness across the 7 accounts is unobserved; spraying with a single password is not established.",
+        "No successful compromise or recovered password is established; same-name success after failure does not prove account compromise.",
+        "The 4625/4776 pairing is an inferred correlation within 1.0 second tolerance; no shared attempt ID or proven cross-source clock synchronization exists.",
+        "The canonical timestamp spans are not the real attack/activity duration.",
+        "The Sigma finding is a project-derived correlation after view deduplication, not an external SigmaHQ rule match."
+      ],
+      "evidence_refs": [
+        "auth-failure-observations",
+        "auth-correlation-summary",
+        "assessment-T1110-003",
+        "sigma-spray-project",
+        "jsonl:line:788",
+        "jsonl:line:790",
+        "jsonl:line:792",
+        "jsonl:line:794",
+        "jsonl:line:796",
+        "jsonl:line:798",
+        "jsonl:line:803",
+        "jsonl:line:1020",
+        "jsonl:line:1046",
+        "jsonl:line:1048",
+        "jsonl:line:1051",
+        "jsonl:line:1072",
+        "jsonl:line:1074",
+        "jsonl:line:1077"
+      ]
+    },
+    "status": "passed",
+    "scope": "structured claims + bounded process citation, duration, request-topic and authentication Status/SubStatus binding checks; remaining prose/comparison correctness unverified",
+    "issues": [],
+    "reference_checks": [
+      {
+        "reference": "auth-failure-observations",
+        "status": "exists_unverified"
+      },
+      {
+        "reference": "auth-correlation-summary",
+        "status": "exists_unverified"
+      },
+      {
+        "reference": "assessment-T1110-003",
+        "status": "exists_unverified"
+      },
+      {
+        "reference": "sigma-spray-project",
+        "status": "exists_unverified"
+      },
+      {
+        "reference": "jsonl:line:788",
+        "status": "exists_unverified"
+      },
+      {
+        "reference": "jsonl:line:790",
+        "status": "exists_unverified"
+      },
+      {
+        "reference": "jsonl:line:792",
+        "status": "exists_unverified"
+      },
+      {
+        "reference": "jsonl:line:794",
+        "status": "exists_unverified"
+      },
+      {
+        "reference": "jsonl:line:796",
+        "status": "exists_unverified"
+      },
+      {
+        "reference": "jsonl:line:798",
+        "status": "exists_unverified"
+      },
+      {
+        "reference": "jsonl:line:803",
+        "status": "exists_unverified"
+      },
+      {
+        "reference": "jsonl:line:1020",
+        "status": "exists_unverified"
+      },
+      {
+        "reference": "jsonl:line:1046",
+        "status": "exists_unverified"
+      },
+      {
+        "reference": "jsonl:line:1048",
+        "status": "exists_unverified"
+      },
+      {
+        "reference": "jsonl:line:1051",
+        "status": "exists_unverified"
+      },
+      {
+        "reference": "jsonl:line:1072",
+        "status": "exists_unverified"
+      },
+      {
+        "reference": "jsonl:line:1074",
+        "status": "exists_unverified"
+      },
+      {
+        "reference": "jsonl:line:1077",
+        "status": "exists_unverified"
+      }
+    ],
+    "unverified_fields": [
+      "verdict",
+      "direct_answer",
+      "executive_summary",
+      "technical_analysis",
+      "containment_recommendations",
+      "sigma_matches"
+    ],
+    "human_review_required": true,
+    "narrative_binding_audit": {
+      "scope": "explicit positive executable-parent/creation-verb/executable-child clauses with inline references only",
+      "checks": [],
+      "issues": [],
+      "remaining_prose": "unverified; human review required"
+    },
+    "clock_and_scope_audit": {
+      "scope": "explicit numeric authentication-duration expressions and asserted HTTP/C2/exfiltration topics only; negated boundary caveats are permitted",
+      "checks": [],
+      "issues": [],
+      "comparison_semantics": "requires offline rubric review, not automatically verified",
+      "remaining_prose": "unverified; AI/human semantic review remains necessary"
+    },
+    "auth_field_binding_audit": {
+      "scope": "explicit EN/VI Status/SubStatus hex assignments and field-absence predicates, scoped by mentioned authentication event/provider and supplied references; all other prose unverified",
+      "events_in_context": [
+        "4625",
+        "4776"
+      ],
+      "issues": [],
+      "checks": []
+    }
+  },
+  "report": {
+    "schema_version": "threat-hunting-report/v1",
+    "verdict": "SUSPICIOUS",
+    "direct_answer": "Trong cụm nghi vấn password spraying, có 14 failure observations (7 sự kiện 4625 trên WORKSTATION5.theshire.local và 7 sự kiện 4776 trên MORDORDC.theshire.local) nhưng sau khử trùng chỉ còn 7 lần thử được ghép cặp (paired_attempts=7, countable_attempts=7), với 7 tài khoản khác nhau: lrodriguez, mscott, nxlogsvc, pbeesly, pgustavo, sbeavers, sysmonsvc. Khoảng dấu thời gian canonical của các observations/anchors được chọn là 2020-10-22T08:29:55.210000Z đến 2020-10-22T08:29:55.222000Z (4625) và 2020-10-22T08:29:55.357000Z đến 2020-10-22T08:29:55.382000Z (4776); đây không phải thời lượng thực tế của hoạt động tấn công.",
+    "executive_summary": "14 bản ghi lỗi xác thực là hai góc nhìn (endpoint 4625 và DC 4776) của cùng các lần thử, không phải 14 lần thử riêng biệt. Sau khử trùng có 7 lần thử được ghép cặp trên 7 tài khoản khác nhau, phù hợp với cụm nghi vấn password spraying ở mức candidate; không chứng minh mật khẩu giống nhau hay compromise.",
+    "technical_analysis": "Khử trùng: evidence auth-failure-observations ghi rõ '4625 endpoint and 4776 DC views, not additional attempts' và liệt kê 7 sự kiện 4625 (jsonl:line:788, 790, 792, 794, 796, 798, 803) cùng 7 sự kiện 4776 (jsonl:line:1020, 1046, 1048, 1051, 1072, 1074, 1077). Fact auth-correlation-summary (status inferred) cho authentication_correlation: failure_observations=14, paired_attempts=7, countable_attempts=7, tolerance_seconds=1.0, ambiguous_observations rỗng; spraying_candidates có distinct_accounts gồm 7 tài khoản và 7 attempt_ids, start=2020-10-22T08:29:55.210000Z, end=2020-10-22T08:29:55.222000Z, duration_seconds=0.012, window_seconds=60, min_distinct_accounts=5, status=candidate. Giới hạn của phép ghép: đây là ghép theo view (4625 trên WORKSTATION5 với 4776 trên MORDORDC) trong dung sai 1.0 giây, là suy luận (inferred), không có attempt ID dùng chung và không chứng minh đồng bộ đồng hồ giữa hai nguồn; các trường raw EventTime (2020-10-22 04:29:53) và @timestamp khác nhau được giữ nguyên, không hiệu chỉnh múi giờ. Khoảng 08:29:55.210000Z–08:29:55.222000Z và 08:29:55.357000Z–08:29:55.382000Z chỉ là khoảng dấu thời gian canonical của các observations được chọn, không phải thời lượng tấn công. Không chứng minh mật khẩu giống nhau, không chứng minh brute force lặp lại trên một tài khoản, không xác nhận compromise.",
+    "attack_chain": [],
+    "mitre_mappings": [
+      {
+        "technique_id": "T1110.003",
+        "technique_name": "Password Spraying",
+        "confidence": "supported_by_observed_behavior",
+        "rationale": "Observed concentrated failures across distinct accounts support suspected spraying; does not prove same password or compromise.",
+        "evidence_support": "supported_by_observed_behavior",
+        "assessment_status": "candidate",
+        "review_status": "needs_review"
+      }
+    ],
+    "sigma_matches": [
+      "8146a24e-c271-4d34-a679-6a361f71ccab"
+    ],
+    "containment_recommendations": [],
+    "unverified_claims": [
+      "Password sameness across the 7 accounts is unobserved; spraying with a single password is not established.",
+      "No successful compromise or recovered password is established; same-name success after failure does not prove account compromise.",
+      "The 4625/4776 pairing is an inferred correlation within 1.0 second tolerance; no shared attempt ID or proven cross-source clock synchronization exists.",
+      "The canonical timestamp spans are not the real attack/activity duration.",
+      "The Sigma finding is a project-derived correlation after view deduplication, not an external SigmaHQ rule match."
+    ],
+    "evidence_refs": [
+      "auth-failure-observations",
+      "auth-correlation-summary",
+      "assessment-T1110-003",
+      "sigma-spray-project",
+      "jsonl:line:788",
+      "jsonl:line:790",
+      "jsonl:line:792",
+      "jsonl:line:794",
+      "jsonl:line:796",
+      "jsonl:line:798",
+      "jsonl:line:803",
+      "jsonl:line:1020",
+      "jsonl:line:1046",
+      "jsonl:line:1048",
+      "jsonl:line:1051",
+      "jsonl:line:1072",
+      "jsonl:line:1074",
+      "jsonl:line:1077"
+    ]
+  },
+  "diagnostic": null,
+  "context": {
+    "source_ground_truth": {
+      "path": "outputs/integrated/20261102_cti_portable_v7/consumers/purplesharp-ad/scenario_ground_truth.json",
+      "schema_version": "scenario-ground-truth/v3",
+      "sha256": "9ddd403d2778a5416f3e394b997c5fb1b65e2ec1cb50926960023d0f782e2997",
+      "scenario_id": "purplesharp-ad"
+    },
+    "persistence": "Exact context reconstructible from pinned sources and receipt hashes"
+  },
+  "messages": null,
+  "evidence_contract": null,
+  "configuration": {
+    "model": {
+      "provider": "generic_openai",
+      "model_name": "deepseek-flash",
+      "base_url": "https://api.deepseek.com",
+      "temperature": 0.0,
+      "max_tokens": 16384,
+      "timeout_seconds": 180.0,
+      "maximum_http_attempts_per_generation": 1,
+      "automatic_retry": false,
+      "validator_policy": {
+        "policy_id": "source-meaning-validator/v3.2",
+        "network_lookbehind": 120,
+        "network_lookahead": 80,
+        "lookbehind_bounds": [
+          1,
+          400
+        ],
+        "lookahead_bounds": [
+          1,
+          400
+        ],
+        "negation_scope": "clause-local",
+        "clause_split": "sentence|contrast|subject-comma|independent-and-va",
+        "negation_binding": "topic-specific evidential/use predicate; unrelated negators do not govern the topic",
+        "authentication_binding": "supplied event/provider/field/value/reference; no dataset value whitelist",
+        "unverified_scope": "all prose outside the finite EN/VI predicate and Status/SubStatus grammar",
+        "checks": [
+          "numeric_duration_expression",
+          "unrequested_network_topic",
+          "auth_status_event_binding",
+          "auth_status_views_merged"
+        ],
+        "source_contract": "source-meaning/v2/v3"
+      },
+      "thinking": {
+        "type": "disabled"
+      }
+    },
+    "profile_id": "deepseek-final-nothinking-20261112T143858Z",
+    "artifacts": {
+      "mshta-powershell": {
+        "gt_path": {
+          "path": "outputs/integrated/20261112_live_v1/consumers/mshta-powershell/scenario_ground_truth.json",
+          "sha256": "7492ac551d3ca6b3d0f9d752f864b951722e5dd1c0037ebeb95aac149195f4c3"
+        },
+        "corpus_path": {
+          "path": "outputs/integrated/20261112_live_v1/consumers/mshta-powershell/retrieval_corpus.json",
+          "sha256": "081a4cb129fa20fe9818e90979c6a323680989f508f1e64f006fe8dfed951692"
+        },
+        "graph_path": {
+          "path": "outputs/integrated/20261112_live_v1/consumers/mshta-powershell/knowledge_graph.json",
+          "sha256": "af1bc7c773b1df500aa0f88875c2a12f496e469cb3490c55e2e7071f91555280"
+        },
+        "index_path": {
+          "path": "outputs/integrated/20261112_live_v1/consumers/mshta-powershell/vector_index_e5.json",
+          "sha256": "e27f495ffe80e21018a5f4064347ede9ea262f79ac673cd7b23fee1aa5a4953d"
+        }
+      },
+      "purplesharp-ad": {
+        "gt_path": {
+          "path": "outputs/integrated/20261102_cti_portable_v7/consumers/purplesharp-ad/scenario_ground_truth.json",
+          "sha256": "9ddd403d2778a5416f3e394b997c5fb1b65e2ec1cb50926960023d0f782e2997"
+        },
+        "corpus_path": {
+          "path": "outputs/integrated/20261102_cti_portable_v7/consumers/purplesharp-ad/retrieval_corpus.json",
+          "sha256": "89285b6e0cab18fe9272c49b762105339db697959d462ae2838e38d5a44bd1ea"
+        },
+        "graph_path": {
+          "path": "outputs/integrated/20261102_cti_portable_v7/consumers/purplesharp-ad/knowledge_graph.json",
+          "sha256": "8885e4fe312d5037a5aab4b15a6801bf19f29d57c2f22ab5dfae1d776e8e1658"
+        },
+        "index_path": {
+          "path": "outputs/integrated/20261102_cti_portable_v7/consumers/purplesharp-ad/vector_index_e5.json",
+          "sha256": "307f7e7e27c992c8788c3f8f04e78e63f332620a202c80cb54e6d3afae64d5ff"
+        }
+      },
+      "regsvr32-c2": {
+        "gt_path": {
+          "path": "outputs/integrated/20261102_cti_portable_v7/consumers/regsvr32-c2/scenario_ground_truth.json",
+          "sha256": "ca034cbd2c158f6d4f97651da8556d1cba36e38a7d957a4fb8eafab27d2aa09c"
+        },
+        "corpus_path": {
+          "path": "outputs/integrated/20261102_cti_portable_v7/consumers/regsvr32-c2/retrieval_corpus.json",
+          "sha256": "9ac6b1dbf6d2d6f792182f2257702ead87997063ad9fd69ec3d2ed1a240b73f8"
+        },
+        "graph_path": {
+          "path": "outputs/integrated/20261102_cti_portable_v7/consumers/regsvr32-c2/knowledge_graph.json",
+          "sha256": "465237c489e92f599436b65ab8f1699978d5fbab832e56379191283a7fee3575"
+        },
+        "index_path": {
+          "path": "outputs/integrated/20261102_cti_portable_v7/consumers/regsvr32-c2/vector_index_e5.json",
+          "sha256": "6c3931e077938d22f7037066abc1e6cdc5bcf05fa3d73baa3f3de9e0d3a34d90"
+        }
+      }
+    },
+    "source_configuration": {
+      "schema_version": "experimental-comparison-config/v2",
+      "profile_id": "interactive-deepseek-nothinking-20261112-v10",
+      "benchmark": "benchmarks/integrated/scenarios_12_v1.json",
+      "runtime_artifacts": "configs/runtime_artifacts_live_v2.json",
+      "gate_policy": "configs/gate/two_stage_production_policy.json",
+      "gate_contract": "source-evidence-contract/v2",
+      "generation_contract": "source-meaning/v3",
+      "validator_policy_id": "source-meaning-validator/v3.2",
+      "maximum_llm_requests": 6,
+      "retrieval": {
+        "top_k": 5,
+        "candidate_k": 20
+      },
+      "graph_expansion": {
+        "direction": "both",
+        "max_depth": 2,
+        "max_nodes": 100,
+        "max_edges": 200
+      },
+      "maximum_context_utf8_bytes": 262144,
+      "maximum_messages_utf8_bytes": 294912,
+      "branches": [
+        "rag",
+        "graphrag"
+      ],
+      "scope_source": "corpus_only_same_for_both_branches",
+      "runtime_mode": "interactive_per_question",
+      "release_capability": "interactive_per_question",
+      "persistence_contract": "interactive-evidence-receipt/v1",
+      "review_status": "draft_reviewable_pending_human_review",
+      "interpretation": "Current-source DeepSeek non-thinking generation, 16384 output tokens; unchanged source gate and validator v3.2. Paired experiment execution has its own durable protocol and ledger.",
+      "release_limitation": "Interactive draft requiring human review; not a benchmark or semantic acceptance. No retry/fallback."
+    },
+    "source_manifest_sha256": "1923ecb28ef6479440dd59e7d457ee6a62299fdae8084fe1185376693379dd90",
+    "llm_http_attempts": 1,
+    "maximum_llm_requests": null
+  },
+  "provenance": {
+    "mode": "paired_current_source_experiment",
+    "run_id": "deepseek-final-nothinking-20261112T143858Z",
+    "directory": "outputs/experiments/deepseek-final-nothinking-20261112T143858Z/AUTH-CORRELATE_rag",
+    "benchmark_result": true
+  },
+  "human_review_required": true,
+  "generation_evidence": {
+    "created_utc": "2026-11-12T14:46:26.963709+00:00",
+    "model_output_sha256": "ed4e00a4653f7a1534d3acc0d6bfae1df7cfd0ef10b350cba0bbab2bbe3eec15",
+    "new_llm_response": true,
+    "benchmark_result": true
+  },
+  "source_receipts": {
+    "context": {
+      "schema_version": "current-paired-input-receipt/v1",
+      "artifact": "context",
+      "content_sha256": "03dbc284ef82c53b32e2790489f2c46b265e81e7f7f02609101828a300a67be9",
+      "content_utf8_bytes": 48086,
+      "scenario_id": "purplesharp-ad",
+      "source_bindings": {
+        "gt_path": {
+          "path": "outputs/integrated/20261102_cti_portable_v7/consumers/purplesharp-ad/scenario_ground_truth.json",
+          "sha256": "9ddd403d2778a5416f3e394b997c5fb1b65e2ec1cb50926960023d0f782e2997"
+        },
+        "corpus_path": {
+          "path": "outputs/integrated/20261102_cti_portable_v7/consumers/purplesharp-ad/retrieval_corpus.json",
+          "sha256": "89285b6e0cab18fe9272c49b762105339db697959d462ae2838e38d5a44bd1ea"
+        },
+        "graph_path": {
+          "path": "outputs/integrated/20261102_cti_portable_v7/consumers/purplesharp-ad/knowledge_graph.json",
+          "sha256": "8885e4fe312d5037a5aab4b15a6801bf19f29d57c2f22ab5dfae1d776e8e1658"
+        },
+        "index_path": {
+          "path": "outputs/integrated/20261102_cti_portable_v7/consumers/purplesharp-ad/vector_index_e5.json",
+          "sha256": "307f7e7e27c992c8788c3f8f04e78e63f332620a202c80cb54e6d3afae64d5ff"
+        }
+      },
+      "persistence": "Exact runtime value stays in RAM; source objects remain in unchanged pinned consumers. No duplicate raw payload persisted."
+    },
+    "messages": {
+      "schema_version": "current-paired-input-receipt/v1",
+      "artifact": "messages",
+      "content_sha256": "bf9d78818d8f790c3df6d33a5b46e0fc971331e1155c059b92b46839f299bac7",
+      "content_utf8_bytes": 66053,
+      "scenario_id": "purplesharp-ad",
+      "source_bindings": {
+        "gt_path": {
+          "path": "outputs/integrated/20261102_cti_portable_v7/consumers/purplesharp-ad/scenario_ground_truth.json",
+          "sha256": "9ddd403d2778a5416f3e394b997c5fb1b65e2ec1cb50926960023d0f782e2997"
+        },
+        "corpus_path": {
+          "path": "outputs/integrated/20261102_cti_portable_v7/consumers/purplesharp-ad/retrieval_corpus.json",
+          "sha256": "89285b6e0cab18fe9272c49b762105339db697959d462ae2838e38d5a44bd1ea"
+        },
+        "graph_path": {
+          "path": "outputs/integrated/20261102_cti_portable_v7/consumers/purplesharp-ad/knowledge_graph.json",
+          "sha256": "8885e4fe312d5037a5aab4b15a6801bf19f29d57c2f22ab5dfae1d776e8e1658"
+        },
+        "index_path": {
+          "path": "outputs/integrated/20261102_cti_portable_v7/consumers/purplesharp-ad/vector_index_e5.json",
+          "sha256": "307f7e7e27c992c8788c3f8f04e78e63f332620a202c80cb54e6d3afae64d5ff"
+        }
+      },
+      "persistence": "Exact runtime value stays in RAM; source objects remain in unchanged pinned consumers. No duplicate raw payload persisted."
+    },
+    "evidence_contract": {
+      "schema_version": "current-paired-input-receipt/v1",
+      "artifact": "evidence_contract",
+      "content_sha256": "284cd2bacb832662288c915d4de56f426d4cb8311a0230437f6ba1e7f46d46f2",
+      "content_utf8_bytes": 54686,
+      "scenario_id": "purplesharp-ad",
+      "source_bindings": {
+        "gt_path": {
+          "path": "outputs/integrated/20261102_cti_portable_v7/consumers/purplesharp-ad/scenario_ground_truth.json",
+          "sha256": "9ddd403d2778a5416f3e394b997c5fb1b65e2ec1cb50926960023d0f782e2997"
+        },
+        "corpus_path": {
+          "path": "outputs/integrated/20261102_cti_portable_v7/consumers/purplesharp-ad/retrieval_corpus.json",
+          "sha256": "89285b6e0cab18fe9272c49b762105339db697959d462ae2838e38d5a44bd1ea"
+        },
+        "graph_path": {
+          "path": "outputs/integrated/20261102_cti_portable_v7/consumers/purplesharp-ad/knowledge_graph.json",
+          "sha256": "8885e4fe312d5037a5aab4b15a6801bf19f29d57c2f22ab5dfae1d776e8e1658"
+        },
+        "index_path": {
+          "path": "outputs/integrated/20261102_cti_portable_v7/consumers/purplesharp-ad/vector_index_e5.json",
+          "sha256": "307f7e7e27c992c8788c3f8f04e78e63f332620a202c80cb54e6d3afae64d5ff"
+        }
+      },
+      "persistence": "Exact runtime value stays in RAM; source objects remain in unchanged pinned consumers. No duplicate raw payload persisted.",
+      "evidence": [
+        {
+          "origin": {
+            "kind": "chunk",
+            "item_id": "retrieval-chunk--0bbca650694671ec179ef9b97d45cc40969a30d7bc97752d23217b208beaf348",
+            "context_pointer": "/retrieval/hits/0/chunk"
+          },
+          "consumer": "corpus_path",
+          "json_pointer": "/chunks/30",
+          "object_sha256": "15ea3b5c1618c0bff95f7e2116ba84f68b943b21643beb19e924be4fb80f18c6",
+          "source": {
+            "artifact_type": "scenario_ground_truth",
+            "object_type": "evidence",
+            "object_id": "auth-failure-observations",
+            "json_pointer": "/evidence/0"
+          },
+          "source_references": [
+            {
+              "raw_record_ref": "jsonl:line:1020",
+              "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+            },
+            {
+              "raw_record_ref": "jsonl:line:1046",
+              "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+            },
+            {
+              "raw_record_ref": "jsonl:line:1048",
+              "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+            },
+            {
+              "raw_record_ref": "jsonl:line:1051",
+              "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+            },
+            {
+              "raw_record_ref": "jsonl:line:1072",
+              "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+            },
+            {
+              "raw_record_ref": "jsonl:line:1074",
+              "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+            },
+            {
+              "raw_record_ref": "jsonl:line:1077",
+              "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+            },
+            {
+              "raw_record_ref": "jsonl:line:788",
+              "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+            },
+            {
+              "raw_record_ref": "jsonl:line:790",
+              "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+            },
+            {
+              "raw_record_ref": "jsonl:line:792",
+              "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+            },
+            {
+              "raw_record_ref": "jsonl:line:794",
+              "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+            },
+            {
+              "raw_record_ref": "jsonl:line:796",
+              "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+            },
+            {
+              "raw_record_ref": "jsonl:line:798",
+              "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+            },
+            {
+              "raw_record_ref": "jsonl:line:803",
+              "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+            }
+          ]
+        },
+        {
+          "origin": {
+            "kind": "chunk",
+            "item_id": "retrieval-chunk--91ef444192d109b423f4b0402f098672ea5143a1c14c7d15566c0872ec1016f8",
+            "context_pointer": "/retrieval/hits/1/chunk"
+          },
+          "consumer": "corpus_path",
+          "json_pointer": "/chunks/0",
+          "object_sha256": "2e88461a8ec7b8adeaff3e26a1026f831f7bbac5966fe469a51d96fea080d549",
+          "source": {
+            "artifact_type": "scenario_ground_truth",
+            "object_type": "scenario",
+            "object_id": null,
+            "json_pointer": "/scenario"
+          },
+          "source_references": [
+            {
+              "raw_record_ref": "jsonl:line:1020",
+              "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+            },
+            {
+              "raw_record_ref": "jsonl:line:1046",
+              "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+            },
+            {
+              "raw_record_ref": "jsonl:line:1048",
+              "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+            },
+            {
+              "raw_record_ref": "jsonl:line:1051",
+              "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+            },
+            {
+              "raw_record_ref": "jsonl:line:1072",
+              "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+            },
+            {
+              "raw_record_ref": "jsonl:line:1074",
+              "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+            },
+            {
+              "raw_record_ref": "jsonl:line:1077",
+              "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+            },
+            {
+              "raw_record_ref": "jsonl:line:788",
+              "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+            },
+            {
+              "raw_record_ref": "jsonl:line:790",
+              "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+            },
+            {
+              "raw_record_ref": "jsonl:line:792",
+              "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+            },
+            {
+              "raw_record_ref": "jsonl:line:794",
+              "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+            },
+            {
+              "raw_record_ref": "jsonl:line:796",
+              "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+            },
+            {
+              "raw_record_ref": "jsonl:line:798",
+              "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+            },
+            {
+              "raw_record_ref": "jsonl:line:803",
+              "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+            }
+          ]
+        },
+        {
+          "origin": {
+            "kind": "chunk",
+            "item_id": "retrieval-chunk--55fd82e45a343b8e932202f57fbf060278048047dd8c925ec7821b7196db06fc",
+            "context_pointer": "/retrieval/hits/2/chunk"
+          },
+          "consumer": "corpus_path",
+          "json_pointer": "/chunks/35",
+          "object_sha256": "c56592b487c12ee7d721e5e43ced982d69930038617d2dca1f6d7a46ddaf7b74",
+          "source": {
+            "artifact_type": "scenario_ground_truth",
+            "object_type": "mitre_assessment",
+            "object_id": "assessment-T1110-003",
+            "json_pointer": "/mitre_assessments/0"
+          },
+          "source_references": [
+            {
+              "raw_record_ref": "jsonl:line:1020",
+              "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+            },
+            {
+              "raw_record_ref": "jsonl:line:1046",
+              "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+            },
+            {
+              "raw_record_ref": "jsonl:line:1048",
+              "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+            },
+            {
+              "raw_record_ref": "jsonl:line:1051",
+              "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+            },
+            {
+              "raw_record_ref": "jsonl:line:1072",
+              "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+            },
+            {
+              "raw_record_ref": "jsonl:line:1074",
+              "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+            },
+            {
+              "raw_record_ref": "jsonl:line:1077",
+              "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+            },
+            {
+              "raw_record_ref": "jsonl:line:788",
+              "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+            },
+            {
+              "raw_record_ref": "jsonl:line:790",
+              "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+            },
+            {
+              "raw_record_ref": "jsonl:line:792",
+              "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+            },
+            {
+              "raw_record_ref": "jsonl:line:794",
+              "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+            },
+            {
+              "raw_record_ref": "jsonl:line:796",
+              "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+            },
+            {
+              "raw_record_ref": "jsonl:line:798",
+              "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+            },
+            {
+              "raw_record_ref": "jsonl:line:803",
+              "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+            }
+          ]
+        },
+        {
+          "origin": {
+            "kind": "chunk",
+            "item_id": "retrieval-chunk--eb2b6e6508b7b978eaa1436483c42fd13d146a05454bd73c8bb6c6b51af49afd",
+            "context_pointer": "/retrieval/hits/3/chunk"
+          },
+          "consumer": "corpus_path",
+          "json_pointer": "/chunks/34",
+          "object_sha256": "341781d48623fd90c672afa4b499e6d9485db351bfc41f046cd272b55b18c6cf",
+          "source": {
+            "artifact_type": "scenario_ground_truth",
+            "object_type": "sigma_finding",
+            "object_id": "sigma-spray-project",
+            "json_pointer": "/sigma_findings/1"
+          },
+          "source_references": [
+            {
+              "raw_record_ref": "jsonl:line:1020",
+              "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+            },
+            {
+              "raw_record_ref": "jsonl:line:1046",
+              "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+            },
+            {
+              "raw_record_ref": "jsonl:line:1048",
+              "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+            },
+            {
+              "raw_record_ref": "jsonl:line:1051",
+              "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+            },
+            {
+              "raw_record_ref": "jsonl:line:1072",
+              "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+            },
+            {
+              "raw_record_ref": "jsonl:line:1074",
+              "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+            },
+            {
+              "raw_record_ref": "jsonl:line:1077",
+              "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+            },
+            {
+              "raw_record_ref": "jsonl:line:788",
+              "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+            },
+            {
+              "raw_record_ref": "jsonl:line:790",
+              "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+            },
+            {
+              "raw_record_ref": "jsonl:line:792",
+              "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+            },
+            {
+              "raw_record_ref": "jsonl:line:794",
+              "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+            },
+            {
+              "raw_record_ref": "jsonl:line:796",
+              "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+            },
+            {
+              "raw_record_ref": "jsonl:line:798",
+              "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+            },
+            {
+              "raw_record_ref": "jsonl:line:803",
+              "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+            }
+          ]
+        },
+        {
+          "origin": {
+            "kind": "chunk",
+            "item_id": "retrieval-chunk--8f302f092ff819f01804a1f314eed537c47bfe109e7c9e495e29e828bfa98f88",
+            "context_pointer": "/retrieval/hits/4/chunk"
+          },
+          "consumer": "corpus_path",
+          "json_pointer": "/chunks/19",
+          "object_sha256": "dc6d235eb45befeffe97e6b2ea65bb3827d7159cee7ba2335882a840db38c603",
+          "source": {
+            "artifact_type": "scenario_ground_truth",
+            "object_type": "fact",
+            "object_id": "auth-correlation-summary",
+            "json_pointer": "/facts/8"
+          },
+          "source_references": [
+            {
+              "raw_record_ref": "jsonl:line:1020",
+              "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+            },
+            {
+              "raw_record_ref": "jsonl:line:1046",
+              "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+            },
+            {
+              "raw_record_ref": "jsonl:line:1048",
+              "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+            },
+            {
+              "raw_record_ref": "jsonl:line:1051",
+              "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+            },
+            {
+              "raw_record_ref": "jsonl:line:1072",
+              "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+            },
+            {
+              "raw_record_ref": "jsonl:line:1074",
+              "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+            },
+            {
+              "raw_record_ref": "jsonl:line:1077",
+              "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+            },
+            {
+              "raw_record_ref": "jsonl:line:788",
+              "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+            },
+            {
+              "raw_record_ref": "jsonl:line:790",
+              "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+            },
+            {
+              "raw_record_ref": "jsonl:line:792",
+              "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+            },
+            {
+              "raw_record_ref": "jsonl:line:794",
+              "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+            },
+            {
+              "raw_record_ref": "jsonl:line:796",
+              "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+            },
+            {
+              "raw_record_ref": "jsonl:line:798",
+              "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+            },
+            {
+              "raw_record_ref": "jsonl:line:803",
+              "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,1313 @@
+{
+  "request": {
+    "query": "Tương quan parent/child powershell.exe → regsvr32.exe → powershell.exe với các network connections: process nào đi cổng 8444, process nào đi cổng 80 và bao nhiêu observations? Giải thích host/GUID, dedup creation và giới hạn PID reuse.",
+    "scenario_id": "regsvr32-c2",
+    "branch": "rag"
+  },
+  "outcome": "accepted_draft",
+  "result": {
+    "question_id": "NET-CORRELATE",
+    "case_id": "NET-CORRELATE",
+    "scenario_id": "regsvr32-c2",
+    "branch": "rag",
+    "query": "Tương quan parent/child powershell.exe → regsvr32.exe → powershell.exe với các network connections: process nào đi cổng 8444, process nào đi cổng 80 và bao nhiêu observations? Giải thích host/GUID, dedup creation và giới hạn PID reuse.",
+    "outcome": "accepted_draft",
+    "gate_decision": "proceed",
+    "eligibility_decision": "proceed",
+    "context_utf8_bytes": 36093,
+    "messages_utf8_bytes": 60502,
+    "llm_http_attempts": 1,
+    "fallback_used": false,
+    "human_review_required": true,
+    "prepared_utc": "2026-11-12T14:44:49.097436+00:00",
+    "provider_usage": {
+      "prompt_tokens": 24370,
+      "completion_tokens": 2014,
+      "total_tokens": 26384,
+      "prompt_tokens_details": {
+        "cached_tokens": 5632
+      },
+      "prompt_cache_hit_tokens": 5632,
+      "prompt_cache_miss_tokens": 18738
+    },
+    "provider_reported_cost": null,
+    "retrieval_context_seconds": 0.0556172999968112,
+    "policy_gate_decision": "proceed",
+    "abstention_stage": null,
+    "context_sha256": "1c2175432aa17254b42542fd5fab5dd47e99b1517a01844125ed0a157b87233d",
+    "messages_sha256": "0067fc87f7727566cdbb25981a290222021782e4e2e615d33e0a7d9d4bc2a67e",
+    "retrieval_sha256": "6e0a995e224a4523fbfb18de50eb242cd83e2b906f1b205b976a21d2613175f0",
+    "retrieval_hit_ids": [
+      "retrieval-chunk--e6df48c9930387d43b1f91e9812baf382c04ffc98bb0e43aeee50b701cdcdf43",
+      "retrieval-chunk--6477dd1897ae50c72c716cf6a42509c23e969434ef7e5563af680664d57ab026",
+      "retrieval-chunk--a62bce534cb5dd176af7568eb96793f63ac9b5c388720aff8a5024915c19f408",
+      "retrieval-chunk--9e080227c8b57a09213f234d85481395b430e57fe72a5d0bc729195aa3e3e2b5",
+      "retrieval-chunk--a699abb0583bf1f57fcee13f7c90794cbc3c7e71651323df7c4df66dd35c988e"
+    ],
+    "returned_graph_nodes": 0,
+    "returned_graph_edges": 0,
+    "available_reference_count": 31,
+    "validation_status": "passed",
+    "abstention_reason_codes": [],
+    "preparation_seconds": 0.15691829999923357,
+    "generation_validation_seconds": 69.46160969999983,
+    "provider_http_seconds": 9.708786299997882,
+    "generation_started_utc": "2026-11-12T14:57:40.287975+00:00",
+    "generation_finished_utc": "2026-11-12T14:57:49.989192+00:00",
+    "finish_reason": "stop",
+    "http_status": 200,
+    "config_run_id": "deepseek-final-nothinking-20261112T143858Z",
+    "attempt_diagnostics": [
+      {
+        "ordinal": 12,
+        "question_id": "NET-CORRELATE",
+        "branch": "rag",
+        "pair_attempt": 1,
+        "reserved_utc": "2026-11-12T14:57:40.255410+00:00",
+        "actual_http_attempts": 1,
+        "finished_utc": "2026-11-12T14:57:49.989192+00:00",
+        "actual_payload": {
+          "model": "deepseek-flash",
+          "temperature": 0.0,
+          "max_tokens": 16384,
+          "thinking": {
+            "type": "disabled"
+          },
+          "stream": false,
+          "messages_sha256": "0067fc87f7727566cdbb25981a290222021782e4e2e615d33e0a7d9d4bc2a67e",
+          "serialized_http_payload_bytes": 62761,
+          "endpoint": "https://api.deepseek.com/chat/completions"
+        },
+        "http_started_utc": "2026-11-12T14:57:40.287975+00:00",
+        "http_status": 200,
+        "usage": {
+          "prompt_tokens": 24370,
+          "completion_tokens": 2014,
+          "total_tokens": 26384,
+          "prompt_tokens_details": {
+            "cached_tokens": 5632
+          },
+          "prompt_cache_hit_tokens": 5632,
+          "prompt_cache_miss_tokens": 18738
+        },
+        "cost": null,
+        "finish_reason": "stop",
+        "http_seconds": 9.708786299997882,
+        "http_finished_utc": "2026-11-12T14:57:49.989192+00:00"
+      }
+    ]
+  },
+  "scope": {
+    "schema_version": "query-scope-decision/v1",
+    "decision": "proceed",
+    "reason_codes": [],
+    "matched_intents": [
+      "process",
+      "network",
+      "limits"
+    ],
+    "matched_source_anchors": [
+      "powershell",
+      "powershell.exe",
+      "regsvr32",
+      "regsvr32.exe"
+    ],
+    "interpretation": "request_scope_only_not_evidence_support",
+    "security_conclusion_made": false
+  },
+  "gate": {
+    "schema_version": "source-evidence-gate-decision/v2",
+    "contract": "source-evidence-contract/v2",
+    "decision": "proceed",
+    "abstention_stage": null,
+    "reason_codes": [],
+    "stage_results": {
+      "topical_relevance": {
+        "status": "passed",
+        "reason_codes": [],
+        "signals": {
+          "joint_lexical_vector_hit_count": 5,
+          "lexical_hit_count": 5,
+          "matched_query_token_count": 10,
+          "query_token_count": 30,
+          "query_token_coverage": 0.33333333,
+          "retrieval_hit_count": 5,
+          "returned_top_bm25_score": 10.5118058,
+          "returned_top_cosine_score": 0.87905408,
+          "returned_top_rrf_score": 0.031754032258,
+          "vector_hit_count": 5
+        }
+      },
+      "evidence_answerability": {
+        "schema_version": "source-evidence-contract/v2",
+        "requirements": {
+          "authentication": false,
+          "cti": false,
+          "correlation": true,
+          "limits": false
+        },
+        "checks": [
+          {
+            "requirement": "process_chain",
+            "status": "supported",
+            "witnesses": [
+              {
+                "origin": {
+                  "kind": "chunk",
+                  "item_id": "retrieval-chunk--6477dd1897ae50c72c716cf6a42509c23e969434ef7e5563af680664d57ab026",
+                  "context_pointer": "/retrieval/hits/1/chunk"
+                },
+                "source": {
+                  "artifact_type": "scenario_ground_truth",
+                  "object_type": "evidence",
+                  "object_id": "creation-process-1a7b3c442952cc5a",
+                  "json_pointer": "/evidence/1"
+                },
+                "source_references": [
+                  {
+                    "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+                    "raw_record_ref": "jsonl:line:224"
+                  },
+                  {
+                    "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+                    "raw_record_ref": "jsonl:line:283"
+                  }
+                ],
+                "field": "properties",
+                "context_pointer": "/retrieval/hits/1/chunk/metadata",
+                "value": {
+                  "event_id": "1",
+                  "provider": "Microsoft-Windows-Sysmon",
+                  "process_name": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+                  "parent_process_name": "C:\\Windows\\System32\\regsvr32.exe",
+                  "host": "WORKSTATION5.mordor.local"
+                }
+              },
+              {
+                "origin": {
+                  "kind": "chunk",
+                  "item_id": "retrieval-chunk--6477dd1897ae50c72c716cf6a42509c23e969434ef7e5563af680664d57ab026",
+                  "context_pointer": "/retrieval/hits/1/chunk"
+                },
+                "source": {
+                  "artifact_type": "scenario_ground_truth",
+                  "object_type": "evidence",
+                  "object_id": "creation-process-1a7b3c442952cc5a",
+                  "json_pointer": "/evidence/1"
+                },
+                "source_references": [
+                  {
+                    "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+                    "raw_record_ref": "jsonl:line:224"
+                  },
+                  {
+                    "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+                    "raw_record_ref": "jsonl:line:283"
+                  }
+                ],
+                "field": "properties",
+                "context_pointer": "/retrieval/hits/1/chunk/metadata",
+                "value": {
+                  "event_id": "4688",
+                  "provider": "Microsoft-Windows-Security-Auditing",
+                  "process_name": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+                  "parent_process_name": "C:\\Windows\\System32\\regsvr32.exe",
+                  "host": "WORKSTATION5.mordor.local"
+                }
+              },
+              {
+                "origin": {
+                  "kind": "chunk",
+                  "item_id": "retrieval-chunk--a62bce534cb5dd176af7568eb96793f63ac9b5c388720aff8a5024915c19f408",
+                  "context_pointer": "/retrieval/hits/2/chunk"
+                },
+                "source": {
+                  "artifact_type": "scenario_ground_truth",
+                  "object_type": "evidence",
+                  "object_id": "creation-process-1356a3e1f91322ca",
+                  "json_pointer": "/evidence/0"
+                },
+                "source_references": [
+                  {
+                    "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+                    "raw_record_ref": "jsonl:line:219"
+                  },
+                  {
+                    "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+                    "raw_record_ref": "jsonl:line:97"
+                  }
+                ],
+                "field": "properties",
+                "context_pointer": "/retrieval/hits/2/chunk/metadata",
+                "value": {
+                  "event_id": "4688",
+                  "provider": "Microsoft-Windows-Security-Auditing",
+                  "process_name": "C:\\Windows\\System32\\regsvr32.exe",
+                  "parent_process_name": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+                  "host": "WORKSTATION5.mordor.local"
+                }
+              },
+              {
+                "origin": {
+                  "kind": "chunk",
+                  "item_id": "retrieval-chunk--a62bce534cb5dd176af7568eb96793f63ac9b5c388720aff8a5024915c19f408",
+                  "context_pointer": "/retrieval/hits/2/chunk"
+                },
+                "source": {
+                  "artifact_type": "scenario_ground_truth",
+                  "object_type": "evidence",
+                  "object_id": "creation-process-1356a3e1f91322ca",
+                  "json_pointer": "/evidence/0"
+                },
+                "source_references": [
+                  {
+                    "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+                    "raw_record_ref": "jsonl:line:219"
+                  },
+                  {
+                    "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+                    "raw_record_ref": "jsonl:line:97"
+                  }
+                ],
+                "field": "properties",
+                "context_pointer": "/retrieval/hits/2/chunk/metadata",
+                "value": {
+                  "event_id": "1",
+                  "provider": "Microsoft-Windows-Sysmon",
+                  "process_name": "C:\\Windows\\System32\\regsvr32.exe",
+                  "parent_process_name": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+                  "host": "WORKSTATION5.mordor.local"
+                }
+              }
+            ],
+            "reason_code": "source_witness_present"
+          },
+          {
+            "requirement": "process_bound_network",
+            "status": "supported",
+            "witnesses": [
+              {
+                "origin": {
+                  "kind": "chunk",
+                  "item_id": "retrieval-chunk--a699abb0583bf1f57fcee13f7c90794cbc3c7e71651323df7c4df66dd35c988e",
+                  "context_pointer": "/retrieval/hits/4/chunk"
+                },
+                "source": {
+                  "artifact_type": "scenario_ground_truth",
+                  "object_type": "fact",
+                  "object_id": "network-process-1356a3e1f91322ca",
+                  "json_pointer": "/facts/3"
+                },
+                "source_references": [
+                  {
+                    "raw_record_ref": "jsonl:line:1001",
+                    "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json"
+                  }
+                ],
+                "field": "properties",
+                "context_pointer": "/retrieval/hits/4/chunk/metadata",
+                "value": {
+                  "event_id": "3",
+                  "provider": "Microsoft-Windows-Sysmon",
+                  "process_name": "C:\\Windows\\System32\\regsvr32.exe",
+                  "host": "WORKSTATION5.mordor.local",
+                  "destination_ip": "10.10.10.5",
+                  "destination_port": 8444
+                }
+              }
+            ],
+            "reason_code": "source_witness_present"
+          },
+          {
+            "requirement": "network_correlation_policy",
+            "status": "supported",
+            "witnesses": [
+              {
+                "origin": {
+                  "kind": "chunk",
+                  "item_id": "retrieval-chunk--a699abb0583bf1f57fcee13f7c90794cbc3c7e71651323df7c4df66dd35c988e",
+                  "context_pointer": "/retrieval/hits/4/chunk"
+                },
+                "source": {
+                  "artifact_type": "scenario_ground_truth",
+                  "object_type": "fact",
+                  "object_id": "network-process-1356a3e1f91322ca",
+                  "json_pointer": "/facts/3"
+                },
+                "source_references": [
+                  {
+                    "raw_record_ref": "jsonl:line:1001",
+                    "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json"
+                  }
+                ],
+                "field": "/source_object/attributes",
+                "context_pointer": "/retrieval/hits/4/chunk/metadata/source_object/attributes",
+                "value": {
+                  "connection_summary": {
+                    "assessment": "suspicious_network_context_not_confirmed_C2",
+                    "correlation_basis": "host_guid_lifetime",
+                    "destinations": [
+                      {
+                        "ip": "10.10.10.5",
+                        "observations": 1,
+                        "port": 8444
+                      }
+                    ],
+                    "end": "2020-07-22T03:27:55.955000Z",
+                    "observation_count": 1,
+                    "process_key": "process-1356a3e1f91322ca",
+                    "process_name": "C:\\Windows\\System32\\regsvr32.exe",
+                    "start": "2020-07-22T03:27:55.955000Z"
+                  },
+                  "source_observations": [
+                    {
+                      "canonical_fields": {
+                        "channel": "Microsoft-Windows-Sysmon/Operational",
+                        "destination_ip": "10.10.10.5",
+                        "destination_port": 8444,
+                        "event_id": "3",
+                        "host": "WORKSTATION5.mordor.local",
+                        "process_guid": "{b59756a9-b238-5f17-5207-000000000400}",
+                        "process_id": "9384",
+                        "process_name": "C:\\Windows\\System32\\regsvr32.exe",
+                        "provider": "Microsoft-Windows-Sysmon",
+                        "raw_record_ref": "jsonl:line:1001",
+                        "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+                        "source_ip": "172.18.39.5",
+                        "source_port": 50247,
+                        "timestamp": "2020-07-22T03:27:55.955000Z",
+                        "user": "MORDOR\\pgustavo"
+                      },
+                      "evidence_layer": "observed_telemetry",
+                      "field_projection": "canonical non-null scalars plus unmapped authentication/source clock fields; originals remain upstream",
+                      "original_fields": {
+                        "@timestamp": "2020-07-22T03:27:55.955Z",
+                        "EventID": 3,
+                        "Hostname": "WORKSTATION5.mordor.local",
+                        "SourceName": "Microsoft-Windows-Sysmon",
+                        "UtcTime": "2020-07-22 03:27:52.839"
+                      },
+                      "raw_record_ref": "jsonl:line:1001",
+                      "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json"
+                    }
+                  ]
+                }
+              }
+            ],
+            "reason_code": "source_witness_present"
+          },
+          {
+            "requirement": "bound_retrieved_source",
+            "status": "supported",
+            "witnesses": [
+              {
+                "origin": {
+                  "kind": "chunk",
+                  "item_id": "retrieval-chunk--e6df48c9930387d43b1f91e9812baf382c04ffc98bb0e43aeee50b701cdcdf43",
+                  "context_pointer": "/retrieval/hits/0/chunk"
+                },
+                "source": {
+                  "artifact_type": "scenario_ground_truth",
+                  "object_type": "entity",
+                  "object_id": "external-parent-f4ce0cf17a05c444",
+                  "json_pointer": "/entities/1"
+                },
+                "source_references": [
+                  {
+                    "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+                    "raw_record_ref": "jsonl:line:219"
+                  },
+                  {
+                    "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+                    "raw_record_ref": "jsonl:line:97"
+                  }
+                ],
+                "field": "source",
+                "context_pointer": "/retrieval/hits/0/chunk/source",
+                "value": {
+                  "artifact_type": "scenario_ground_truth",
+                  "object_type": "entity",
+                  "object_id": "external-parent-f4ce0cf17a05c444",
+                  "json_pointer": "/entities/1"
+                }
+              },
+              {
+                "origin": {
+                  "kind": "chunk",
+                  "item_id": "retrieval-chunk--6477dd1897ae50c72c716cf6a42509c23e969434ef7e5563af680664d57ab026",
+                  "context_pointer": "/retrieval/hits/1/chunk"
+                },
+                "source": {
+                  "artifact_type": "scenario_ground_truth",
+                  "object_type": "evidence",
+                  "object_id": "creation-process-1a7b3c442952cc5a",
+                  "json_pointer": "/evidence/1"
+                },
+                "source_references": [
+                  {
+                    "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+                    "raw_record_ref": "jsonl:line:224"
+                  },
+                  {
+                    "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+                    "raw_record_ref": "jsonl:line:283"
+                  }
+                ],
+                "field": "source",
+                "context_pointer": "/retrieval/hits/1/chunk/source",
+                "value": {
+                  "artifact_type": "scenario_ground_truth",
+                  "object_type": "evidence",
+                  "object_id": "creation-process-1a7b3c442952cc5a",
+                  "json_pointer": "/evidence/1"
+                }
+              },
+              {
+                "origin": {
+                  "kind": "chunk",
+                  "item_id": "retrieval-chunk--a62bce534cb5dd176af7568eb96793f63ac9b5c388720aff8a5024915c19f408",
+                  "context_pointer": "/retrieval/hits/2/chunk"
+                },
+                "source": {
+                  "artifact_type": "scenario_ground_truth",
+                  "object_type": "evidence",
+                  "object_id": "creation-process-1356a3e1f91322ca",
+                  "json_pointer": "/evidence/0"
+                },
+                "source_references": [
+                  {
+                    "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+                    "raw_record_ref": "jsonl:line:219"
+                  },
+                  {
+                    "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+                    "raw_record_ref": "jsonl:line:97"
+                  }
+                ],
+                "field": "source",
+                "context_pointer": "/retrieval/hits/2/chunk/source",
+                "value": {
+                  "artifact_type": "scenario_ground_truth",
+                  "object_type": "evidence",
+                  "object_id": "creation-process-1356a3e1f91322ca",
+                  "json_pointer": "/evidence/0"
+                }
+              },
+              {
+                "origin": {
+                  "kind": "chunk",
+                  "item_id": "retrieval-chunk--9e080227c8b57a09213f234d85481395b430e57fe72a5d0bc729195aa3e3e2b5",
+                  "context_pointer": "/retrieval/hits/3/chunk"
+                },
+                "source": {
+                  "artifact_type": "scenario_ground_truth",
+                  "object_type": "scenario",
+                  "object_id": null,
+                  "json_pointer": "/scenario"
+                },
+                "source_references": [
+                  {
+                    "raw_record_ref": "jsonl:line:1001",
+                    "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json"
+                  },
+                  {
+                    "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+                    "raw_record_ref": "jsonl:line:1189"
+                  },
+                  {
+                    "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+                    "raw_record_ref": "jsonl:line:1192"
+                  },
+                  {
+                    "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+                    "raw_record_ref": "jsonl:line:1213"
+                  },
+                  {
+                    "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+                    "raw_record_ref": "jsonl:line:1284"
+                  },
+                  {
+                    "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+                    "raw_record_ref": "jsonl:line:1323"
+                  },
+                  {
+                    "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+                    "raw_record_ref": "jsonl:line:1363"
+                  },
+                  {
+                    "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+                    "raw_record_ref": "jsonl:line:1401"
+                  },
+                  {
+                    "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+                    "raw_record_ref": "jsonl:line:1437"
+                  },
+                  {
+                    "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+                    "raw_record_ref": "jsonl:line:2154"
+                  },
+                  {
+                    "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+                    "raw_record_ref": "jsonl:line:219"
+                  },
+                  {
+                    "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+                    "raw_record_ref": "jsonl:line:224"
+                  },
+                  {
+                    "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+                    "raw_record_ref": "jsonl:line:240"
+                  },
+                  {
+                    "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+                    "raw_record_ref": "jsonl:line:283"
+                  },
+                  {
+                    "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+                    "raw_record_ref": "jsonl:line:296"
+                  },
+                  {
+                    "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+                    "raw_record_ref": "jsonl:line:97"
+                  }
+                ],
+                "field": "source",
+                "context_pointer": "/retrieval/hits/3/chunk/source",
+                "value": {
+                  "artifact_type": "scenario_ground_truth",
+                  "object_type": "scenario",
+                  "object_id": null,
+                  "json_pointer": "/scenario"
+                }
+              },
+              {
+                "origin": {
+                  "kind": "chunk",
+                  "item_id": "retrieval-chunk--a699abb0583bf1f57fcee13f7c90794cbc3c7e71651323df7c4df66dd35c988e",
+                  "context_pointer": "/retrieval/hits/4/chunk"
+                },
+                "source": {
+                  "artifact_type": "scenario_ground_truth",
+                  "object_type": "fact",
+                  "object_id": "network-process-1356a3e1f91322ca",
+                  "json_pointer": "/facts/3"
+                },
+                "source_references": [
+                  {
+                    "raw_record_ref": "jsonl:line:1001",
+                    "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json"
+                  }
+                ],
+                "field": "source",
+                "context_pointer": "/retrieval/hits/4/chunk/source",
+                "value": {
+                  "artifact_type": "scenario_ground_truth",
+                  "object_type": "fact",
+                  "object_id": "network-process-1356a3e1f91322ca",
+                  "json_pointer": "/facts/3"
+                }
+              }
+            ],
+            "reason_code": "source_witness_present"
+          }
+        ],
+        "status": "supported",
+        "reason_codes": []
+      }
+    },
+    "legacy_policy_id": "two-stage-prod-aae2e49de84bd18a",
+    "human_review_required": true,
+    "interpretation": "Research context eligibility, not claim truth or human approval."
+  },
+  "eligibility": {
+    "policy_decision": "proceed",
+    "decision": "proceed",
+    "context_utf8_bytes": 36093,
+    "messages_utf8_bytes": 60502,
+    "budget_exceeded": false,
+    "stage": null
+  },
+  "validation": {
+    "raw_report_before_sanitize": {
+      "schema_version": "threat-hunting-report/v1",
+      "verdict": "SUSPICIOUS",
+      "direct_answer": "Trong slice này, chỉ có một network connection được ghi nhận: regsvr32.exe (PID 9384, GUID {b59756a9-b238-5f17-5207-000000000400}) kết nối tới 10.10.10.5:8444 — 1 observation (jsonl:line:1001). Không có observation network connection nào cho cổng 80 trong context được cung cấp, nên không thể gán cổng 80 cho process nào hay đếm số observations. Chuỗi creation quan sát được: powershell.exe (PID 8648, GUID {b59756a9-89dc-5f17-1006-000000000400}) tạo regsvr32.exe (PID 9384) tại jsonl:line:97 / jsonl:line:219, sau đó regsvr32.exe (PID 9384) tạo powershell.exe (PID 9076, GUID {b59756a9-b239-5f17-5307-000000000400}) tại jsonl:line:224 / jsonl:line:283.",
+      "executive_summary": "Chuỗi parent/child powershell.exe → regsvr32.exe → powershell.exe được quan sát trên host WORKSTATION5.mordor.local, với regsvr32.exe mang command line /i:http://10.10.10.5:8444/launcher.sct và có một Sysmon Event ID 3 tới 10.10.10.5:8444. Context không chứa connection cổng 80 nào; kết quả HTTP, nội dung truyền và mục đích C2 chưa được xác minh.",
+      "technical_analysis": "Host: mọi observation creation và connection trong slice đều ghi host WORKSTATION5.mordor.local. GUID: parent powershell.exe ngoài cùng chỉ xuất hiện qua parent fields của child observation (creation_in_capture=false, GUID {b59756a9-89dc-5f17-1006-000000000400}, PID 8648) — không có record creation riêng cho nó trong slice. regsvr32.exe có GUID {b59756a9-b238-5f17-5207-000000000400}, PID 9384 (jsonl:line:97, jsonl:line:219). Child powershell.exe có GUID {b59756a9-b239-5f17-5307-000000000400}, PID 9076 (jsonl:line:224, jsonl:line:283). Dedup creation: mỗi lần tạo process được mô tả bởi hai observation (Sysmon Event ID 1 và Security 4688) nhưng là một creation duy nhất — regsvr32.exe: Sysmon 2020-07-22T03:27:53.548000Z (jsonl:line:97) và Security 4688 2020-07-22T03:27:53.590000Z (jsonl:line:219); child powershell.exe: Sysmon 2020-07-22T03:27:54.604000Z (jsonl:line:224) và Security 4688 2020-07-22T03:27:54.620000Z (jsonl:line:283). Network: fact network-process-1356a3e1f91322ca ghi regsvr32.exe (process-1356a3e1f91322ca) connected_to endpoint-c75f06bcf0f0d60d, destination 10.10.10.5 port 8444, observation_count=1, correlation_basis=host_guid_lifetime, assessment=suspicious_network_context_not_confirmed_C2; observation tương ứng là Sysmon Event ID 3 tại 2020-07-22T03:27:55.955000Z (jsonl:line:1001), source 172.18.39.5:50247. Không có observation connection cổng 80 trong context, nên phần 'process nào đi cổng 80 và bao nhiêu observations' không thể trả lời từ slice này. Giới hạn PID reuse: liên kết network–process dựa trên host/GUID/lifetime; fallback theo PID dừng ở lần creation/exit kế tiếp và có bounded age, nên PID 9384 chỉ được coi là regsvr32.exe trong khoảng lifetime GUID tương ứng; các liên kết mơ hồ được giữ tách riêng. Timestamp: canonical timestamp của các observation được chọn nằm trong khoảng 2020-07-22T03:27:53.548000Z đến 2020-07-22T03:27:55.955000Z — đây là khoảng dấu thời gian canonical của các observations được chọn, không phải thời lượng thực tế của hoạt động tấn công; raw clock (UtcTime) khác canonical timestamp được giữ nguyên, không hiệu chỉnh timezone.",
+      "attack_chain": [
+        {
+          "step_number": 1,
+          "source_entity": "powershell.exe PID 8648 GUID {b59756a9-89dc-5f17-1006-000000000400}",
+          "action": "process_spawn",
+          "target_entity": "regsvr32.exe PID 9384 GUID {b59756a9-b238-5f17-5207-000000000400}",
+          "evidence_ref": "jsonl:line:97",
+          "timestamp": "2020-07-22T03:27:53.548000Z"
+        },
+        {
+          "step_number": 2,
+          "source_entity": "regsvr32.exe PID 9384 GUID {b59756a9-b238-5f17-5207-000000000400}",
+          "action": "process_spawn",
+          "target_entity": "powershell.exe PID 9076 GUID {b59756a9-b239-5f17-5307-000000000400}",
+          "evidence_ref": "jsonl:line:224",
+          "timestamp": "2020-07-22T03:27:54.604000Z"
+        },
+        {
+          "step_number": 3,
+          "source_entity": "regsvr32.exe PID 9384 GUID {b59756a9-b238-5f17-5207-000000000400}",
+          "action": "network_connect",
+          "target_entity": "10.10.10.5:8444",
+          "evidence_ref": "jsonl:line:1001",
+          "timestamp": "2020-07-22T03:27:55.955000Z"
+        }
+      ],
+      "mitre_mappings": [],
+      "sigma_matches": [],
+      "containment_recommendations": [],
+      "unverified_claims": [
+        "Không có observation network connection cổng 80 trong context; không thể xác định process nào đi cổng 80 hoặc số observations cổng 80.",
+        "Sysmon Event ID 3 chỉ chứng minh network connection/endpoint theo fields; không chứng minh HTTP exchange hoàn tất, nội dung truyền, số byte hay exfiltration.",
+        "URL http://10.10.10.5:8444/launcher.sct trong command line chỉ là launch argument/target; không chứng minh scriptlet đã được tải hoặc thực thi.",
+        "Mục đích C2 chưa được xác nhận (assessment nguồn: suspicious_network_context_not_confirmed_C2).",
+        "Parent powershell.exe PID 8648 không có record creation trong capture (creation_in_capture=false); chỉ xuất hiện qua parent fields của child observation.",
+        "Liên kết network–process dựa trên host/GUID/lifetime; fallback PID có bounded age và dừng ở creation/exit kế tiếp, nên không loại trừ PID reuse ngoài khoảng lifetime GUID.",
+        "Context/slice này chưa đủ để kết luận về toàn bộ dataset hoặc các connection khác ngoài những gì được liệt kê."
+      ],
+      "evidence_refs": [
+        "jsonl:line:97",
+        "jsonl:line:219",
+        "jsonl:line:224",
+        "jsonl:line:283",
+        "jsonl:line:1001",
+        "creation-process-1356a3e1f91322ca",
+        "creation-process-1a7b3c442952cc5a",
+        "network-process-1356a3e1f91322ca",
+        "external-parent-f4ce0cf17a05c444"
+      ]
+    },
+    "sanitized_report": {
+      "schema_version": "threat-hunting-report/v1",
+      "verdict": "SUSPICIOUS",
+      "direct_answer": "Trong slice này, chỉ có một network connection được ghi nhận: regsvr32.exe (PID 9384, GUID {b59756a9-b238-5f17-5207-000000000400}) kết nối tới 10.10.10.5:8444 — 1 observation (jsonl:line:1001). Không có observation network connection nào cho cổng 80 trong context được cung cấp, nên không thể gán cổng 80 cho process nào hay đếm số observations. Chuỗi creation quan sát được: powershell.exe (PID 8648, GUID {b59756a9-89dc-5f17-1006-000000000400}) tạo regsvr32.exe (PID 9384) tại jsonl:line:97 / jsonl:line:219, sau đó regsvr32.exe (PID 9384) tạo powershell.exe (PID 9076, GUID {b59756a9-b239-5f17-5307-000000000400}) tại jsonl:line:224 / jsonl:line:283.",
+      "executive_summary": "Chuỗi parent/child powershell.exe → regsvr32.exe → powershell.exe được quan sát trên host WORKSTATION5.mordor.local, với regsvr32.exe mang command line /i:http://10.10.10.5:8444/launcher.sct và có một Sysmon Event ID 3 tới 10.10.10.5:8444. Context không chứa connection cổng 80 nào; kết quả HTTP, nội dung truyền và mục đích C2 chưa được xác minh.",
+      "technical_analysis": "Host: mọi observation creation và connection trong slice đều ghi host WORKSTATION5.mordor.local. GUID: parent powershell.exe ngoài cùng chỉ xuất hiện qua parent fields của child observation (creation_in_capture=false, GUID {b59756a9-89dc-5f17-1006-000000000400}, PID 8648) — không có record creation riêng cho nó trong slice. regsvr32.exe có GUID {b59756a9-b238-5f17-5207-000000000400}, PID 9384 (jsonl:line:97, jsonl:line:219). Child powershell.exe có GUID {b59756a9-b239-5f17-5307-000000000400}, PID 9076 (jsonl:line:224, jsonl:line:283). Dedup creation: mỗi lần tạo process được mô tả bởi hai observation (Sysmon Event ID 1 và Security 4688) nhưng là một creation duy nhất — regsvr32.exe: Sysmon 2020-07-22T03:27:53.548000Z (jsonl:line:97) và Security 4688 2020-07-22T03:27:53.590000Z (jsonl:line:219); child powershell.exe: Sysmon 2020-07-22T03:27:54.604000Z (jsonl:line:224) và Security 4688 2020-07-22T03:27:54.620000Z (jsonl:line:283). Network: fact network-process-1356a3e1f91322ca ghi regsvr32.exe (process-1356a3e1f91322ca) connected_to endpoint-c75f06bcf0f0d60d, destination 10.10.10.5 port 8444, observation_count=1, correlation_basis=host_guid_lifetime, assessment=suspicious_network_context_not_confirmed_C2; observation tương ứng là Sysmon Event ID 3 tại 2020-07-22T03:27:55.955000Z (jsonl:line:1001), source 172.18.39.5:50247. Không có observation connection cổng 80 trong context, nên phần 'process nào đi cổng 80 và bao nhiêu observations' không thể trả lời từ slice này. Giới hạn PID reuse: liên kết network–process dựa trên host/GUID/lifetime; fallback theo PID dừng ở lần creation/exit kế tiếp và có bounded age, nên PID 9384 chỉ được coi là regsvr32.exe trong khoảng lifetime GUID tương ứng; các liên kết mơ hồ được giữ tách riêng. Timestamp: canonical timestamp của các observation được chọn nằm trong khoảng 2020-07-22T03:27:53.548000Z đến 2020-07-22T03:27:55.955000Z — đây là khoảng dấu thời gian canonical của các observations được chọn, không phải thời lượng thực tế của hoạt động tấn công; raw clock (UtcTime) khác canonical timestamp được giữ nguyên, không hiệu chỉnh timezone.",
+      "attack_chain": [
+        {
+          "step_number": 1,
+          "source_entity": "powershell.exe PID 8648 GUID {b59756a9-89dc-5f17-1006-000000000400}",
+          "action": "process_spawn",
+          "target_entity": "regsvr32.exe PID 9384 GUID {b59756a9-b238-5f17-5207-000000000400}",
+          "evidence_ref": "jsonl:line:97",
+          "timestamp": "2020-07-22T03:27:53.548000Z"
+        },
+        {
+          "step_number": 2,
+          "source_entity": "regsvr32.exe PID 9384 GUID {b59756a9-b238-5f17-5207-000000000400}",
+          "action": "process_spawn",
+          "target_entity": "powershell.exe PID 9076 GUID {b59756a9-b239-5f17-5307-000000000400}",
+          "evidence_ref": "jsonl:line:224",
+          "timestamp": "2020-07-22T03:27:54.604000Z"
+        },
+        {
+          "step_number": 3,
+          "source_entity": "regsvr32.exe PID 9384 GUID {b59756a9-b238-5f17-5207-000000000400}",
+          "action": "network_connect",
+          "target_entity": "10.10.10.5:8444",
+          "evidence_ref": "jsonl:line:1001",
+          "timestamp": "2020-07-22T03:27:55.955000Z"
+        }
+      ],
+      "mitre_mappings": [],
+      "sigma_matches": [],
+      "containment_recommendations": [],
+      "unverified_claims": [
+        "Không có observation network connection cổng 80 trong context; không thể xác định process nào đi cổng 80 hoặc số observations cổng 80.",
+        "Sysmon Event ID 3 chỉ chứng minh network connection/endpoint theo fields; không chứng minh HTTP exchange hoàn tất, nội dung truyền, số byte hay exfiltration.",
+        "URL http://10.10.10.5:8444/launcher.sct trong command line chỉ là launch argument/target; không chứng minh scriptlet đã được tải hoặc thực thi.",
+        "Mục đích C2 chưa được xác nhận (assessment nguồn: suspicious_network_context_not_confirmed_C2).",
+        "Parent powershell.exe PID 8648 không có record creation trong capture (creation_in_capture=false); chỉ xuất hiện qua parent fields của child observation.",
+        "Liên kết network–process dựa trên host/GUID/lifetime; fallback PID có bounded age và dừng ở creation/exit kế tiếp, nên không loại trừ PID reuse ngoài khoảng lifetime GUID.",
+        "Context/slice này chưa đủ để kết luận về toàn bộ dataset hoặc các connection khác ngoài những gì được liệt kê."
+      ],
+      "evidence_refs": [
+        "jsonl:line:97",
+        "jsonl:line:219",
+        "jsonl:line:224",
+        "jsonl:line:283",
+        "jsonl:line:1001",
+        "creation-process-1356a3e1f91322ca",
+        "creation-process-1a7b3c442952cc5a",
+        "network-process-1356a3e1f91322ca",
+        "external-parent-f4ce0cf17a05c444"
+      ]
+    },
+    "status": "passed",
+    "scope": "structured claims + bounded process citation, duration, request-topic and authentication Status/SubStatus binding checks; remaining prose/comparison correctness unverified",
+    "issues": [],
+    "reference_checks": [
+      {
+        "reference": "jsonl:line:97",
+        "status": "supports_structured_claim"
+      },
+      {
+        "reference": "jsonl:line:219",
+        "status": "exists_unverified"
+      },
+      {
+        "reference": "jsonl:line:224",
+        "status": "supports_structured_claim"
+      },
+      {
+        "reference": "jsonl:line:283",
+        "status": "exists_unverified"
+      },
+      {
+        "reference": "jsonl:line:1001",
+        "status": "supports_structured_claim"
+      },
+      {
+        "reference": "creation-process-1356a3e1f91322ca",
+        "status": "exists_unverified"
+      },
+      {
+        "reference": "creation-process-1a7b3c442952cc5a",
+        "status": "exists_unverified"
+      },
+      {
+        "reference": "network-process-1356a3e1f91322ca",
+        "status": "exists_unverified"
+      },
+      {
+        "reference": "external-parent-f4ce0cf17a05c444",
+        "status": "exists_unverified"
+      }
+    ],
+    "unverified_fields": [
+      "verdict",
+      "direct_answer",
+      "executive_summary",
+      "technical_analysis",
+      "containment_recommendations",
+      "sigma_matches"
+    ],
+    "human_review_required": true,
+    "narrative_binding_audit": {
+      "scope": "explicit positive executable-parent/creation-verb/executable-child clauses with inline references only",
+      "checks": [
+        {
+          "field": "direct_answer",
+          "references": [
+            "jsonl:line:97",
+            "jsonl:line:219",
+            "jsonl:line:224",
+            "jsonl:line:283"
+          ],
+          "status": "supported"
+        },
+        {
+          "field": "direct_answer",
+          "references": [
+            "jsonl:line:97",
+            "jsonl:line:219",
+            "jsonl:line:224",
+            "jsonl:line:283"
+          ],
+          "status": "supported"
+        }
+      ],
+      "issues": [],
+      "remaining_prose": "unverified; human review required"
+    },
+    "clock_and_scope_audit": {
+      "scope": "explicit numeric authentication-duration expressions and asserted HTTP/C2/exfiltration topics only; negated boundary caveats are permitted",
+      "checks": [],
+      "issues": [],
+      "comparison_semantics": "requires offline rubric review, not automatically verified",
+      "remaining_prose": "unverified; AI/human semantic review remains necessary"
+    },
+    "auth_field_binding_audit": {
+      "scope": "no supplied authentication observations; not applicable",
+      "events_in_context": [],
+      "checks": [],
+      "issues": []
+    }
+  },
+  "report": {
+    "schema_version": "threat-hunting-report/v1",
+    "verdict": "SUSPICIOUS",
+    "direct_answer": "Trong slice này, chỉ có một network connection được ghi nhận: regsvr32.exe (PID 9384, GUID {b59756a9-b238-5f17-5207-000000000400}) kết nối tới 10.10.10.5:8444 — 1 observation (jsonl:line:1001). Không có observation network connection nào cho cổng 80 trong context được cung cấp, nên không thể gán cổng 80 cho process nào hay đếm số observations. Chuỗi creation quan sát được: powershell.exe (PID 8648, GUID {b59756a9-89dc-5f17-1006-000000000400}) tạo regsvr32.exe (PID 9384) tại jsonl:line:97 / jsonl:line:219, sau đó regsvr32.exe (PID 9384) tạo powershell.exe (PID 9076, GUID {b59756a9-b239-5f17-5307-000000000400}) tại jsonl:line:224 / jsonl:line:283.",
+    "executive_summary": "Chuỗi parent/child powershell.exe → regsvr32.exe → powershell.exe được quan sát trên host WORKSTATION5.mordor.local, với regsvr32.exe mang command line /i:http://10.10.10.5:8444/launcher.sct và có một Sysmon Event ID 3 tới 10.10.10.5:8444. Context không chứa connection cổng 80 nào; kết quả HTTP, nội dung truyền và mục đích C2 chưa được xác minh.",
+    "technical_analysis": "Host: mọi observation creation và connection trong slice đều ghi host WORKSTATION5.mordor.local. GUID: parent powershell.exe ngoài cùng chỉ xuất hiện qua parent fields của child observation (creation_in_capture=false, GUID {b59756a9-89dc-5f17-1006-000000000400}, PID 8648) — không có record creation riêng cho nó trong slice. regsvr32.exe có GUID {b59756a9-b238-5f17-5207-000000000400}, PID 9384 (jsonl:line:97, jsonl:line:219). Child powershell.exe có GUID {b59756a9-b239-5f17-5307-000000000400}, PID 9076 (jsonl:line:224, jsonl:line:283). Dedup creation: mỗi lần tạo process được mô tả bởi hai observation (Sysmon Event ID 1 và Security 4688) nhưng là một creation duy nhất — regsvr32.exe: Sysmon 2020-07-22T03:27:53.548000Z (jsonl:line:97) và Security 4688 2020-07-22T03:27:53.590000Z (jsonl:line:219); child powershell.exe: Sysmon 2020-07-22T03:27:54.604000Z (jsonl:line:224) và Security 4688 2020-07-22T03:27:54.620000Z (jsonl:line:283). Network: fact network-process-1356a3e1f91322ca ghi regsvr32.exe (process-1356a3e1f91322ca) connected_to endpoint-c75f06bcf0f0d60d, destination 10.10.10.5 port 8444, observation_count=1, correlation_basis=host_guid_lifetime, assessment=suspicious_network_context_not_confirmed_C2; observation tương ứng là Sysmon Event ID 3 tại 2020-07-22T03:27:55.955000Z (jsonl:line:1001), source 172.18.39.5:50247. Không có observation connection cổng 80 trong context, nên phần 'process nào đi cổng 80 và bao nhiêu observations' không thể trả lời từ slice này. Giới hạn PID reuse: liên kết network–process dựa trên host/GUID/lifetime; fallback theo PID dừng ở lần creation/exit kế tiếp và có bounded age, nên PID 9384 chỉ được coi là regsvr32.exe trong khoảng lifetime GUID tương ứng; các liên kết mơ hồ được giữ tách riêng. Timestamp: canonical timestamp của các observation được chọn nằm trong khoảng 2020-07-22T03:27:53.548000Z đến 2020-07-22T03:27:55.955000Z — đây là khoảng dấu thời gian canonical của các observations được chọn, không phải thời lượng thực tế của hoạt động tấn công; raw clock (UtcTime) khác canonical timestamp được giữ nguyên, không hiệu chỉnh timezone.",
+    "attack_chain": [
+      {
+        "step_number": 1,
+        "source_entity": "powershell.exe PID 8648 GUID {b59756a9-89dc-5f17-1006-000000000400}",
+        "action": "process_spawn",
+        "target_entity": "regsvr32.exe PID 9384 GUID {b59756a9-b238-5f17-5207-000000000400}",
+        "evidence_ref": "jsonl:line:97",
+        "timestamp": "2020-07-22T03:27:53.548000Z"
+      },
+      {
+        "step_number": 2,
+        "source_entity": "regsvr32.exe PID 9384 GUID {b59756a9-b238-5f17-5207-000000000400}",
+        "action": "process_spawn",
+        "target_entity": "powershell.exe PID 9076 GUID {b59756a9-b239-5f17-5307-000000000400}",
+        "evidence_ref": "jsonl:line:224",
+        "timestamp": "2020-07-22T03:27:54.604000Z"
+      },
+      {
+        "step_number": 3,
+        "source_entity": "regsvr32.exe PID 9384 GUID {b59756a9-b238-5f17-5207-000000000400}",
+        "action": "network_connect",
+        "target_entity": "10.10.10.5:8444",
+        "evidence_ref": "jsonl:line:1001",
+        "timestamp": "2020-07-22T03:27:55.955000Z"
+      }
+    ],
+    "mitre_mappings": [],
+    "sigma_matches": [],
+    "containment_recommendations": [],
+    "unverified_claims": [
+      "Không có observation network connection cổng 80 trong context; không thể xác định process nào đi cổng 80 hoặc số observations cổng 80.",
+      "Sysmon Event ID 3 chỉ chứng minh network connection/endpoint theo fields; không chứng minh HTTP exchange hoàn tất, nội dung truyền, số byte hay exfiltration.",
+      "URL http://10.10.10.5:8444/launcher.sct trong command line chỉ là launch argument/target; không chứng minh scriptlet đã được tải hoặc thực thi.",
+      "Mục đích C2 chưa được xác nhận (assessment nguồn: suspicious_network_context_not_confirmed_C2).",
+      "Parent powershell.exe PID 8648 không có record creation trong capture (creation_in_capture=false); chỉ xuất hiện qua parent fields của child observation.",
+      "Liên kết network–process dựa trên host/GUID/lifetime; fallback PID có bounded age và dừng ở creation/exit kế tiếp, nên không loại trừ PID reuse ngoài khoảng lifetime GUID.",
+      "Context/slice này chưa đủ để kết luận về toàn bộ dataset hoặc các connection khác ngoài những gì được liệt kê."
+    ],
+    "evidence_refs": [
+      "jsonl:line:97",
+      "jsonl:line:219",
+      "jsonl:line:224",
+      "jsonl:line:283",
+      "jsonl:line:1001",
+      "creation-process-1356a3e1f91322ca",
+      "creation-process-1a7b3c442952cc5a",
+      "network-process-1356a3e1f91322ca",
+      "external-parent-f4ce0cf17a05c444"
+    ]
+  },
+  "diagnostic": null,
+  "context": {
+    "source_ground_truth": {
+      "path": "outputs/integrated/20261102_cti_portable_v7/consumers/regsvr32-c2/scenario_ground_truth.json",
+      "schema_version": "scenario-ground-truth/v3",
+      "sha256": "ca034cbd2c158f6d4f97651da8556d1cba36e38a7d957a4fb8eafab27d2aa09c",
+      "scenario_id": "regsvr32-c2"
+    },
+    "persistence": "Exact context reconstructible from pinned sources and receipt hashes"
+  },
+  "messages": null,
+  "evidence_contract": null,
+  "configuration": {
+    "model": {
+      "provider": "generic_openai",
+      "model_name": "deepseek-flash",
+      "base_url": "https://api.deepseek.com",
+      "temperature": 0.0,
+      "max_tokens": 16384,
+      "timeout_seconds": 180.0,
+      "maximum_http_attempts_per_generation": 1,
+      "automatic_retry": false,
+      "validator_policy": {
+        "policy_id": "source-meaning-validator/v3.2",
+        "network_lookbehind": 120,
+        "network_lookahead": 80,
+        "lookbehind_bounds": [
+          1,
+          400
+        ],
+        "lookahead_bounds": [
+          1,
+          400
+        ],
+        "negation_scope": "clause-local",
+        "clause_split": "sentence|contrast|subject-comma|independent-and-va",
+        "negation_binding": "topic-specific evidential/use predicate; unrelated negators do not govern the topic",
+        "authentication_binding": "supplied event/provider/field/value/reference; no dataset value whitelist",
+        "unverified_scope": "all prose outside the finite EN/VI predicate and Status/SubStatus grammar",
+        "checks": [
+          "numeric_duration_expression",
+          "unrequested_network_topic",
+          "auth_status_event_binding",
+          "auth_status_views_merged"
+        ],
+        "source_contract": "source-meaning/v2/v3"
+      },
+      "thinking": {
+        "type": "disabled"
+      }
+    },
+    "profile_id": "deepseek-final-nothinking-20261112T143858Z",
+    "artifacts": {
+      "mshta-powershell": {
+        "gt_path": {
+          "path": "outputs/integrated/20261112_live_v1/consumers/mshta-powershell/scenario_ground_truth.json",
+          "sha256": "7492ac551d3ca6b3d0f9d752f864b951722e5dd1c0037ebeb95aac149195f4c3"
+        },
+        "corpus_path": {
+          "path": "outputs/integrated/20261112_live_v1/consumers/mshta-powershell/retrieval_corpus.json",
+          "sha256": "081a4cb129fa20fe9818e90979c6a323680989f508f1e64f006fe8dfed951692"
+        },
+        "graph_path": {
+          "path": "outputs/integrated/20261112_live_v1/consumers/mshta-powershell/knowledge_graph.json",
+          "sha256": "af1bc7c773b1df500aa0f88875c2a12f496e469cb3490c55e2e7071f91555280"
+        },
+        "index_path": {
+          "path": "outputs/integrated/20261112_live_v1/consumers/mshta-powershell/vector_index_e5.json",
+          "sha256": "e27f495ffe80e21018a5f4064347ede9ea262f79ac673cd7b23fee1aa5a4953d"
+        }
+      },
+      "purplesharp-ad": {
+        "gt_path": {
+          "path": "outputs/integrated/20261102_cti_portable_v7/consumers/purplesharp-ad/scenario_ground_truth.json",
+          "sha256": "9ddd403d2778a5416f3e394b997c5fb1b65e2ec1cb50926960023d0f782e2997"
+        },
+        "corpus_path": {
+          "path": "outputs/integrated/20261102_cti_portable_v7/consumers/purplesharp-ad/retrieval_corpus.json",
+          "sha256": "89285b6e0cab18fe9272c49b762105339db697959d462ae2838e38d5a44bd1ea"
+        },
+        "graph_path": {
+          "path": "outputs/integrated/20261102_cti_portable_v7/consumers/purplesharp-ad/knowledge_graph.json",
+          "sha256": "8885e4fe312d5037a5aab4b15a6801bf19f29d57c2f22ab5dfae1d776e8e1658"
+        },
+        "index_path": {
+          "path": "outputs/integrated/20261102_cti_portable_v7/consumers/purplesharp-ad/vector_index_e5.json",
+          "sha256": "307f7e7e27c992c8788c3f8f04e78e63f332620a202c80cb54e6d3afae64d5ff"
+        }
+      },
+      "regsvr32-c2": {
+        "gt_path": {
+          "path": "outputs/integrated/20261102_cti_portable_v7/consumers/regsvr32-c2/scenario_ground_truth.json",
+          "sha256": "ca034cbd2c158f6d4f97651da8556d1cba36e38a7d957a4fb8eafab27d2aa09c"
+        },
+        "corpus_path": {
+          "path": "outputs/integrated/20261102_cti_portable_v7/consumers/regsvr32-c2/retrieval_corpus.json",
+          "sha256": "9ac6b1dbf6d2d6f792182f2257702ead87997063ad9fd69ec3d2ed1a240b73f8"
+        },
+        "graph_path": {
+          "path": "outputs/integrated/20261102_cti_portable_v7/consumers/regsvr32-c2/knowledge_graph.json",
+          "sha256": "465237c489e92f599436b65ab8f1699978d5fbab832e56379191283a7fee3575"
+        },
+        "index_path": {
+          "path": "outputs/integrated/20261102_cti_portable_v7/consumers/regsvr32-c2/vector_index_e5.json",
+          "sha256": "6c3931e077938d22f7037066abc1e6cdc5bcf05fa3d73baa3f3de9e0d3a34d90"
+        }
+      }
+    },
+    "source_configuration": {
+      "schema_version": "experimental-comparison-config/v2",
+      "profile_id": "interactive-deepseek-nothinking-20261112-v10",
+      "benchmark": "benchmarks/integrated/scenarios_12_v1.json",
+      "runtime_artifacts": "configs/runtime_artifacts_live_v2.json",
+      "gate_policy": "configs/gate/two_stage_production_policy.json",
+      "gate_contract": "source-evidence-contract/v2",
+      "generation_contract": "source-meaning/v3",
+      "validator_policy_id": "source-meaning-validator/v3.2",
+      "maximum_llm_requests": 6,
+      "retrieval": {
+        "top_k": 5,
+        "candidate_k": 20
+      },
+      "graph_expansion": {
+        "direction": "both",
+        "max_depth": 2,
+        "max_nodes": 100,
+        "max_edges": 200
+      },
+      "maximum_context_utf8_bytes": 262144,
+      "maximum_messages_utf8_bytes": 294912,
+      "branches": [
+        "rag",
+        "graphrag"
+      ],
+      "scope_source": "corpus_only_same_for_both_branches",
+      "runtime_mode": "interactive_per_question",
+      "release_capability": "interactive_per_question",
+      "persistence_contract": "interactive-evidence-receipt/v1",
+      "review_status": "draft_reviewable_pending_human_review",
+      "interpretation": "Current-source DeepSeek non-thinking generation, 16384 output tokens; unchanged source gate and validator v3.2. Paired experiment execution has its own durable protocol and ledger.",
+      "release_limitation": "Interactive draft requiring human review; not a benchmark or semantic acceptance. No retry/fallback."
+    },
+    "source_manifest_sha256": "1923ecb28ef6479440dd59e7d457ee6a62299fdae8084fe1185376693379dd90",
+    "llm_http_attempts": 1,
+    "maximum_llm_requests": null
+  },
+  "provenance": {
+    "mode": "paired_current_source_experiment",
+    "run_id": "deepseek-final-nothinking-20261112T143858Z",
+    "directory": "outputs/experiments/deepseek-final-nothinking-20261112T143858Z/NET-CORRELATE_rag",
+    "benchmark_result": true
+  },
+  "human_review_required": true,
+  "generation_evidence": {
+    "created_utc": "2026-11-12T14:57:49.989192+00:00",
+    "model_output_sha256": "6790868464bb80fb3c5b13823860b32b194467ba9f55027f74e3bb85e989e53a",
+    "new_llm_response": true,
+    "benchmark_result": true
+  },
+  "source_receipts": {
+    "context": {
+      "schema_version": "current-paired-input-receipt/v1",
+      "artifact": "context",
+      "content_sha256": "1c2175432aa17254b42542fd5fab5dd47e99b1517a01844125ed0a157b87233d",
+      "content_utf8_bytes": 36093,
+      "scenario_id": "regsvr32-c2",
+      "source_bindings": {
+        "gt_path": {
+          "path": "outputs/integrated/20261102_cti_portable_v7/consumers/regsvr32-c2/scenario_ground_truth.json",
+          "sha256": "ca034cbd2c158f6d4f97651da8556d1cba36e38a7d957a4fb8eafab27d2aa09c"
+        },
+        "corpus_path": {
+          "path": "outputs/integrated/20261102_cti_portable_v7/consumers/regsvr32-c2/retrieval_corpus.json",
+          "sha256": "9ac6b1dbf6d2d6f792182f2257702ead87997063ad9fd69ec3d2ed1a240b73f8"
+        },
+        "graph_path": {
+          "path": "outputs/integrated/20261102_cti_portable_v7/consumers/regsvr32-c2/knowledge_graph.json",
+          "sha256": "465237c489e92f599436b65ab8f1699978d5fbab832e56379191283a7fee3575"
+        },
+        "index_path": {
+          "path": "outputs/integrated/20261102_cti_portable_v7/consumers/regsvr32-c2/vector_index_e5.json",
+          "sha256": "6c3931e077938d22f7037066abc1e6cdc5bcf05fa3d73baa3f3de9e0d3a34d90"
+        }
+      },
+      "persistence": "Exact runtime value stays in RAM; source objects remain in unchanged pinned consumers. No duplicate raw payload persisted."
+    },
+    "messages": {
+      "schema_version": "current-paired-input-receipt/v1",
+      "artifact": "messages",
+      "content_sha256": "7c0a8638251d3813f3d5ef8bd52fb53a1c34531b3efacb371852c41e0d71e7eb",
+      "content_utf8_bytes": 60515,
+      "scenario_id": "regsvr32-c2",
+      "source_bindings": {
+        "gt_path": {
+          "path": "outputs/integrated/20261102_cti_portable_v7/consumers/regsvr32-c2/scenario_ground_truth.json",
+          "sha256": "ca034cbd2c158f6d4f97651da8556d1cba36e38a7d957a4fb8eafab27d2aa09c"
+        },
+        "corpus_path": {
+          "path": "outputs/integrated/20261102_cti_portable_v7/consumers/regsvr32-c2/retrieval_corpus.json",
+          "sha256": "9ac6b1dbf6d2d6f792182f2257702ead87997063ad9fd69ec3d2ed1a240b73f8"
+        },
+        "graph_path": {
+          "path": "outputs/integrated/20261102_cti_portable_v7/consumers/regsvr32-c2/knowledge_graph.json",
+          "sha256": "465237c489e92f599436b65ab8f1699978d5fbab832e56379191283a7fee3575"
+        },
+        "index_path": {
+          "path": "outputs/integrated/20261102_cti_portable_v7/consumers/regsvr32-c2/vector_index_e5.json",
+          "sha256": "6c3931e077938d22f7037066abc1e6cdc5bcf05fa3d73baa3f3de9e0d3a34d90"
+        }
+      },
+      "persistence": "Exact runtime value stays in RAM; source objects remain in unchanged pinned consumers. No duplicate raw payload persisted."
+    },
+    "evidence_contract": {
+      "schema_version": "current-paired-input-receipt/v1",
+      "artifact": "evidence_contract",
+      "content_sha256": "5747178db3b266abcb63bd02766f774b23e3926c462d413a26b72f0d223a9ec3",
+      "content_utf8_bytes": 27633,
+      "scenario_id": "regsvr32-c2",
+      "source_bindings": {
+        "gt_path": {
+          "path": "outputs/integrated/20261102_cti_portable_v7/consumers/regsvr32-c2/scenario_ground_truth.json",
+          "sha256": "ca034cbd2c158f6d4f97651da8556d1cba36e38a7d957a4fb8eafab27d2aa09c"
+        },
+        "corpus_path": {
+          "path": "outputs/integrated/20261102_cti_portable_v7/consumers/regsvr32-c2/retrieval_corpus.json",
+          "sha256": "9ac6b1dbf6d2d6f792182f2257702ead87997063ad9fd69ec3d2ed1a240b73f8"
+        },
+        "graph_path": {
+          "path": "outputs/integrated/20261102_cti_portable_v7/consumers/regsvr32-c2/knowledge_graph.json",
+          "sha256": "465237c489e92f599436b65ab8f1699978d5fbab832e56379191283a7fee3575"
+        },
+        "index_path": {
+          "path": "outputs/integrated/20261102_cti_portable_v7/consumers/regsvr32-c2/vector_index_e5.json",
+          "sha256": "6c3931e077938d22f7037066abc1e6cdc5bcf05fa3d73baa3f3de9e0d3a34d90"
+        }
+      },
+      "persistence": "Exact runtime value stays in RAM; source objects remain in unchanged pinned consumers. No duplicate raw payload persisted.",
+      "evidence": [
+        {
+          "origin": {
+            "kind": "chunk",
+            "item_id": "retrieval-chunk--e6df48c9930387d43b1f91e9812baf382c04ffc98bb0e43aeee50b701cdcdf43",
+            "context_pointer": "/retrieval/hits/0/chunk"
+          },
+          "consumer": "corpus_path",
+          "json_pointer": "/chunks/7",
+          "object_sha256": "5aa9382351359577d512387acc17228fbfe5b8bb0cd9271fa7cb3c2069ef783d",
+          "source": {
+            "artifact_type": "scenario_ground_truth",
+            "object_type": "entity",
+            "object_id": "external-parent-f4ce0cf17a05c444",
+            "json_pointer": "/entities/1"
+          },
+          "source_references": [
+            {
+              "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+              "raw_record_ref": "jsonl:line:219"
+            },
+            {
+              "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+              "raw_record_ref": "jsonl:line:97"
+            }
+          ]
+        },
+        {
+          "origin": {
+            "kind": "chunk",
+            "item_id": "retrieval-chunk--6477dd1897ae50c72c716cf6a42509c23e969434ef7e5563af680664d57ab026",
+            "context_pointer": "/retrieval/hits/1/chunk"
+          },
+          "consumer": "corpus_path",
+          "json_pointer": "/chunks/25",
+          "object_sha256": "b610fe714303e8b81610aef22347756c56cb70394c31ac248e9fd53e00effce4",
+          "source": {
+            "artifact_type": "scenario_ground_truth",
+            "object_type": "evidence",
+            "object_id": "creation-process-1a7b3c442952cc5a",
+            "json_pointer": "/evidence/1"
+          },
+          "source_references": [
+            {
+              "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+              "raw_record_ref": "jsonl:line:224"
+            },
+            {
+              "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+              "raw_record_ref": "jsonl:line:283"
+            }
+          ]
+        },
+        {
+          "origin": {
+            "kind": "chunk",
+            "item_id": "retrieval-chunk--a62bce534cb5dd176af7568eb96793f63ac9b5c388720aff8a5024915c19f408",
+            "context_pointer": "/retrieval/hits/2/chunk"
+          },
+          "consumer": "corpus_path",
+          "json_pointer": "/chunks/24",
+          "object_sha256": "fde9d7d8581d3fbbe2c5ab4856079b202f6450412a4be78a0f32420b5d602198",
+          "source": {
+            "artifact_type": "scenario_ground_truth",
+            "object_type": "evidence",
+            "object_id": "creation-process-1356a3e1f91322ca",
+            "json_pointer": "/evidence/0"
+          },
+          "source_references": [
+            {
+              "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+              "raw_record_ref": "jsonl:line:219"
+            },
+            {
+              "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+              "raw_record_ref": "jsonl:line:97"
+            }
+          ]
+        },
+        {
+          "origin": {
+            "kind": "chunk",
+            "item_id": "retrieval-chunk--9e080227c8b57a09213f234d85481395b430e57fe72a5d0bc729195aa3e3e2b5",
+            "context_pointer": "/retrieval/hits/3/chunk"
+          },
+          "consumer": "corpus_path",
+          "json_pointer": "/chunks/0",
+          "object_sha256": "cccafa19736d47ebea0115b2b1a0fd3bc5399bdd4453bf43640bee837f515daf",
+          "source": {
+            "artifact_type": "scenario_ground_truth",
+            "object_type": "scenario",
+            "object_id": null,
+            "json_pointer": "/scenario"
+          },
+          "source_references": [
+            {
+              "raw_record_ref": "jsonl:line:1001",
+              "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json"
+            },
+            {
+              "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+              "raw_record_ref": "jsonl:line:1189"
+            },
+            {
+              "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+              "raw_record_ref": "jsonl:line:1192"
+            },
+            {
+              "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+              "raw_record_ref": "jsonl:line:1213"
+            },
+            {
+              "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+              "raw_record_ref": "jsonl:line:1284"
+            },
+            {
+              "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+              "raw_record_ref": "jsonl:line:1323"
+            },
+            {
+              "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+              "raw_record_ref": "jsonl:line:1363"
+            },
+            {
+              "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+              "raw_record_ref": "jsonl:line:1401"
+            },
+            {
+              "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+              "raw_record_ref": "jsonl:line:1437"
+            },
+            {
+              "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+              "raw_record_ref": "jsonl:line:2154"
+            },
+            {
+              "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+              "raw_record_ref": "jsonl:line:219"
+            },
+            {
+              "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+              "raw_record_ref": "jsonl:line:224"
+            },
+            {
+              "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+              "raw_record_ref": "jsonl:line:240"
+            },
+            {
+              "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+              "raw_record_ref": "jsonl:line:283"
+            },
+            {
+              "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+              "raw_record_ref": "jsonl:line:296"
+            },
+            {
+              "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+              "raw_record_ref": "jsonl:line:97"
+            }
+          ]
+        },
+        {
+          "origin": {
+            "kind": "chunk",
+            "item_id": "retrieval-chunk--a699abb0583bf1f57fcee13f7c90794cbc3c7e71651323df7c4df66dd35c988e",
+            "context_pointer": "/retrieval/hits/4/chunk"
+          },
+          "consumer": "corpus_path",
+          "json_pointer": "/chunks/14",
+          "object_sha256": "c2b6266ef279f86c8df5b098844004124461cb03eebeefbefe9682cc259b61c1",
+          "source": {
+            "artifact_type": "scenario_ground_truth",
+            "object_type": "fact",
+            "object_id": "network-process-1356a3e1f91322ca",
+            "json_pointer": "/facts/3"
+          },
+          "source_references": [
+            {
+              "raw_record_ref": "jsonl:line:1001",
+              "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

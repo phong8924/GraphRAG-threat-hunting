@@ -1,0 +1,18 @@
+{
+  "included_data_files_requiring_lfs": [
+    {
+      "path": "data/knowledge/Mitre/enterprise-attack.json",
+      "size_bytes": 53277393,
+      "sha256": "bdf1ce86a4e604214c5076d37ae4dcb322678afc528df8492e6fdc1b554f5da3",
+      "strategy": "git-lfs; alternatively exact hash-checked upstream recovery"
+    },
+    {
+      "path": "data/raw/mordor/burte_force/purplesharp_ad_playbook_II/purplesharp_ad_playbook_I_2020-10-22042947.json",
+      "size_bytes": 39654430,
+      "sha256": "d86d22f0c02ab851564bb5e0c90c220e9df0319f5948bfc90dfa605b4511d4f0",
+      "strategy": "git-lfs; alternatively exact hash-checked upstream recovery"
+    }
+  ],
+  "external_model_manifest": "packaging/embedding_download.json",
+  "external_model_weights_in_repo": false
+}

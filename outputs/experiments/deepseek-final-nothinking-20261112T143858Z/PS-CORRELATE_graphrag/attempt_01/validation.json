@@ -1,0 +1,184 @@
+{
+  "raw_report_before_sanitize": {
+    "schema_version": "threat-hunting-report/v1",
+    "verdict": "SUSPICIOUS",
+    "direct_answer": "Bốn quan sát (2×4688, 2×Sysmon 1) tương ứng 2 process creations: cmd.exe → mshta.exe (PID 10980) và mshta.exe → powershell.exe (PID 9572). Mỗi creation được ghi nhận bởi hai provider (4688 và Sysmon 1) nên 4 quan sát = 2 sự kiện creation, không phải 4. conhost.exe nằm ngoài core vì nó không thuộc chuỗi parent-child cmd→mshta→powershell trong hai nhóm evidence được review; context ghi nhận conhost creation nằm ngoài phạm vi hai nhóm core và không được mô tả là vắng mặt toàn cục.",
+    "executive_summary": "Hai process creations quan sát được: cmd.exe (PID 5888) tạo mshta.exe (PID 10980) lúc 2020-10-22T02:57:59.856Z/857Z, và mshta.exe (PID 10980) tạo powershell.exe (PID 9572) lúc 2020-10-22T02:58:00.462Z/489Z. Mỗi cặp 4688 + Sysmon 1 là hai view của cùng một creation. conhost.exe không nằm trong core vì không có quan hệ process_spawn nào trong context nối nó vào chuỗi này.",
+    "technical_analysis": "Process creation 1 — cmd.exe → mshta.exe: Security 4688 tại jsonl:line:4 (2020-10-22T02:57:59.856000Z) và Sysmon 1 tại jsonl:line:275 (2020-10-22T02:57:59.857000Z) đều ghi parent C:\\Windows\\System32\\cmd.exe (parent PID 0x1700 / 5888) tạo C:\\Windows\\System32\\mshta.exe (PID 0x2ae4 / 10980), command line mshta vbscript:Execute(...). Quan hệ relationship-9e41d0cc407e7878b2d8 (process_spawn, observed) xác nhận cmd.exe → mshta.exe. Process creation 2 — mshta.exe → powershell.exe: Security 4688 tại jsonl:line:30 (2020-10-22T02:58:00.462000Z) và Sysmon 1 tại jsonl:line:398 (2020-10-22T02:58:00.489000Z) đều ghi parent C:\\Windows\\System32\\mshta.exe (parent PID 0x2ae4 / 10980) tạo powershell.exe (PID 0x2564 / 9572) với -noexit -command Get-Service sysmon. Quan hệ relationship-1641029b76ea1ac3df6e (process_spawn, observed) xác nhận mshta.exe → powershell.exe. Do đó 4 quan sát = 2 creations, mỗi creation có hai bản ghi từ hai provider. Về conhost.exe: context nêu rõ file còn chứa conhost creation, event-log clearing và temporary-file deletion ngoài hai nhóm core, và các mục này không được mô tả là vắng mặt toàn cục hay tự động phân loại là payload phá hoại; không có relationship process_spawn nào trong context nối conhost.exe với cmd.exe, mshta.exe hay powershell.exe, nên nó ở ngoài core. Giới hạn: process-creation telemetry chỉ chứng minh lệnh khởi chạy, không chứng minh cmdlet hoàn tất, output hay trạng thái dịch vụ Sysmon; timestamp Sysmon UtcTime lệch khoảng bốn giờ và timezone chưa được giải quyết, canonical timestamp giữ theo TimeCreated.",
+    "attack_chain": [
+      {
+        "step_number": 1,
+        "source_entity": "cmd.exe (PID 5888)",
+        "action": "process_spawn",
+        "target_entity": "mshta.exe (PID 10980)",
+        "evidence_ref": "evidence-b07a5ff4763e629715e6",
+        "timestamp": "2020-10-22T02:57:59.856000Z"
+      },
+      {
+        "step_number": 2,
+        "source_entity": "mshta.exe (PID 10980)",
+        "action": "process_spawn",
+        "target_entity": "powershell.exe (PID 9572)",
+        "evidence_ref": "evidence-b31714b888d1489a380c",
+        "timestamp": "2020-10-22T02:58:00.462000Z"
+      }
+    ],
+    "mitre_mappings": [],
+    "sigma_matches": [
+      "03cc0c25-389f-4bf8-b48d-11878079f1ca",
+      "cc7abbd0-762b-41e3-8a26-57ad50d2eea3"
+    ],
+    "containment_recommendations": [],
+    "unverified_claims": [
+      "Process-creation telemetry không chứng minh cmdlet Get-Service sysmon hoàn tất, có output, hay trạng thái dịch vụ Sysmon.",
+      "Không có bằng chứng trong context về download, HTTP completion, C2 hay exfiltration.",
+      "conhost.exe không được mô tả là vắng mặt toàn cục; context chỉ nêu nó nằm ngoài hai nhóm core và chưa quét phủ định toàn dataset.",
+      "Timestamp Sysmon UtcTime lệch khoảng bốn giờ so với TimeCreated và timezone chưa được giải quyết; không thực hiện hiệu chỉnh thời gian."
+    ],
+    "evidence_refs": [
+      "evidence-b07a5ff4763e629715e6",
+      "evidence-b31714b888d1489a380c",
+      "relationship-9e41d0cc407e7878b2d8",
+      "relationship-1641029b76ea1ac3df6e",
+      "jsonl:line:4",
+      "jsonl:line:275",
+      "jsonl:line:30",
+      "jsonl:line:398"
+    ]
+  },
+  "sanitized_report": {
+    "schema_version": "threat-hunting-report/v1",
+    "verdict": "SUSPICIOUS",
+    "direct_answer": "Bốn quan sát (2×4688, 2×Sysmon 1) tương ứng 2 process creations: cmd.exe → mshta.exe (PID 10980) và mshta.exe → powershell.exe (PID 9572). Mỗi creation được ghi nhận bởi hai provider (4688 và Sysmon 1) nên 4 quan sát = 2 sự kiện creation, không phải 4. conhost.exe nằm ngoài core vì nó không thuộc chuỗi parent-child cmd→mshta→powershell trong hai nhóm evidence được review; context ghi nhận conhost creation nằm ngoài phạm vi hai nhóm core và không được mô tả là vắng mặt toàn cục.",
+    "executive_summary": "Hai process creations quan sát được: cmd.exe (PID 5888) tạo mshta.exe (PID 10980) lúc 2020-10-22T02:57:59.856Z/857Z, và mshta.exe (PID 10980) tạo powershell.exe (PID 9572) lúc 2020-10-22T02:58:00.462Z/489Z. Mỗi cặp 4688 + Sysmon 1 là hai view của cùng một creation. conhost.exe không nằm trong core vì không có quan hệ process_spawn nào trong context nối nó vào chuỗi này.",
+    "technical_analysis": "Process creation 1 — cmd.exe → mshta.exe: Security 4688 tại jsonl:line:4 (2020-10-22T02:57:59.856000Z) và Sysmon 1 tại jsonl:line:275 (2020-10-22T02:57:59.857000Z) đều ghi parent C:\\Windows\\System32\\cmd.exe (parent PID 0x1700 / 5888) tạo C:\\Windows\\System32\\mshta.exe (PID 0x2ae4 / 10980), command line mshta vbscript:Execute(...). Quan hệ relationship-9e41d0cc407e7878b2d8 (process_spawn, observed) xác nhận cmd.exe → mshta.exe. Process creation 2 — mshta.exe → powershell.exe: Security 4688 tại jsonl:line:30 (2020-10-22T02:58:00.462000Z) và Sysmon 1 tại jsonl:line:398 (2020-10-22T02:58:00.489000Z) đều ghi parent C:\\Windows\\System32\\mshta.exe (parent PID 0x2ae4 / 10980) tạo powershell.exe (PID 0x2564 / 9572) với -noexit -command Get-Service sysmon. Quan hệ relationship-1641029b76ea1ac3df6e (process_spawn, observed) xác nhận mshta.exe → powershell.exe. Do đó 4 quan sát = 2 creations, mỗi creation có hai bản ghi từ hai provider. Về conhost.exe: context nêu rõ file còn chứa conhost creation, event-log clearing và temporary-file deletion ngoài hai nhóm core, và các mục này không được mô tả là vắng mặt toàn cục hay tự động phân loại là payload phá hoại; không có relationship process_spawn nào trong context nối conhost.exe với cmd.exe, mshta.exe hay powershell.exe, nên nó ở ngoài core. Giới hạn: process-creation telemetry chỉ chứng minh lệnh khởi chạy, không chứng minh cmdlet hoàn tất, output hay trạng thái dịch vụ Sysmon; timestamp Sysmon UtcTime lệch khoảng bốn giờ và timezone chưa được giải quyết, canonical timestamp giữ theo TimeCreated.",
+    "attack_chain": [
+      {
+        "step_number": 1,
+        "source_entity": "cmd.exe (PID 5888)",
+        "action": "process_spawn",
+        "target_entity": "mshta.exe (PID 10980)",
+        "evidence_ref": "evidence-b07a5ff4763e629715e6",
+        "timestamp": "2020-10-22T02:57:59.856000Z"
+      },
+      {
+        "step_number": 2,
+        "source_entity": "mshta.exe (PID 10980)",
+        "action": "process_spawn",
+        "target_entity": "powershell.exe (PID 9572)",
+        "evidence_ref": "evidence-b31714b888d1489a380c",
+        "timestamp": "2020-10-22T02:58:00.462000Z"
+      }
+    ],
+    "mitre_mappings": [],
+    "sigma_matches": [
+      "03cc0c25-389f-4bf8-b48d-11878079f1ca",
+      "cc7abbd0-762b-41e3-8a26-57ad50d2eea3"
+    ],
+    "containment_recommendations": [],
+    "unverified_claims": [
+      "Process-creation telemetry không chứng minh cmdlet Get-Service sysmon hoàn tất, có output, hay trạng thái dịch vụ Sysmon.",
+      "Không có bằng chứng trong context về download, HTTP completion, C2 hay exfiltration.",
+      "conhost.exe không được mô tả là vắng mặt toàn cục; context chỉ nêu nó nằm ngoài hai nhóm core và chưa quét phủ định toàn dataset.",
+      "Timestamp Sysmon UtcTime lệch khoảng bốn giờ so với TimeCreated và timezone chưa được giải quyết; không thực hiện hiệu chỉnh thời gian."
+    ],
+    "evidence_refs": [
+      "evidence-b07a5ff4763e629715e6",
+      "evidence-b31714b888d1489a380c",
+      "relationship-9e41d0cc407e7878b2d8",
+      "relationship-1641029b76ea1ac3df6e",
+      "jsonl:line:4",
+      "jsonl:line:275",
+      "jsonl:line:30",
+      "jsonl:line:398"
+    ]
+  },
+  "status": "passed",
+  "scope": "structured claims + bounded process citation, duration, request-topic and authentication Status/SubStatus binding checks; remaining prose/comparison correctness unverified",
+  "issues": [],
+  "reference_checks": [
+    {
+      "reference": "evidence-b07a5ff4763e629715e6",
+      "status": "supports_structured_claim"
+    },
+    {
+      "reference": "evidence-b31714b888d1489a380c",
+      "status": "supports_structured_claim"
+    },
+    {
+      "reference": "relationship-9e41d0cc407e7878b2d8",
+      "status": "exists_unverified"
+    },
+    {
+      "reference": "relationship-1641029b76ea1ac3df6e",
+      "status": "exists_unverified"
+    },
+    {
+      "reference": "jsonl:line:4",
+      "status": "exists_unverified"
+    },
+    {
+      "reference": "jsonl:line:275",
+      "status": "exists_unverified"
+    },
+    {
+      "reference": "jsonl:line:30",
+      "status": "exists_unverified"
+    },
+    {
+      "reference": "jsonl:line:398",
+      "status": "exists_unverified"
+    }
+  ],
+  "unverified_fields": [
+    "verdict",
+    "direct_answer",
+    "executive_summary",
+    "technical_analysis",
+    "containment_recommendations",
+    "sigma_matches"
+  ],
+  "human_review_required": true,
+  "narrative_binding_audit": {
+    "scope": "explicit positive executable-parent/creation-verb/executable-child clauses with inline references only",
+    "checks": [
+      {
+        "field": "executive_summary",
+        "status": "unverified_no_inline_binding"
+      },
+      {
+        "field": "executive_summary",
+        "status": "unverified_no_inline_binding"
+      },
+      {
+        "field": "technical_analysis",
+        "references": [
+          "jsonl:line:30",
+          "jsonl:line:398"
+        ],
+        "status": "supported"
+      }
+    ],
+    "issues": [],
+    "remaining_prose": "unverified; human review required"
+  },
+  "clock_and_scope_audit": {
+    "scope": "explicit numeric authentication-duration expressions and asserted HTTP/C2/exfiltration topics only; negated boundary caveats are permitted",
+    "checks": [
+      {
+        "field": "unverified_claims",
+        "kind": "unrequested_network_topic",
+        "status": "negated_boundary_caveat"
+      }
+    ],
+    "issues": [],
+    "comparison_semantics": "requires offline rubric review, not automatically verified",
+    "remaining_prose": "unverified; AI/human semantic review remains necessary"
+  },
+  "auth_field_binding_audit": {
+    "scope": "no supplied authentication observations; not applicable",
+    "events_in_context": [],
+    "checks": [],
+    "issues": []
+  }
+}

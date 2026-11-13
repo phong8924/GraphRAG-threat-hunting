@@ -1,0 +1,88 @@
+{
+  "schema_version": "missing-source-provenance/v1",
+  "present_in_source": false,
+  "interpretation": "These historical upstream artifacts were already absent in the supplied source. Current consumers retain embedded evidence/CTI and are independently hash-pinned. No historical bytes or hashes were fabricated.",
+  "runtime_required_missing": [],
+  "historical_references": [
+    {
+      "from": "outputs/integrated/20261102_cti_portable_v7/consumers/regsvr32-c2/knowledge_graph.json",
+      "path": "outputs/integrated/20261102_cti_portable_v7/cti/regsvr32-c2/cti_corpus.json",
+      "field": "corpus_path"
+    },
+    {
+      "from": "outputs/integrated/20261102_cti_portable_v7/consumers/regsvr32-c2/scenario_ground_truth.json",
+      "path": "outputs/canonical/mordor-selected-v2/files/empire_launcher_sct_regsvr32_2020_07_21232741--8b619d07ad79/canonical_events.jsonl",
+      "field": "path"
+    },
+    {
+      "from": "outputs/integrated/20261102_cti_portable_v7/consumers/regsvr32-c2/scenario_ground_truth.json",
+      "path": "outputs/integrated/20261030_v5/regsvr32_full_survey.json",
+      "field": "path"
+    },
+    {
+      "from": "outputs/integrated/20261102_cti_portable_v7/consumers/regsvr32-c2/scenario_ground_truth.json",
+      "path": "outputs/integrated/20261030_v5/consumers/regsvr32-c2/scenario_ground_truth.json",
+      "field": "path"
+    },
+    {
+      "from": "outputs/integrated/20261102_cti_portable_v7/consumers/purplesharp-ad/knowledge_graph.json",
+      "path": "outputs/integrated/20261102_cti_portable_v7/cti/purplesharp-ad/cti_corpus.json",
+      "field": "corpus_path"
+    },
+    {
+      "from": "outputs/integrated/20261102_cti_portable_v7/consumers/purplesharp-ad/scenario_ground_truth.json",
+      "path": "outputs/offline/requirements_gap_20261030_v1/purplesharp_v2/scenario_ground_truth.json",
+      "field": "path"
+    },
+    {
+      "from": "outputs/integrated/20261102_cti_portable_v7/consumers/purplesharp-ad/scenario_ground_truth.json",
+      "path": "outputs/offline/requirements_gap_20261030_v1/purplesharp_v2/authentication_survey.json",
+      "field": "path"
+    },
+    {
+      "from": "outputs/integrated/20261102_cti_portable_v7/consumers/purplesharp-ad/scenario_ground_truth.json",
+      "path": "outputs/offline/requirements_gap_20261030_v1/purplesharp_v2/authentication_correlation.json",
+      "field": "path"
+    },
+    {
+      "from": "outputs/integrated/20261102_cti_portable_v7/consumers/purplesharp-ad/scenario_ground_truth.json",
+      "path": "outputs/canonical/mordor-selected-v2/files/purplesharp_ad_playbook_i_2020_10_22042947--d86d22f0c02a/canonical_events.jsonl",
+      "field": "path"
+    },
+    {
+      "from": "outputs/integrated/20261102_cti_portable_v7/consumers/purplesharp-ad/scenario_ground_truth.json",
+      "path": "outputs/integrated/20261030_v5/consumers/purplesharp-ad/scenario_ground_truth.json",
+      "field": "path"
+    },
+    {
+      "from": "outputs/integrated/20261112_live_v1/consumers/mshta-powershell/knowledge_graph.json",
+      "path": "outputs/integrated/20261102_cti_portable_v7/cti/mshta-powershell/cti_corpus.json",
+      "field": "corpus_path"
+    },
+    {
+      "from": "outputs/integrated/20261112_live_v1/consumers/mshta-powershell/scenario_ground_truth.json",
+      "path": "outputs/evidence/mshta-powershell/mitre_resolution.json",
+      "field": "path"
+    },
+    {
+      "from": "outputs/integrated/20261112_live_v1/consumers/mshta-powershell/scenario_ground_truth.json",
+      "path": "outputs/evidence/mshta-powershell/scenario_evidence.json",
+      "field": "path"
+    },
+    {
+      "from": "outputs/integrated/20261112_live_v1/consumers/mshta-powershell/scenario_ground_truth.json",
+      "path": "outputs/evidence/mshta-powershell/sigma_match_review.json",
+      "field": "path"
+    },
+    {
+      "from": "outputs/integrated/20261112_live_v1/consumers/mshta-powershell/scenario_ground_truth.json",
+      "path": "outputs/review/mshta-ground-truth/scenario_ground_truth.json",
+      "field": "path"
+    },
+    {
+      "from": "outputs/integrated/20261112_live_v1/consumers/mshta-powershell/scenario_ground_truth.json",
+      "path": "outputs/integrated/20261030_v5/consumers/mshta-powershell/scenario_ground_truth.json",
+      "field": "path"
+    }
+  ]
+}

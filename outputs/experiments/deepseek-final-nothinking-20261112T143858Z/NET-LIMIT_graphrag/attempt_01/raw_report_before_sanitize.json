@@ -1,0 +1,35 @@
+{
+  "schema_version": "threat-hunting-report/v1",
+  "verdict": "INSUFFICIENT_EVIDENCE",
+  "direct_answer": "Không. Các bản ghi kết nối của regsvr32.exe và PowerShell chỉ là các quan sát Sysmon Event ID 3 (process-bound connection/endpoint), không chứng minh HTTP exchange đã hoàn tất, không xác nhận máy chủ C2, và không có trường số byte exfiltration. Nguồn ghi rõ: 'Connections and command URL do not establish HTTP completion, response content, confirmed C2 purpose, exfiltration or bytes transferred.'",
+  "executive_summary": "Telemetry trong slice này ghi nhận regsvr32.exe kết nối tới 10.10.10.5:8444 (1 observation) và PowerShell con kết nối tới 10.10.10.5:80 (9 observations), nhưng đây chỉ là endpoint/connection theo structured fields. Không có bằng chứng HTTP exchange hoàn tất, C2 đã xác nhận, hay số byte exfiltration.",
+  "technical_analysis": "Quan sát được: regsvr32.exe (PID 9384, GUID {b59756a9-b238-5f17-5207-000000000400}) có 1 Sysmon Event ID 3 tới 10.10.10.5:8444 lúc 2020-07-22T03:27:55.955000Z (jsonl:line:1001). PowerShell con (PID 9076, GUID {b59756a9-b239-5f17-5307-000000000400}) có 9 Sysmon Event ID 3 tới 10.10.10.5:80 trong khoảng dấu thời gian canonical 2020-07-22T03:27:57.014000Z–2020-07-22T03:28:28.429000Z (jsonl:line:1189, 1192, 1213, 1284, 1323, 1363, 1401, 1437, 2154). Command line regsvr32 chứa URL http://10.10.10.5:8444/launcher.sct chỉ là launch argument/target (jsonl:line:97, jsonl:line:219). Các evidence summary nêu rõ 'not HTTP completion, transferred content, confirmed C2 or exfiltration bytes' (connections-process-1356a3e1f91322ca, connections-process-1a7b3c442952cc5a), và limitation /summary/limitations/0 giữ nguyên giới hạn này. Không có trường byte count, response status hay nội dung trao đổi trong context; do đó không thể kết luận HTTP exchange hoàn tất, C2 xác nhận, hay khối lượng exfiltration. Liên kết process–network dựa trên host/GUID/lifetime là inferred correlation, không phải bằng chứng trao đổi dữ liệu.",
+  "attack_chain": [],
+  "mitre_mappings": [],
+  "sigma_matches": [],
+  "containment_recommendations": [],
+  "unverified_claims": [
+    "HTTP exchange hoàn tất giữa regsvr32.exe/PowerShell và 10.10.10.5 chưa được chứng minh; Sysmon Event ID 3 chỉ hỗ trợ connection/endpoint theo fields.",
+    "Máy chủ C2 đã xác nhận chưa được chứng minh; assessment của fact là 'suspicious_network_context_not_confirmed_C2'.",
+    "Số byte exfiltration và nội dung truyền chưa được xác minh; không có trường byte count hay response content trong context.",
+    "URL http://10.10.10.5:8444/launcher.sct chỉ là launch argument trong command line, không chứng minh scriptlet đã được tải hoặc thực thi hoàn tất.",
+    "Liên kết process–network là inferred correlation theo host/GUID/lifetime; context/slice này chưa đủ để kết luận toàn bộ dataset."
+  ],
+  "evidence_refs": [
+    "connections-process-1356a3e1f91322ca",
+    "connections-process-1a7b3c442952cc5a",
+    "jsonl:line:1001",
+    "jsonl:line:1189",
+    "jsonl:line:1192",
+    "jsonl:line:1213",
+    "jsonl:line:1284",
+    "jsonl:line:1323",
+    "jsonl:line:1363",
+    "jsonl:line:1401",
+    "jsonl:line:1437",
+    "jsonl:line:2154",
+    "jsonl:line:97",
+    "jsonl:line:219",
+    "/summary/limitations/0"
+  ]
+}

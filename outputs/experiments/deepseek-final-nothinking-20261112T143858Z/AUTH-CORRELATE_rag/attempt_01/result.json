@@ -1,0 +1,92 @@
+{
+  "question_id": "AUTH-CORRELATE",
+  "case_id": "AUTH-CORRELATE",
+  "scenario_id": "purplesharp-ad",
+  "branch": "rag",
+  "query": "Tương quan 4625 với 4776 trong PurpleSharp: có bao nhiêu lần thử và tài khoản khác nhau trong cụm nghi vấn password spraying, trong khoảng thời gian nào? Giải thích khử trùng và giới hạn của phép ghép.",
+  "outcome": "accepted_draft",
+  "gate_decision": "proceed",
+  "eligibility_decision": "proceed",
+  "context_utf8_bytes": 48086,
+  "messages_utf8_bytes": 66040,
+  "llm_http_attempts": 1,
+  "fallback_used": false,
+  "human_review_required": true,
+  "prepared_utc": "2026-11-12T14:44:45.174696+00:00",
+  "provider_usage": {
+    "prompt_tokens": 20542,
+    "completion_tokens": 1369,
+    "total_tokens": 21911,
+    "prompt_tokens_details": {
+      "cached_tokens": 2048
+    },
+    "prompt_cache_hit_tokens": 2048,
+    "prompt_cache_miss_tokens": 18494
+  },
+  "provider_reported_cost": null,
+  "retrieval_context_seconds": 0.08560369999759132,
+  "policy_gate_decision": "proceed",
+  "abstention_stage": null,
+  "context_sha256": "03dbc284ef82c53b32e2790489f2c46b265e81e7f7f02609101828a300a67be9",
+  "messages_sha256": "22eaf8cb037c8c4db40887f07772b0dbddbe0de6bb5cb42b45865faf5f4c3b45",
+  "retrieval_sha256": "6c392845165098144ebb32d00318c1476154edf914553bea8d4c768a3c106423",
+  "retrieval_hit_ids": [
+    "retrieval-chunk--0bbca650694671ec179ef9b97d45cc40969a30d7bc97752d23217b208beaf348",
+    "retrieval-chunk--91ef444192d109b423f4b0402f098672ea5143a1c14c7d15566c0872ec1016f8",
+    "retrieval-chunk--55fd82e45a343b8e932202f57fbf060278048047dd8c925ec7821b7196db06fc",
+    "retrieval-chunk--eb2b6e6508b7b978eaa1436483c42fd13d146a05454bd73c8bb6c6b51af49afd",
+    "retrieval-chunk--8f302f092ff819f01804a1f314eed537c47bfe109e7c9e495e29e828bfa98f88"
+  ],
+  "returned_graph_nodes": 0,
+  "returned_graph_edges": 0,
+  "available_reference_count": 28,
+  "validation_status": "passed",
+  "abstention_reason_codes": [],
+  "preparation_seconds": 0.24480099999709637,
+  "generation_validation_seconds": 66.75682250000318,
+  "provider_http_seconds": 7.086797700001625,
+  "generation_started_utc": "2026-11-12T14:46:19.880881+00:00",
+  "generation_finished_utc": "2026-11-12T14:46:26.963709+00:00",
+  "finish_reason": "stop",
+  "http_status": 200,
+  "config_run_id": "deepseek-final-nothinking-20261112T143858Z",
+  "attempt_diagnostics": [
+    {
+      "ordinal": 2,
+      "question_id": "AUTH-CORRELATE",
+      "branch": "rag",
+      "pair_attempt": 1,
+      "reserved_utc": "2026-11-12T14:46:19.853031+00:00",
+      "actual_http_attempts": 1,
+      "finished_utc": "2026-11-12T14:46:26.963709+00:00",
+      "actual_payload": {
+        "model": "deepseek-flash",
+        "temperature": 0.0,
+        "max_tokens": 16384,
+        "thinking": {
+          "type": "disabled"
+        },
+        "stream": false,
+        "messages_sha256": "22eaf8cb037c8c4db40887f07772b0dbddbe0de6bb5cb42b45865faf5f4c3b45",
+        "serialized_http_payload_bytes": 68363,
+        "endpoint": "https://api.deepseek.com/chat/completions"
+      },
+      "http_started_utc": "2026-11-12T14:46:19.880881+00:00",
+      "http_status": 200,
+      "usage": {
+        "prompt_tokens": 20542,
+        "completion_tokens": 1369,
+        "total_tokens": 21911,
+        "prompt_tokens_details": {
+          "cached_tokens": 2048
+        },
+        "prompt_cache_hit_tokens": 2048,
+        "prompt_cache_miss_tokens": 18494
+      },
+      "cost": null,
+      "finish_reason": "stop",
+      "http_seconds": 7.086797700001625,
+      "http_finished_utc": "2026-11-12T14:46:26.963709+00:00"
+    }
+  ]
+}

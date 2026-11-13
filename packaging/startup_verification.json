@@ -1,0 +1,48 @@
+{
+  "live_manifest_integrity": "passed",
+  "live_import_startup_config_routes": "passed",
+  "model": {
+    "provider": "generic_openai",
+    "model_name": "deepseek-flash",
+    "base_url": "https://api.deepseek.com",
+    "temperature": 0.0,
+    "max_tokens": 16384,
+    "timeout_seconds": 180.0,
+    "maximum_http_attempts_per_generation": 1,
+    "automatic_retry": false,
+    "validator_policy": {
+      "policy_id": "source-meaning-validator/v3.2",
+      "network_lookbehind": 120,
+      "network_lookahead": 80,
+      "lookbehind_bounds": [
+        1,
+        400
+      ],
+      "lookahead_bounds": [
+        1,
+        400
+      ],
+      "negation_scope": "clause-local",
+      "clause_split": "sentence|contrast|subject-comma|independent-and-va",
+      "negation_binding": "topic-specific evidential/use predicate; unrelated negators do not govern the topic",
+      "authentication_binding": "supplied event/provider/field/value/reference; no dataset value whitelist",
+      "unverified_scope": "all prose outside the finite EN/VI predicate and Status/SubStatus grammar",
+      "checks": [
+        "numeric_duration_expression",
+        "unrequested_network_topic",
+        "auth_status_event_binding",
+        "auth_status_views_merged"
+      ],
+      "source_contract": "source-meaning/v2/v3"
+    },
+    "thinking": {
+      "type": "disabled"
+    }
+  },
+  "LLM_calls": 0,
+  "provider_authentication_not_tested": true,
+  "used_real_credential": false,
+  "project_modules_loaded_from_destination_only": true,
+  "fresh_environment_install_performed": false,
+  "interpreter_environment": "existing pinned environment, not copied into repository"
+}

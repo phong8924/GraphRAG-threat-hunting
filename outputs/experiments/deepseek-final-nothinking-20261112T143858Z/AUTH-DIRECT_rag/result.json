@@ -1,0 +1,101 @@
+{
+  "question_id": "AUTH-DIRECT",
+  "case_id": "AUTH-DIRECT",
+  "scenario_id": "purplesharp-ad",
+  "branch": "rag",
+  "query": "Trong PurpleSharp, các sự kiện đăng nhập thất bại 4625 nhắm những tài khoản nào, nguồn workstation nào và Status/SubStatus nào? Dẫn nguồn log; không tự điền IP còn thiếu.",
+  "outcome": "accepted_draft",
+  "gate_decision": "proceed",
+  "eligibility_decision": "proceed",
+  "context_utf8_bytes": 46514,
+  "messages_utf8_bytes": 64244,
+  "llm_http_attempts": 1,
+  "fallback_used": false,
+  "human_review_required": true,
+  "prepared_utc": "2026-11-12T14:44:32.796066+00:00",
+  "provider_usage": {
+    "prompt_tokens": 19807,
+    "completion_tokens": 1367,
+    "total_tokens": 21174,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "prompt_cache_hit_tokens": 0,
+    "prompt_cache_miss_tokens": 19807
+  },
+  "provider_reported_cost": null,
+  "retrieval_context_seconds": 0.08471379999900819,
+  "policy_gate_decision": "proceed",
+  "abstention_stage": null,
+  "context_sha256": "a1c12ad502b134befc9d07bc4f2818d01b4a12e6b5a30a848d700a82f14da830",
+  "messages_sha256": "8274899bdba969c2089d50ebe54c9454005ac6a330732e37974d1ea74c087be0",
+  "retrieval_sha256": "47c6dd0db96710675685463123cfa3f705a72e04ca3d0a646ec8fd538393ba02",
+  "retrieval_hit_ids": [
+    "retrieval-chunk--0bbca650694671ec179ef9b97d45cc40969a30d7bc97752d23217b208beaf348",
+    "retrieval-chunk--91ef444192d109b423f4b0402f098672ea5143a1c14c7d15566c0872ec1016f8",
+    "retrieval-chunk--efa3dd505c4002dc1fe2633a80626ac8959f43d5d82956c6e309fa6beae6c6fa",
+    "retrieval-chunk--2be064393d6f687a0a837ecae9bc7c3ed41a0dc7dc585b09aeabb2301bad7f94",
+    "retrieval-chunk--9c756e73c3caa6809f36b5ffb4299896d62f0b69ff1fa739f0146130e59c1f2d"
+  ],
+  "returned_graph_nodes": 0,
+  "returned_graph_edges": 0,
+  "available_reference_count": 28,
+  "validation_status": "passed",
+  "abstention_reason_codes": [],
+  "preparation_seconds": 11.27811920000022,
+  "generation_validation_seconds": 7.574693200000183,
+  "provider_http_seconds": 7.3454741000023205,
+  "generation_started_utc": "2026-11-12T14:45:12.423450+00:00",
+  "generation_finished_utc": "2026-11-12T14:45:19.771574+00:00",
+  "finish_reason": "stop",
+  "http_status": 200,
+  "config_run_id": "deepseek-final-nothinking-20261112T143858Z",
+  "attempt_diagnostics": [
+    {
+      "ordinal": 1,
+      "question_id": "AUTH-DIRECT",
+      "branch": "rag",
+      "pair_attempt": 1,
+      "reserved_utc": "2026-11-12T14:45:12.388302+00:00",
+      "actual_http_attempts": 1,
+      "finished_utc": "2026-11-12T14:45:19.771574+00:00",
+      "actual_payload": {
+        "model": "deepseek-flash",
+        "temperature": 0.0,
+        "max_tokens": 16384,
+        "thinking": {
+          "type": "disabled"
+        },
+        "stream": false,
+        "messages_sha256": "8274899bdba969c2089d50ebe54c9454005ac6a330732e37974d1ea74c087be0",
+        "serialized_http_payload_bytes": 66562,
+        "endpoint": "https://api.deepseek.com/chat/completions"
+      },
+      "http_started_utc": "2026-11-12T14:45:12.423450+00:00",
+      "http_status": 200,
+      "usage": {
+        "prompt_tokens": 19807,
+        "completion_tokens": 1367,
+        "total_tokens": 21174,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 19807
+      },
+      "cost": null,
+      "finish_reason": "stop",
+      "http_seconds": 7.3454741000023205,
+      "http_finished_utc": "2026-11-12T14:45:19.771574+00:00"
+    }
+  ],
+  "response_path": "outputs/experiments/deepseek-final-nothinking-20261112T143858Z/AUTH-DIRECT_rag/response.json",
+  "citations_path": "outputs/experiments/deepseek-final-nothinking-20261112T143858Z/AUTH-DIRECT_rag/citations_resolved.json",
+  "source_config": "configs/interactive/dashboard_live_v10.json",
+  "source_manifest": "configs/interactive/runtime_manifest_live_v9.json",
+  "source_references_path": "outputs/experiments/deepseek-final-nothinking-20261112T143858Z/AUTH-DIRECT_rag/evidence_contract_receipt.json",
+  "gate_receipt_path": "outputs/experiments/deepseek-final-nothinking-20261112T143858Z/AUTH-DIRECT_rag/gate_receipt.json",
+  "eligibility_receipt_path": "outputs/experiments/deepseek-final-nothinking-20261112T143858Z/AUTH-DIRECT_rag/eligibility_receipt.json",
+  "validation_path": "outputs/experiments/deepseek-final-nothinking-20261112T143858Z/AUTH-DIRECT_rag/attempt_01/validation.json",
+  "provider_response_path": "outputs/experiments/deepseek-final-nothinking-20261112T143858Z/AUTH-DIRECT_rag/attempt_01/provider_response.json"
+}

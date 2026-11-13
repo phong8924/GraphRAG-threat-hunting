@@ -1,0 +1,56 @@
+{
+  "schema_version": "threat-hunting-report/v1",
+  "verdict": "SUSPICIOUS",
+  "direct_answer": "Command line của mshta.exe dùng cơ chế VBScript qua vbscript:Execute(\"CreateObject(\"\"Wscript.Shell\"\").Run \"\"powershell -noexit -command Get-Service sysmon\"\":close\") — tức tạo đối tượng Wscript.Shell và gọi .Run để khởi chạy powershell. PowerShell được khởi chạy với lệnh: \"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\" -noexit -command Get-Service sysmon. Đây là các process-creation record; chúng không chứng minh cmdlet Get-Service đã hoàn tất hay có output.",
+  "executive_summary": "Trên WORKSTATION5, cmd.exe (PID 5888) tạo mshta.exe (PID 10980) với command line nhúng vbscript:Execute dùng Wscript.Shell.Run để chạy powershell; mshta.exe sau đó tạo powershell.exe (PID 9572) với -noexit -command Get-Service sysmon. Chỉ quan sát được việc khởi chạy, không phải kết quả thực thi.",
+  "technical_analysis": "Observation Sysmon EventID 1 (jsonl:line:275, 2020-10-22T02:57:59.857Z) ghi nhận cmd.exe tạo mshta.exe với command_line: mshta  vbscript:Execute(\"CreateObject(\"\"Wscript.Shell\"\").Run \"\"powershell -noexit -command Get-Service sysmon\"\":close\"). Cùng command line này cũng xuất hiện trong Security 4688 (jsonl:line:4, 2020-10-22T02:57:59.856Z). Cơ chế VBScript là vbscript:Execute với CreateObject(\"Wscript.Shell\").Run để gọi powershell. Observation Sysmon EventID 1 (jsonl:line:398, 2020-10-22T02:58:00.489Z) và Security 4688 (jsonl:line:30, 2020-10-22T02:58:00.462Z) ghi nhận mshta.exe (parent PID 10980) tạo powershell.exe (PID 9572) với command_line: \"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\" -noexit -command Get-Service sysmon. Các bản ghi process creation chỉ chứng minh lệnh khởi chạy, không chứng minh cmdlet hoàn tất, output hay trạng thái dịch vụ Sysmon. Lưu ý timestamp: canonical theo TimeCreated; UtcTime của Sysmon lệch khoảng bốn giờ và timezone chưa được xác định.",
+  "attack_chain": [
+    {
+      "step_number": 1,
+      "source_entity": "cmd.exe (PID 5888)",
+      "action": "process_spawn",
+      "target_entity": "mshta.exe (PID 10980)",
+      "evidence_ref": "jsonl:line:275",
+      "timestamp": "2020-10-22T02:57:59.857000Z"
+    },
+    {
+      "step_number": 2,
+      "source_entity": "mshta.exe (PID 10980)",
+      "action": "process_spawn",
+      "target_entity": "powershell.exe (PID 9572)",
+      "evidence_ref": "jsonl:line:398",
+      "timestamp": "2020-10-22T02:58:00.489000Z"
+    }
+  ],
+  "mitre_mappings": [
+    {
+      "technique_id": "T1218.005",
+      "technique_name": "Mshta",
+      "confidence": "supported_by_observed_behavior",
+      "rationale": "mshta.exe is directly observed in the first evidence group, and its launch of PowerShell is directly observed in the second. This supports the candidate technique at the evidence level only and does not finalize the assessment.",
+      "evidence_support": "supported_by_observed_behavior",
+      "assessment_status": "candidate",
+      "review_status": "needs_review"
+    }
+  ],
+  "sigma_matches": [
+    "03cc0c25-389f-4bf8-b48d-11878079f1ca",
+    "cc7abbd0-762b-41e3-8a26-57ad50d2eea3"
+  ],
+  "containment_recommendations": [],
+  "unverified_claims": [
+    "Process-creation telemetry không chứng minh cmdlet Get-Service đã hoàn tất, không chứng minh output hay trạng thái dịch vụ Sysmon.",
+    "Không có bằng chứng trong context này về việc tải xuống, C2, đánh cắp dữ liệu hay mục đích của lệnh.",
+    "Timestamp canonical theo TimeCreated; UtcTime của Sysmon lệch khoảng bốn giờ và timezone chưa được xác định, nên không suy ra thời lượng hay đồng bộ đồng hồ giữa các nguồn."
+  ],
+  "evidence_refs": [
+    "jsonl:line:275",
+    "jsonl:line:4",
+    "jsonl:line:398",
+    "jsonl:line:30",
+    "evidence-b07a5ff4763e629715e6",
+    "evidence-b31714b888d1489a380c",
+    "relationship-1641029b76ea1ac3df6e",
+    "mitre-assessment--09f12e591ccdc088e57b01d09c528efead966e0f723ae9a0be6596b78a9c78f1"
+  ]
+}

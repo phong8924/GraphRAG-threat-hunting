@@ -1,0 +1,11 @@
+{
+  "original_bytes": 267872,
+  "existing_lossless_repack_bytes": 267872,
+  "expanded_content_identical": true,
+  "context_limit_unchanged": 262144,
+  "decision": "Retain current serialization. Existing interning already applies before annotation; no evidence removal or budget increase.",
+  "nodes_count": 25,
+  "nodes_duplicate_ids": 0,
+  "edges_count": 46,
+  "edges_duplicate_ids": 0
+}

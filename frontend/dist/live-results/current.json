@@ -1,0 +1,7 @@
+{
+  "schema_version": "saved-live-result/v1",
+  "response_url": "/live-results/mshta_deepseek_20261112.json",
+  "response_sha256": "133da7314ea577a1e1a7b5695e5762a889fbcddc0f51fea5118f83b1afb7a84f",
+  "source_path": "outputs/demo/deepseek_live_20261112_v1/mshta_graphrag_response.json",
+  "interpretation": "Original saved successful DeepSeek response; not a new generation and not offline demo data"
+}

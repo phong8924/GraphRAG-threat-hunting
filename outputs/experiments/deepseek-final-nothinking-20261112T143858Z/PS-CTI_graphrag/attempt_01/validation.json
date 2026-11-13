@@ -1,0 +1,212 @@
+{
+  "raw_report_before_sanitize": {
+    "schema_version": "threat-hunting-report/v1",
+    "verdict": "SUSPICIOUS",
+    "direct_answer": "Chuỗi này đáng điều tra vì telemetry cục bộ ghi nhận đúng mẫu process lineage mà Red Canary nêu là dấu hiệu tiềm năng của hành vi độc hại: mshta.exe (PID 10980) tạo powershell.exe (PID 9572) với command line '-noexit -command Get-Service sysmon' (jsonl:line:30, jsonl:line:398), và mshta.exe lại được cmd.exe (PID 5888) tạo với command inline vbscript:Execute(...) (jsonl:line:275, jsonl:line:4). CTI chỉ là context bên ngoài; context này không chứng minh download, C2 hay compromise cục bộ.",
+    "executive_summary": "Telemetry process-creation trên WORKSTATION5 cho thấy chuỗi cmd.exe -> mshta.exe -> powershell.exe, khớp với mô tả của Red Canary rằng mshta.exe sinh powershell.exe/cmd.exe là chỉ báo tiềm năng của malice và rằng process lineage là dữ liệu hữu ích để phát hiện lạm dụng MSHTA. Đây là lý do điều tra, không phải kết luận về download, C2 hay compromise.",
+    "technical_analysis": "Parent/child quan sát được: cmd.exe (PID 5888, parent_process_name C:\\Windows\\System32\\cmd.exe) tạo mshta.exe (PID 10980) — Sysmon event 1 tại jsonl:line:275 (2020-10-22T02:57:59.857000Z) và Security 4688 tại jsonl:line:4 (2020-10-22T02:57:59.856000Z). Sau đó mshta.exe (PID 10980) tạo powershell.exe (PID 9572) — Security 4688 tại jsonl:line:30 (2020-10-22T02:58:00.462000Z) và Sysmon event 1 tại jsonl:line:398 (2020-10-22T02:58:00.489000Z). Command evidence: mshta.exe được launch với 'mshta  vbscript:Execute(\"CreateObject(\"\"Wscript.Shell\"\").Run \"\"powershell -noexit -command Get-Service sysmon\"\":close\")' (jsonl:line:275, jsonl:line:4); powershell.exe được launch với '\"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\" -noexit -command Get-Service sysmon' (jsonl:line:30, jsonl:line:398). Đối chiếu CTI: Red Canary (publisher_excerpt, text:chars:12031:12170) nêu 'mshta.exe spawning powershell.exe or cmd.exe can be a good indicator of malice'; và (text:chars:10991:11372) khuyến nghị thu thập parent-child (và grandparent nếu có) vì process lineage hữu ích để phát hiện lạm dụng MSHTA. Tương đồng: mẫu parent-child mshta.exe -> powershell.exe trong telemetry trùng đúng mẫu publisher mô tả. Khác biệt/giới hạn so sánh: CTI không cung cấp command line cụ thể, host, PID hay kết quả thực thi để so sánh chi tiết hơn; do đó không thể so sánh command-line hay outcome với CTI. Khoảng dấu thời gian canonical của các observations được chọn là 2020-10-22T02:57:59.856000Z đến 2020-10-22T02:58:00.489000Z; đây không phải thời lượng của hoạt động tấn công thực tế và không chứng minh đồng bộ đồng hồ giữa các nguồn (Sysmon UtcTime lệch khoảng bốn giờ, timezone chưa xác định). Process-creation chỉ chứng minh việc launch, không chứng minh cmdlet hoàn tất, output hay trạng thái service Sysmon.",
+    "attack_chain": [
+      {
+        "step_number": 1,
+        "source_entity": "cmd.exe PID 5888",
+        "action": "process_spawn",
+        "target_entity": "mshta.exe PID 10980",
+        "evidence_ref": "jsonl:line:275",
+        "timestamp": "2020-10-22T02:57:59.857000Z"
+      },
+      {
+        "step_number": 2,
+        "source_entity": "mshta.exe PID 10980",
+        "action": "process_spawn",
+        "target_entity": "powershell.exe PID 9572",
+        "evidence_ref": "jsonl:line:398",
+        "timestamp": "2020-10-22T02:58:00.489000Z"
+      }
+    ],
+    "mitre_mappings": [
+      {
+        "technique_id": "T1218.005",
+        "technique_name": "Mshta",
+        "confidence": "supported_by_observed_behavior",
+        "rationale": "mshta.exe is directly observed in the first evidence group, and its launch of PowerShell is directly observed in the second. This supports the candidate technique at the evidence level only and does not finalize the assessment.",
+        "evidence_support": "supported_by_observed_behavior",
+        "assessment_status": "candidate",
+        "review_status": "needs_review"
+      }
+    ],
+    "sigma_matches": [
+      "03cc0c25-389f-4bf8-b48d-11878079f1ca",
+      "cc7abbd0-762b-41e3-8a26-57ad50d2eea3"
+    ],
+    "containment_recommendations": [],
+    "unverified_claims": [
+      "Không có telemetry chứng minh download, HTTP completion hay exfiltration; URL/command line chỉ là launch argument.",
+      "Không có telemetry chứng minh C2 hoặc kết nối mạng độc hại.",
+      "Process-creation không chứng minh cmdlet Get-Service sysmon hoàn tất, output hay trạng thái service Sysmon.",
+      "CTI Red Canary là context bên ngoài, không chứng minh compromise cục bộ hay actor attribution.",
+      "Sysmon UtcTime lệch khoảng bốn giờ so với TimeCreated và timezone chưa được xác định; không có hiệu chỉnh đồng hồ.",
+      "Context/slice này chưa đủ để kết luận về toàn bộ dataset hoặc phủ định các hành vi khác ngoài hai nhóm evidence được review."
+    ],
+    "evidence_refs": [
+      "jsonl:line:275",
+      "jsonl:line:4",
+      "jsonl:line:30",
+      "jsonl:line:398",
+      "text:chars:12031:12170",
+      "text:chars:10991:11372",
+      "evidence-b07a5ff4763e629715e6",
+      "evidence-b31714b888d1489a380c"
+    ]
+  },
+  "sanitized_report": {
+    "schema_version": "threat-hunting-report/v1",
+    "verdict": "SUSPICIOUS",
+    "direct_answer": "Chuỗi này đáng điều tra vì telemetry cục bộ ghi nhận đúng mẫu process lineage mà Red Canary nêu là dấu hiệu tiềm năng của hành vi độc hại: mshta.exe (PID 10980) tạo powershell.exe (PID 9572) với command line '-noexit -command Get-Service sysmon' (jsonl:line:30, jsonl:line:398), và mshta.exe lại được cmd.exe (PID 5888) tạo với command inline vbscript:Execute(...) (jsonl:line:275, jsonl:line:4). CTI chỉ là context bên ngoài; context này không chứng minh download, C2 hay compromise cục bộ.",
+    "executive_summary": "Telemetry process-creation trên WORKSTATION5 cho thấy chuỗi cmd.exe -> mshta.exe -> powershell.exe, khớp với mô tả của Red Canary rằng mshta.exe sinh powershell.exe/cmd.exe là chỉ báo tiềm năng của malice và rằng process lineage là dữ liệu hữu ích để phát hiện lạm dụng MSHTA. Đây là lý do điều tra, không phải kết luận về download, C2 hay compromise.",
+    "technical_analysis": "Parent/child quan sát được: cmd.exe (PID 5888, parent_process_name C:\\Windows\\System32\\cmd.exe) tạo mshta.exe (PID 10980) — Sysmon event 1 tại jsonl:line:275 (2020-10-22T02:57:59.857000Z) và Security 4688 tại jsonl:line:4 (2020-10-22T02:57:59.856000Z). Sau đó mshta.exe (PID 10980) tạo powershell.exe (PID 9572) — Security 4688 tại jsonl:line:30 (2020-10-22T02:58:00.462000Z) và Sysmon event 1 tại jsonl:line:398 (2020-10-22T02:58:00.489000Z). Command evidence: mshta.exe được launch với 'mshta  vbscript:Execute(\"CreateObject(\"\"Wscript.Shell\"\").Run \"\"powershell -noexit -command Get-Service sysmon\"\":close\")' (jsonl:line:275, jsonl:line:4); powershell.exe được launch với '\"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\" -noexit -command Get-Service sysmon' (jsonl:line:30, jsonl:line:398). Đối chiếu CTI: Red Canary (publisher_excerpt, text:chars:12031:12170) nêu 'mshta.exe spawning powershell.exe or cmd.exe can be a good indicator of malice'; và (text:chars:10991:11372) khuyến nghị thu thập parent-child (và grandparent nếu có) vì process lineage hữu ích để phát hiện lạm dụng MSHTA. Tương đồng: mẫu parent-child mshta.exe -> powershell.exe trong telemetry trùng đúng mẫu publisher mô tả. Khác biệt/giới hạn so sánh: CTI không cung cấp command line cụ thể, host, PID hay kết quả thực thi để so sánh chi tiết hơn; do đó không thể so sánh command-line hay outcome với CTI. Khoảng dấu thời gian canonical của các observations được chọn là 2020-10-22T02:57:59.856000Z đến 2020-10-22T02:58:00.489000Z; đây không phải thời lượng của hoạt động tấn công thực tế và không chứng minh đồng bộ đồng hồ giữa các nguồn (Sysmon UtcTime lệch khoảng bốn giờ, timezone chưa xác định). Process-creation chỉ chứng minh việc launch, không chứng minh cmdlet hoàn tất, output hay trạng thái service Sysmon.",
+    "attack_chain": [
+      {
+        "step_number": 1,
+        "source_entity": "cmd.exe PID 5888",
+        "action": "process_spawn",
+        "target_entity": "mshta.exe PID 10980",
+        "evidence_ref": "jsonl:line:275",
+        "timestamp": "2020-10-22T02:57:59.857000Z"
+      },
+      {
+        "step_number": 2,
+        "source_entity": "mshta.exe PID 10980",
+        "action": "process_spawn",
+        "target_entity": "powershell.exe PID 9572",
+        "evidence_ref": "jsonl:line:398",
+        "timestamp": "2020-10-22T02:58:00.489000Z"
+      }
+    ],
+    "mitre_mappings": [
+      {
+        "technique_id": "T1218.005",
+        "technique_name": "Mshta",
+        "confidence": "supported_by_observed_behavior",
+        "rationale": "mshta.exe is directly observed in the first evidence group, and its launch of PowerShell is directly observed in the second. This supports the candidate technique at the evidence level only and does not finalize the assessment.",
+        "evidence_support": "supported_by_observed_behavior",
+        "assessment_status": "candidate",
+        "review_status": "needs_review"
+      }
+    ],
+    "sigma_matches": [
+      "03cc0c25-389f-4bf8-b48d-11878079f1ca",
+      "cc7abbd0-762b-41e3-8a26-57ad50d2eea3"
+    ],
+    "containment_recommendations": [],
+    "unverified_claims": [
+      "Không có telemetry chứng minh download, HTTP completion hay exfiltration; URL/command line chỉ là launch argument.",
+      "Không có telemetry chứng minh C2 hoặc kết nối mạng độc hại.",
+      "Process-creation không chứng minh cmdlet Get-Service sysmon hoàn tất, output hay trạng thái service Sysmon.",
+      "CTI Red Canary là context bên ngoài, không chứng minh compromise cục bộ hay actor attribution.",
+      "Sysmon UtcTime lệch khoảng bốn giờ so với TimeCreated và timezone chưa được xác định; không có hiệu chỉnh đồng hồ.",
+      "Context/slice này chưa đủ để kết luận về toàn bộ dataset hoặc phủ định các hành vi khác ngoài hai nhóm evidence được review."
+    ],
+    "evidence_refs": [
+      "jsonl:line:275",
+      "jsonl:line:4",
+      "jsonl:line:30",
+      "jsonl:line:398",
+      "text:chars:12031:12170",
+      "text:chars:10991:11372",
+      "evidence-b07a5ff4763e629715e6",
+      "evidence-b31714b888d1489a380c"
+    ]
+  },
+  "status": "passed",
+  "scope": "structured claims + bounded process citation, duration, request-topic and authentication Status/SubStatus binding checks; remaining prose/comparison correctness unverified",
+  "issues": [],
+  "reference_checks": [
+    {
+      "reference": "jsonl:line:275",
+      "status": "supports_structured_claim"
+    },
+    {
+      "reference": "jsonl:line:4",
+      "status": "exists_unverified"
+    },
+    {
+      "reference": "jsonl:line:30",
+      "status": "exists_unverified"
+    },
+    {
+      "reference": "jsonl:line:398",
+      "status": "supports_structured_claim"
+    },
+    {
+      "reference": "text:chars:12031:12170",
+      "status": "exists_unverified"
+    },
+    {
+      "reference": "text:chars:10991:11372",
+      "status": "exists_unverified"
+    },
+    {
+      "reference": "evidence-b07a5ff4763e629715e6",
+      "status": "exists_unverified"
+    },
+    {
+      "reference": "evidence-b31714b888d1489a380c",
+      "status": "exists_unverified"
+    }
+  ],
+  "unverified_fields": [
+    "verdict",
+    "direct_answer",
+    "executive_summary",
+    "technical_analysis",
+    "containment_recommendations",
+    "sigma_matches"
+  ],
+  "human_review_required": true,
+  "narrative_binding_audit": {
+    "scope": "explicit positive executable-parent/creation-verb/executable-child clauses with inline references only",
+    "checks": [
+      {
+        "field": "direct_answer",
+        "references": [
+          "jsonl:line:30",
+          "jsonl:line:398",
+          "jsonl:line:275",
+          "jsonl:line:4"
+        ],
+        "status": "supported"
+      },
+      {
+        "field": "technical_analysis",
+        "references": [
+          "jsonl:line:275",
+          "jsonl:line:4"
+        ],
+        "status": "supported"
+      },
+      {
+        "field": "technical_analysis",
+        "references": [
+          "jsonl:line:30",
+          "jsonl:line:398"
+        ],
+        "status": "supported"
+      }
+    ],
+    "issues": [],
+    "remaining_prose": "unverified; human review required"
+  },
+  "clock_and_scope_audit": {
+    "scope": "explicit numeric authentication-duration expressions and asserted HTTP/C2/exfiltration topics only; negated boundary caveats are permitted",
+    "checks": [],
+    "issues": [],
+    "comparison_semantics": "requires offline rubric review, not automatically verified",
+    "remaining_prose": "unverified; AI/human semantic review remains necessary"
+  },
+  "auth_field_binding_audit": {
+    "scope": "no supplied authentication observations; not applicable",
+    "events_in_context": [],
+    "checks": [],
+    "issues": []
+  }
+}

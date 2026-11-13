@@ -1,0 +1,52 @@
+{
+  "rows": [
+    {
+      "question_id": "AUTH-DIRECT",
+      "identical_hybrid_retrieval": true
+    },
+    {
+      "question_id": "AUTH-CORRELATE",
+      "identical_hybrid_retrieval": true
+    },
+    {
+      "question_id": "AUTH-CTI",
+      "identical_hybrid_retrieval": true
+    },
+    {
+      "question_id": "AUTH-LIMIT",
+      "identical_hybrid_retrieval": true
+    },
+    {
+      "question_id": "PS-DIRECT",
+      "identical_hybrid_retrieval": true
+    },
+    {
+      "question_id": "PS-CORRELATE",
+      "identical_hybrid_retrieval": true
+    },
+    {
+      "question_id": "PS-CTI",
+      "identical_hybrid_retrieval": true
+    },
+    {
+      "question_id": "PS-LIMIT",
+      "identical_hybrid_retrieval": true
+    },
+    {
+      "question_id": "NET-DIRECT",
+      "identical_hybrid_retrieval": true
+    },
+    {
+      "question_id": "NET-CORRELATE",
+      "identical_hybrid_retrieval": true
+    },
+    {
+      "question_id": "NET-CTI",
+      "identical_hybrid_retrieval": true
+    },
+    {
+      "question_id": "NET-LIMIT",
+      "identical_hybrid_retrieval": true
+    }
+  ]
+}

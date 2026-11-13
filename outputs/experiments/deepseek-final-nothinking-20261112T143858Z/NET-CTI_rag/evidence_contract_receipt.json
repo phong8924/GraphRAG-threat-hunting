@@ -1,0 +1,222 @@
+{
+  "schema_version": "current-paired-input-receipt/v1",
+  "artifact": "evidence_contract",
+  "content_sha256": "18ecc9a184667352d5f917b171a90d13d0004b9556aabad34d4d0d4f80e66a91",
+  "content_utf8_bytes": 22819,
+  "scenario_id": "regsvr32-c2",
+  "source_bindings": {
+    "gt_path": {
+      "path": "outputs/integrated/20261102_cti_portable_v7/consumers/regsvr32-c2/scenario_ground_truth.json",
+      "sha256": "ca034cbd2c158f6d4f97651da8556d1cba36e38a7d957a4fb8eafab27d2aa09c"
+    },
+    "corpus_path": {
+      "path": "outputs/integrated/20261102_cti_portable_v7/consumers/regsvr32-c2/retrieval_corpus.json",
+      "sha256": "9ac6b1dbf6d2d6f792182f2257702ead87997063ad9fd69ec3d2ed1a240b73f8"
+    },
+    "graph_path": {
+      "path": "outputs/integrated/20261102_cti_portable_v7/consumers/regsvr32-c2/knowledge_graph.json",
+      "sha256": "465237c489e92f599436b65ab8f1699978d5fbab832e56379191283a7fee3575"
+    },
+    "index_path": {
+      "path": "outputs/integrated/20261102_cti_portable_v7/consumers/regsvr32-c2/vector_index_e5.json",
+      "sha256": "6c3931e077938d22f7037066abc1e6cdc5bcf05fa3d73baa3f3de9e0d3a34d90"
+    }
+  },
+  "persistence": "Exact runtime value stays in RAM; source objects remain in unchanged pinned consumers. No duplicate raw payload persisted.",
+  "evidence": [
+    {
+      "origin": {
+        "kind": "chunk",
+        "item_id": "retrieval-chunk--4d21901ccb888cb287c0880b1a5be769fa03f5dbdc9dd06238fc2bf80e964f48",
+        "context_pointer": "/retrieval/hits/0/chunk"
+      },
+      "consumer": "corpus_path",
+      "json_pointer": "/chunks/3",
+      "object_sha256": "378d2d48458552b591441cfb065984e0b5aeb541fb99858f15144f5434992f0f",
+      "source": {
+        "artifact_type": "scenario_ground_truth",
+        "object_type": "entity",
+        "object_id": "cti-e6c4c8e5e1f2bad784ca",
+        "json_pointer": "/entities/7"
+      },
+      "source_references": [
+        {
+          "source_file": "uptycs-regsvr32",
+          "raw_record_ref": "text:chars:5618:6067"
+        }
+      ]
+    },
+    {
+      "origin": {
+        "kind": "chunk",
+        "item_id": "retrieval-chunk--9e080227c8b57a09213f234d85481395b430e57fe72a5d0bc729195aa3e3e2b5",
+        "context_pointer": "/retrieval/hits/1/chunk"
+      },
+      "consumer": "corpus_path",
+      "json_pointer": "/chunks/0",
+      "object_sha256": "cccafa19736d47ebea0115b2b1a0fd3bc5399bdd4453bf43640bee837f515daf",
+      "source": {
+        "artifact_type": "scenario_ground_truth",
+        "object_type": "scenario",
+        "object_id": null,
+        "json_pointer": "/scenario"
+      },
+      "source_references": [
+        {
+          "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+          "raw_record_ref": "jsonl:line:1001"
+        },
+        {
+          "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+          "raw_record_ref": "jsonl:line:1189"
+        },
+        {
+          "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+          "raw_record_ref": "jsonl:line:1192"
+        },
+        {
+          "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+          "raw_record_ref": "jsonl:line:1213"
+        },
+        {
+          "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+          "raw_record_ref": "jsonl:line:1284"
+        },
+        {
+          "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+          "raw_record_ref": "jsonl:line:1323"
+        },
+        {
+          "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+          "raw_record_ref": "jsonl:line:1363"
+        },
+        {
+          "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+          "raw_record_ref": "jsonl:line:1401"
+        },
+        {
+          "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+          "raw_record_ref": "jsonl:line:1437"
+        },
+        {
+          "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+          "raw_record_ref": "jsonl:line:2154"
+        },
+        {
+          "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+          "raw_record_ref": "jsonl:line:219"
+        },
+        {
+          "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+          "raw_record_ref": "jsonl:line:224"
+        },
+        {
+          "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+          "raw_record_ref": "jsonl:line:240"
+        },
+        {
+          "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+          "raw_record_ref": "jsonl:line:283"
+        },
+        {
+          "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+          "raw_record_ref": "jsonl:line:296"
+        },
+        {
+          "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+          "raw_record_ref": "jsonl:line:97"
+        }
+      ]
+    },
+    {
+      "origin": {
+        "kind": "chunk",
+        "item_id": "retrieval-chunk--788770c2ab5cb94aba678b563d7d9023b98a094241b6b81751342a90a22906fa",
+        "context_pointer": "/retrieval/hits/2/chunk"
+      },
+      "consumer": "corpus_path",
+      "json_pointer": "/chunks/1",
+      "object_sha256": "17a7c43b2f4c2d2e1018cecc354a9ca05cd1ccbeadf3e7e7519dc448c495b1ac",
+      "source": {
+        "artifact_type": "scenario_ground_truth",
+        "object_type": "entity",
+        "object_id": "cti-7f6ac573af892ccc9283",
+        "json_pointer": "/entities/9"
+      },
+      "source_references": [
+        {
+          "source_file": "uptycs-regsvr32",
+          "raw_record_ref": "text:chars:7191:7484"
+        }
+      ]
+    },
+    {
+      "origin": {
+        "kind": "chunk",
+        "item_id": "retrieval-chunk--7b6e3b9a2a13513d85f7fd8dabad4ec67dc423dc64ff1e6d43d68b21a0ff801c",
+        "context_pointer": "/retrieval/hits/3/chunk"
+      },
+      "consumer": "corpus_path",
+      "json_pointer": "/chunks/30",
+      "object_sha256": "03d0f3abe833e9758d0d0c29420241679b332dfaa9c0914a9c967491c6be6843",
+      "source": {
+        "artifact_type": "scenario_ground_truth",
+        "object_type": "mitre_assessment",
+        "object_id": "assessment-T1218-010",
+        "json_pointer": "/mitre_assessments/0"
+      },
+      "source_references": [
+        {
+          "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+          "raw_record_ref": "jsonl:line:219"
+        },
+        {
+          "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+          "raw_record_ref": "jsonl:line:224"
+        },
+        {
+          "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+          "raw_record_ref": "jsonl:line:240"
+        },
+        {
+          "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+          "raw_record_ref": "jsonl:line:283"
+        },
+        {
+          "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+          "raw_record_ref": "jsonl:line:296"
+        },
+        {
+          "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+          "raw_record_ref": "jsonl:line:97"
+        }
+      ]
+    },
+    {
+      "origin": {
+        "kind": "chunk",
+        "item_id": "retrieval-chunk--cda169e8bc034d29e1e6a71cf9c805314983de89541b704d24f882786745b0bf",
+        "context_pointer": "/retrieval/hits/4/chunk"
+      },
+      "consumer": "corpus_path",
+      "json_pointer": "/chunks/8",
+      "object_sha256": "f4bc9a3122fe93e83c465a9abdb40f231a69dba84c76ea26e2a850dbd9ecfff0",
+      "source": {
+        "artifact_type": "scenario_ground_truth",
+        "object_type": "entity",
+        "object_id": "process-1356a3e1f91322ca",
+        "json_pointer": "/entities/0"
+      },
+      "source_references": [
+        {
+          "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+          "raw_record_ref": "jsonl:line:219"
+        },
+        {
+          "source_file": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+          "raw_record_ref": "jsonl:line:97"
+        }
+      ]
+    }
+  ]
+}

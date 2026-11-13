@@ -1,0 +1,40 @@
+{
+  "question_id": "AUTH-CORRELATE",
+  "case_id": "AUTH-CORRELATE",
+  "scenario_id": "purplesharp-ad",
+  "branch": "graphrag",
+  "query": "Tương quan 4625 với 4776 trong PurpleSharp: có bao nhiêu lần thử và tài khoản khác nhau trong cụm nghi vấn password spraying, trong khoảng thời gian nào? Giải thích khử trùng và giới hạn của phép ghép.",
+  "outcome": "abstain",
+  "gate_decision": "proceed",
+  "eligibility_decision": "abstain",
+  "context_utf8_bytes": 267872,
+  "messages_utf8_bytes": 280962,
+  "llm_http_attempts": 0,
+  "fallback_used": false,
+  "human_review_required": true,
+  "prepared_utc": "2026-11-12T14:44:44.618066+00:00",
+  "provider_usage": null,
+  "provider_reported_cost": null,
+  "retrieval_context_seconds": 0.17901319999873522,
+  "policy_gate_decision": "proceed",
+  "abstention_stage": "context_budget",
+  "context_sha256": "f4f60f30a816c2670a2dfb1687c3e51dad7f7237f00cb350129deaf6623a5129",
+  "messages_sha256": "3144af122329c38336c606ed7102edd6aecaa0cc7f9fb0fd97d4963e343a8c60",
+  "retrieval_sha256": "6c392845165098144ebb32d00318c1476154edf914553bea8d4c768a3c106423",
+  "retrieval_hit_ids": [
+    "retrieval-chunk--0bbca650694671ec179ef9b97d45cc40969a30d7bc97752d23217b208beaf348",
+    "retrieval-chunk--91ef444192d109b423f4b0402f098672ea5143a1c14c7d15566c0872ec1016f8",
+    "retrieval-chunk--55fd82e45a343b8e932202f57fbf060278048047dd8c925ec7821b7196db06fc",
+    "retrieval-chunk--eb2b6e6508b7b978eaa1436483c42fd13d146a05454bd73c8bb6c6b51af49afd",
+    "retrieval-chunk--8f302f092ff819f01804a1f314eed537c47bfe109e7c9e495e29e828bfa98f88"
+  ],
+  "returned_graph_nodes": 25,
+  "returned_graph_edges": 46,
+  "available_reference_count": 261,
+  "validation_status": "not_run",
+  "budget_exceeded": true,
+  "abstention_reason_codes": [
+    "context_utf8_budget_exceeded"
+  ],
+  "preparation_seconds": 0.5361512000017683
+}

@@ -1,0 +1,30 @@
+{
+  "upstream_licenses": [
+    {
+      "path": "LICENSES/OTRF-Security-Datasets-LICENSE.txt",
+      "source_url": "https://raw.githubusercontent.com/OTRF/Security-Datasets/d9d40ef123d2c87d5d3df28c96bcab4f0faccc87/LICENSE",
+      "sha256": "fce88163b60d67ecabd317b75f7638233e11cbe648fe608ebbf6c10161564686"
+    },
+    {
+      "path": "LICENSES/Sigma-d7c9da10-LICENSE.txt",
+      "source_url": "https://raw.githubusercontent.com/SigmaHQ/sigma/d7c9da10c170a6988d68ebdf2c9f7bd8782b7c55/LICENSE",
+      "sha256": "4213ed7e21d9435b0aa0aa7d11016e6ab3e4664fa71738ff507306fadce79597"
+    },
+    {
+      "path": "LICENSES/Sigma-34c5d66c-LICENSE.txt",
+      "source_url": "https://raw.githubusercontent.com/SigmaHQ/sigma/34c5d66c22bbe41fe701cb6341d78ce324e6b24a/LICENSE",
+      "sha256": "4213ed7e21d9435b0aa0aa7d11016e6ab3e4664fa71738ff507306fadce79597"
+    },
+    {
+      "path": "LICENSES/MITRE-ATTACK-LICENSE.txt",
+      "source_url": "https://raw.githubusercontent.com/mitre-attack/attack-stix-data/6c3719993d0401de199203ecc3f369544d9e091c/LICENSE.txt",
+      "sha256": "738144f7fb054722a4ef9d3367c51710341dc12fc574c6ac3a41daaaecd8bf5e"
+    },
+    {
+      "path": "LICENSES/Detection-Rule-License-1.1.txt",
+      "source_url": "https://raw.githubusercontent.com/SigmaHQ/Detection-Rule-License/bcbdc605172d00390572cd774ba395ec9e975dfc/LICENSE.Detection.Rules.md",
+      "sha256": "d5f4c36a0528e01cfdd9e4fc60879201d3af49b41c520200643d321fe53da5f9"
+    }
+  ],
+  "project_license": "not supplied; not assigned by this distribution"
+}

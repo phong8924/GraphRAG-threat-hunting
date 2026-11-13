@@ -1,0 +1,298 @@
+{
+  "raw_report_before_sanitize": {
+    "schema_version": "threat-hunting-report/v1",
+    "verdict": "INSUFFICIENT_EVIDENCE",
+    "direct_answer": "Trong slice này, 7 sự kiện 4625 (host WORKSTATION5.theshire.local) nhắm 7 tài khoản khác nhau: lrodriguez, pgustavo, sysmonsvc, sbeavers, mscott, pbeesly, nxlogsvc; nguồn workstation ghi nhận là WORKSTATION5; Status=0xc000006d và SubStatus=0xc000006a cho cả 7. Trường source_ip là None trong cả 7 bản ghi nên không có IP nguồn để báo cáo (không tự điền).",
+    "executive_summary": "Fact auth-failure-survey ghi nhận 7 sự kiện 4625 với phân bố tài khoản đích, workstation nguồn và mã Status/SubStatus nêu trên; các bản ghi thô tương ứng nằm trong purplesharp_ad_playbook_I_2020-10-22042947.json. Đây là phạm vi của slice được cung cấp; không kết luận gì thêm về toàn bộ dataset.",
+    "technical_analysis": "Theo fact auth-failure-survey (evidence_id auth-failure-observations), profile 4625 có count=7, host=WORKSTATION5.theshire.local, source_workstation=WORKSTATION5, target_domain=theshire.local, outcome=failure; target_account phân bố mỗi tài khoản 1 lần: lrodriguez, mscott, nxlogsvc, pbeesly, pgustavo, sbeavers, sysmonsvc. original_field_distributions cho 4625: Status=0xc000006d (7), SubStatus=0xc000006a (7), LogonType=2 (7), SubjectUserName=pgustavo (7), AuthenticationPackageName=MICROSOFT_AUTHENTICATION_PACKAGE_V1_0 (7); source_ip=None (7). Các bản ghi thô 4625: jsonl:line:788 (lrodriguez, 2020-10-22T08:29:55.210000Z), jsonl:line:790 (pgustavo, .211000Z), jsonl:line:792 (sysmonsvc, .214000Z), jsonl:line:794 (sbeavers, .215000Z), jsonl:line:796 (mscott, .217000Z), jsonl:line:798 (pbeesly, .219000Z), jsonl:line:803 (nxlogsvc, .222000Z) — tất cả trong purplesharp_ad_playbook_I_2020-10-22042947.json, với WorkstationName=WORKSTATION5, Status=0xc000006d, SubStatus=0xc000006a. Khoảng dấu thời gian canonical của các observations 4625 được chọn là 2020-10-22T08:29:55.210000Z đến 2020-10-22T08:29:55.222000Z; đây không phải thời lượng của hoạt động tấn công thực tế và không chứng minh đồng bộ đồng hồ giữa các nguồn. Các sự kiện 4776 (host MORDORDC.theshire.local) là view DC của cùng các lần thử theo mô tả nguồn, không phải các lần thử bổ sung; profile 4776 có Status=0xc000006a và SubStatus=None, source_ip=None, source_workstation=WORKSTATION5. Việc ghép cặp 4625–4776 là inferred (attempt-c65c47e5fa6c0377: correlation_basis=mutually_unique_account_workstation_failure_code_within_tolerance; limitation: 4776 target domain absent; pairing is inferred, not a shared attempt ID).",
+    "attack_chain": [],
+    "mitre_mappings": [],
+    "sigma_matches": [],
+    "containment_recommendations": [],
+    "unverified_claims": [
+      "Không có IP nguồn trong dữ liệu: source_ip=None cho cả 7 sự kiện 4625 (và cả 4776); không được tự điền IP.",
+      "Ghép cặp 4625 với 4776 là suy luận (inferred), không dựa trên attempt ID dùng chung; 4776 thiếu target domain.",
+      "Khoảng thời gian canonical 2020-10-22T08:29:55.210000Z–.222000Z chỉ là khoảng dấu thời gian của các observations được chọn, không phải thời lượng tấn công thực tế; chưa chứng minh đồng bộ đồng hồ giữa các nguồn (EventTime thô 04:29:53 được giữ nguyên, không hiệu chỉnh múi giờ).",
+      "Slice này chưa đủ để kết luận về toàn bộ dataset hoặc về compromise/thành công đăng nhập sau đó."
+    ],
+    "evidence_refs": [
+      "auth-failure-observations",
+      "/facts/7",
+      "jsonl:line:788",
+      "jsonl:line:790",
+      "jsonl:line:792",
+      "jsonl:line:794",
+      "jsonl:line:796",
+      "jsonl:line:798",
+      "jsonl:line:803",
+      "jsonl:line:1020",
+      "jsonl:line:1046",
+      "jsonl:line:1048",
+      "jsonl:line:1051",
+      "jsonl:line:1072",
+      "jsonl:line:1074",
+      "jsonl:line:1077",
+      "/facts/2"
+    ]
+  },
+  "sanitized_report": {
+    "schema_version": "threat-hunting-report/v1",
+    "verdict": "INSUFFICIENT_EVIDENCE",
+    "direct_answer": "Trong slice này, 7 sự kiện 4625 (host WORKSTATION5.theshire.local) nhắm 7 tài khoản khác nhau: lrodriguez, pgustavo, sysmonsvc, sbeavers, mscott, pbeesly, nxlogsvc; nguồn workstation ghi nhận là WORKSTATION5; Status=0xc000006d và SubStatus=0xc000006a cho cả 7. Trường source_ip là None trong cả 7 bản ghi nên không có IP nguồn để báo cáo (không tự điền).",
+    "executive_summary": "Fact auth-failure-survey ghi nhận 7 sự kiện 4625 với phân bố tài khoản đích, workstation nguồn và mã Status/SubStatus nêu trên; các bản ghi thô tương ứng nằm trong purplesharp_ad_playbook_I_2020-10-22042947.json. Đây là phạm vi của slice được cung cấp; không kết luận gì thêm về toàn bộ dataset.",
+    "technical_analysis": "Theo fact auth-failure-survey (evidence_id auth-failure-observations), profile 4625 có count=7, host=WORKSTATION5.theshire.local, source_workstation=WORKSTATION5, target_domain=theshire.local, outcome=failure; target_account phân bố mỗi tài khoản 1 lần: lrodriguez, mscott, nxlogsvc, pbeesly, pgustavo, sbeavers, sysmonsvc. original_field_distributions cho 4625: Status=0xc000006d (7), SubStatus=0xc000006a (7), LogonType=2 (7), SubjectUserName=pgustavo (7), AuthenticationPackageName=MICROSOFT_AUTHENTICATION_PACKAGE_V1_0 (7); source_ip=None (7). Các bản ghi thô 4625: jsonl:line:788 (lrodriguez, 2020-10-22T08:29:55.210000Z), jsonl:line:790 (pgustavo, .211000Z), jsonl:line:792 (sysmonsvc, .214000Z), jsonl:line:794 (sbeavers, .215000Z), jsonl:line:796 (mscott, .217000Z), jsonl:line:798 (pbeesly, .219000Z), jsonl:line:803 (nxlogsvc, .222000Z) — tất cả trong purplesharp_ad_playbook_I_2020-10-22042947.json, với WorkstationName=WORKSTATION5, Status=0xc000006d, SubStatus=0xc000006a. Khoảng dấu thời gian canonical của các observations 4625 được chọn là 2020-10-22T08:29:55.210000Z đến 2020-10-22T08:29:55.222000Z; đây không phải thời lượng của hoạt động tấn công thực tế và không chứng minh đồng bộ đồng hồ giữa các nguồn. Các sự kiện 4776 (host MORDORDC.theshire.local) là view DC của cùng các lần thử theo mô tả nguồn, không phải các lần thử bổ sung; profile 4776 có Status=0xc000006a và SubStatus=None, source_ip=None, source_workstation=WORKSTATION5. Việc ghép cặp 4625–4776 là inferred (attempt-c65c47e5fa6c0377: correlation_basis=mutually_unique_account_workstation_failure_code_within_tolerance; limitation: 4776 target domain absent; pairing is inferred, not a shared attempt ID).",
+    "attack_chain": [],
+    "mitre_mappings": [],
+    "sigma_matches": [],
+    "containment_recommendations": [],
+    "unverified_claims": [
+      "Không có IP nguồn trong dữ liệu: source_ip=None cho cả 7 sự kiện 4625 (và cả 4776); không được tự điền IP.",
+      "Ghép cặp 4625 với 4776 là suy luận (inferred), không dựa trên attempt ID dùng chung; 4776 thiếu target domain.",
+      "Khoảng thời gian canonical 2020-10-22T08:29:55.210000Z–.222000Z chỉ là khoảng dấu thời gian của các observations được chọn, không phải thời lượng tấn công thực tế; chưa chứng minh đồng bộ đồng hồ giữa các nguồn (EventTime thô 04:29:53 được giữ nguyên, không hiệu chỉnh múi giờ).",
+      "Slice này chưa đủ để kết luận về toàn bộ dataset hoặc về compromise/thành công đăng nhập sau đó."
+    ],
+    "evidence_refs": [
+      "auth-failure-observations",
+      "/facts/7",
+      "jsonl:line:788",
+      "jsonl:line:790",
+      "jsonl:line:792",
+      "jsonl:line:794",
+      "jsonl:line:796",
+      "jsonl:line:798",
+      "jsonl:line:803",
+      "jsonl:line:1020",
+      "jsonl:line:1046",
+      "jsonl:line:1048",
+      "jsonl:line:1051",
+      "jsonl:line:1072",
+      "jsonl:line:1074",
+      "jsonl:line:1077",
+      "/facts/2"
+    ]
+  },
+  "status": "passed",
+  "scope": "structured claims + bounded process citation, duration, request-topic and authentication Status/SubStatus binding checks; remaining prose/comparison correctness unverified",
+  "issues": [],
+  "reference_checks": [
+    {
+      "reference": "auth-failure-observations",
+      "status": "exists_unverified"
+    },
+    {
+      "reference": "/facts/7",
+      "status": "exists_unverified"
+    },
+    {
+      "reference": "jsonl:line:788",
+      "status": "exists_unverified"
+    },
+    {
+      "reference": "jsonl:line:790",
+      "status": "exists_unverified"
+    },
+    {
+      "reference": "jsonl:line:792",
+      "status": "exists_unverified"
+    },
+    {
+      "reference": "jsonl:line:794",
+      "status": "exists_unverified"
+    },
+    {
+      "reference": "jsonl:line:796",
+      "status": "exists_unverified"
+    },
+    {
+      "reference": "jsonl:line:798",
+      "status": "exists_unverified"
+    },
+    {
+      "reference": "jsonl:line:803",
+      "status": "exists_unverified"
+    },
+    {
+      "reference": "jsonl:line:1020",
+      "status": "exists_unverified"
+    },
+    {
+      "reference": "jsonl:line:1046",
+      "status": "exists_unverified"
+    },
+    {
+      "reference": "jsonl:line:1048",
+      "status": "exists_unverified"
+    },
+    {
+      "reference": "jsonl:line:1051",
+      "status": "exists_unverified"
+    },
+    {
+      "reference": "jsonl:line:1072",
+      "status": "exists_unverified"
+    },
+    {
+      "reference": "jsonl:line:1074",
+      "status": "exists_unverified"
+    },
+    {
+      "reference": "jsonl:line:1077",
+      "status": "exists_unverified"
+    },
+    {
+      "reference": "/facts/2",
+      "status": "exists_unverified"
+    }
+  ],
+  "unverified_fields": [
+    "verdict",
+    "direct_answer",
+    "executive_summary",
+    "technical_analysis",
+    "containment_recommendations",
+    "sigma_matches"
+  ],
+  "human_review_required": true,
+  "narrative_binding_audit": {
+    "scope": "explicit positive executable-parent/creation-verb/executable-child clauses with inline references only",
+    "checks": [],
+    "issues": [],
+    "remaining_prose": "unverified; human review required"
+  },
+  "clock_and_scope_audit": {
+    "scope": "explicit numeric authentication-duration expressions and asserted HTTP/C2/exfiltration topics only; negated boundary caveats are permitted",
+    "checks": [],
+    "issues": [],
+    "comparison_semantics": "requires offline rubric review, not automatically verified",
+    "remaining_prose": "unverified; AI/human semantic review remains necessary"
+  },
+  "auth_field_binding_audit": {
+    "scope": "explicit EN/VI Status/SubStatus hex assignments and field-absence predicates, scoped by mentioned authentication event/provider and supplied references; all other prose unverified",
+    "events_in_context": [
+      "4625",
+      "4776"
+    ],
+    "issues": [],
+    "checks": [
+      {
+        "field": "direct_answer",
+        "subject_event": null,
+        "provider": "microsoft-windows-security-auditing",
+        "values": [
+          [
+            "status",
+            "0xc000006d"
+          ],
+          [
+            "substatus",
+            "0xc000006a"
+          ]
+        ],
+        "absent_fields": [],
+        "references": [],
+        "matched_observations": [
+          "jsonl:line:1020",
+          "jsonl:line:1046",
+          "jsonl:line:1048",
+          "jsonl:line:1051",
+          "jsonl:line:1072",
+          "jsonl:line:1074",
+          "jsonl:line:1077",
+          "jsonl:line:788",
+          "jsonl:line:790",
+          "jsonl:line:792",
+          "jsonl:line:794",
+          "jsonl:line:796",
+          "jsonl:line:798",
+          "jsonl:line:803"
+        ],
+        "status": "supported_context_only_inline_binding_unverified"
+      },
+      {
+        "field": "technical_analysis",
+        "subject_event": "4625",
+        "provider": "microsoft-windows-security-auditing",
+        "values": [
+          [
+            "status",
+            "0xc000006d"
+          ],
+          [
+            "substatus",
+            "0xc000006a"
+          ]
+        ],
+        "absent_fields": [],
+        "references": [],
+        "matched_observations": [
+          "jsonl:line:788",
+          "jsonl:line:790",
+          "jsonl:line:792",
+          "jsonl:line:794",
+          "jsonl:line:796",
+          "jsonl:line:798",
+          "jsonl:line:803"
+        ],
+        "status": "supported_context_only_inline_binding_unverified"
+      },
+      {
+        "field": "technical_analysis",
+        "subject_event": "4625",
+        "provider": "microsoft-windows-security-auditing",
+        "values": [
+          [
+            "status",
+            "0xc000006d"
+          ],
+          [
+            "substatus",
+            "0xc000006a"
+          ]
+        ],
+        "absent_fields": [],
+        "references": [
+          "jsonl:line:788",
+          "jsonl:line:790",
+          "jsonl:line:792",
+          "jsonl:line:794",
+          "jsonl:line:796",
+          "jsonl:line:798",
+          "jsonl:line:803"
+        ],
+        "matched_observations": [
+          "jsonl:line:788",
+          "jsonl:line:790",
+          "jsonl:line:792",
+          "jsonl:line:794",
+          "jsonl:line:796",
+          "jsonl:line:798",
+          "jsonl:line:803"
+        ],
+        "status": "supported_inline"
+      },
+      {
+        "field": "technical_analysis",
+        "subject_event": "4776",
+        "provider": "microsoft-windows-security-auditing",
+        "values": [
+          [
+            "status",
+            "0xc000006a"
+          ]
+        ],
+        "absent_fields": [],
+        "references": [],
+        "matched_observations": [
+          "jsonl:line:1020",
+          "jsonl:line:1046",
+          "jsonl:line:1048",
+          "jsonl:line:1051",
+          "jsonl:line:1072",
+          "jsonl:line:1074",
+          "jsonl:line:1077"
+        ],
+        "status": "supported_context_only_inline_binding_unverified"
+      }
+    ]
+  }
+}

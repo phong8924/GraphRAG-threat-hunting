@@ -1,0 +1,110 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-app: #0B0E14;
+  --bg-glass: rgba(17, 24, 39, 0.75);
+  --bg-glass-card: rgba(26, 31, 44, 0.70);
+  --border-glass: rgba(255, 255, 255, 0.10);
+  --text-main: #F3F4F6;
+  --text-muted: #9CA3AF;
+  --accent-cyan: #06B6D4;
+}
+
+[data-theme="light"] {
+  --bg-app: #ECEFF4;
+  --bg-glass: rgba(255, 255, 255, 0.85);
+  --bg-glass-card: rgba(243, 244, 246, 0.80);
+  --border-glass: rgba(0, 0, 0, 0.10);
+  --text-main: #111827;
+  --text-muted: #4B5563;
+  --accent-cyan: #0284C7;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg-app);
+  color: var(--text-main);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+code, pre {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.dashboard-viewport {
+  height: 100vh;
+  height: 100dvh;
+}
+
+.dashboard-splits { width: 100%; }
+
+.pane-divider {
+  position: relative;
+  background: var(--border-glass);
+  touch-action: none;
+  user-select: none;
+  outline: none;
+}
+.pane-divider-vertical { cursor: col-resize; }
+.pane-divider-horizontal { cursor: row-resize; }
+.pane-divider span {
+  position: absolute;
+  border-radius: 3px;
+  background: var(--text-muted);
+  opacity: 0.65;
+}
+.pane-divider-vertical span { width: 3px; height: 36px; left: 2.5px; top: calc(50% - 18px); }
+.pane-divider-horizontal span { height: 3px; width: 36px; top: 2.5px; left: calc(50% - 18px); }
+.pane-divider:hover, .pane-divider:focus-visible, .pane-divider[data-dragging] {
+  background: rgba(6, 182, 212, 0.35);
+  box-shadow: inset 0 0 0 1px var(--accent-cyan);
+}
+.pane-divider:hover span, .pane-divider:focus-visible span, .pane-divider[data-dragging] span { background: var(--accent-cyan); opacity: 1; }
+.resizing-panes, .resizing-panes * { user-select: none !important; cursor: inherit !important; }
+
+.chat-suggestions {
+  flex: 0 0 auto;
+  max-height: 20%;
+}
+
+.pane-scroll {
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+  overflow-wrap: anywhere;
+}
+
+.glass-panel {
+  background: var(--bg-glass);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-color: var(--border-glass);
+}
+
+.glass-card {
+  background: var(--bg-glass-card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-color: var(--border-glass);
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(156, 163, 175, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(156, 163, 175, 0.5);
+}

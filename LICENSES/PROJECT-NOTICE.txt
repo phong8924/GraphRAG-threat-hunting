@@ -1,0 +1,2 @@
+No project-wide LICENSE file was present in the supplied source. This distribution does not assign a new license to the project code. The owner must choose a license separately if desired. Third-party licenses and source revisions are retained below.
+CTI publisher text/excerpts remain attributed to the original publishers; no blanket relicensing of those publications is asserted.

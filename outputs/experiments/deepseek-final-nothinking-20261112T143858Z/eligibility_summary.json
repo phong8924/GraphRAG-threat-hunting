@@ -1,0 +1,15 @@
+{
+  "questions": 12,
+  "branches": 24,
+  "gate_proceed": 17,
+  "gate_abstain": 7,
+  "eligible_proceed": 15,
+  "context_budget_abstain": 2,
+  "paired_both_eligible": [
+    "AUTH-CTI",
+    "NET-CORRELATE",
+    "NET-LIMIT",
+    "PS-CORRELATE"
+  ],
+  "no_gate_or_budget_threshold_changed": true
+}

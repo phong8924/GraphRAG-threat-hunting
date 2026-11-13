@@ -1,0 +1,39 @@
+{
+  "question_id": "PS-LIMIT",
+  "case_id": "PS-LIMIT",
+  "scenario_id": "mshta-powershell",
+  "branch": "rag",
+  "query": "PowerShell Get-Service sysmon có hoàn tất thành công và output chứng minh Sysmon đang chạy không? Phân biệt command line quan sát được với completion, output và service state chưa xác minh.",
+  "outcome": "abstain",
+  "gate_decision": "abstain",
+  "eligibility_decision": "abstain",
+  "context_utf8_bytes": 15943,
+  "messages_utf8_bytes": 27653,
+  "llm_http_attempts": 0,
+  "fallback_used": false,
+  "human_review_required": true,
+  "prepared_utc": "2026-11-12T14:44:48.171525+00:00",
+  "provider_usage": null,
+  "provider_reported_cost": null,
+  "retrieval_context_seconds": 0.04710410000188858,
+  "policy_gate_decision": "abstain",
+  "abstention_stage": "evidence_answerability",
+  "context_sha256": "2d283d67e9730a1576d0437237e5a920c11073da71e17b356076e246d044352c",
+  "messages_sha256": "ba44cd68b6a4ef00cc3023817c0ac519640f7a517c69b3561119b3e683252e59",
+  "retrieval_sha256": "2546d4c1eee909b855c4e1f5a719b44d63a2d28da5285a3b4cfe59e9e0b8a13c",
+  "retrieval_hit_ids": [
+    "retrieval-chunk--86dd89fe0cfd03c1505a8534ce63dfb9f72221fe32c23d7a0341a66fa98d48ad",
+    "retrieval-chunk--df3b8e31f96555994c35b133bba1cc21a226769503fd0a214bef7d3c16d7a1f3",
+    "retrieval-chunk--82de3946302e7f785eef02295ff593ae743fe8820b352255edd7688fde42479c",
+    "retrieval-chunk--3422a1d86fc13212f395af0f4089875227b0780e91899c42c13023f3a6ff55d8",
+    "retrieval-chunk--8a73d544afa5a8a974c12b905a13224e95e58a8dc73c3a6141ca02c3e2b731e8"
+  ],
+  "returned_graph_nodes": 0,
+  "returned_graph_edges": 0,
+  "available_reference_count": 18,
+  "validation_status": "not_run",
+  "abstention_reason_codes": [
+    "relevant_observed_anchor_not_returned"
+  ],
+  "preparation_seconds": 0.13200590000269585
+}

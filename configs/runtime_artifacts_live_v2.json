@@ -1,0 +1,57 @@
+{
+  "schema_version": "runtime-scenario-artifacts/v1",
+  "profile_id": "current-interactive-consumers-20261112-v2",
+  "review_status": "pending_human_review",
+  "scenarios": {
+    "mshta-powershell": {
+      "paths": {
+        "gt_path": "outputs/integrated/20261112_live_v1/consumers/mshta-powershell/scenario_ground_truth.json",
+        "corpus_path": "outputs/integrated/20261112_live_v1/consumers/mshta-powershell/retrieval_corpus.json",
+        "graph_path": "outputs/integrated/20261112_live_v1/consumers/mshta-powershell/knowledge_graph.json",
+        "index_path": "outputs/integrated/20261112_live_v1/consumers/mshta-powershell/vector_index_e5.json"
+      },
+      "sha256": {
+        "scenario_ground_truth.json": "7492ac551d3ca6b3d0f9d752f864b951722e5dd1c0037ebeb95aac149195f4c3",
+        "retrieval_corpus.json": "081a4cb129fa20fe9818e90979c6a323680989f508f1e64f006fe8dfed951692",
+        "knowledge_graph.json": "af1bc7c773b1df500aa0f88875c2a12f496e469cb3490c55e2e7071f91555280",
+        "vector_index_e5.json": "e27f495ffe80e21018a5f4064347ede9ea262f79ac673cd7b23fee1aa5a4953d"
+      },
+      "review_status": "pending_human_review"
+    },
+    "purplesharp-ad": {
+      "paths": {
+        "gt_path": "outputs/integrated/20261102_cti_portable_v7/consumers/purplesharp-ad/scenario_ground_truth.json",
+        "corpus_path": "outputs/integrated/20261102_cti_portable_v7/consumers/purplesharp-ad/retrieval_corpus.json",
+        "graph_path": "outputs/integrated/20261102_cti_portable_v7/consumers/purplesharp-ad/knowledge_graph.json",
+        "index_path": "outputs/integrated/20261102_cti_portable_v7/consumers/purplesharp-ad/vector_index_e5.json"
+      },
+      "sha256": {
+        "scenario_ground_truth.json": "9ddd403d2778a5416f3e394b997c5fb1b65e2ec1cb50926960023d0f782e2997",
+        "retrieval_corpus.json": "89285b6e0cab18fe9272c49b762105339db697959d462ae2838e38d5a44bd1ea",
+        "knowledge_graph.json": "8885e4fe312d5037a5aab4b15a6801bf19f29d57c2f22ab5dfae1d776e8e1658",
+        "vector_index_e5.json": "307f7e7e27c992c8788c3f8f04e78e63f332620a202c80cb54e6d3afae64d5ff"
+      },
+      "review_status": "pending_human_review"
+    },
+    "regsvr32-c2": {
+      "paths": {
+        "gt_path": "outputs/integrated/20261102_cti_portable_v7/consumers/regsvr32-c2/scenario_ground_truth.json",
+        "corpus_path": "outputs/integrated/20261102_cti_portable_v7/consumers/regsvr32-c2/retrieval_corpus.json",
+        "graph_path": "outputs/integrated/20261102_cti_portable_v7/consumers/regsvr32-c2/knowledge_graph.json",
+        "index_path": "outputs/integrated/20261102_cti_portable_v7/consumers/regsvr32-c2/vector_index_e5.json"
+      },
+      "sha256": {
+        "scenario_ground_truth.json": "ca034cbd2c158f6d4f97651da8556d1cba36e38a7d957a4fb8eafab27d2aa09c",
+        "retrieval_corpus.json": "9ac6b1dbf6d2d6f792182f2257702ead87997063ad9fd69ec3d2ed1a240b73f8",
+        "knowledge_graph.json": "465237c489e92f599436b65ab8f1699978d5fbab832e56379191283a7fee3575",
+        "vector_index_e5.json": "6c3931e077938d22f7037066abc1e6cdc5bcf05fa3d73baa3f3de9e0d3a34d90"
+      },
+      "review_status": "pending_human_review"
+    }
+  },
+  "source_registry": {
+    "path": "configs/runtime_artifacts_integrated_v7.json",
+    "sha256": "6fbb419cacf8db2d5d828bbcad139bf6958d555e22b40519ead76524fd976a6f"
+  },
+  "interpretation": "MSHTA structured raw/canonical observation bindings corrected in a NEW consumer; CTI, evidence groups, labels and review unchanged. Auth/network consumers exact reuse."
+}

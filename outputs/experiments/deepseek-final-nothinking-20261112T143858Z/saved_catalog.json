@@ -1,0 +1,24 @@
+{
+  "schema_version": "real-paired-saved-catalog/v1",
+  "run_id": "deepseek-final-nothinking-20261112T143858Z",
+  "response_sha256": {
+    "AUTH-DIRECT_rag": "3f5b7979d5bf57ad118ee3414cfa8299f5b094493c2f6b26fa120da510fd388c",
+    "AUTH-CORRELATE_rag": "b994e48da9a5651279341ec15ce77675b70da1d9daf757132ef6edbc57407af3",
+    "AUTH-CTI_rag": "e439aeb2f10566922993a3f1549b586af46de2ad8ec630209f10e4d0df6b9859",
+    "AUTH-CTI_graphrag": "7f272710b5f35323e74f21dc5eedc0ac1fc4a0835ac77f6f7824cd1038c503b0",
+    "PS-DIRECT_graphrag": "5efeb1c88ee121351cd65053368abc7f836068a8ba85248cbc252ad077eaa1fd",
+    "PS-CORRELATE_graphrag": "13946728d5fe58f9b567ac55c628c4631e00b055c39fea75294f98808e50415a",
+    "PS-CORRELATE_rag": "a8497b89100aa32022fe0fa5c2900489fddcd12379e2e3730416087ae3400bfe",
+    "PS-CTI_graphrag": "5ddee9aeddf1733a00577c28905be06b4d1c1127507750e30cbde1a5c1115284",
+    "PS-LIMIT_graphrag": "618a50319ec29b5f23dfaa7ebadb3722d9f728c6eecc70d019b5a646284ef848",
+    "NET-DIRECT_graphrag": "2d3724a3d5bfc8b846f03e8d4ac8e52f037fb7f70a9640ef755831b165d89975",
+    "NET-CORRELATE_rag": "3d659d326727e23d236eaf495ca059c970cbed2024694ac59930d1757e87c2b6",
+    "NET-CTI_graphrag": "59231a892d0ad0eb38275d222c1634c59895ec2ac0e9f47ba4eadc65be71b543",
+    "NET-LIMIT_graphrag": "fbf0920edd332a63880bb9322bde9bb12bc63c4cc3157b7917d2fa4d0fc4ae7d",
+    "NET-LIMIT_rag": "2b939f64d21a6f31e01cb328408e04b3399d6f3ec6253fae5699cb34ce21ddb0"
+  },
+  "results_sha256": "c98d3f430806b0ca73ef5e88672fe0ee6cca688c8d930529caffae3b4ed716af",
+  "source_manifest_sha256": "1923ecb28ef6479440dd59e7d457ee6a62299fdae8084fe1185376693379dd90",
+  "viewer_script_sha256": "d7a478b798f97d21278ccc8f78c00ef1e1e21da4cc3dd3c364f9444067e7fc9c",
+  "new_api_calls_for_view": 0
+}

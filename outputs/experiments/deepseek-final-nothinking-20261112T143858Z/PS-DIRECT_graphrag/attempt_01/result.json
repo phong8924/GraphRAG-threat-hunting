@@ -1,0 +1,92 @@
+{
+  "question_id": "PS-DIRECT",
+  "case_id": "PS-DIRECT",
+  "scenario_id": "mshta-powershell",
+  "branch": "graphrag",
+  "query": "Command line của mshta.exe ghi cơ chế VBScript nào để khởi chạy powershell.exe, và PowerShell được khởi chạy với lệnh gì? Dẫn đúng các raw observations, không khẳng định cmdlet đã hoàn tất.",
+  "outcome": "accepted_draft",
+  "gate_decision": "proceed",
+  "eligibility_decision": "proceed",
+  "context_utf8_bytes": 112706,
+  "messages_utf8_bytes": 101889,
+  "llm_http_attempts": 1,
+  "fallback_used": false,
+  "human_review_required": true,
+  "prepared_utc": "2026-11-12T14:44:46.896298+00:00",
+  "provider_usage": {
+    "prompt_tokens": 32534,
+    "completion_tokens": 1362,
+    "total_tokens": 33896,
+    "prompt_tokens_details": {
+      "cached_tokens": 2048
+    },
+    "prompt_cache_hit_tokens": 2048,
+    "prompt_cache_miss_tokens": 30486
+  },
+  "provider_reported_cost": null,
+  "retrieval_context_seconds": 0.08100800000102026,
+  "policy_gate_decision": "proceed",
+  "abstention_stage": null,
+  "context_sha256": "9e2952510073afd2fe74ff881040fe09b9e293189ac7611fc0b3acc0b6c42670",
+  "messages_sha256": "1026b5f68798c0b2e268076541c070d9e443383bdbf567733232e21b2a3c5bd0",
+  "retrieval_sha256": "b32c794a8cdebf69676874dbdfc14abeff9aa54cb078939a5548880c60f8b37b",
+  "retrieval_hit_ids": [
+    "retrieval-chunk--86dd89fe0cfd03c1505a8534ce63dfb9f72221fe32c23d7a0341a66fa98d48ad",
+    "retrieval-chunk--f36fc26dc2a1ab7790f9bb95ceb5b2ceaaea94a7867c978b680fa532040a0b88",
+    "retrieval-chunk--ef21f2bc7758f90ce3097c824ea9cfcf382e6fbefcaf03a8cc2c2f2cfa34534f",
+    "retrieval-chunk--8a73d544afa5a8a974c12b905a13224e95e58a8dc73c3a6141ca02c3e2b731e8",
+    "retrieval-chunk--3422a1d86fc13212f395af0f4089875227b0780e91899c42c13023f3a6ff55d8"
+  ],
+  "returned_graph_nodes": 18,
+  "returned_graph_edges": 26,
+  "available_reference_count": 123,
+  "validation_status": "passed",
+  "abstention_reason_codes": [],
+  "preparation_seconds": 0.20871980000083568,
+  "generation_validation_seconds": 66.67805190000217,
+  "provider_http_seconds": 6.752446600003168,
+  "generation_started_utc": "2026-11-12T14:49:47.447727+00:00",
+  "generation_finished_utc": "2026-11-12T14:49:54.198452+00:00",
+  "finish_reason": "stop",
+  "http_status": 200,
+  "config_run_id": "deepseek-final-nothinking-20261112T143858Z",
+  "attempt_diagnostics": [
+    {
+      "ordinal": 5,
+      "question_id": "PS-DIRECT",
+      "branch": "graphrag",
+      "pair_attempt": 1,
+      "reserved_utc": "2026-11-12T14:49:47.389038+00:00",
+      "actual_http_attempts": 1,
+      "finished_utc": "2026-11-12T14:49:54.198452+00:00",
+      "actual_payload": {
+        "model": "deepseek-flash",
+        "temperature": 0.0,
+        "max_tokens": 16384,
+        "thinking": {
+          "type": "disabled"
+        },
+        "stream": false,
+        "messages_sha256": "1026b5f68798c0b2e268076541c070d9e443383bdbf567733232e21b2a3c5bd0",
+        "serialized_http_payload_bytes": 104248,
+        "endpoint": "https://api.deepseek.com/chat/completions"
+      },
+      "http_started_utc": "2026-11-12T14:49:47.447727+00:00",
+      "http_status": 200,
+      "usage": {
+        "prompt_tokens": 32534,
+        "completion_tokens": 1362,
+        "total_tokens": 33896,
+        "prompt_tokens_details": {
+          "cached_tokens": 2048
+        },
+        "prompt_cache_hit_tokens": 2048,
+        "prompt_cache_miss_tokens": 30486
+      },
+      "cost": null,
+      "finish_reason": "stop",
+      "http_seconds": 6.752446600003168,
+      "http_finished_utc": "2026-11-12T14:49:54.198452+00:00"
+    }
+  ]
+}

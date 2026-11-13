@@ -1,0 +1,101 @@
+{
+  "question_id": "NET-DIRECT",
+  "case_id": "NET-DIRECT",
+  "scenario_id": "regsvr32-c2",
+  "branch": "graphrag",
+  "query": "Regsvr32.exe kết nối đến IP và cổng nào trong Sysmon Event ID 3, từ host và source IP nào? Dẫn GUID/process và raw record, không gọi endpoint là confirmed C2.",
+  "outcome": "accepted_draft",
+  "gate_decision": "proceed",
+  "eligibility_decision": "proceed",
+  "context_utf8_bytes": 172570,
+  "messages_utf8_bytes": 183637,
+  "llm_http_attempts": 1,
+  "fallback_used": false,
+  "human_review_required": true,
+  "prepared_utc": "2026-11-12T14:44:48.521801+00:00",
+  "provider_usage": {
+    "prompt_tokens": 68851,
+    "completion_tokens": 936,
+    "total_tokens": 69787,
+    "prompt_tokens_details": {
+      "cached_tokens": 2048
+    },
+    "prompt_cache_hit_tokens": 2048,
+    "prompt_cache_miss_tokens": 66803
+  },
+  "provider_reported_cost": null,
+  "retrieval_context_seconds": 0.10354160000133561,
+  "policy_gate_decision": "proceed",
+  "abstention_stage": null,
+  "context_sha256": "1b8f50cf18a13e78bbc9eeaaadc7893eb050b106c3fa236ffce0b5e1be6a3407",
+  "messages_sha256": "d0aed8e3224996746313a63be69829adcf546da806bd940ab379f9ad82102626",
+  "retrieval_sha256": "80ebc9a3ea6a1d248005a8affa39b1d14056b8b82a8a206cca2e8788f07c0346",
+  "retrieval_hit_ids": [
+    "retrieval-chunk--cda169e8bc034d29e1e6a71cf9c805314983de89541b704d24f882786745b0bf",
+    "retrieval-chunk--9e080227c8b57a09213f234d85481395b430e57fe72a5d0bc729195aa3e3e2b5",
+    "retrieval-chunk--fc9751da5e578aeb723a0e51005451bc1af92f5b21fb53faf91d01a8fa1a21dd",
+    "retrieval-chunk--45ef40f2bafd71684fb06dd29b7e6ad953c9090788b9e628f46c5f131452cf35",
+    "retrieval-chunk--6477dd1897ae50c72c716cf6a42509c23e969434ef7e5563af680664d57ab026"
+  ],
+  "returned_graph_nodes": 27,
+  "returned_graph_edges": 38,
+  "available_reference_count": 189,
+  "validation_status": "passed",
+  "abstention_reason_codes": [],
+  "preparation_seconds": 0.29237360000115586,
+  "generation_validation_seconds": 65.25042160000157,
+  "provider_http_seconds": 5.7583262999978615,
+  "generation_started_utc": "2026-11-12T14:55:22.586267+00:00",
+  "generation_finished_utc": "2026-11-12T14:55:28.344212+00:00",
+  "finish_reason": "stop",
+  "http_status": 200,
+  "config_run_id": "deepseek-final-nothinking-20261112T143858Z",
+  "attempt_diagnostics": [
+    {
+      "ordinal": 10,
+      "question_id": "NET-DIRECT",
+      "branch": "graphrag",
+      "pair_attempt": 1,
+      "reserved_utc": "2026-11-12T14:55:22.551330+00:00",
+      "actual_http_attempts": 1,
+      "finished_utc": "2026-11-12T14:55:28.344212+00:00",
+      "actual_payload": {
+        "model": "deepseek-flash",
+        "temperature": 0.0,
+        "max_tokens": 16384,
+        "thinking": {
+          "type": "disabled"
+        },
+        "stream": false,
+        "messages_sha256": "d0aed8e3224996746313a63be69829adcf546da806bd940ab379f9ad82102626",
+        "serialized_http_payload_bytes": 185993,
+        "endpoint": "https://api.deepseek.com/chat/completions"
+      },
+      "http_started_utc": "2026-11-12T14:55:22.586267+00:00",
+      "http_status": 200,
+      "usage": {
+        "prompt_tokens": 68851,
+        "completion_tokens": 936,
+        "total_tokens": 69787,
+        "prompt_tokens_details": {
+          "cached_tokens": 2048
+        },
+        "prompt_cache_hit_tokens": 2048,
+        "prompt_cache_miss_tokens": 66803
+      },
+      "cost": null,
+      "finish_reason": "stop",
+      "http_seconds": 5.7583262999978615,
+      "http_finished_utc": "2026-11-12T14:55:28.344212+00:00"
+    }
+  ],
+  "response_path": "outputs/experiments/deepseek-final-nothinking-20261112T143858Z/NET-DIRECT_graphrag/response.json",
+  "citations_path": "outputs/experiments/deepseek-final-nothinking-20261112T143858Z/NET-DIRECT_graphrag/citations_resolved.json",
+  "source_config": "configs/interactive/dashboard_live_v10.json",
+  "source_manifest": "configs/interactive/runtime_manifest_live_v9.json",
+  "source_references_path": "outputs/experiments/deepseek-final-nothinking-20261112T143858Z/NET-DIRECT_graphrag/evidence_contract_receipt.json",
+  "gate_receipt_path": "outputs/experiments/deepseek-final-nothinking-20261112T143858Z/NET-DIRECT_graphrag/gate_receipt.json",
+  "eligibility_receipt_path": "outputs/experiments/deepseek-final-nothinking-20261112T143858Z/NET-DIRECT_graphrag/eligibility_receipt.json",
+  "validation_path": "outputs/experiments/deepseek-final-nothinking-20261112T143858Z/NET-DIRECT_graphrag/attempt_01/validation.json",
+  "provider_response_path": "outputs/experiments/deepseek-final-nothinking-20261112T143858Z/NET-DIRECT_graphrag/attempt_01/provider_response.json"
+}

@@ -1,0 +1,101 @@
+{
+  "question_id": "NET-CTI",
+  "case_id": "NET-CTI",
+  "scenario_id": "regsvr32-c2",
+  "branch": "graphrag",
+  "query": "Đối chiếu HTTP scriptlet command và kết nối regsvr32.exe trong telemetry với CTI report Uptycs về Squiblydoo: điều gì hỗ trợ nghi vấn và điều gì chỉ là bối cảnh bên ngoài? Dẫn nguồn từng loại, giữ /n và không suy remote UNC share.",
+  "outcome": "accepted_draft",
+  "gate_decision": "proceed",
+  "eligibility_decision": "proceed",
+  "context_utf8_bytes": 173583,
+  "messages_utf8_bytes": 185738,
+  "llm_http_attempts": 1,
+  "fallback_used": false,
+  "human_review_required": true,
+  "prepared_utc": "2026-11-12T14:44:49.450370+00:00",
+  "provider_usage": {
+    "prompt_tokens": 68555,
+    "completion_tokens": 2124,
+    "total_tokens": 70679,
+    "prompt_tokens_details": {
+      "cached_tokens": 2048
+    },
+    "prompt_cache_hit_tokens": 2048,
+    "prompt_cache_miss_tokens": 66507
+  },
+  "provider_reported_cost": null,
+  "retrieval_context_seconds": 0.10700619999988703,
+  "policy_gate_decision": "proceed",
+  "abstention_stage": null,
+  "context_sha256": "826e400328fe318fca1752c0786bd2b9abfc56991517ba7d32e0601fde1055ea",
+  "messages_sha256": "bec0a26604ec570cc33139995f4cc8a158c48b2f61444c2925808ea33c17c82a",
+  "retrieval_sha256": "c3262505d7acddffc410a56441a336a3ba7b8fe221a68de9222d9968940fdd26",
+  "retrieval_hit_ids": [
+    "retrieval-chunk--4d21901ccb888cb287c0880b1a5be769fa03f5dbdc9dd06238fc2bf80e964f48",
+    "retrieval-chunk--9e080227c8b57a09213f234d85481395b430e57fe72a5d0bc729195aa3e3e2b5",
+    "retrieval-chunk--788770c2ab5cb94aba678b563d7d9023b98a094241b6b81751342a90a22906fa",
+    "retrieval-chunk--7b6e3b9a2a13513d85f7fd8dabad4ec67dc423dc64ff1e6d43d68b21a0ff801c",
+    "retrieval-chunk--cda169e8bc034d29e1e6a71cf9c805314983de89541b704d24f882786745b0bf"
+  ],
+  "returned_graph_nodes": 26,
+  "returned_graph_edges": 37,
+  "available_reference_count": 185,
+  "validation_status": "passed",
+  "abstention_reason_codes": [],
+  "preparation_seconds": 0.29453120000107447,
+  "generation_validation_seconds": 69.65246499999921,
+  "provider_http_seconds": 9.878235100000893,
+  "generation_started_utc": "2026-11-12T14:58:50.113329+00:00",
+  "generation_finished_utc": "2026-11-12T14:58:59.988253+00:00",
+  "finish_reason": "stop",
+  "http_status": 200,
+  "config_run_id": "deepseek-final-nothinking-20261112T143858Z",
+  "attempt_diagnostics": [
+    {
+      "ordinal": 13,
+      "question_id": "NET-CTI",
+      "branch": "graphrag",
+      "pair_attempt": 1,
+      "reserved_utc": "2026-11-12T14:58:50.083371+00:00",
+      "actual_http_attempts": 1,
+      "finished_utc": "2026-11-12T14:58:59.988253+00:00",
+      "actual_payload": {
+        "model": "deepseek-flash",
+        "temperature": 0.0,
+        "max_tokens": 16384,
+        "thinking": {
+          "type": "disabled"
+        },
+        "stream": false,
+        "messages_sha256": "bec0a26604ec570cc33139995f4cc8a158c48b2f61444c2925808ea33c17c82a",
+        "serialized_http_payload_bytes": 188146,
+        "endpoint": "https://api.deepseek.com/chat/completions"
+      },
+      "http_started_utc": "2026-11-12T14:58:50.113329+00:00",
+      "http_status": 200,
+      "usage": {
+        "prompt_tokens": 68555,
+        "completion_tokens": 2124,
+        "total_tokens": 70679,
+        "prompt_tokens_details": {
+          "cached_tokens": 2048
+        },
+        "prompt_cache_hit_tokens": 2048,
+        "prompt_cache_miss_tokens": 66507
+      },
+      "cost": null,
+      "finish_reason": "stop",
+      "http_seconds": 9.878235100000893,
+      "http_finished_utc": "2026-11-12T14:58:59.988253+00:00"
+    }
+  ],
+  "response_path": "outputs/experiments/deepseek-final-nothinking-20261112T143858Z/NET-CTI_graphrag/response.json",
+  "citations_path": "outputs/experiments/deepseek-final-nothinking-20261112T143858Z/NET-CTI_graphrag/citations_resolved.json",
+  "source_config": "configs/interactive/dashboard_live_v10.json",
+  "source_manifest": "configs/interactive/runtime_manifest_live_v9.json",
+  "source_references_path": "outputs/experiments/deepseek-final-nothinking-20261112T143858Z/NET-CTI_graphrag/evidence_contract_receipt.json",
+  "gate_receipt_path": "outputs/experiments/deepseek-final-nothinking-20261112T143858Z/NET-CTI_graphrag/gate_receipt.json",
+  "eligibility_receipt_path": "outputs/experiments/deepseek-final-nothinking-20261112T143858Z/NET-CTI_graphrag/eligibility_receipt.json",
+  "validation_path": "outputs/experiments/deepseek-final-nothinking-20261112T143858Z/NET-CTI_graphrag/attempt_01/validation.json",
+  "provider_response_path": "outputs/experiments/deepseek-final-nothinking-20261112T143858Z/NET-CTI_graphrag/attempt_01/provider_response.json"
+}

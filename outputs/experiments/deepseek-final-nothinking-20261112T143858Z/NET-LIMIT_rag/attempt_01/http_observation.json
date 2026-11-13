@@ -1,0 +1,30 @@
+{
+  "actual_payload": {
+    "model": "deepseek-flash",
+    "temperature": 0.0,
+    "max_tokens": 16384,
+    "thinking": {
+      "type": "disabled"
+    },
+    "stream": false,
+    "messages_sha256": "270307c6d60f4f7d99fb5c417369b6ef306de7cc6e273654cb0dd0b556d505e1",
+    "serialized_http_payload_bytes": 48914,
+    "endpoint": "https://api.deepseek.com/chat/completions"
+  },
+  "http_started_utc": "2026-11-12T15:01:06.458314+00:00",
+  "http_status": 200,
+  "usage": {
+    "prompt_tokens": 13977,
+    "completion_tokens": 939,
+    "total_tokens": 14916,
+    "prompt_tokens_details": {
+      "cached_tokens": 6912
+    },
+    "prompt_cache_hit_tokens": 6912,
+    "prompt_cache_miss_tokens": 7065
+  },
+  "cost": null,
+  "finish_reason": "stop",
+  "http_seconds": 5.282852500000445,
+  "http_finished_utc": "2026-11-12T15:01:11.736172+00:00"
+}

@@ -1,0 +1,4 @@
+# Preserve exact pinned bytes on every platform; no implicit EOL conversion.
+* -text
+data/knowledge/Mitre/enterprise-attack.json filter=lfs diff=lfs merge=lfs -text
+data/raw/mordor/burte_force/purplesharp_ad_playbook_II/purplesharp_ad_playbook_I_2020-10-22042947.json filter=lfs diff=lfs merge=lfs -text

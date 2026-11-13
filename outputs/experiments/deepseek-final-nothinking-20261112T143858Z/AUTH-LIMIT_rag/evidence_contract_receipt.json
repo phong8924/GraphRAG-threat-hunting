@@ -1,0 +1,341 @@
+{
+  "schema_version": "current-paired-input-receipt/v1",
+  "artifact": "evidence_contract",
+  "content_sha256": "8f627b9e568f1721f5ae6b08339a271d2fda5ec9ff1507a577da4e34af272c5c",
+  "content_utf8_bytes": 36290,
+  "scenario_id": "purplesharp-ad",
+  "source_bindings": {
+    "gt_path": {
+      "path": "outputs/integrated/20261102_cti_portable_v7/consumers/purplesharp-ad/scenario_ground_truth.json",
+      "sha256": "9ddd403d2778a5416f3e394b997c5fb1b65e2ec1cb50926960023d0f782e2997"
+    },
+    "corpus_path": {
+      "path": "outputs/integrated/20261102_cti_portable_v7/consumers/purplesharp-ad/retrieval_corpus.json",
+      "sha256": "89285b6e0cab18fe9272c49b762105339db697959d462ae2838e38d5a44bd1ea"
+    },
+    "graph_path": {
+      "path": "outputs/integrated/20261102_cti_portable_v7/consumers/purplesharp-ad/knowledge_graph.json",
+      "sha256": "8885e4fe312d5037a5aab4b15a6801bf19f29d57c2f22ab5dfae1d776e8e1658"
+    },
+    "index_path": {
+      "path": "outputs/integrated/20261102_cti_portable_v7/consumers/purplesharp-ad/vector_index_e5.json",
+      "sha256": "307f7e7e27c992c8788c3f8f04e78e63f332620a202c80cb54e6d3afae64d5ff"
+    }
+  },
+  "persistence": "Exact runtime value stays in RAM; source objects remain in unchanged pinned consumers. No duplicate raw payload persisted.",
+  "evidence": [
+    {
+      "origin": {
+        "kind": "chunk",
+        "item_id": "retrieval-chunk--91ef444192d109b423f4b0402f098672ea5143a1c14c7d15566c0872ec1016f8",
+        "context_pointer": "/retrieval/hits/0/chunk"
+      },
+      "consumer": "corpus_path",
+      "json_pointer": "/chunks/0",
+      "object_sha256": "2e88461a8ec7b8adeaff3e26a1026f831f7bbac5966fe469a51d96fea080d549",
+      "source": {
+        "artifact_type": "scenario_ground_truth",
+        "object_type": "scenario",
+        "object_id": null,
+        "json_pointer": "/scenario"
+      },
+      "source_references": [
+        {
+          "raw_record_ref": "jsonl:line:1020",
+          "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+        },
+        {
+          "raw_record_ref": "jsonl:line:1046",
+          "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+        },
+        {
+          "raw_record_ref": "jsonl:line:1048",
+          "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+        },
+        {
+          "raw_record_ref": "jsonl:line:1051",
+          "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+        },
+        {
+          "raw_record_ref": "jsonl:line:1072",
+          "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+        },
+        {
+          "raw_record_ref": "jsonl:line:1074",
+          "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+        },
+        {
+          "raw_record_ref": "jsonl:line:1077",
+          "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+        },
+        {
+          "raw_record_ref": "jsonl:line:788",
+          "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+        },
+        {
+          "raw_record_ref": "jsonl:line:790",
+          "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+        },
+        {
+          "raw_record_ref": "jsonl:line:792",
+          "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+        },
+        {
+          "raw_record_ref": "jsonl:line:794",
+          "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+        },
+        {
+          "raw_record_ref": "jsonl:line:796",
+          "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+        },
+        {
+          "raw_record_ref": "jsonl:line:798",
+          "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+        },
+        {
+          "raw_record_ref": "jsonl:line:803",
+          "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+        }
+      ]
+    },
+    {
+      "origin": {
+        "kind": "chunk",
+        "item_id": "retrieval-chunk--55fd82e45a343b8e932202f57fbf060278048047dd8c925ec7821b7196db06fc",
+        "context_pointer": "/retrieval/hits/1/chunk"
+      },
+      "consumer": "corpus_path",
+      "json_pointer": "/chunks/35",
+      "object_sha256": "c56592b487c12ee7d721e5e43ced982d69930038617d2dca1f6d7a46ddaf7b74",
+      "source": {
+        "artifact_type": "scenario_ground_truth",
+        "object_type": "mitre_assessment",
+        "object_id": "assessment-T1110-003",
+        "json_pointer": "/mitre_assessments/0"
+      },
+      "source_references": [
+        {
+          "raw_record_ref": "jsonl:line:1020",
+          "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+        },
+        {
+          "raw_record_ref": "jsonl:line:1046",
+          "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+        },
+        {
+          "raw_record_ref": "jsonl:line:1048",
+          "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+        },
+        {
+          "raw_record_ref": "jsonl:line:1051",
+          "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+        },
+        {
+          "raw_record_ref": "jsonl:line:1072",
+          "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+        },
+        {
+          "raw_record_ref": "jsonl:line:1074",
+          "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+        },
+        {
+          "raw_record_ref": "jsonl:line:1077",
+          "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+        },
+        {
+          "raw_record_ref": "jsonl:line:788",
+          "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+        },
+        {
+          "raw_record_ref": "jsonl:line:790",
+          "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+        },
+        {
+          "raw_record_ref": "jsonl:line:792",
+          "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+        },
+        {
+          "raw_record_ref": "jsonl:line:794",
+          "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+        },
+        {
+          "raw_record_ref": "jsonl:line:796",
+          "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+        },
+        {
+          "raw_record_ref": "jsonl:line:798",
+          "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+        },
+        {
+          "raw_record_ref": "jsonl:line:803",
+          "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+        }
+      ]
+    },
+    {
+      "origin": {
+        "kind": "chunk",
+        "item_id": "retrieval-chunk--b6a6ec039ec168c6c7d42ce75801ce96a0dda107ce32fd5fca0125ddf8fe695e",
+        "context_pointer": "/retrieval/hits/2/chunk"
+      },
+      "consumer": "corpus_path",
+      "json_pointer": "/chunks/41",
+      "object_sha256": "a96a68f90b2ba37050dd21a7e9907c7f1b855c324e38911100e779ad3cd39338",
+      "source": {
+        "artifact_type": "scenario_ground_truth",
+        "object_type": "limitation",
+        "object_id": null,
+        "json_pointer": "/summary/limitations/4"
+      },
+      "source_references": []
+    },
+    {
+      "origin": {
+        "kind": "chunk",
+        "item_id": "retrieval-chunk--eb2b6e6508b7b978eaa1436483c42fd13d146a05454bd73c8bb6c6b51af49afd",
+        "context_pointer": "/retrieval/hits/3/chunk"
+      },
+      "consumer": "corpus_path",
+      "json_pointer": "/chunks/34",
+      "object_sha256": "341781d48623fd90c672afa4b499e6d9485db351bfc41f046cd272b55b18c6cf",
+      "source": {
+        "artifact_type": "scenario_ground_truth",
+        "object_type": "sigma_finding",
+        "object_id": "sigma-spray-project",
+        "json_pointer": "/sigma_findings/1"
+      },
+      "source_references": [
+        {
+          "raw_record_ref": "jsonl:line:1020",
+          "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+        },
+        {
+          "raw_record_ref": "jsonl:line:1046",
+          "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+        },
+        {
+          "raw_record_ref": "jsonl:line:1048",
+          "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+        },
+        {
+          "raw_record_ref": "jsonl:line:1051",
+          "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+        },
+        {
+          "raw_record_ref": "jsonl:line:1072",
+          "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+        },
+        {
+          "raw_record_ref": "jsonl:line:1074",
+          "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+        },
+        {
+          "raw_record_ref": "jsonl:line:1077",
+          "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+        },
+        {
+          "raw_record_ref": "jsonl:line:788",
+          "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+        },
+        {
+          "raw_record_ref": "jsonl:line:790",
+          "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+        },
+        {
+          "raw_record_ref": "jsonl:line:792",
+          "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+        },
+        {
+          "raw_record_ref": "jsonl:line:794",
+          "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+        },
+        {
+          "raw_record_ref": "jsonl:line:796",
+          "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+        },
+        {
+          "raw_record_ref": "jsonl:line:798",
+          "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+        },
+        {
+          "raw_record_ref": "jsonl:line:803",
+          "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+        }
+      ]
+    },
+    {
+      "origin": {
+        "kind": "chunk",
+        "item_id": "retrieval-chunk--0bbca650694671ec179ef9b97d45cc40969a30d7bc97752d23217b208beaf348",
+        "context_pointer": "/retrieval/hits/4/chunk"
+      },
+      "consumer": "corpus_path",
+      "json_pointer": "/chunks/30",
+      "object_sha256": "15ea3b5c1618c0bff95f7e2116ba84f68b943b21643beb19e924be4fb80f18c6",
+      "source": {
+        "artifact_type": "scenario_ground_truth",
+        "object_type": "evidence",
+        "object_id": "auth-failure-observations",
+        "json_pointer": "/evidence/0"
+      },
+      "source_references": [
+        {
+          "raw_record_ref": "jsonl:line:1020",
+          "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+        },
+        {
+          "raw_record_ref": "jsonl:line:1046",
+          "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+        },
+        {
+          "raw_record_ref": "jsonl:line:1048",
+          "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+        },
+        {
+          "raw_record_ref": "jsonl:line:1051",
+          "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+        },
+        {
+          "raw_record_ref": "jsonl:line:1072",
+          "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+        },
+        {
+          "raw_record_ref": "jsonl:line:1074",
+          "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+        },
+        {
+          "raw_record_ref": "jsonl:line:1077",
+          "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+        },
+        {
+          "raw_record_ref": "jsonl:line:788",
+          "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+        },
+        {
+          "raw_record_ref": "jsonl:line:790",
+          "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+        },
+        {
+          "raw_record_ref": "jsonl:line:792",
+          "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+        },
+        {
+          "raw_record_ref": "jsonl:line:794",
+          "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+        },
+        {
+          "raw_record_ref": "jsonl:line:796",
+          "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+        },
+        {
+          "raw_record_ref": "jsonl:line:798",
+          "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+        },
+        {
+          "raw_record_ref": "jsonl:line:803",
+          "source_file": "purplesharp_ad_playbook_I_2020-10-22042947.json"
+        }
+      ]
+    }
+  ]
+}

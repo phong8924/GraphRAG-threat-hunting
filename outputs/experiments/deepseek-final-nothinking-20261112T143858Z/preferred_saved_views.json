@@ -1,0 +1,29 @@
+{
+  "new_api_calls_for_view": 0,
+  "results": [
+    {
+      "scenario_id": "mshta-powershell",
+      "question_id": "PS-DIRECT",
+      "branch": "graphrag",
+      "url": "http://127.0.0.1:8034/view/PS-DIRECT/graphrag",
+      "response_path": "outputs/experiments/deepseek-final-nothinking-20261112T143858Z/PS-DIRECT_graphrag/response.json",
+      "citations_path": "outputs/experiments/deepseek-final-nothinking-20261112T143858Z/PS-DIRECT_graphrag/citations_resolved.json"
+    },
+    {
+      "scenario_id": "purplesharp-ad",
+      "question_id": "AUTH-CTI",
+      "branch": "graphrag",
+      "url": "http://127.0.0.1:8034/view/AUTH-CTI/graphrag",
+      "response_path": "outputs/experiments/deepseek-final-nothinking-20261112T143858Z/AUTH-CTI_graphrag/response.json",
+      "citations_path": "outputs/experiments/deepseek-final-nothinking-20261112T143858Z/AUTH-CTI_graphrag/citations_resolved.json"
+    },
+    {
+      "scenario_id": "regsvr32-c2",
+      "question_id": "NET-DIRECT",
+      "branch": "graphrag",
+      "url": "http://127.0.0.1:8034/view/NET-DIRECT/graphrag",
+      "response_path": "outputs/experiments/deepseek-final-nothinking-20261112T143858Z/NET-DIRECT_graphrag/response.json",
+      "citations_path": "outputs/experiments/deepseek-final-nothinking-20261112T143858Z/NET-DIRECT_graphrag/citations_resolved.json"
+    }
+  ]
+}

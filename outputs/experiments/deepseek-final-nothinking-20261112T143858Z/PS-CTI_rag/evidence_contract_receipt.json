@@ -1,0 +1,158 @@
+{
+  "schema_version": "current-paired-input-receipt/v1",
+  "artifact": "evidence_contract",
+  "content_sha256": "ab279f98837f398a30c99b0147dbbda60170065df676c823053bd8cb74ceb8b8",
+  "content_utf8_bytes": 23251,
+  "scenario_id": "mshta-powershell",
+  "source_bindings": {
+    "gt_path": {
+      "path": "outputs/integrated/20261112_live_v1/consumers/mshta-powershell/scenario_ground_truth.json",
+      "sha256": "7492ac551d3ca6b3d0f9d752f864b951722e5dd1c0037ebeb95aac149195f4c3"
+    },
+    "corpus_path": {
+      "path": "outputs/integrated/20261112_live_v1/consumers/mshta-powershell/retrieval_corpus.json",
+      "sha256": "081a4cb129fa20fe9818e90979c6a323680989f508f1e64f006fe8dfed951692"
+    },
+    "graph_path": {
+      "path": "outputs/integrated/20261112_live_v1/consumers/mshta-powershell/knowledge_graph.json",
+      "sha256": "af1bc7c773b1df500aa0f88875c2a12f496e469cb3490c55e2e7071f91555280"
+    },
+    "index_path": {
+      "path": "outputs/integrated/20261112_live_v1/consumers/mshta-powershell/vector_index_e5.json",
+      "sha256": "e27f495ffe80e21018a5f4064347ede9ea262f79ac673cd7b23fee1aa5a4953d"
+    }
+  },
+  "persistence": "Exact runtime value stays in RAM; source objects remain in unchanged pinned consumers. No duplicate raw payload persisted.",
+  "evidence": [
+    {
+      "origin": {
+        "kind": "chunk",
+        "item_id": "retrieval-chunk--40ca3e3ee4ee1fc4ed2e3485441998bd1cb52589f44bd8972f8a5122644ec824",
+        "context_pointer": "/retrieval/hits/0/chunk"
+      },
+      "consumer": "corpus_path",
+      "json_pointer": "/chunks/4",
+      "object_sha256": "660eddb4c2cb2714417f120847f7274a45d1343229535495ec26a72f2a7b81f5",
+      "source": {
+        "artifact_type": "scenario_ground_truth",
+        "object_type": "entity",
+        "object_id": "cti-adbd396e18c270cd67a6",
+        "json_pointer": "/entities/4"
+      },
+      "source_references": [
+        {
+          "source_file": "redcanary-mshta",
+          "raw_record_ref": "text:chars:12031:12170"
+        }
+      ]
+    },
+    {
+      "origin": {
+        "kind": "chunk",
+        "item_id": "retrieval-chunk--f7d783fb779096d42f4fe2ad0a76bcb7b97ea8b8a1998feea4d1b739381d5dbf",
+        "context_pointer": "/retrieval/hits/1/chunk"
+      },
+      "consumer": "corpus_path",
+      "json_pointer": "/chunks/1",
+      "object_sha256": "fb842c6c38d444b91754112015e04916334efe992c7e16ead82268560b90525e",
+      "source": {
+        "artifact_type": "scenario_ground_truth",
+        "object_type": "entity",
+        "object_id": "cti-21d321ee1fcec0c40565",
+        "json_pointer": "/entities/6"
+      },
+      "source_references": [
+        {
+          "source_file": "redcanary-mshta",
+          "raw_record_ref": "text:chars:10991:11372"
+        }
+      ]
+    },
+    {
+      "origin": {
+        "kind": "chunk",
+        "item_id": "retrieval-chunk--86dd89fe0cfd03c1505a8534ce63dfb9f72221fe32c23d7a0341a66fa98d48ad",
+        "context_pointer": "/retrieval/hits/2/chunk"
+      },
+      "consumer": "corpus_path",
+      "json_pointer": "/chunks/0",
+      "object_sha256": "3d89bfdd18ec2dff1be1383d9ea30fe50699d87db8a74a251e0e101e55d9b449",
+      "source": {
+        "artifact_type": "scenario_ground_truth",
+        "object_type": "scenario",
+        "object_id": null,
+        "json_pointer": "/scenario"
+      },
+      "source_references": [
+        {
+          "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json",
+          "raw_record_ref": "jsonl:line:275"
+        },
+        {
+          "raw_record_ref": "jsonl:line:30",
+          "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json"
+        },
+        {
+          "raw_record_ref": "jsonl:line:398",
+          "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json"
+        },
+        {
+          "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json",
+          "raw_record_ref": "jsonl:line:4"
+        }
+      ]
+    },
+    {
+      "origin": {
+        "kind": "chunk",
+        "item_id": "retrieval-chunk--f36fc26dc2a1ab7790f9bb95ceb5b2ceaaea94a7867c978b680fa532040a0b88",
+        "context_pointer": "/retrieval/hits/3/chunk"
+      },
+      "consumer": "corpus_path",
+      "json_pointer": "/chunks/13",
+      "object_sha256": "f69858fbeb59d35d3ea6e25dc88403b3a0bd02feb64459b8f66ffb362bce705b",
+      "source": {
+        "artifact_type": "scenario_ground_truth",
+        "object_type": "evidence",
+        "object_id": "evidence-b31714b888d1489a380c",
+        "json_pointer": "/evidence/1"
+      },
+      "source_references": [
+        {
+          "raw_record_ref": "jsonl:line:30",
+          "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json"
+        },
+        {
+          "raw_record_ref": "jsonl:line:398",
+          "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json"
+        }
+      ]
+    },
+    {
+      "origin": {
+        "kind": "chunk",
+        "item_id": "retrieval-chunk--c8a720c3000f779ab36ac8207e7cf21c14d3687ca16157c534c95be7e5ce99ae",
+        "context_pointer": "/retrieval/hits/4/chunk"
+      },
+      "consumer": "corpus_path",
+      "json_pointer": "/chunks/15",
+      "object_sha256": "b81c99cc31a421ab038fb3f79484ed96a463962530f6d45cc701ff690c1845e9",
+      "source": {
+        "artifact_type": "scenario_ground_truth",
+        "object_type": "sigma_finding",
+        "object_id": "sigma-finding--88654ed2fa69e533969b800d5a29dc0a7d7ad59987f300f4f554de638b9a4f7a",
+        "json_pointer": "/sigma_findings/0"
+      },
+      "source_references": [
+        {
+          "raw_record_ref": "jsonl:line:30",
+          "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json"
+        },
+        {
+          "raw_record_ref": "jsonl:line:398",
+          "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "question_id": "PS-DIRECT",
+  "case_id": "PS-DIRECT",
+  "scenario_id": "mshta-powershell",
+  "branch": "rag",
+  "query": "Command line của mshta.exe ghi cơ chế VBScript nào để khởi chạy powershell.exe, và PowerShell được khởi chạy với lệnh gì? Dẫn đúng các raw observations, không khẳng định cmdlet đã hoàn tất.",
+  "outcome": "abstain",
+  "gate_decision": "abstain",
+  "eligibility_decision": "abstain",
+  "context_utf8_bytes": 21052,
+  "messages_utf8_bytes": 33987,
+  "llm_http_attempts": 0,
+  "fallback_used": false,
+  "human_review_required": true,
+  "prepared_utc": "2026-11-12T14:44:46.731141+00:00",
+  "provider_usage": null,
+  "provider_reported_cost": null,
+  "retrieval_context_seconds": 0.05432639999708044,
+  "policy_gate_decision": "abstain",
+  "abstention_stage": "evidence_answerability",
+  "context_sha256": "50fed848e9fd209a01e359f3b6d3eccb9b2163998148a6469e7c1a4436488cb3",
+  "messages_sha256": "83e0b0bef5486adba6ef19470684a3047451ad3695ca92d5740d96f084e9c7d8",
+  "retrieval_sha256": "b32c794a8cdebf69676874dbdfc14abeff9aa54cb078939a5548880c60f8b37b",
+  "retrieval_hit_ids": [
+    "retrieval-chunk--86dd89fe0cfd03c1505a8534ce63dfb9f72221fe32c23d7a0341a66fa98d48ad",
+    "retrieval-chunk--f36fc26dc2a1ab7790f9bb95ceb5b2ceaaea94a7867c978b680fa532040a0b88",
+    "retrieval-chunk--ef21f2bc7758f90ce3097c824ea9cfcf382e6fbefcaf03a8cc2c2f2cfa34534f",
+    "retrieval-chunk--8a73d544afa5a8a974c12b905a13224e95e58a8dc73c3a6141ca02c3e2b731e8",
+    "retrieval-chunk--3422a1d86fc13212f395af0f4089875227b0780e91899c42c13023f3a6ff55d8"
+  ],
+  "returned_graph_nodes": 0,
+  "returned_graph_edges": 0,
+  "available_reference_count": 19,
+  "validation_status": "not_run",
+  "abstention_reason_codes": [
+    "actor_bound_command_fields_not_returned"
+  ],
+  "preparation_seconds": 0.1516793000009784
+}

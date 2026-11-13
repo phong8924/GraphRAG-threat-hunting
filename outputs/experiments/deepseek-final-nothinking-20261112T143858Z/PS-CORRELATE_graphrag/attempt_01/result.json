@@ -1,0 +1,92 @@
+{
+  "question_id": "PS-CORRELATE",
+  "case_id": "PS-CORRELATE",
+  "scenario_id": "mshta-powershell",
+  "branch": "graphrag",
+  "query": "Bốn quan sát Security 4688 và Sysmon 1 trong core cmd.exe → mshta.exe → powershell.exe tương ứng bao nhiêu process creations? Giải thích parent/child correlation và vì sao conhost.exe ở ngoài core.",
+  "outcome": "accepted_draft",
+  "gate_decision": "proceed",
+  "eligibility_decision": "proceed",
+  "context_utf8_bytes": 112631,
+  "messages_utf8_bytes": 99573,
+  "llm_http_attempts": 1,
+  "fallback_used": false,
+  "human_review_required": true,
+  "prepared_utc": "2026-11-12T14:44:47.120505+00:00",
+  "provider_usage": {
+    "prompt_tokens": 31854,
+    "completion_tokens": 1482,
+    "total_tokens": 33336,
+    "prompt_tokens_details": {
+      "cached_tokens": 2048
+    },
+    "prompt_cache_hit_tokens": 2048,
+    "prompt_cache_miss_tokens": 29806
+  },
+  "provider_reported_cost": null,
+  "retrieval_context_seconds": 0.09718010000142385,
+  "policy_gate_decision": "proceed",
+  "abstention_stage": null,
+  "context_sha256": "2287d0369980ebecc275afae64162d80ae32232a73a274d7e5bcbc383a6b357b",
+  "messages_sha256": "f64450565e95be23ebbeb3dc884b72618c6964acdda980e063fc81374c53818f",
+  "retrieval_sha256": "0d27891f5a6a65d4ce058f3332595023b4ff0d04df00f2e02a16f922ee003ac2",
+  "retrieval_hit_ids": [
+    "retrieval-chunk--86dd89fe0cfd03c1505a8534ce63dfb9f72221fe32c23d7a0341a66fa98d48ad",
+    "retrieval-chunk--f36fc26dc2a1ab7790f9bb95ceb5b2ceaaea94a7867c978b680fa532040a0b88",
+    "retrieval-chunk--536a732c5d918e1b90e281ed5d438f06f8b161d70c9d4e64699eee77dfd2a30b",
+    "retrieval-chunk--6c81131b41dbfbf7554df2341edc55b3ffeb9da99282a8cde4492bd3a1107365",
+    "retrieval-chunk--ef21f2bc7758f90ce3097c824ea9cfcf382e6fbefcaf03a8cc2c2f2cfa34534f"
+  ],
+  "returned_graph_nodes": 18,
+  "returned_graph_edges": 26,
+  "available_reference_count": 123,
+  "validation_status": "passed",
+  "abstention_reason_codes": [],
+  "preparation_seconds": 0.24395709999953397,
+  "generation_validation_seconds": 67.13044779999836,
+  "provider_http_seconds": 7.576530300000741,
+  "generation_started_utc": "2026-11-12T14:50:54.401780+00:00",
+  "generation_finished_utc": "2026-11-12T14:51:01.984580+00:00",
+  "finish_reason": "stop",
+  "http_status": 200,
+  "config_run_id": "deepseek-final-nothinking-20261112T143858Z",
+  "attempt_diagnostics": [
+    {
+      "ordinal": 6,
+      "question_id": "PS-CORRELATE",
+      "branch": "graphrag",
+      "pair_attempt": 1,
+      "reserved_utc": "2026-11-12T14:50:54.352906+00:00",
+      "actual_http_attempts": 1,
+      "finished_utc": "2026-11-12T14:51:01.984580+00:00",
+      "actual_payload": {
+        "model": "deepseek-flash",
+        "temperature": 0.0,
+        "max_tokens": 16384,
+        "thinking": {
+          "type": "disabled"
+        },
+        "stream": false,
+        "messages_sha256": "f64450565e95be23ebbeb3dc884b72618c6964acdda980e063fc81374c53818f",
+        "serialized_http_payload_bytes": 101884,
+        "endpoint": "https://api.deepseek.com/chat/completions"
+      },
+      "http_started_utc": "2026-11-12T14:50:54.401780+00:00",
+      "http_status": 200,
+      "usage": {
+        "prompt_tokens": 31854,
+        "completion_tokens": 1482,
+        "total_tokens": 33336,
+        "prompt_tokens_details": {
+          "cached_tokens": 2048
+        },
+        "prompt_cache_hit_tokens": 2048,
+        "prompt_cache_miss_tokens": 29806
+      },
+      "cost": null,
+      "finish_reason": "stop",
+      "http_seconds": 7.576530300000741,
+      "http_finished_utc": "2026-11-12T14:51:01.984580+00:00"
+    }
+  ]
+}

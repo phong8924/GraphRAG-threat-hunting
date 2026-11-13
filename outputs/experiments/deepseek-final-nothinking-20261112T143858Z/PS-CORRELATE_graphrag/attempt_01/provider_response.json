@@ -1,0 +1,28 @@
+{
+  "id": "24eeea03-cf37-4abc-9bb7-1b334c0804c4",
+  "object": "chat.completion",
+  "created": 1794495054,
+  "model": "deepseek-flash",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "{\n  \"schema_version\": \"threat-hunting-report/v1\",\n  \"verdict\": \"SUSPICIOUS\",\n  \"direct_answer\": \"Bốn quan sát (2×4688, 2×Sysmon 1) tương ứng 2 process creations: cmd.exe → mshta.exe (PID 10980) và mshta.exe → powershell.exe (PID 9572). Mỗi creation được ghi nhận bởi hai provider (4688 và Sysmon 1) nên 4 quan sát = 2 sự kiện creation, không phải 4. conhost.exe nằm ngoài core vì nó không thuộc chuỗi parent-child cmd→mshta→powershell trong hai nhóm evidence được review; context ghi nhận conhost creation nằm ngoài phạm vi hai nhóm core và không được mô tả là vắng mặt toàn cục.\",\n  \"executive_summary\": \"Hai process creations quan sát được: cmd.exe (PID 5888) tạo mshta.exe (PID 10980) lúc 2020-10-22T02:57:59.856Z/857Z, và mshta.exe (PID 10980) tạo powershell.exe (PID 9572) lúc 2020-10-22T02:58:00.462Z/489Z. Mỗi cặp 4688 + Sysmon 1 là hai view của cùng một creation. conhost.exe không nằm trong core vì không có quan hệ process_spawn nào trong context nối nó vào chuỗi này.\",\n  \"technical_analysis\": \"Process creation 1 — cmd.exe → mshta.exe: Security 4688 tại jsonl:line:4 (2020-10-22T02:57:59.856000Z) và Sysmon 1 tại jsonl:line:275 (2020-10-22T02:57:59.857000Z) đều ghi parent C:\\\\Windows\\\\System32\\\\cmd.exe (parent PID 0x1700 / 5888) tạo C:\\\\Windows\\\\System32\\\\mshta.exe (PID 0x2ae4 / 10980), command line mshta vbscript:Execute(...). Quan hệ relationship-9e41d0cc407e7878b2d8 (process_spawn, observed) xác nhận cmd.exe → mshta.exe. Process creation 2 — mshta.exe → powershell.exe: Security 4688 tại jsonl:line:30 (2020-10-22T02:58:00.462000Z) và Sysmon 1 tại jsonl:line:398 (2020-10-22T02:58:00.489000Z) đều ghi parent C:\\\\Windows\\\\System32\\\\mshta.exe (parent PID 0x2ae4 / 10980) tạo powershell.exe (PID 0x2564 / 9572) với -noexit -command Get-Service sysmon. Quan hệ relationship-1641029b76ea1ac3df6e (process_spawn, observed) xác nhận mshta.exe → powershell.exe. Do đó 4 quan sát = 2 creations, mỗi creation có hai bản ghi từ hai provider. Về conhost.exe: context nêu rõ file còn chứa conhost creation, event-log clearing và temporary-file deletion ngoài hai nhóm core, và các mục này không được mô tả là vắng mặt toàn cục hay tự động phân loại là payload phá hoại; không có relationship process_spawn nào trong context nối conhost.exe với cmd.exe, mshta.exe hay powershell.exe, nên nó ở ngoài core. Giới hạn: process-creation telemetry chỉ chứng minh lệnh khởi chạy, không chứng minh cmdlet hoàn tất, output hay trạng thái dịch vụ Sysmon; timestamp Sysmon UtcTime lệch khoảng bốn giờ và timezone chưa được giải quyết, canonical timestamp giữ theo TimeCreated.\",\n  \"attack_chain\": [\n    {\n      \"step_number\": 1,\n      \"source_entity\": \"cmd.exe (PID 5888)\",\n      \"action\": \"process_spawn\",\n      \"target_entity\": \"mshta.exe (PID 10980)\",\n      \"evidence_ref\": \"evidence-b07a5ff4763e629715e6\",\n      \"timestamp\": \"2020-10-22T02:57:59.856000Z\"\n    },\n    {\n      \"step_number\": 2,\n      \"source_entity\": \"mshta.exe (PID 10980)\",\n      \"action\": \"process_spawn\",\n      \"target_entity\": \"powershell.exe (PID 9572)\",\n      \"evidence_ref\": \"evidence-b31714b888d1489a380c\",\n      \"timestamp\": \"2020-10-22T02:58:00.462000Z\"\n    }\n  ],\n  \"mitre_mappings\": [],\n  \"sigma_matches\": [\n    \"03cc0c25-389f-4bf8-b48d-11878079f1ca\",\n    \"cc7abbd0-762b-41e3-8a26-57ad50d2eea3\"\n  ],\n  \"containment_recommendations\": [],\n  \"unverified_claims\": [\n    \"Process-creation telemetry không chứng minh cmdlet Get-Service sysmon hoàn tất, có output, hay trạng thái dịch vụ Sysmon.\",\n    \"Không có bằng chứng trong context về download, HTTP completion, C2 hay exfiltration.\",\n    \"conhost.exe không được mô tả là vắng mặt toàn cục; context chỉ nêu nó nằm ngoài hai nhóm core và chưa quét phủ định toàn dataset.\",\n    \"Timestamp Sysmon UtcTime lệch khoảng bốn giờ so với TimeCreated và timezone chưa được giải quyết; không thực hiện hiệu chỉnh thời gian.\"\n  ],\n  \"evidence_refs\": [\n    \"evidence-b07a5ff4763e629715e6\",\n    \"evidence-b31714b888d1489a380c\",\n    \"relationship-9e41d0cc407e7878b2d8\",\n    \"relationship-1641029b76ea1ac3df6e\",\n    \"jsonl:line:4\",\n    \"jsonl:line:275\",\n    \"jsonl:line:30\",\n    \"jsonl:line:398\"\n  ]\n}"
+      },
+      "logprobs": null,
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 31854,
+    "completion_tokens": 1482,
+    "total_tokens": 33336,
+    "prompt_tokens_details": {
+      "cached_tokens": 2048
+    },
+    "prompt_cache_hit_tokens": 2048,
+    "prompt_cache_miss_tokens": 29806
+  },
+  "system_fingerprint": "bc19ba97cbe016479903222bb1578db6"
+}

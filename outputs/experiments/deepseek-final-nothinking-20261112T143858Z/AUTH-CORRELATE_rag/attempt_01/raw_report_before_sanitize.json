@@ -1,0 +1,50 @@
+{
+  "schema_version": "threat-hunting-report/v1",
+  "verdict": "SUSPICIOUS",
+  "direct_answer": "Trong cụm nghi vấn password spraying, có 14 failure observations (7 sự kiện 4625 trên WORKSTATION5.theshire.local và 7 sự kiện 4776 trên MORDORDC.theshire.local) nhưng sau khử trùng chỉ còn 7 lần thử được ghép cặp (paired_attempts=7, countable_attempts=7), với 7 tài khoản khác nhau: lrodriguez, mscott, nxlogsvc, pbeesly, pgustavo, sbeavers, sysmonsvc. Khoảng dấu thời gian canonical của các observations/anchors được chọn là 2020-10-22T08:29:55.210000Z đến 2020-10-22T08:29:55.222000Z (4625) và 2020-10-22T08:29:55.357000Z đến 2020-10-22T08:29:55.382000Z (4776); đây không phải thời lượng thực tế của hoạt động tấn công.",
+  "executive_summary": "14 bản ghi lỗi xác thực là hai góc nhìn (endpoint 4625 và DC 4776) của cùng các lần thử, không phải 14 lần thử riêng biệt. Sau khử trùng có 7 lần thử được ghép cặp trên 7 tài khoản khác nhau, phù hợp với cụm nghi vấn password spraying ở mức candidate; không chứng minh mật khẩu giống nhau hay compromise.",
+  "technical_analysis": "Khử trùng: evidence auth-failure-observations ghi rõ '4625 endpoint and 4776 DC views, not additional attempts' và liệt kê 7 sự kiện 4625 (jsonl:line:788, 790, 792, 794, 796, 798, 803) cùng 7 sự kiện 4776 (jsonl:line:1020, 1046, 1048, 1051, 1072, 1074, 1077). Fact auth-correlation-summary (status inferred) cho authentication_correlation: failure_observations=14, paired_attempts=7, countable_attempts=7, tolerance_seconds=1.0, ambiguous_observations rỗng; spraying_candidates có distinct_accounts gồm 7 tài khoản và 7 attempt_ids, start=2020-10-22T08:29:55.210000Z, end=2020-10-22T08:29:55.222000Z, duration_seconds=0.012, window_seconds=60, min_distinct_accounts=5, status=candidate. Giới hạn của phép ghép: đây là ghép theo view (4625 trên WORKSTATION5 với 4776 trên MORDORDC) trong dung sai 1.0 giây, là suy luận (inferred), không có attempt ID dùng chung và không chứng minh đồng bộ đồng hồ giữa hai nguồn; các trường raw EventTime (2020-10-22 04:29:53) và @timestamp khác nhau được giữ nguyên, không hiệu chỉnh múi giờ. Khoảng 08:29:55.210000Z–08:29:55.222000Z và 08:29:55.357000Z–08:29:55.382000Z chỉ là khoảng dấu thời gian canonical của các observations được chọn, không phải thời lượng tấn công. Không chứng minh mật khẩu giống nhau, không chứng minh brute force lặp lại trên một tài khoản, không xác nhận compromise.",
+  "attack_chain": [],
+  "mitre_mappings": [
+    {
+      "technique_id": "T1110.003",
+      "technique_name": "Password Spraying",
+      "confidence": "supported_by_observed_behavior",
+      "rationale": "Observed concentrated failures across distinct accounts support suspected spraying; does not prove same password or compromise.",
+      "evidence_support": "supported_by_observed_behavior",
+      "assessment_status": "candidate",
+      "review_status": "needs_review"
+    }
+  ],
+  "sigma_matches": [
+    "8146a24e-c271-4d34-a679-6a361f71ccab"
+  ],
+  "containment_recommendations": [],
+  "unverified_claims": [
+    "Password sameness across the 7 accounts is unobserved; spraying with a single password is not established.",
+    "No successful compromise or recovered password is established; same-name success after failure does not prove account compromise.",
+    "The 4625/4776 pairing is an inferred correlation within 1.0 second tolerance; no shared attempt ID or proven cross-source clock synchronization exists.",
+    "The canonical timestamp spans are not the real attack/activity duration.",
+    "The Sigma finding is a project-derived correlation after view deduplication, not an external SigmaHQ rule match."
+  ],
+  "evidence_refs": [
+    "auth-failure-observations",
+    "auth-correlation-summary",
+    "assessment-T1110-003",
+    "sigma-spray-project",
+    "jsonl:line:788",
+    "jsonl:line:790",
+    "jsonl:line:792",
+    "jsonl:line:794",
+    "jsonl:line:796",
+    "jsonl:line:798",
+    "jsonl:line:803",
+    "jsonl:line:1020",
+    "jsonl:line:1046",
+    "jsonl:line:1048",
+    "jsonl:line:1051",
+    "jsonl:line:1072",
+    "jsonl:line:1074",
+    "jsonl:line:1077"
+  ]
+}

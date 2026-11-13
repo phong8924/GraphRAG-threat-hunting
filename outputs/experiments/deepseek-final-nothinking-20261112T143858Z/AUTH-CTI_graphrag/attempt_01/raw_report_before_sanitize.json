@@ -1,0 +1,52 @@
+{
+  "schema_version": "threat-hunting-report/v1",
+  "verdict": "INSUFFICIENT_EVIDENCE",
+  "direct_answer": "Telemetry cục bộ (PurpleSharp) cho thấy 7 lần thử thất bại được suy luận (từ 14 observation 4625/4776, không phải 14 lần thử) nhắm vào 7 tài khoản khác nhau, mỗi tài khoản đúng 1 lần, trong khoảng dấu thời gian canonical 0,012 giây (2020-10-22T08:29:55.210Z–08:29:55.222Z) — tức là mật độ cực cao, dồn dập. CTI Microsoft mô tả CovertNetwork-1658 gửi 'rất ít' lần đăng nhập cho nhiều tài khoản, khoảng 80% trường hợp chỉ 1 lần/tài khoản/ngày — tức là mật độ thấp, rải rác theo ngày. Điểm giống: cùng phân bố '1 lần/tài khoản, nhiều tài khoản'. Điểm khác: quy mô tài khoản (7 so với 'nhiều') và đặc biệt là mật độ thời gian (0,012 giây so với 1 ngày). Không thể so sánh các chiều khác như nguồn IP, hạ tầng, hay thành công sau đó vì nguồn không cung cấp. Không gán threat actor cho host.",
+  "executive_summary": "Đối chiếu mẫu phân bố: telemetry PurpleSharp cho thấy cụm 7 lần thử thất bại trên 7 tài khoản khác nhau, mỗi tài khoản 1 lần, trong khoảng 0,012 giây. CTI Microsoft về CovertNetwork-1658 mô tả mẫu 'rất ít lần thử trên nhiều tài khoản', khoảng 80% trường hợp 1 lần/tài khoản/ngày. Giống nhau ở đặc điểm '1 lần/tài khoản, nhiều tài khoản'; khác nhau ở quy mô tài khoản và mật độ thời gian. Đây là so sánh mẫu phân bố, không phải quy kết actor hay xác nhận compromise.",
+  "technical_analysis": "Telemetry cục bộ (nguồn: auth-failure-observations, raw_record_ref jsonl:line:788–803 và jsonl:line:1020–1077): 14 observation thất bại (7 event 4625 trên WORKSTATION5.theshire.local và 7 event 4776 trên MORDORDC.theshire.local) được ghép cặp suy luận thành 7 attempt (correlation_basis: mutually_unique_account_workstation_failure_code_within_tolerance; limitations: 4776 target domain absent; pairing is inferred, not a shared attempt ID). Các attempt nhắm 7 tài khoản: lrodriguez, pgustavo, sysmonsvc, sbeavers, mscott, pbeesly, nxlogsvc — mỗi tài khoản đúng 1 lần. Khoảng dấu thời gian canonical của các anchor được chọn: 2020-10-22T08:29:55.210000Z đến 2020-10-22T08:29:55.222000Z (0,012 giây). Đây là khoảng dấu thời gian canonical, không phải thời lượng thực tế của cuộc tấn công; raw clock fields (EventTime 2020-10-22 04:29:53 và @timestamp) được giữ nguyên, không hiệu chỉnh múi giờ. CTI (nguồn: cti-38d3fef31de89137b186, publisher Microsoft Threat Intelligence, URL https://www.microsoft.com/en-us/security/blog/2024/10/31/chinese-threat-actor-storm-0940-uses-credentials-from-password-spray-attacks-from-a-covert-network/): 'CovertNetwork-1658 submits a very small number of sign-in attempts to many accounts at a target organization. In about 80 percent of cases, CovertNetwork-1658 makes only one sign-in attempt per account per day.' So sánh: (1) Giống — cả hai đều có phân bố 1 lần thử/tài khoản trên nhiều tài khoản. (2) Khác — telemetry cục bộ có 7 tài khoản trong 0,012 giây; CTI mô tả 'nhiều tài khoản' với 1 lần/tài khoản/ngày (khoảng 80% trường hợp), tức mật độ thời gian thấp hơn nhiều. (3) Không thể so sánh — nguồn không cung cấp thông tin về nguồn IP, hạ tầng, hay tỷ lệ thành công sau đó cho phía telemetry cục bộ; CTI cũng không cung cấp chi tiết đó trong đoạn trích. Giới hạn: CTI là bối cảnh bên ngoài, không xác lập compromise cục bộ hay quy kết actor; telemetry cục bộ không chứng minh cùng mật khẩu, không chứng minh cracking thành công hay password recovery.",
+  "attack_chain": [],
+  "mitre_mappings": [
+    {
+      "technique_id": "T1110.003",
+      "technique_name": "Password Spraying",
+      "confidence": "supported_by_observed_behavior",
+      "rationale": "Observed concentrated failures across distinct accounts support suspected spraying; does not prove same password or compromise.",
+      "evidence_support": "supported_by_observed_behavior",
+      "assessment_status": "candidate",
+      "review_status": "needs_review"
+    }
+  ],
+  "sigma_matches": [
+    "8146a24e-c271-4d34-a679-6a361f71ccab"
+  ],
+  "containment_recommendations": [],
+  "unverified_claims": [
+    "Không xác nhận compromise: không có bằng chứng cracking thành công hay password recovery (nguồn: /summary/limitations/5).",
+    "CTI campaign activity không quy kết actor cho dataset này (nguồn: /summary/limitations/5).",
+    "Không chứng minh cùng mật khẩu được dùng cho các lần thử (password sameness is not logged).",
+    "Việc ghép cặp 4625 và 4776 là suy luận, không phải shared attempt ID; 4776 target domain absent.",
+    "Khoảng dấu thời gian canonical 0,012 giây không đại diện cho thời lượng thực tế của cuộc tấn công; raw clock fields chưa được hiệu chỉnh múi giờ.",
+    "Không thể so sánh nguồn IP, hạ tầng, hay tỷ lệ thành công sau đó giữa telemetry cục bộ và CTI vì nguồn không cung cấp các chiều này."
+  ],
+  "evidence_refs": [
+    "auth-failure-observations",
+    "jsonl:line:788",
+    "jsonl:line:790",
+    "jsonl:line:792",
+    "jsonl:line:794",
+    "jsonl:line:796",
+    "jsonl:line:798",
+    "jsonl:line:803",
+    "jsonl:line:1020",
+    "jsonl:line:1046",
+    "jsonl:line:1048",
+    "jsonl:line:1051",
+    "jsonl:line:1072",
+    "jsonl:line:1074",
+    "jsonl:line:1077",
+    "cti-38d3fef31de89137b186",
+    "text:chars:6059:6452",
+    "assessment-T1110-003",
+    "sigma-spray-project"
+  ]
+}

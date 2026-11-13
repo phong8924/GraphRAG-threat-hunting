@@ -1,0 +1,8 @@
+{
+  "publisher_urls": [
+    "https://redcanary.com/threat-detection-report/techniques/mshta/",
+    "https://www.microsoft.com/en-us/security/blog/2024/10/31/chinese-threat-actor-storm-0940-uses-credentials-from-password-spray-attacks-from-a-covert-network/",
+    "https://www.uptycs.com/blog/threat-research-report-team/attackers-increasingly-adopting-regsvr32-utility-execution-via-office-documents"
+  ],
+  "scope": "Existing attributed publisher excerpts and analyst paraphrases embedded in pinned consumers. No fetched publication is substituted for the historical snapshots."
+}

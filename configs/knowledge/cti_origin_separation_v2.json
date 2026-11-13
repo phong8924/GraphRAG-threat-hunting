@@ -1,0 +1,48 @@
+{
+  "microsoft-password-spray": [
+    {
+      "section": "Password spray activity from CovertNetwork-1658 infrastructure",
+      "anchor": "a very small number of sign-in attempts to many accounts",
+      "excerpt_scope": "line",
+      "publisher_paraphrase": "Microsoft reports very few sign-in attempts per account across many accounts. In about 80 percent of its reported cases there was one attempt per account per day. These are observations about the publisher's campaigns.",
+      "analyst_comparison": "A local multi-account failure burst can be compared at the level of account distribution. That comparison does not establish the same actor, credential, IOC, campaign or compromise on local hosts.",
+      "context_links": [{"target_kind": "technique", "target_id": "T1110.003"}, {"target_kind": "behavior", "target_id": "multi_account_authentication_failure_investigation"}]
+    }
+  ],
+  "redcanary-mshta": [
+    {
+      "section": "Detection opportunities / MSHTA spawning from suspect processes",
+      "anchor": "can be a good indicator of malice",
+      "excerpt_scope": "line",
+      "publisher_paraphrase": "Red Canary identifies mshta.exe spawning powershell.exe or cmd.exe as a potential indicator of malice and a starting point for detection.",
+      "analyst_comparison": "Use this external detection lead to investigate process lineage; assess the local command and telemetry independently. The lead does not prove local download, C2 or compromise.",
+      "context_links": [{"target_kind": "behavior", "target_id": "mshta_spawns_powershell"}, {"target_kind": "technique", "target_id": "T1218.005"}, {"target_kind": "sigma_rule", "target_id": "proc_creation_win_mshta_susp_child_processes.yml"}]
+    },
+    {
+      "section": "Visibility / Process and command-line monitoring",
+      "anchor": "At a minimum, collect parent-child process relationships",
+      "excerpt_scope": "line",
+      "publisher_paraphrase": "Red Canary recommends collecting parent-child process relationships, with grandparent relationships where possible, as useful visibility for detecting adversary use of MSHTA.",
+      "analyst_comparison": "Process-creation visibility is distinct from successful command completion, output and service state in a local investigation.",
+      "context_links": [{"target_kind": "behavior", "target_id": "process_lineage_investigation"}, {"target_kind": "sigma_rule", "target_id": "proc_creation_win_mshta_susp_execution.yml"}]
+    }
+  ],
+  "uptycs-regsvr32": [
+    {
+      "section": "Regsvr32 Utility & Squiblydoo Technique",
+      "anchor": "Threat actors can use regsvr32 for loading COM scriptlets",
+      "excerpt_scope": "line_and_next",
+      "publisher_paraphrase": "Uptycs describes regsvr32 loading COM scriptlets as Squiblydoo and gives an example containing /s /n /u, an HTTP /i argument and scrobj.dll.",
+      "analyst_comparison": "The technique description provides background for investigating local scriptlet command arguments. An external example does not establish local transfer completion or confirmed C2.",
+      "context_links": [{"target_kind": "technique", "target_id": "T1218.010"}, {"target_kind": "behavior", "target_id": "regsvr32_http_scriptlet"}, {"target_kind": "sigma_rule", "target_id": "proc_creation_win_regsvr32_http_ip_pattern.yml"}]
+    },
+    {
+      "section": "Insights From Our Threat Intelligence Systems",
+      "anchor": "provides telemetry with parent/child process relationships",
+      "excerpt_scope": "line",
+      "publisher_paraphrase": "Uptycs describes its EDR telemetry with parent-child process relationships, correlation and threat intelligence for suspicious regsvr32 execution.",
+      "analyst_comparison": "Local process/network attribution still requires its own host, GUID, lifetime and destination evidence. A connection alone does not establish transmitted content, bytes or C2 purpose.",
+      "context_links": [{"target_kind": "behavior", "target_id": "regsvr32_process_network_investigation"}, {"target_kind": "sigma_rule", "target_id": "proc_creation_win_regsvr32_susp_parent.yml"}, {"target_kind": "sigma_rule", "target_id": "proc_creation_win_regsvr32_susp_child_process.yml"}]
+    }
+  ]
+}
